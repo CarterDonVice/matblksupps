@@ -8,8 +8,9 @@ export function HeroSection() {
       <div className="animate-fade-in-up">
         <div className="flex flex-col items-center justify-center mb-8">
           <div className="font-headline font-bold text-foreground text-center leading-none">
-            <div className="text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] xl:text-[16rem]">MAT</div>
-            <div className="text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] xl:text-[16rem] -mt-[2rem] sm:-mt-[2.5rem] md:-mt-[3rem] lg:-mt-[3.5rem] xl:-mt-[4rem]">BLK</div>
+            {/* Increased font sizes and adjusted negative margins for a much larger logo */}
+            <div className="text-[12rem] sm:text-[15rem] md:text-[18rem] lg:text-[22rem] xl:text-[26rem]">MAT</div>
+            <div className="text-[12rem] sm:text-[15rem] md:text-[18rem] lg:text-[22rem] xl:text-[26rem] -mt-[3rem] sm:-mt-[3.75rem] md:-mt-[4.5rem] lg:-mt-[5.5rem] xl:-mt-[6.5rem]">BLK</div>
           </div>
         </div>
         <p className="font-headline text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-tight">
