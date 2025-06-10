@@ -5,7 +5,7 @@ import { Zap } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-br from-background to-card p-4">
+    <section className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-background to-card py-24 md:py-32 lg:py-40 px-4">
       <div className="animate-fade-in-up">
         <div className="flex flex-col items-center justify-center mb-8">
           <Zap className="h-28 w-28 md:h-36 md:w-36 text-primary mb-4" />
