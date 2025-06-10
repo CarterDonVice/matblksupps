@@ -11,8 +11,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Roboto Condensed', 'sans-serif'],
-        headline: ['Oswald', 'sans-serif'],
+        body: ['Roboto', 'sans-serif'],
+        headline: ['Bebas Neue', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {

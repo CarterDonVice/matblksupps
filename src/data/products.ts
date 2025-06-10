@@ -1,4 +1,5 @@
-import type { Product } from '@/lib/types';
+
+import type { Product, ProductCategory } from '@/lib/types';
 
 export const products: Product[] = [
   {
@@ -9,8 +10,8 @@ export const products: Product[] = [
     fullName: 'MAT BLK pure and potent',
     category: 'preworkout',
     price: 49.99,
-    images: ['https://placehold.co/600x600.png', 'https://placehold.co/600x600.png'],
-    dataAiHint: 'supplement container',
+    images: ['/images/mat-blk-pure-and-potent.png'], // Updated image path
+    // dataAiHint removed as it's a specific image now
     shortDescription: 'The ultimate daily driver preworkout for sustained energy and focus.',
     description: [
       'Experience the pinnacle of pre-workout supplementation with MAT BLK pure and potent. Engineered for athletes who demand the best, this formula delivers a smooth, sustained energy release without the jitters or crash.',
