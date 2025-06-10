@@ -1,7 +1,8 @@
+
 "use client";
 
 import Link from 'next/link';
-import { ShoppingCart, Menu, X, Zap } from 'lucide-react';
+import { ShoppingCart, Menu, X } from 'lucide-react';
 import { mainNavLinks } from '@/data/navigation';
 import { useCart } from '@/contexts/CartContext';
 import { useState, useEffect } from 'react';
@@ -22,10 +23,10 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 transition-transform hover:scale-105">
-          <Zap className="h-8 w-8 text-primary" />
-          <span className="font-headline text-3xl font-bold text-foreground">
-            MAT BLK
-          </span>
+          <div className="flex flex-col items-start leading-tight">
+            <span className="font-headline text-3xl font-bold text-foreground">MAT</span>
+            <span className="font-headline text-3xl font-bold text-foreground -mt-2">BLK</span>
+          </div>
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">
@@ -63,8 +64,10 @@ export function Navbar() {
                 <div className="flex flex-col h-full">
                   <div className="flex justify-between items-center mb-8">
                      <Link href="/" className="flex items-center gap-2">
-                        <Zap className="h-7 w-7 text-primary" />
-                        <span className="font-headline text-2xl font-bold text-foreground">MAT BLK</span>
+                       <div className="flex flex-col items-start leading-tight">
+                         <span className="font-headline text-2xl font-bold text-foreground">MAT</span>
+                         <span className="font-headline text-2xl font-bold text-foreground -mt-1">BLK</span>
+                       </div>
                     </Link>
                     <SheetClose asChild>
                        <Button variant="ghost" size="icon"><X className="h-7 w-7 text-foreground/80" /></Button>
