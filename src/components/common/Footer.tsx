@@ -13,7 +13,7 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-2 mb-4 transition-transform hover:scale-105">
               <div className="flex flex-col items-start leading-tight">
                 <span className="font-headline text-2xl font-bold text-foreground">MAT</span>
-                <span className="font-headline text-2xl font-bold text-foreground -mt-1.5">BLK</span>
+                <span className="font-headline text-2xl font-bold text-foreground -mt-1.5 tracking-wide">BLK</span>
               </div>
             </Link>
             <p className="text-sm text-muted-foreground text-center md:text-left">
