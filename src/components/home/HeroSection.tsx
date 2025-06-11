@@ -11,7 +11,7 @@ export function HeroSection() {
             {/* Font sizes for MAT */}
             <div className="text-[12rem] sm:text-[15rem] md:text-[18rem] lg:text-[22rem] xl:text-[26rem]">MAT</div>
             {/* BLK font sizes increased by ~10% relative to MAT, and negative margins adjusted (approx 0.25 * BLK font size) */}
-            <div className="text-[13.2rem] sm:text-[16.5rem] md:text-[19.8rem] lg:text-[24.2rem] xl:text-[28.6rem] -mt-[3.3rem] sm:-mt-[4.125rem] md:-mt-[4.95rem] lg:-mt-[6.05rem] xl:-mt-[7.15rem]">BLK</div>
+            <div className="text-[14rem] sm:text-[15rem] md:text-[18rem] lg:text-[22rem] xl:text-[26rem] -mt-[3.3rem] sm:-mt-[4.125rem] md:-mt-[4.95rem] lg:-mt-[6.05rem] xl:-mt-[7.15rem]">BLK</div>
           </div>
         </div>
         <p className="font-headline text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-tight">

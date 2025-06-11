@@ -10,8 +10,7 @@ export const products: Product[] = [
     fullName: 'MAT BLK pure and potent',
     category: 'preworkout',
     price: 49.99,
-    images: ['/images/mat-blk-pure-and-potent.png'], // Updated image path
-    // dataAiHint removed as it's a specific image now
+    images: ['/images/mat-blk-pure-and-potent.png'],
     shortDescription: 'The ultimate daily driver preworkout for sustained energy and focus.',
     description: [
       'Experience the pinnacle of pre-workout supplementation with MAT BLK pure and potent. Engineered for athletes who demand the best, this formula delivers a smooth, sustained energy release without the jitters or crash.',
@@ -22,18 +21,18 @@ export const products: Product[] = [
   },
   {
     id: '2',
-    slug: 'mat-blk-tv-static',
+    slug: 'mat-blk-jitter-bug',
     name: 'MAT BLK',
-    subName: 'TV-Static',
-    fullName: 'MAT BLK TV-Static',
+    subName: 'Jitter Bug',
+    fullName: 'MAT BLK Jitter Bug',
     category: 'preworkout',
     price: 54.99,
     images: ['https://placehold.co/600x600.png', 'https://placehold.co/600x600.png'],
     dataAiHint: 'dark supplement',
     shortDescription: 'Unleash unparalleled intensity with our high-stimulant preworkout.',
     description: [
-      'MAT BLK TV-Static is not for the faint of heart. This high-stimulant preworkout is designed to push your limits, delivering explosive energy, laser-sharp focus, and an overwhelming drive to conquer your workout.',
-      'If you\'re seeking an extreme sensory experience and a performance boost that hits hard, TV-Static is your weapon of choice.'
+      'MAT BLK Jitter Bug is not for the faint of heart. This high-stimulant preworkout is designed to push your limits, delivering explosive energy, laser-sharp focus, and an overwhelming drive to conquer your workout.',
+      'If you\'re seeking an extreme sensory experience and a performance boost that hits hard, Jitter Bug is your weapon of choice.'
     ],
     sellingPoints: ['Maximum stimulant complex', 'Explosive energy & power', 'Intense mental focus', 'For advanced users'],
     ingredients: ['Caffeine Anhydrous', 'DMAE Bitartrate', 'Yohimbine HCL', 'Hordenine', 'Rauwolscine'],
@@ -76,17 +75,17 @@ export const products: Product[] = [
   },
   {
     id: '5',
-    slug: 'mat-blk-building-blocks-protein',
+    slug: 'mat-blk-foundation-fuel',
     name: 'MAT BLK',
-    subName: 'building blocks - protein',
-    fullName: 'MAT BLK building blocks - protein',
+    subName: 'Foundation Fuel',
+    fullName: 'MAT BLK Foundation Fuel',
     category: 'protein',
     price: 59.99,
     images: ['https://placehold.co/600x600.png', 'https://placehold.co/600x600.png'],
     dataAiHint: 'protein powder',
     shortDescription: 'Premium quality protein for optimal muscle recovery and growth.',
     description: [
-      'MAT BLK building blocks protein provides a high-quality, easily digestible protein source to fuel your muscles and support recovery. Our blend is rich in essential amino acids and tastes incredible.',
+      'MAT BLK Foundation Fuel provides a high-quality, easily digestible protein source to fuel your muscles and support recovery. Our blend is rich in essential amino acids and tastes incredible.',
       'Perfect for post-workout shakes or as a convenient way to meet your daily protein needs.'
     ],
     sellingPoints: ['Premium whey protein blend', 'Supports muscle recovery', 'Promotes lean muscle growth', 'Delicious taste & mixability'],
