@@ -10,8 +10,8 @@ export const products: Product[] = [
     fullName: 'MAT BLK pure and potent',
     category: 'preworkout',
     price: 49.99,
-    images: ['/images/daily-driver.png'], // Updated image
-    dataAiHint: 'preworkout supplement', // Added data-ai-hint
+    images: ['/images/daily-driver.png'], // Ensured correct image path
+    dataAiHint: 'preworkout supplement',
     shortDescription: 'The ultimate daily driver preworkout for sustained energy and focus.',
     description: [
       'Experience the pinnacle of pre-workout supplementation with MAT BLK pure and potent. Engineered for athletes who demand the best, this formula delivers a smooth, sustained energy release without the jitters or crash.',
@@ -91,6 +91,24 @@ export const products: Product[] = [
     ],
     sellingPoints: ['Premium whey protein blend', 'Supports muscle recovery', 'Promotes lean muscle growth', 'Delicious taste & mixability'],
     ingredients: ['Whey Protein Isolate', 'Whey Protein Concentrate', 'Digestive Enzyme Blend', 'Natural Flavors'],
+  },
+  {
+    id: '6',
+    slug: 'mat-blk-g2-daily-driver',
+    name: 'MAT BLK',
+    subName: 'G2 Daily Driver',
+    fullName: 'MAT BLK G2 Daily Driver',
+    category: 'preworkout',
+    price: 52.99,
+    images: ['/images/daily-driver.png'],
+    dataAiHint: 'preworkout supplement',
+    shortDescription: 'Next-gen daily preworkout: enhanced focus, sustained energy.',
+    description: [
+      'Elevate your daily training with MAT BLK G2 Daily Driver. Building on our trusted formula, G2 offers an even smoother energy curve and heightened mental clarity for peak performance, day in and day out.',
+      'Formulated with advanced ingredients for superior absorption and effectiveness, ensuring you get the most from every workout without the crash.'
+    ],
+    sellingPoints: ['Upgraded sustained energy', 'Advanced focus matrix', 'Improved absorption', 'Zero compromise performance'],
+    ingredients: ['Beta-Alanine (CarnoSyn®)', 'L-Citrulline DL-Malate 2:1', 'Caffeine Anhydrous (dual-source)', 'L-Tyrosine', 'Cognizin® Citicoline', 'AstraGin®'],
   },
 ];
 
