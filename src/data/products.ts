@@ -10,7 +10,8 @@ export const products: Product[] = [
     fullName: 'MAT BLK pure and potent',
     category: 'preworkout',
     price: 49.99,
-    images: ['/images/mat-blk-pure-and-potent.png'],
+    images: ['/images/daily-driver.png'], // Updated image
+    dataAiHint: 'preworkout supplement', // Added data-ai-hint
     shortDescription: 'The ultimate daily driver preworkout for sustained energy and focus.',
     description: [
       'Experience the pinnacle of pre-workout supplementation with MAT BLK pure and potent. Engineered for athletes who demand the best, this formula delivers a smooth, sustained energy release without the jitters or crash.',
