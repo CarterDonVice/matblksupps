@@ -13,10 +13,10 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4 transition-transform hover:scale-105">
               <Image
-                src="/images/MAT BLK logo.jpg"
+                src="/images/mat-blk-logo.jpg"
                 alt="MAT BLK Logo"
                 width={100} 
-                height={35} 
+                height={33} // Adjusted assuming 3:1 aspect ratio, adjust as needed
                 className="object-contain"
                 data-ai-hint="company logo"
               />

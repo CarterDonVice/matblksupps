@@ -9,10 +9,10 @@ export function HeroSection() {
       <div className="animate-fade-in-up">
         <div className="flex flex-col items-center justify-center mb-8">
           <Image
-            src="/images/MAT BLK logo.jpg"
+            src="/images/mat-blk-logo.jpg"
             alt="MAT BLK Logo"
             width={700} 
-            height={350} 
+            height={233} // Adjusted assuming a 3:1 aspect ratio for a wide logo, adjust as needed
             className="object-contain"
             priority 
             data-ai-hint="company logo main"
