@@ -19,7 +19,7 @@ export function HeroSection() {
           />
         </div>
         <p className="font-headline text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-tight">
-          High Quality. Pure. Potent. No Compromises.
+          FULL BODY FUEL
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button asChild size="lg" className="btn-primary px-10 py-7 text-lg">
