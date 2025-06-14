@@ -75,7 +75,7 @@ export default function AboutPage() {
               What Sets Us Apart
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We're not just another supplement company. We're your partners in performance.
+              We're not just another supplement company. We don't need a fancy label, the formulations speak for themselves.
             </p>
           </div>
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
