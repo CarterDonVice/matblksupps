@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Zap, Target, ShieldCheck, TestTube2 } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -34,7 +35,7 @@ export default function AboutPage() {
             About MAT BLK
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-            We are MAT BLK. Forged from a relentless pursuit of excellence, we craft premium supplements for those who demand more from their bodies and their lives.
+            We are MAT BLK. Forged from a relentless pursuit of excellence, we craft premium supplements for those who demand more from their bodies and their lives. We don't need fancy labels, we let the formulations speak for themselves.
           </p>
         </div>
       </section>
