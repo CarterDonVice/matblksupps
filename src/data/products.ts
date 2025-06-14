@@ -100,7 +100,7 @@ export const products: Product[] = [
     fullName: 'MAT BLK G2 Daily Driver',
     category: 'preworkout',
     price: 52.99,
-    images: ['/images/daily-driver.png'],
+    images: ['/images/daily-driver.png'], // Re-using existing image from product ID 1
     dataAiHint: 'preworkout supplement',
     shortDescription: 'Next-gen daily preworkout: enhanced focus, sustained energy.',
     description: [

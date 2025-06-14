@@ -1,3 +1,4 @@
+
 import { HeroSection } from '@/components/home/HeroSection';
 import { ProductCard } from '@/components/products/ProductCard';
 import { products } from '@/data/products';
@@ -5,7 +6,21 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export default function HomePage() {
-  const featuredProducts = products.filter(p => p.id !== '1').slice(0, 3); // Exclude main hero product, take 3 others
+  // Define the IDs of the products you want to feature
+  // ID '1' is the main hero product (MAT BLK pure and potent)
+  // IDs '2', '3', '4' are Jitter Bug, Tunnel Vision, Stacked Creatine
+  // ID '6' is the new G2 Daily Driver
+  const featuredProductIds = ['2', '3', '4', '6']; 
+  
+  // Filter the products array to get the featured products
+  let selectedFeaturedProducts = products.filter(product => 
+    featuredProductIds.includes(product.id)
+  );
+
+  // Sort the selected featured products to maintain a specific order on the page
+  selectedFeaturedProducts.sort((a, b) => featuredProductIds.indexOf(a.id) - featuredProductIds.indexOf(b.id));
+  
+  const featuredProducts = selectedFeaturedProducts;
 
   return (
     <div>
