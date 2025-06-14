@@ -23,8 +23,8 @@ export const products: Product[] = [
   {
     id: '2',
     slug: 'mat-blk-jitter-bug',
-    name: 'Jitter Bug-Ultra High Stim',
-    subName: '',
+    name: 'Jitter Bug',
+    subName: 'Ultra High Stim',
     fullName: 'Jitter Bug-Ultra High Stim',
     category: 'preworkout',
     price: 54.99,
@@ -41,16 +41,16 @@ export const products: Product[] = [
   {
     id: '3',
     slug: 'mat-blk-tunnel-vision-non-stim',
-    name: 'MAT BLK',
-    subName: 'tunnel vision - non stim',
-    fullName: 'MAT BLK tunnel vision - non stim',
+    name: 'Tunnel Vision',
+    subName: 'Nootropic Non-Stim',
+    fullName: 'Tunnel Vision-Nootropic Non-Stim',
     category: 'preworkout',
     price: 45.99,
     images: ['https://placehold.co/600x600.png', 'https://placehold.co/600x600.png'],
     dataAiHint: 'sleek product',
     shortDescription: 'Achieve peak mental clarity and pump without stimulants.',
     description: [
-      'MAT BLK tunnel vision offers a unique, stimulant-free preworkout experience. Sharpen your focus, enhance mind-muscle connection, and achieve incredible pumps without any caffeine or other stimulants.',
+      'Tunnel Vision-Nootropic Non-Stim offers a unique, stimulant-free preworkout experience. Sharpen your focus, enhance mind-muscle connection, and achieve incredible pumps without any caffeine or other stimulants.',
       'Perfect for late-night training sessions or for those sensitive to stimulants.'
     ],
     sellingPoints: ['Stimulant-free formula', 'Enhanced cognitive function', 'Massive muscle pumps', 'Zero jitters or crash'],
