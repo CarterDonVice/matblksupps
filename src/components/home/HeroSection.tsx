@@ -11,10 +11,10 @@ export function HeroSection() {
           <Image
             src="/images/MAT BLK logo.jpg"
             alt="MAT BLK Logo"
-            width={700} // Adjust width as needed for "much much larger"
-            height={350} // Adjust height based on your logo's aspect ratio
+            width={700} 
+            height={350} 
             className="object-contain"
-            priority // Prioritize loading for LCP
+            priority 
             data-ai-hint="company logo main"
           />
         </div>
