@@ -27,7 +27,7 @@ export function Navbar() {
           <Image
             src="/images/mat-blk-logo.jpg"
             alt="MAT BLK Logo"
-            width={120} 
+            width={40} 
             height={40} 
             className="object-contain"
             priority 
@@ -73,7 +73,7 @@ export function Navbar() {
                        <Image
                           src="/images/mat-blk-logo.jpg"
                           alt="MAT BLK Logo"
-                          width={100} 
+                          width={35} 
                           height={35}  
                           className="object-contain"
                           data-ai-hint="company logo"

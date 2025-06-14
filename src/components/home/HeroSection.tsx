@@ -11,8 +11,8 @@ export function HeroSection() {
           <Image
             src="/images/mat-blk-logo.jpg"
             alt="MAT BLK Logo"
-            width={700} 
-            height={233} 
+            width={250} 
+            height={250} 
             className="object-contain"
             priority 
             data-ai-hint="company logo main"
