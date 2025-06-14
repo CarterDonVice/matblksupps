@@ -11,10 +11,10 @@ export function HeroSection() {
           <Image
             src="/images/mat-blk-logo.jpg"
             alt="MAT BLK Logo"
-            width={250} 
-            height={250} 
+            width={200}
+            height={200}
             className="object-contain"
-            priority 
+            priority
             data-ai-hint="company logo main"
           />
         </div>

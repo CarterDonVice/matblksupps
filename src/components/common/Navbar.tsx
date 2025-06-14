@@ -27,10 +27,10 @@ export function Navbar() {
           <Image
             src="/images/mat-blk-logo.jpg"
             alt="MAT BLK Logo"
-            width={40} 
-            height={40} 
+            width={40}
+            height={40}
             className="object-contain"
-            priority 
+            priority
             data-ai-hint="company logo"
           />
         </Link>
@@ -73,8 +73,8 @@ export function Navbar() {
                        <Image
                           src="/images/mat-blk-logo.jpg"
                           alt="MAT BLK Logo"
-                          width={35} 
-                          height={35}  
+                          width={35}
+                          height={35}
                           className="object-contain"
                           data-ai-hint="company logo"
                        />

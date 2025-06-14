@@ -15,8 +15,8 @@ export function Footer() {
               <Image
                 src="/images/mat-blk-logo.jpg"
                 alt="MAT BLK Logo"
-                width={75} 
-                height={75} 
+                width={75}
+                height={75}
                 className="object-contain"
                 data-ai-hint="company logo"
               />
