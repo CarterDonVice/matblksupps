@@ -13,7 +13,7 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4 transition-transform hover:scale-105">
               <Image
-                src="/public/images/logopng.png"
+                src="/images/mat-blk-logo.jpg"
                 alt="MAT BLK Logo"
                 width={60}
                 height={60}

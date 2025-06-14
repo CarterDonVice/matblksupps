@@ -25,7 +25,7 @@ export function Navbar() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 transition-transform hover:scale-105">
           <Image
-            src="/public/images/logopng.png"
+            src="/images/mat-blk-logo.jpg"
             alt="MAT BLK Logo"
             width={40}
             height={40}
@@ -71,7 +71,7 @@ export function Navbar() {
                   <div className="flex justify-between items-center mb-8">
                      <Link href="/" className="flex items-center gap-2">
                        <Image
-                          src="/images/logopng.png"
+                          src="/images/mat-blk-logo.jpg"
                           alt="MAT BLK Logo"
                           width={35}
                           height={35}
