@@ -16,7 +16,7 @@ export function Footer() {
                 src="/images/mat-blk-logo.jpg"
                 alt="MAT BLK Logo"
                 width={100} 
-                height={33} // Adjusted assuming 3:1 aspect ratio, adjust as needed
+                height={33} 
                 className="object-contain"
                 data-ai-hint="company logo"
               />

@@ -12,7 +12,7 @@ export function HeroSection() {
             src="/images/mat-blk-logo.jpg"
             alt="MAT BLK Logo"
             width={700} 
-            height={233} // Adjusted assuming a 3:1 aspect ratio for a wide logo, adjust as needed
+            height={233} 
             className="object-contain"
             priority 
             data-ai-hint="company logo main"
