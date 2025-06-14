@@ -95,8 +95,8 @@ export const products: Product[] = [
   {
     id: '6',
     slug: 'mat-blk-g2-daily-driver',
-    name: 'MAT BLK',
-    subName: 'G2 Daily Driver',
+    name: 'G2',
+    subName: 'Daily Driver',
     fullName: 'MAT BLK G2 Daily Driver',
     category: 'preworkout',
     price: 52.99,
@@ -119,3 +119,4 @@ export const getProductBySlug = (slug: string): Product | undefined => {
 export const getProductsByCategory = (category: ProductCategory): Product[] => {
   return products.filter(product => product.category === category);
 };
+
