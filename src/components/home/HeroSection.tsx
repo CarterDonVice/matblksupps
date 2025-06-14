@@ -1,5 +1,6 @@
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export function HeroSection() {
@@ -7,12 +8,15 @@ export function HeroSection() {
     <section className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-background to-card py-16 md:py-20 lg:py-24 px-4">
       <div className="animate-fade-in-up">
         <div className="flex flex-col items-center justify-center mb-8">
-          <div className="font-headline font-bold text-foreground text-center leading-none">
-            {/* Font sizes for MAT */}
-            <div className="text-[12rem] sm:text-[15rem] md:text-[18rem] lg:text-[22rem] xl:text-[26rem]">MAT</div>
-            {/* BLK font sizes increased by ~10% relative to MAT, and negative margins adjusted (approx 0.25 * BLK font size) */}
-            <div className="text-[14rem] sm:text-[15rem] md:text-[18rem] lg:text-[22rem] xl:text-[26rem] -mt-[3.3rem] sm:-mt-[4.125rem] md:-mt-[4.95rem] lg:-mt-[6.05rem] xl:-mt-[7.15rem]">BLK</div>
-          </div>
+          <Image
+            src="/images/MAT BLK logo.jpg"
+            alt="MAT BLK Logo"
+            width={700} // Adjust width as needed for "much much larger"
+            height={350} // Adjust height based on your logo's aspect ratio
+            className="object-contain"
+            priority // Prioritize loading for LCP
+            data-ai-hint="company logo main"
+          />
         </div>
         <p className="font-headline text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-tight">
           High Quality. Pure. Potent. No Compromises.
