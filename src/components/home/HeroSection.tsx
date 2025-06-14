@@ -9,7 +9,7 @@ export function HeroSection() {
       <div className="animate-fade-in-up">
         <div className="flex flex-col items-center justify-center mb-8">
           <Image
-            src="/images/mat-blk-logo.jpg"
+            src="/images/logopng.png"
             alt="MAT BLK Logo"
             width={150}
             height={150}
