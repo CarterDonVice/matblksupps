@@ -28,7 +28,7 @@ export const products: Product[] = [
     fullName: 'Jitter Bug-Ultra High Stim',
     category: 'preworkout',
     price: 54.99,
-    images: ['https://placehold.co/600x600.png', 'https://placehold.co/600x600.png'],
+    images: ['/images/logopng.png', '/images/logopng.png'],
     dataAiHint: 'dark supplement',
     shortDescription: 'Unleash unparalleled intensity with our high-stimulant preworkout.',
     description: [
@@ -46,7 +46,7 @@ export const products: Product[] = [
     fullName: 'Tunnel Vision-Nootropic Non-Stim',
     category: 'preworkout',
     price: 45.99,
-    images: ['https://placehold.co/600x600.png', 'https://placehold.co/600x600.png'],
+    images: ['/images/logopng.png', '/images/logopng.png'],
     dataAiHint: 'sleek product',
     shortDescription: 'Achieve peak mental clarity and pump without stimulants.',
     description: [
@@ -59,16 +59,16 @@ export const products: Product[] = [
   {
     id: '4',
     slug: 'mat-blk-stacked-creatine',
-    name: 'MAT BLK',
-    subName: 'stacked creatine',
-    fullName: 'MAT BLK stacked creatine',
+    name: 'Stacked Creatine',
+    subName: '',
+    fullName: 'Stacked Creatine',
     category: 'creatine',
     price: 39.99,
-    images: ['https://placehold.co/600x600.png'],
+    images: ['/images/logopng.png'],
     dataAiHint: 'powder supplement',
     shortDescription: 'Elevate your strength and muscle growth with our advanced creatine blend.',
     description: [
-      'MAT BLK stacked creatine combines multiple forms of creatine with synergistic ingredients to maximize absorption and effectiveness. Build lean muscle, increase strength, and improve recovery.',
+      'Stacked Creatine combines multiple forms of creatine with synergistic ingredients to maximize absorption and effectiveness. Build lean muscle, increase strength, and improve recovery.',
       'Our formula ensures you get the most out of every training session.'
     ],
     sellingPoints: ['Multi-source creatine blend', 'Enhanced absorption', 'Supports muscle growth', 'Improves strength & power'],
@@ -82,7 +82,7 @@ export const products: Product[] = [
     fullName: 'MAT BLK Foundation Fuel',
     category: 'protein',
     price: 59.99,
-    images: ['https://placehold.co/600x600.png', 'https://placehold.co/600x600.png'],
+    images: ['/images/logopng.png', '/images/logopng.png'],
     dataAiHint: 'protein powder',
     shortDescription: 'Premium quality protein for optimal muscle recovery and growth.',
     description: [
@@ -100,7 +100,7 @@ export const products: Product[] = [
     fullName: 'MAT BLK G2 Daily Driver',
     category: 'preworkout',
     price: 52.99,
-    images: ['/images/daily-driver.png'], // Re-using existing image from product ID 1
+    images: ['/images/daily-driver.png'], 
     dataAiHint: 'preworkout supplement',
     shortDescription: 'Next-gen daily preworkout: enhanced focus, sustained energy.',
     description: [
