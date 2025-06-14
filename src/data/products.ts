@@ -23,16 +23,16 @@ export const products: Product[] = [
   {
     id: '2',
     slug: 'mat-blk-jitter-bug',
-    name: 'MAT BLK',
-    subName: 'Jitter Bug',
-    fullName: 'MAT BLK Jitter Bug',
+    name: 'Jitter Bug-Ultra High Stim',
+    subName: '',
+    fullName: 'Jitter Bug-Ultra High Stim',
     category: 'preworkout',
     price: 54.99,
     images: ['https://placehold.co/600x600.png', 'https://placehold.co/600x600.png'],
     dataAiHint: 'dark supplement',
     shortDescription: 'Unleash unparalleled intensity with our high-stimulant preworkout.',
     description: [
-      'MAT BLK Jitter Bug is not for the faint of heart. This high-stimulant preworkout is designed to push your limits, delivering explosive energy, laser-sharp focus, and an overwhelming drive to conquer your workout.',
+      'Jitter Bug-Ultra High Stim is not for the faint of heart. This high-stimulant preworkout is designed to push your limits, delivering explosive energy, laser-sharp focus, and an overwhelming drive to conquer your workout.',
       'If you\'re seeking an extreme sensory experience and a performance boost that hits hard, Jitter Bug is your weapon of choice.'
     ],
     sellingPoints: ['Maximum stimulant complex', 'Explosive energy & power', 'Intense mental focus', 'For advanced users'],
