@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 export function HeroSection() {
   return (
-    <section className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-background to-card py-16 md:py-20 lg:py-24 px-4">
+    <section className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-background to-card pt-7 pb-16 md:pt-7 md:pb-20 lg:pt-7 lg:pb-24 px-4">
       <div className="animate-fade-in-up">
         <div className="flex flex-col items-center justify-center mb-8">
           <img
@@ -14,6 +14,7 @@ export function HeroSection() {
             width={600}
             height={600}
             className="object-contain"
+            data-ai-hint="company logo"
           />
         </div>
         <p className="font-headline text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-tight">
