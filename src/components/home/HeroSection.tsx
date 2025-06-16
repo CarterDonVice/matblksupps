@@ -11,8 +11,8 @@ export function HeroSection() {
           <img
             src="/images/matblklogo.png"
             alt="MAT BLK Supps Logo"
-            width={300}
-            height={300}
+            width={600}
+            height={600}
             className="object-contain"
           />
         </div>
