@@ -11,8 +11,8 @@ export function HeroSection() {
           <img
             src="/images/matblklogo.png"
             alt="MAT BLK Supps Logo"
-            width={600}
-            height={600}
+            width={300}
+            height={300}
             className="object-contain"
             data-ai-hint="company logo"
           />
@@ -32,3 +32,4 @@ export function HeroSection() {
     </section>
   );
 }
+
