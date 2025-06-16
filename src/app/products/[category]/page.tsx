@@ -1,3 +1,4 @@
+
 import { getProductsByCategory } from '@/data/products';
 import { ProductCard } from '@/components/products/ProductCard';
 import type { ProductCategory } from '@/lib/types';
@@ -44,7 +45,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           {categoryTitle}
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Explore our range of {category.toLowerCase()} supplements, crafted for excellence.
+          Explore our {category.toLowerCase()} supplements, crafted for excellence.
         </p>
       </div>
 
