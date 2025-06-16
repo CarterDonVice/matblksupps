@@ -26,7 +26,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2 transition-transform hover:scale-105" data-ai-hint="company logo">
           {/* Use standard <img> tag instead of Next.js <Image> for static image */}
           <img src="/images/logopng.png"
-            alt="MAT BLK Logo"
+ alt="MAT BLK Logo"
             width={40}
             height={40}
             className="object-contain" // Adjusted className based on original
