@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 0 0% 7%; /* Matte Black #121212 */
+  :root { /* Light theme (assuming this is the default or light mode) */
+    --background: #181818; /* Matte Black #181818 */
     --foreground: 0 0% 94%; /* Off-White #F0F0F0 - For general text */
 
     --muted: 0 0% 15%; /* A darker gray #262626 */
@@ -52,14 +52,9 @@
   }
 }
 
-@layer base {
+@layer base { /* Dark theme - this needs to be styled for dark mode backgrounds as well */
   * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground antialiased;
-    /* Smooth scrolling behavior */
-    scroll-behavior: smooth;
+ @apply border-border;
   }
 
   /* Basic animation for elements appearing on scroll or mount */
@@ -71,6 +66,10 @@
   .fade-in-up.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+  body {
+ @apply bg-[#181818] text-foreground antialiased;
+    scroll-behavior: smooth; /* Smooth scrolling behavior */
   }
   /* Add more generic animation classes if needed */
 }
