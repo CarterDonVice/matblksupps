@@ -25,7 +25,7 @@ export function Navbar() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 transition-transform hover:scale-105" data-ai-hint="company logo">
           {/* Use standard <img> tag instead of Next.js <Image> for static image */}
-          <img src="/images/logopng.png"
+          <img src="/images/matblklogo.png"
  alt="MAT BLK Logo"
             width={40}
             height={40}
@@ -70,7 +70,7 @@ export function Navbar() {
                   <div className="flex justify-between items-center mb-8">
                      <Link href="/" className="flex items-center gap-2">
                        {/* Use standard <img> tag for static image in sheet */}
-                       <img src="/images/logopng.png"
+                       <img src="/images/matblklogo.png"
                           alt="MAT BLK Logo"
                           width={35}
                           height={35}
