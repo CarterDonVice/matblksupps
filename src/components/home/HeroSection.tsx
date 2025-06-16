@@ -8,14 +8,12 @@ export function HeroSection() {
     <section className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-background to-card py-16 md:py-20 lg:py-24 px-4">
       <div className="animate-fade-in-up">
         <div className="flex flex-col items-center justify-center mb-8">
-          <Image
+          <img
             src="/images/logopng.png"
             alt="MAT BLK Logo"
             width={150}
             height={150}
             className="object-contain"
-            priority
-            data-ai-hint="company logo main"
           />
         </div>
         <p className="font-headline text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-tight">

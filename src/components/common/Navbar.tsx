@@ -23,14 +23,13 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2 transition-transform hover:scale-105">
-          <Image
-            src="/images/logopng.png"
+        <Link href="/" className="flex items-center gap-2 transition-transform hover:scale-105" data-ai-hint="company logo">
+          {/* Use standard <img> tag instead of Next.js <Image> for static image */}
+          <img src="/images/logopng.png"
             alt="MAT BLK Logo"
             width={40}
             height={40}
-            className="object-contain"
-            priority
+            className="object-contain" // Adjusted className based on original
             data-ai-hint="company logo"
           />
         </Link>
@@ -70,13 +69,12 @@ export function Navbar() {
                 <div className="flex flex-col h-full">
                   <div className="flex justify-between items-center mb-8">
                      <Link href="/" className="flex items-center gap-2">
-                       <Image
-                          src="/images/logopng.png"
+                       {/* Use standard <img> tag for static image in sheet */}
+                       <img src="/images/logopng.png"
                           alt="MAT BLK Logo"
                           width={35}
                           height={35}
-                          className="object-contain"
-                          data-ai-hint="company logo"
+                          className="object-contain" // Adjusted className based on original
                        />
                     </Link>
                     <SheetClose asChild>

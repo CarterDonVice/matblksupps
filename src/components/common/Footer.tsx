@@ -12,13 +12,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4 transition-transform hover:scale-105">
-              <Image
+              <img
                 src="/images/logopng.png"
                 alt="MAT BLK Logo"
                 width={60}
                 height={60}
-                className="object-contain"
-                data-ai-hint="company logo"
               />
             </Link>
             <p className="text-sm text-muted-foreground text-center md:text-left">
