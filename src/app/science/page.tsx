@@ -176,7 +176,7 @@ export default function SciencePage() {
               Dive into the research behind our key formulations. Each ingredient is chosen for its proven efficacy and synergistic potential.
             </p>
           </div>
-          <Accordion type="multiple" collapsible className="w-full max-w-4xl mx-auto space-y-4">
+          <Accordion type="multiple" className="w-full max-w-4xl mx-auto space-y-4">
             {clinicallyBackedIngredients.map((ingredient, index) => (
               <AccordionItem
                 key={ingredient.name}
@@ -282,7 +282,3 @@ export default function SciencePage() {
     </div>
   );
 }
-
-    
-
-    
