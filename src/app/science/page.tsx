@@ -173,7 +173,7 @@ export default function SciencePage() {
               THE SCIENCE BEHIND MAT BLK
             </h2>
             <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-              Dive into the research behind our key formulations. Each ingredient is chosen for its proven efficacy and synergistic potential.
+              Dive into the research behind our premium formulations. Each ingredient is chosen for its anecdotal and scientifically proven efficacy and synergistic potential. Here at MAT BLK, we develop cutting-edge supplements formulated for those who seek more out of their body and their supplements.
             </p>
           </div>
           <Accordion type="multiple" className="w-full max-w-4xl mx-auto space-y-4">
