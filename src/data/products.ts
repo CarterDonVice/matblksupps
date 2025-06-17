@@ -3,24 +3,6 @@ import type { Product, ProductCategory } from '@/lib/types';
 
 export const products: Product[] = [
   {
-    id: '1',
-    slug: 'mat-blk-pure-and-potent',
-    name: 'MAT BLK',
-    subName: 'pure and potent',
-    fullName: 'MAT BLK pure and potent',
-    category: 'preworkout',
-    price: 49.99,
-    images: ['/images/matblklogo.png'],
-    dataAiHint: 'company logo',
-    shortDescription: 'The ultimate daily driver preworkout for sustained energy and focus.',
-    description: [
-      'Experience the pinnacle of pre-workout supplementation with MAT BLK pure and potent. Engineered for athletes who demand the best, this formula delivers a smooth, sustained energy release without the jitters or crash.',
-      'Our extended release energy blend keeps you powered through your toughest workouts, while clinically potent dosages of key ingredients ensure maximum efficacy. Enhance focus, endurance, and strength with every scoop.'
-    ],
-    sellingPoints: ['Extended release energy blends', 'Clinical potent dosings', 'Enhanced focus & endurance', 'No crash formula'],
-    ingredients: ['Beta-Alanine', 'Citrulline Malate', 'Caffeine Anhydrous (timed release)', 'L-Theanine', 'Alpha-GPC'],
-  },
-  {
     id: '2',
     slug: 'mat-blk-jitter-bug',
     name: 'Jitter Bug',
@@ -119,4 +101,3 @@ export const getProductBySlug = (slug: string): Product | undefined => {
 export const getProductsByCategory = (category: ProductCategory): Product[] => {
   return products.filter(product => product.category === category);
 };
-
