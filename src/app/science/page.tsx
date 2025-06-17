@@ -154,17 +154,6 @@ export default function SciencePage() {
 
   return (
     <div className="bg-background text-foreground">
-      <section className="py-20 md:py-32 bg-card">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-headline text-5xl md:text-6xl font-bold text-primary mb-6 animate-fade-in-up">
-            The Science Behind MAT BLK
-          </h1>
-          <p className="font-body text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-            At MAT BLK, our commitment to excellence is rooted in scientific integrity. We develop cutting-edge supplements formulated for those who seek uncompromising quality and performance.
-          </p>
-        </div>
-      </section>
-
       {/* Clinically Backed Ingredients Section */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -282,3 +271,5 @@ export default function SciencePage() {
     </div>
   );
 }
+
+    
