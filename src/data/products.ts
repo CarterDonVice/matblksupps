@@ -77,16 +77,16 @@ export const products: Product[] = [
   {
     id: '5',
     slug: 'mat-blk-foundation-fuel',
-    name: 'MAT BLK',
-    subName: 'Foundation Fuel',
-    fullName: 'MAT BLK Foundation Fuel',
+    name: 'Foundation Fuel',
+    subName: 'Protein',
+    fullName: 'Foundation Fuel Protein',
     category: 'protein',
     price: 59.99,
     images: ['/images/matblklogo.png'],
     dataAiHint: 'company logo',
     shortDescription: 'Premium quality protein for optimal muscle recovery and growth.',
     description: [
-      'MAT BLK Foundation Fuel provides a high-quality, easily digestible protein source to fuel your muscles and support recovery. Our blend is rich in essential amino acids and tastes incredible.',
+      'Foundation Fuel Protein provides a high-quality, easily digestible protein source to fuel your muscles and support recovery. Our blend is rich in essential amino acids and tastes incredible.',
       'Perfect for post-workout shakes or as a convenient way to meet your daily protein needs.'
     ],
     sellingPoints: ['Premium whey protein blend', 'Supports muscle recovery', 'Promotes lean muscle growth', 'Delicious taste & mixability'],
