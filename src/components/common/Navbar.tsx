@@ -29,7 +29,7 @@ export function Navbar() {
  alt="MAT BLK Logo"
             width={40}
             height={40}
-            className="object-contain" // Adjusted className based on original
+            className="object-contain mix-blend-difference" 
             data-ai-hint="company logo"
           />
         </Link>
@@ -39,8 +39,8 @@ export function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className={`font-headline text-lg transition-colors hover:text-primary ${
-                pathname === link.href ? 'text-primary font-semibold' : 'text-foreground/90'
+              className={`font-headline text-lg transition-colors hover:text-primary mix-blend-difference ${
+                pathname === link.href ? 'text-primary font-semibold' : 'text-foreground'
               }`}
             >
               {link.label}
@@ -50,7 +50,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-4">
           <Link href="/cart" className="relative transition-transform hover:scale-110">
-            <ShoppingCart className="h-7 w-7 text-foreground/90 hover:text-primary" />
+            <ShoppingCart className="h-7 w-7 text-foreground hover:text-primary mix-blend-difference" />
             {isMounted && itemCount > 0 && (
               <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                 {itemCount}
@@ -62,23 +62,22 @@ export function Navbar() {
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
-                  <Menu className="h-7 w-7 text-foreground/90" />
+                  <Menu className="h-7 w-7 text-foreground mix-blend-difference" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-6">
                 <div className="flex flex-col h-full">
                   <div className="flex justify-between items-center mb-8">
                      <Link href="/" className="flex items-center gap-2">
-                       {/* Use standard <img> tag for static image in sheet */}
                        <img src="/images/matblklogo.png"
                           alt="MAT BLK Logo"
                           width={35}
                           height={35}
-                          className="object-contain" // Adjusted className based on original
+                          className="object-contain mix-blend-difference"
                        />
                     </Link>
                     <SheetClose asChild>
-                       <Button variant="ghost" size="icon"><X className="h-7 w-7 text-foreground/90" /></Button>
+                       <Button variant="ghost" size="icon"><X className="h-7 w-7 text-foreground mix-blend-difference" /></Button>
                     </SheetClose>
                   </div>
                   <nav className="flex flex-col gap-6">
@@ -86,7 +85,7 @@ export function Navbar() {
                       <SheetClose asChild key={link.label}>
                         <Link
                           href={link.href}
-                          className={`font-headline text-xl transition-colors hover:text-primary ${
+                          className={`font-headline text-xl transition-colors hover:text-primary mix-blend-difference ${
                             pathname === link.href ? 'text-primary font-semibold' : 'text-foreground'
                           }`}
                         >
