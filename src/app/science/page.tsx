@@ -170,7 +170,7 @@ export default function SciencePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Clinically Backed Ingredients
+              THE SCIENCE BEHIND MAT BLK
             </h2>
             <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
               Dive into the research behind our key formulations. Each ingredient is chosen for its proven efficacy and synergistic potential.
@@ -282,5 +282,7 @@ export default function SciencePage() {
     </div>
   );
 }
+
+    
 
     
