@@ -22,7 +22,7 @@ interface IngredientInfo {
   linkText: string;
 }
 
-const clinicallyBackedIngredients: IngredientInfo[] = [
+const clinicallyBackedIngredientsData: IngredientInfo[] = [
   {
     name: 'L-Citrulline',
     summary: 'Supports blood flow and reduces fatigue during exercise.',
@@ -150,6 +150,8 @@ export default function SciencePage() {
     },
   ];
 
+  const clinicallyBackedIngredients = clinicallyBackedIngredientsData;
+
   return (
     <div className="bg-background text-foreground">
       <section className="py-20 md:py-32 bg-card">
@@ -160,6 +162,49 @@ export default function SciencePage() {
           <p className="font-body text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             At MAT BLK, our commitment to excellence is rooted in scientific integrity. We develop cutting-edge supplements formulated for those who seek uncompromising quality and performance.
           </p>
+        </div>
+      </section>
+
+      {/* Clinically Backed Ingredients Section */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Clinically Backed Ingredients
+            </h2>
+            <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+              Dive into the research behind our key formulations. Each ingredient is chosen for its proven efficacy and synergistic potential.
+            </p>
+          </div>
+          <Accordion type="multiple" collapsible className="w-full max-w-4xl mx-auto space-y-4">
+            {clinicallyBackedIngredients.map((ingredient, index) => (
+              <AccordionItem
+                key={ingredient.name}
+                value={`item-${index}`}
+                className="bg-card border border-border/50 rounded-2xl shadow-xl overflow-hidden animate-fade-in-up"
+                style={{animationDelay: `${(index * 0.1) + 0.3}s`}}
+              >
+                <AccordionTrigger className="font-headline text-2xl md:text-3xl text-primary hover:no-underline text-left focus:text-primary/80 px-6 py-5">
+                  {ingredient.name}
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6 pt-0">
+                  <p className="font-body text-base text-muted-foreground mb-4">{ingredient.summary}</p>
+                  <blockquote className="font-body text-base italic border-l-4 border-primary pl-4 py-2 my-4 bg-muted/30 rounded-r-md text-foreground/80">
+                    {ingredient.quote}
+                  </blockquote>
+                  <a
+                    href={ingredient.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-body text-base text-primary hover:text-primary/80 hover:underline inline-flex items-center gap-1"
+                  >
+                    <LinkIcon className="h-4 w-4" />
+                    {ingredient.linkText}
+                  </a>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
@@ -237,3 +282,5 @@ export default function SciencePage() {
     </div>
   );
 }
+
+    
