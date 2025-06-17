@@ -22,7 +22,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-        <link rel="icon" href="/images/matblklogo.png" />
+        <link rel="icon" href="/images/lowreslogo.png" sizes="32x32" type="image/png" />
       </head>
       <body className="font-body antialiased min-h-screen flex flex-col" suppressHydrationWarning={true}>
         <CartProvider>
