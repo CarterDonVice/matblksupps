@@ -26,12 +26,12 @@ const clinicallyBackedIngredients: IngredientInfo[] = [
   {
     name: 'L-Citrulline',
     summary: 'Supports blood flow and reduces fatigue during exercise.',
-    quote: 'L‑Citrulline supplementation significantly increased plasma L‑arginine levels and reduced completion time by 1.5% (p < 0.05)... improved subjective feelings of muscle fatigue and concentration…',
+    quote: 'L‑Citrulline supplementation significantly increased plasma L‑arginine levels and reduced completion time by 1.5% (p < 0.05)... improved subjective feelings of muscle fatigue and concentration…',
     link: 'https://pubmed.ncbi.nlm.nih.gov/26900386/',
     linkText: 'PMID: 26900386',
   },
   {
-    name: 'Palatinose / Isomaltulose (7g)',
+    name: 'Palatinose / Isomaltulose',
     summary: 'Improves sustained energy and performance without blood sugar spikes.',
     quote: 'Time trial finishing time (–2.7%) and power output during the final 5 min (+4.6%) were improved…',
     link: 'https://pubmed.ncbi.nlm.nih.gov/27347996/',
@@ -75,7 +75,7 @@ const clinicallyBackedIngredients: IngredientInfo[] = [
   {
     name: 'L-Tyrosine',
     summary: 'Supports cognitive endurance under stress.',
-    quote: 'Subjects cycled longer in TYR compared to PLA (80.3 min vs. 69.2 min; P < 0.01).',
+    quote: 'Subjects cycled longer in TYR compared to PLA (80.3 min vs. 69.2 min; P < 0.01).',
     link: 'https://pubmed.ncbi.nlm.nih.gov/21437603/',
     linkText: 'PMID: 21437603',
   },
@@ -117,7 +117,7 @@ const clinicallyBackedIngredients: IngredientInfo[] = [
   {
     name: 'Taurine',
     summary: 'Improves endurance performance and capacity.',
-    quote: 'TTE > CP increased by 1.7 min after taurine… CP was higher (212 W) vs. placebo (193 W).',
+    quote: 'TTE > CP increased by 1.7 min after taurine… CP was higher (212 W) vs. placebo (193 W).',
     link: 'https://pubmed.ncbi.nlm.nih.gov/31482309/',
     linkText: 'PMID: 31482309',
   },
