@@ -1,5 +1,6 @@
 
 import type {Config} from 'tailwindcss';
+const plugin = require('tailwindcss/plugin');
 
 export default {
   darkMode: ['class'],
@@ -107,5 +108,20 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    plugin(function({ addUtilities }) {
+      const newUtilities = {
+        '.text-outline-matblk': {
+          'text-shadow': `
+            -1px -1px 0 #181818,
+             1px -1px 0 #181818,
+            -1px  1px 0 #181818,
+             1px  1px 0 #181818
+          `
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    })
+  ],
 } satisfies Config;
