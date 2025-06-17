@@ -7,17 +7,15 @@ import Link from 'next/link';
 
 export default function HomePage() {
   // Define the IDs of the products you want to feature
-  // ID '1' is the main hero product (MAT BLK pure and potent)
-  // IDs '2', '3', '4' are Jitter Bug, Tunnel Vision, Stacked Creatine
-  // ID '6' is the new G2 Daily Driver
-  const featuredProductIds = ['2', '3', '4', '6']; 
+  // New order: G2 (ID '6'), Jitter Bug (ID '2'), Protein (ID '5'), Stacked Creatine (ID '4')
+  const featuredProductIds = ['6', '2', '5', '4']; 
   
   // Filter the products array to get the featured products
   let selectedFeaturedProducts = products.filter(product => 
     featuredProductIds.includes(product.id)
   );
 
-  // Sort the selected featured products to maintain a specific order on the page
+  // Sort the selected featured products to maintain the specified order on the page
   selectedFeaturedProducts.sort((a, b) => featuredProductIds.indexOf(a.id) - featuredProductIds.indexOf(b.id));
   
   const featuredProducts = selectedFeaturedProducts;
@@ -38,7 +36,7 @@ export default function HomePage() {
           </div>
           
           {featuredProducts.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
               {featuredProducts.map((product, index) => (
                 <div key={product.id} className="animate-fade-in-up" style={{ animationDelay: `${(index + 1) * 0.2}s` }}>
                   <ProductCard product={product} />
