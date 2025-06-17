@@ -21,7 +21,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 transition-transform hover:scale-105" data-ai-hint="company logo">
           {/* Use standard <img> tag instead of Next.js <Image> for static image */}
@@ -40,7 +40,7 @@ export function Navbar() {
               key={link.label}
               href={link.href}
               className={`font-headline text-lg transition-colors hover:text-primary ${
-                pathname === link.href ? 'text-primary font-semibold' : 'text-foreground/80'
+                pathname === link.href ? 'text-primary font-semibold' : 'text-foreground/90'
               }`}
             >
               {link.label}
@@ -50,7 +50,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-4">
           <Link href="/cart" className="relative transition-transform hover:scale-110">
-            <ShoppingCart className="h-7 w-7 text-foreground/80 hover:text-primary" />
+            <ShoppingCart className="h-7 w-7 text-foreground/90 hover:text-primary" />
             {isMounted && itemCount > 0 && (
               <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                 {itemCount}
@@ -62,7 +62,7 @@ export function Navbar() {
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
-                  <Menu className="h-7 w-7 text-foreground/80" />
+                  <Menu className="h-7 w-7 text-foreground/90" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-6">
@@ -78,7 +78,7 @@ export function Navbar() {
                        />
                     </Link>
                     <SheetClose asChild>
-                       <Button variant="ghost" size="icon"><X className="h-7 w-7 text-foreground/80" /></Button>
+                       <Button variant="ghost" size="icon"><X className="h-7 w-7 text-foreground/90" /></Button>
                     </SheetClose>
                   </div>
                   <nav className="flex flex-col gap-6">
