@@ -163,57 +163,12 @@ export default function SciencePage() {
         </div>
       </section>
 
-      {/* Clinically Backed Ingredients Section */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in-up">
-              Clinically Backed Ingredients
-            </h2>
-            <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.1s'}}>
-              Dive into the research behind our key formulations. Each ingredient is chosen for its proven efficacy and synergistic potential.
-            </p>
-          </div>
-
-          <Accordion type="multiple" className="w-full max-w-4xl mx-auto space-y-6">
-            {clinicallyBackedIngredients.map((ingredient, index) => (
-              <AccordionItem
-                value={`item-${index}`}
-                key={index}
-                className="bg-card p-6 rounded-2xl shadow-xl border-transparent hover:shadow-primary/10 transition-shadow duration-300 animate-fade-in-up"
-                style={{animationDelay: `${(index * 0.1) + 0.2}s`}}
-              >
-                <AccordionTrigger className="font-headline text-2xl md:text-3xl text-primary hover:no-underline text-left focus:text-primary/80 py-0">
-                  {ingredient.name}
-                </AccordionTrigger>
-                <AccordionContent className="pt-6">
-                  <p className="font-body text-lg text-muted-foreground mb-4">
-                    {ingredient.summary}
-                  </p>
-                  <blockquote className="font-body italic text-foreground/90 border-l-4 border-primary pl-4 py-3 my-4 bg-background/70 rounded-md text-base">
-                    {ingredient.quote}
-                  </blockquote>
-                  <a
-                    href={ingredient.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-body text-primary hover:text-primary/80 transition-colors flex items-center gap-2 mt-4 text-base"
-                  >
-                    <LinkIcon size={18} /> {ingredient.linkText}
-                  </a>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up" style={{animationDelay: '0.3s'}}>
               <Image
-                src="/images/science-image.png" // Using a placeholder, replace with actual image path if available
+                src="https://placehold.co/700x500.png" 
                 alt="MAT BLK Scientific Research"
                 width={700}
                 height={500}
@@ -265,51 +220,6 @@ export default function SciencePage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Clinically Backed Ingredients Section */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in-up">
-              Clinically Backed Ingredients
-            </h2>
-            <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.1s'}}>
-              Dive into the research behind our key formulations. Each ingredient is chosen for its proven efficacy and synergistic potential.
-            </p>
-          </div>
-          
-          <Accordion type="multiple" className="w-full max-w-4xl mx-auto space-y-6">
-            {clinicallyBackedIngredients.map((ingredient, index) => (
-              <AccordionItem 
-                value={`item-${index}`} 
-                key={index} 
-                className="bg-card p-6 rounded-2xl shadow-xl border-transparent hover:shadow-primary/10 transition-shadow duration-300 animate-fade-in-up"
-                style={{animationDelay: `${(index * 0.1) + 0.2}s`}}
-              >
-                <AccordionTrigger className="font-headline text-2xl md:text-3xl text-primary hover:no-underline text-left focus:text-primary/80 py-0">
-                  {ingredient.name}
-                </AccordionTrigger>
-                <AccordionContent className="pt-6">
-                  <p className="font-body text-lg text-muted-foreground mb-4">
-                    {ingredient.summary}
-                  </p>
-                  <blockquote className="font-body italic text-foreground/90 border-l-4 border-primary pl-4 py-3 my-4 bg-background/70 rounded-md text-base">
-                    {ingredient.quote}
-                  </blockquote>
-                  <a 
-                    href={ingredient.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="font-body text-primary hover:text-primary/80 transition-colors flex items-center gap-2 mt-4 text-base"
-                  >
-                    <LinkIcon size={18} /> {ingredient.linkText}
-                  </a>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
         </div>
       </section>
 
