@@ -22,131 +22,24 @@ interface IngredientInfo {
   linkText: string;
 }
 
-const clinicallyBackedIngredientsData: IngredientInfo[] = [
-  {
-    name: 'L-Citrulline',
-    summary: 'Supports blood flow and reduces fatigue during exercise.',
-    quote: 'L‑Citrulline supplementation significantly increased plasma L‑arginine levels and reduced completion time by 1.5% (p < 0.05)... improved subjective feelings of muscle fatigue and concentration…',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/26900386/',
-    linkText: 'PMID: 26900386',
-  },
-  {
-    name: 'Palatinose / Isomaltulose',
-    summary: 'Improves sustained energy and performance without blood sugar spikes.',
-    quote: 'Time trial finishing time (–2.7%) and power output during the final 5 min (+4.6%) were improved…',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/27347996/',
-    linkText: 'PMID: 27347996',
-  },
-  {
-    name: 'Cluster Dextrin',
-    summary: 'Carbohydrate source with lower gut stress and smoother delivery.',
-    quote: 'The RPE increased… was significantly less at 30 and 60 min after ingesting HBCD...',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/25080121/',
-    linkText: 'PMID: 25080121',
-  },
-  {
-    name: 'Beta-Alanine',
-    summary: 'Delays muscular fatigue during high-intensity training.',
-    quote: 'Exercise lasting 60–240 s was improved (P = 0.001)… median improvement is 2.85%.',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/27797728/',
-    linkText: 'PMID: 27797728',
-  },
-  {
-    name: 'Betaine Anhydrous',
-    summary: 'Boosts power output and hormonal support during training.',
-    quote: 'Betaine supplementation improved CrossFit performance… and increased testosterone levels…',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/37409757/',
-    linkText: 'PMID: 37409757',
-  },
-  {
-    name: 'Nitrosigine',
-    summary: 'Promotes nitric oxide and blood flow for muscle pumps.',
-    quote: 'Nitrosigine and CM increased FMD by 31 and 34%, respectively…',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/32093766/',
-    linkText: 'PMID: 32093766',
-  },
-  {
-    name: 'L-Theanine',
-    summary: 'Reduces jitters and improves focus when combined with caffeine.',
-    quote: 'The L-theanine and caffeine combination improved both speed and accuracy… and reduced susceptibility to distracting information…',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/18681988/',
-    linkText: 'PMID: 18681988',
-  },
-  {
-    name: 'L-Tyrosine',
-    summary: 'Supports cognitive endurance under stress.',
-    quote: 'Subjects cycled longer in TYR compared to PLA (80.3 min vs. 69.2 min; P < 0.01).',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/21437603/',
-    linkText: 'PMID: 21437603',
-  },
-  {
-    name: 'Alpha-GPC',
-    summary: 'Improves power output and supports mental focus.',
-    quote: 'Alpha-GPC treatment resulted in significantly greater isometric mid-thigh pull peak force…',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/26582972/',
-    linkText: 'PMID: 26582972',
-  },
-  {
-    name: 'Huperzine A',
-    summary: 'Experimental nootropic that may enhance focus.',
-    quote: 'Ratings of subjective difficulty post-exercise were significantly higher in the huperzine A trial.',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/34567353/',
-    linkText: 'PMID: 34567353',
-  },
-  {
-    name: 'Caffeine Anhydrous',
-    summary: 'Increases endurance, alertness, and time-to-exhaustion.',
-    quote: 'Time to exhaustion in running tests was improved with caffeine (g = 0.392; p < 0.001...)',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/36615805/',
-    linkText: 'PMID: 36615805',
-  },
-  {
-    name: 'Dicaffeine Malate',
-    summary: 'Provides a smoother, crash-free caffeine experience.',
-    quote: 'The half-life of dicaffeine malate is higher… creates a ‘slow-release’ of caffeine...',
-    link: 'https://nutrabio.com/blogs/blog/ingredients-101-infinergy-caffeine',
-    linkText: 'NutraBio Source',
-  },
-  {
-    name: 'Rhodiola Rosea',
-    summary: 'Supports endurance and reduces perceived effort during training.',
-    quote: 'Subjects completed the 6-mile bicycle time trial significantly faster… and mean RPE was lower…',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/23443221/',
-    linkText: 'PMID: 23443221',
-  },
-  {
-    name: 'Taurine',
-    summary: 'Improves endurance performance and capacity.',
-    quote: 'TTE > CP increased by 1.7 min after taurine… CP was higher (212 W) vs. placebo (193 W).',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/31482309/',
-    linkText: 'PMID: 31482309',
-  },
-  {
-    name: 'Pink Himalayan Salt + Potassium Citrate',
-    summary: 'Replenishes electrolytes and supports muscle function.',
-    quote: 'Athletes assigned to salt capsules completed the race 4.9 min faster… cramps significantly lower (11% vs. 42%).',
-    link: 'https://pubmed.ncbi.nlm.nih.gov/25683094/',
-    linkText: 'PMID: 25683094',
-  },
-];
-
+const clinicallyBackedIngredientsData: IngredientInfo[] = [];
 
 export default function SciencePage() {
   const principles = [
     {
       icon: <FlaskConical className="h-10 w-10 text-primary" />,
-      title: 'Evidence-Based Ingredients',
-      description: 'Every ingredient in MAT BLK formulations is selected based on robust scientific research and proven efficacy. We prioritize compounds with strong clinical backing.',
+      title: 'Evidence-Based Formulation',
+      description: 'Every ingredient is selected based on a comprehensive review of scientific literature. We prioritize compounds with human clinical trials demonstrating their efficacy and safety for performance enhancement.',
     },
     {
       icon: <Microscope className="h-10 w-10 text-primary" />,
-      title: 'Clinical Dosages for Real Results',
-      description: 'We believe in transparency and effectiveness. Our supplements contain ingredients at clinically studied dosages to ensure you experience tangible benefits.',
+      title: 'Clinical Dosing',
+      description: 'We don’t believe in "fairy dusting." Our formulas contain ingredients at dosages shown to be effective in scientific studies. We provide full transparency so you know exactly what you’re getting.',
     },
     {
       icon: <ClipboardCheck className="h-10 w-10 text-primary" />,
-      title: 'Rigorous Quality & Purity Testing',
-      description: 'MAT BLK products undergo stringent third-party testing to guarantee purity, potency, and safety, adhering to the highest manufacturing standards (cGMP).',
+      title: 'Third-Party Verification',
+      description: 'Trust is earned. All our products undergo rigorous third-party testing to guarantee purity, potency, and safety, adhering to the highest manufacturing standards (cGMP).',
     },
   ];
 
@@ -165,35 +58,37 @@ export default function SciencePage() {
               Dive into the research behind our premium formulations. Each ingredient is chosen for its anecdotal and scientifically proven efficacy and synergistic potential. Here at MAT BLK, we develop cutting-edge supplements formulated for those who seek more out of their body and their supplements.
             </p>
           </div>
-          <Accordion type="multiple" className="w-full max-w-4xl mx-auto space-y-4">
-            {clinicallyBackedIngredients.map((ingredient, index) => (
-              <AccordionItem
-                key={ingredient.name}
-                value={`item-${index}`}
-                className="bg-card border border-border/50 rounded-2xl shadow-xl overflow-hidden animate-fade-in-up"
-                style={{animationDelay: `${(index * 0.1) + 0.3}s`}}
-              >
-                <AccordionTrigger className="font-headline text-2xl md:text-3xl text-primary hover:no-underline text-left focus:text-primary/80 px-6 py-5">
-                  {ingredient.name}
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-6 pt-0">
-                  <p className="font-body text-base text-muted-foreground mb-4">{ingredient.summary}</p>
-                  <blockquote className="font-body text-base italic border-l-4 border-primary pl-4 py-2 my-4 bg-muted/30 rounded-r-md text-foreground/80">
-                    {ingredient.quote}
-                  </blockquote>
-                  <a
-                    href={ingredient.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-body text-base text-primary hover:text-primary/80 hover:underline inline-flex items-center gap-1"
-                  >
-                    <LinkIcon className="h-4 w-4" />
-                    {ingredient.linkText}
-                  </a>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          {clinicallyBackedIngredients.length > 0 && (
+            <Accordion type="multiple" className="w-full max-w-4xl mx-auto space-y-4">
+              {clinicallyBackedIngredients.map((ingredient, index) => (
+                <AccordionItem
+                  key={ingredient.name}
+                  value={`item-${index}`}
+                  className="bg-card border border-border/50 rounded-2xl shadow-xl overflow-hidden animate-fade-in-up"
+                  style={{animationDelay: `${(index * 0.1) + 0.3}s`}}
+                >
+                  <AccordionTrigger className="font-headline text-2xl md:text-3xl text-primary hover:no-underline text-left focus:text-primary/80 px-6 py-5">
+                    {ingredient.name}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6 pt-0">
+                    <p className="font-body text-base text-muted-foreground mb-4">{ingredient.summary}</p>
+                    <blockquote className="font-body text-base italic border-l-4 border-primary pl-4 py-2 my-4 bg-muted/30 rounded-r-md text-foreground/80">
+                      {ingredient.quote}
+                    </blockquote>
+                    <a
+                      href={ingredient.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-body text-base text-primary hover:text-primary/80 hover:underline inline-flex items-center gap-1"
+                    >
+                      <LinkIcon className="h-4 w-4" />
+                      {ingredient.linkText}
+                    </a>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          )}
         </div>
       </section>
 
@@ -271,5 +166,4 @@ export default function SciencePage() {
     </div>
   );
 }
-
     
