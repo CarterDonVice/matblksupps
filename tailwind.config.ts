@@ -113,12 +113,7 @@ export default {
     plugin(function({ addUtilities }) {
       const newUtilities = {
         '.text-outline-matblk': {
-          'text-shadow': `
-            -1px -1px 0 #181818,
-             1px -1px 0 #181818,
-            -1px  1px 0 #181818,
-             1px  1px 0 #181818
-          `
+          'text-shadow': '-1px -1px 0 #181818, 1px -1px 0 #181818, -1px 1px 0 #181818, 1px 1px 0 #181818',
         },
       }
       addUtilities(newUtilities, ['responsive', 'hover'])
