@@ -124,4 +124,4 @@ export default {
       addUtilities(newUtilities, ['responsive', 'hover'])
     })
   ],
-} satisfies Config;
+} satisfies Config
