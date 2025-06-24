@@ -22,7 +22,43 @@ interface IngredientInfo {
   linkText: string;
 }
 
-const clinicallyBackedIngredientsData: IngredientInfo[] = [];
+const clinicallyBackedIngredientsData: IngredientInfo[] = [
+  {
+    name: "L-Citrulline Malate",
+    summary: "A powerful amino acid compound that plays a key role in boosting nitric oxide production. This leads to improved blood flow, delivering more oxygen and nutrients to working muscles, resulting in enhanced muscle pumps, endurance, and performance.",
+    quote: "Supplementation with citrulline malate has been shown to improve muscle endurance, relieve muscle soreness, and improve anaerobic performance.",
+    link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4759860/",
+    linkText: "Read the study on NIH"
+  },
+  {
+    name: "Beta-Alanine (as CarnoSyn®)",
+    summary: "A non-essential amino acid that increases carnosine levels in muscles. Carnosine acts as a buffer against lactic acid buildup, delaying muscle fatigue and allowing for more reps and greater training volume.",
+    quote: "Beta-alanine has been shown to enhance muscular endurance. Many people report being able to perform one or two additional reps in the gym when training in sets of 8–15 repetitions.",
+    link: "https://jissn.biomedcentral.com/articles/10.1186/s12970-015-0090-y",
+    linkText: "International Society of Sports Nutrition stand"
+  },
+  {
+    name: "Creatine Monohydrate",
+    summary: "The most researched and validated supplement for increasing high-intensity exercise capacity and lean body mass. It works by regenerating ATP, the primary energy source for short, explosive movements, leading to significant gains in strength and power.",
+    quote: "Creatine monohydrate is the most effective ergogenic nutritional supplement currently available to athletes in terms of increasing high-intensity exercise capacity and lean body mass during training.",
+    link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2048496/",
+    linkText: "Journal of the International Society of Sports Nutrition"
+  },
+  {
+    name: "Caffeine Anhydrous",
+    summary: "A potent central nervous system stimulant that enhances alertness, focus, and energy levels. It works by blocking adenosine receptors in the brain, reducing the perception of fatigue and effort during exercise.",
+    quote: "Caffeine has been shown to be an effective ergogenic aid for a variety of sport and exercise modalities. It can improve performance by up to 12% in endurance events and can also benefit high-intensity, short-duration activities.",
+    link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4213371/",
+    linkText: "Caffeine and exercise: what next?"
+  },
+  {
+    name: "Lion's Mane Mushroom",
+    summary: "A powerful nootropic mushroom known for its cognitive-enhancing properties. It supports brain health by stimulating the production of Nerve Growth Factor (NGF), which is crucial for neuron health, focus, and memory.",
+    quote: "Studies have shown that Lion's Mane may help with mild cognitive impairment and has neuroprotective effects, making it a key ingredient for mental clarity and focus during demanding tasks.",
+    link: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5987239/",
+    linkText: "Neurological Activity of Lion's Mane"
+  }
+];
 
 export default function SciencePage() {
   const principles = [
