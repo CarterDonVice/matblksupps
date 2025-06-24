@@ -47,7 +47,7 @@ export default function HomePage() {
 
           <div className="text-center animate-fade-in-up" style={{ animationDelay: `${(featuredProducts.length + 1) * 0.2}s` }}>
             <Button asChild size="lg" className="btn-primary px-8 py-6 text-base">
-              <Link href="/products/preworkout">View All Products</Link>
+              <Link href="/products/preworkout">View All Pre-Workouts</Link>
             </Button>
           </div>
         </div>
