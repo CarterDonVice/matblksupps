@@ -9,7 +9,7 @@ export function Navbar() {
   const { itemCount } = useCart();
 
   return (
-    <div className="fixed top-4 right-4 z-50">
+    <div className="fixed top-6 right-6 z-50">
       <Link href="/cart" className="relative block text-foreground transition-transform hover:scale-110">
         <ShoppingCart className="h-8 w-8" />
         {itemCount > 0 && (
