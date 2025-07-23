@@ -10,10 +10,10 @@ export function Navbar() {
 
   return (
     <div className="fixed top-4 right-4 z-50">
-      <Link href="/cart" className="relative flex h-14 w-14 items-center justify-center rounded-full bg-primary/90 text-primary-foreground shadow-lg transition-transform hover:scale-110">
-        <ShoppingCart className="h-7 w-7" />
+      <Link href="/cart" className="relative p-2 text-foreground transition-transform hover:scale-110">
+        <ShoppingCart className="h-8 w-8" />
         {itemCount > 0 && (
-          <span className="absolute top-0 right-0 flex h-6 w-6 items-center justify-center rounded-full bg-background text-xs font-bold text-foreground ring-2 ring-primary">
+          <span className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold ring-2 ring-background">
             {itemCount}
           </span>
         )}
