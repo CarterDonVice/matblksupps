@@ -8,10 +8,10 @@ export function HeroSection() {
         <div className="flex flex-col items-center justify-center mb-8">
           <LogoCarousel />
         </div>
-        <p className="font-headline text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-2xl mx-auto leading-tight">
-          UNWAVERING. UNCOMPROMISING. FULL BODY FUEL
-        </p>
       </div>
+      <p className="font-headline text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-2xl mx-auto leading-tight">
+        UNWAVERING. UNCOMPROMISING. FULL BODY FUEL
+      </p>
     </section>
   );
 }
