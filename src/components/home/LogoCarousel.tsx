@@ -8,7 +8,7 @@ export function LogoCarousel() {
   const logos = Array(15).fill("/images/matblklogo.png");
 
   return (
-    <div className="w-full h-[140px] overflow-x-hidden py-4 bg-transparent relative flex items-center">
+    <div className="w-full h-[140px] bg-transparent relative flex items-center">
        <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent z-10"></div>
        <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent z-10"></div>
       <div className="flex animate-scroll">
