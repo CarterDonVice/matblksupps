@@ -5,12 +5,10 @@ import { LogoCarousel } from './LogoCarousel';
 
 export function HeroSection() {
   return (
-    <section className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-background to-card pt-28 pb-16 md:pt-28 md:pb-20 lg:pt-28 lg:pb-24 px-4">
-      <div className="animate-fade-in-up w-full">
-        <div className="w-full overflow-x-hidden">
-          <div className="flex flex-col items-center justify-center mb-8">
-            <LogoCarousel />
-          </div>
+    <section className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-background to-card pt-28 pb-16 md:pt-40 md:pb-28 lg:pt-40 lg:pb-32 px-4">
+      <div className="animate-fade-in-up w-full overflow-x-hidden">
+        <div className="flex flex-col items-center justify-center mb-8">
+          <LogoCarousel />
         </div>
         <p className="font-headline text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-tight">
           UNWAVERING. UNCOMPROMISING. FULL BODY FUEL
