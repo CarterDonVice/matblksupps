@@ -5,7 +5,7 @@ import { LogoCarousel } from './LogoCarousel';
 
 export function HeroSection() {
   return (
-    <section className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-background to-card pb-16 md:pb-28 lg:pb-32 px-4">
+    <section className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-background to-card pb-16 md:pb-28 lg:pb-32 px-4 pt-12">
       <div className="w-full overflow-x-hidden">
         <div className="flex flex-col items-center justify-center mb-8">
           <LogoCarousel />
