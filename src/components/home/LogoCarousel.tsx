@@ -8,17 +8,17 @@ export function LogoCarousel() {
   const logos = Array(15).fill("/images/matblklogo.png");
 
   return (
-    <div className="w-full h-[210px] bg-transparent relative flex items-center">
+    <div className="w-full h-[315px] bg-transparent relative flex items-center">
        <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent z-10"></div>
        <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent z-10"></div>
       <div className="flex animate-scroll">
         {[...logos, ...logos].map((src, index) => (
-          <div key={index} className="flex-shrink-0 mx-6" style={{ width: '210px' }}>
+          <div key={index} className="flex-shrink-0 mx-6" style={{ width: '315px' }}>
             <Image
               src={src}
               alt="MAT BLK Logo"
-              width={210}
-              height={210}
+              width={315}
+              height={315}
               className="object-contain"
             />
           </div>
