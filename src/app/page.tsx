@@ -4,6 +4,7 @@ import { ProductCard } from '@/components/products/ProductCard';
 import { products } from '@/data/products';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { LogoCarousel } from '@/components/home/LogoCarousel';
 
 export default function HomePage() {
   // Define the IDs of the products you want to feature
@@ -23,6 +24,7 @@ export default function HomePage() {
   return (
     <div>
       <HeroSection />
+      <LogoCarousel />
       
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
