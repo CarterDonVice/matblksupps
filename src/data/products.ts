@@ -4,15 +4,15 @@ import type { Product, ProductCategory } from '@/lib/types';
 export const products: Product[] = [
   {
     id: '6',
-    slug: 'mat-blk-g2-daily-driver',
-    name: 'G2',
+    slug: 'mat-blk-go2-daily-driver',
+    name: 'GO-2',
     subName: 'Daily Driver',
-    fullName: 'MAT BLK G2 Daily Driver',
+    fullName: 'MAT BLK GO-2 Daily Driver',
     category: 'preworkout',
-    price: 52.99,
+    price: 49.99,
     images: ['/images/product image 1.png'], 
     dataAiHint: 'preworkout supplement',
-    shortDescription: 'Next-gen daily preworkout: enhanced focus, sustained energy.',
+    shortDescription: 'Carb-infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
     description: [
       'Elevate your daily training with MAT BLK G2 Daily Driver. Building on our trusted formula, G2 offers an even smoother energy curve and heightened mental clarity for peak performance, day in and day out.',
       'Formulated with advanced ingredients for superior absorption and effectiveness, ensuring you get the most from every workout without the crash.'
