@@ -17,7 +17,7 @@ export const products: Product[] = [
       'Elevate your daily training with MAT BLK G2 Daily Driver. Building on our trusted formula, G2 offers an even smoother energy curve and heightened mental clarity for peak performance, day in and day out.',
       'Formulated with advanced ingredients for superior absorption and effectiveness, ensuring you get the most from every workout without the crash.'
     ],
-    sellingPoints: ['Upgraded sustained energy', 'Advanced focus matrix', 'Improved absorption', 'Zero compromise performance'],
+    sellingPoints: ["Clinically dosed Pump+Focus stack", "Dual-Phase energy complex", "Carb-Fueled endurance", "Enhanced absorption"],
     ingredients: ['Beta-Alanine (CarnoSyn®)', 'L-Citrulline DL-Malate 2:1', 'Caffeine Anhydrous (dual-source)', 'L-Tyrosine', 'Cognizin® Citicoline', 'AstraGin®'],
   },
   {
