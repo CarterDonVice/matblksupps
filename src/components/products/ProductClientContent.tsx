@@ -107,13 +107,18 @@ export function ProductClientContent({ product, allProducts }: ProductClientCont
             {product.ingredients && product.ingredients.length > 0 && (
               <AccordionItem value="ingredients">
                 <AccordionTrigger className="text-xl font-headline hover:no-underline">Ingredients</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pt-2">
-                  <ul className="list-disc list-inside space-y-1">
-                    {product.ingredients.map((ingredient, index) => (
-                      <li key={index}>{ingredient}</li>
-                    ))}
-                  </ul>
-                </AccordionContent>
+                  <AccordionContent className="text-muted-foreground pt-2">
+                    <ul className="space-y-2">
+                      {product.ingredients.map((ingredient, index) => {
+                        const isHeader = !ingredient.startsWith('L-') && !ingredient.startsWith('NO3-T') && !ingredient.startsWith('Alpha-GPC') && !ingredient.startsWith('Huperzine') && !ingredient.startsWith('Caffeine') && !ingredient.startsWith('Dicaffeine') && !ingredient.startsWith('Total') && !ingredient.startsWith('Cluster') && !ingredient.startsWith('Taurine') && !ingredient.startsWith('Himalayan') && !ingredient.startsWith('Potassium') && !ingredient.startsWith('Magnesium') && !ingredient.startsWith('Piperine') && !ingredient.startsWith('DMAE') && !ingredient.startsWith('Yohimbine') && !ingredient.startsWith('Hordenine') && !ingredient.startsWith('Rauwolscine') && !ingredient.startsWith('GlycerPump') && !ingredient.startsWith('Nitrosigine') && !ingredient.startsWith('Lion') && !ingredient.startsWith('Creatine') && !ingredient.startsWith('Betaine') && !ingredient.startsWith('Astragin') && !ingredient.startsWith('Whey') && !ingredient.startsWith('Digestive');
+                        return (
+                          <li key={index} className={isHeader ? 'font-bold text-foreground pt-2' : 'ml-4'}>
+                            {ingredient}
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </AccordionContent>
               </AccordionItem>
             )}
           </Accordion>

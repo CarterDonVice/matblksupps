@@ -99,10 +99,15 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
                 <AccordionItem value="ingredients">
                   <AccordionTrigger className="text-xl font-headline hover:no-underline">Ingredients</AccordionTrigger>
                   <AccordionContent className="text-muted-foreground pt-2">
-                    <ul className="list-disc list-inside space-y-1">
-                      {product.ingredients.map((ingredient, index) => (
-                        <li key={index}>{ingredient}</li>
-                      ))}
+                    <ul className="space-y-2">
+                      {product.ingredients.map((ingredient, index) => {
+                        const isHeader = !ingredient.startsWith('L-') && !ingredient.startsWith('NO3-T') && !ingredient.startsWith('Alpha-GPC') && !ingredient.startsWith('Huperzine') && !ingredient.startsWith('Caffeine') && !ingredient.startsWith('Dicaffeine') && !ingredient.startsWith('Total') && !ingredient.startsWith('Cluster') && !ingredient.startsWith('Taurine') && !ingredient.startsWith('Himalayan') && !ingredient.startsWith('Potassium') && !ingredient.startsWith('Magnesium') && !ingredient.startsWith('Piperine');
+                        return (
+                          <li key={index} className={isHeader ? 'font-bold text-foreground pt-2' : 'ml-4'}>
+                            {ingredient}
+                          </li>
+                        )
+                      })}
                     </ul>
                   </AccordionContent>
                 </AccordionItem>
