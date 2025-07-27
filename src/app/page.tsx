@@ -42,9 +42,6 @@ export default function HomePage() {
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
               At MAT BLK, we're obsessed with purity, potency, and performance. Our formulations are backed by science and crafted with the highest quality ingredients to ensure you achieve your goals. No compromises, just results.
             </p>
-            <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-6 text-base">
-              <Link href="/about">Our Philosophy</Link>
-            </Button>
           </div>
         </div>
       </section>
