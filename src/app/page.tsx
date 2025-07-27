@@ -40,7 +40,7 @@ export default function HomePage() {
               Why MAT BLK?
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              At MAT BLK, we're obsessed with purity, potency, and performance. Our formulations are backed by science and crafted with the highest quality ingredients to ensure you achieve your goals. No compromises, just results.
+              At MAT BLK, we're done with underdosed and overhyped supplements. Every product is built on real science, fully dosed, and made with quality ingredients that deliver. We’re here to raise the standard so you can push harder, train better, and get more out of every workout.
             </p>
           </div>
         </div>
