@@ -14,8 +14,8 @@ export const products: Product[] = [
     dataAiHint: 'preworkout supplement',
     shortDescription: 'Carb-infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
     description: [
-      'Elevate your daily training with MAT BLK G2 Daily Driver. Building on our trusted formula, G2 offers an even smoother energy curve and heightened mental clarity for peak performance, day in and day out.',
-      'Formulated with advanced ingredients for superior absorption and effectiveness, ensuring you get the most from every workout without the crash.'
+      "Enhance your training with MAT BLK's GO-2 Daily Driver. This formula is built on science and backed by clinical research, using clinically dosed ingredients including L-Citrulline, NO3-T Arginine Nitrate, L-Tyrosine, Alpha-GPC, Huperzine A, Cluster Dextrin, Taurine, and a dual-source caffeine system. With added support for nutrient absorption and a smooth, moderate-stim profile, GO-2 is the pre-workout you’ll rely on day in and day out.",
+      "† Based on clinical studies of individual ingredients at matching dosages. This product has not been clinically tested. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
     ],
     sellingPoints: ["Clinically dosed Pump+Focus stack", "Dual-Phase energy complex", "Carb-Fueled endurance", "Enhanced absorption"],
     ingredients: ['Beta-Alanine (CarnoSyn®)', 'L-Citrulline DL-Malate 2:1', 'Caffeine Anhydrous (dual-source)', 'L-Tyrosine', 'Cognizin® Citicoline', 'AstraGin®'],
