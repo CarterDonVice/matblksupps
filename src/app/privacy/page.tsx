@@ -39,7 +39,7 @@ export default function PrivacyPage() {
           </ul>
 
           <h3 className="font-headline text-xl text-foreground/90">Information From Third Parties</h3>
-          <p>We receive information from third-party service providers to facilitate your transactions and enhance your experience, including Shopify, Stripe, and PayPal for payment processing and store functionality.</p>
+          <p>We receive information from third-party service providers to facilitate your transactions and enhance your experience, including <a href="https://www.shopify.com/legal/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Shopify</a>, <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe</a>, and <a href="https://www.paypal.com/us/webapps/mpp/ua/privacy-full" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal</a> for payment processing and store functionality.</p>
 
           <h2 className="font-headline text-2xl text-foreground">How We Use Your Personal Information</h2>
           <p>We use your Personal Information to:</p>
@@ -56,8 +56,8 @@ export default function PrivacyPage() {
           <h2 className="font-headline text-2xl text-foreground">Sharing Personal Information</h2>
           <p>We share your Personal Information with trusted third parties as necessary:</p>
           <ul className="list-disc pl-6">
-            <li><strong>Shopify:</strong> Powers our online store. See their privacy policy here.</li>
-            <li><strong>Payment Processors:</strong> Stripe and PayPal to securely handle payment transactions.</li>
+            <li><strong>Shopify:</strong> Powers our online store. See their privacy policy <a href="https://www.shopify.com/legal/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">here</a>.</li>
+            <li><strong>Payment Processors:</strong> <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe</a> and <a href="https://www.paypal.com/us/webapps/mpp/ua/privacy-full" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal</a> to securely handle payment transactions.</li>
             <li><strong>Service Providers:</strong> Companies performing services on our behalf, such as analytics, advertising, shipping, and customer support.</li>
             <li><strong>Compliance and Protection:</strong> To comply with applicable laws, regulations, lawful requests, and protect our rights.</li>
           </ul>
@@ -65,9 +65,9 @@ export default function PrivacyPage() {
           <h2 className="font-headline text-2xl text-foreground">Behavioral Advertising</h2>
           <p>We use your Personal Information for targeted marketing communications, with your consent. You can opt-out anytime from:</p>
           <ul className="list-disc pl-6">
-            <li><strong>Meta Ads and Facebook Pixel:</strong> here</li>
+            <li><strong>Meta Ads and Facebook Pixel:</strong> <a href="https://www.facebook.com/settings/?tab=ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">here</a></li>
             <li><strong>TikTok Ads:</strong> Through TikTok settings</li>
-            <li><strong>Digital Advertising Alliance:</strong> here</li>
+            <li><strong>Digital Advertising Alliance:</strong> <a href="https://optout.aboutads.info/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">here</a></li>
           </ul>
           
           <h2 className="font-headline text-2xl text-foreground">Cookies</h2>
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
           <p>The Site is not intended for individuals under the age of 16. We do not knowingly collect Personal Information from children. If we become aware of any such collection, we will delete the information promptly.</p>
           
           <h2 className="font-headline text-2xl text-foreground">Data Security</h2>
-          <p>We rely solely on trusted third-party providers such as Shopify, Stripe, and PayPal for transaction security and are not liable for any data breaches occurring through these third parties.</p>
+          <p>We rely solely on trusted third-party providers such as <a href="https://www.shopify.com/legal/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Shopify</a>, <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe</a>, and <a href="https://www.paypal.com/us/webapps/mpp/ua/privacy-full" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal</a> for transaction security and are not liable for any data breaches occurring through these third parties.</p>
           
           <h2 className="font-headline text-2xl text-foreground">Complaints and Questions</h2>
           <p>If you have concerns about our privacy practices, contact us at matblksupplements@gmail.com. If unresolved, you have the right to lodge a complaint with your local data protection authority.</p>
@@ -105,3 +105,5 @@ export default function PrivacyPage() {
     </div>
   );
 }
+
+    
