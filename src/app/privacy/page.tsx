@@ -45,7 +45,6 @@ export default function PrivacyPage() {
           <p>We use your Personal Information to:</p>
           <ul className="list-disc pl-6">
             <li>Fulfill orders and contracts, process payments, ship products, and provide customer support.</li>
-            <li>Manage subscriptions and recurring purchases.</li>
             <li>Communicate about orders, account details, promotions, and products.</li>
             <li>Provide discounts in exchange for participation in surveys or reviews.</li>
             <li>Improve Site performance, usability, and security.</li>
@@ -105,5 +104,3 @@ export default function PrivacyPage() {
     </div>
   );
 }
-
-    
