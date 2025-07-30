@@ -72,7 +72,9 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
             <ProductImageGallery images={product.images} altText={product.fullName} dataAiHint={product.dataAiHint} />
             
             <div className="space-y-6">
-                <h1 className="font-headline text-5xl lg:text-6xl font-bold text-foreground">{product.name} <span className="text-primary">{product.subName}</span></h1>
+                <h1 className="font-headline font-bold text-foreground">
+                    <span className="text-6xl lg:text-7xl">{product.name}</span> <span className="text-4xl lg:text-5xl text-primary">{product.subName}</span>
+                </h1>
                 
                 <p className="font-headline text-3xl text-foreground font-semibold">
                 ${product.price.toFixed(2)}
@@ -140,7 +142,4 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
         </div>
     </section>
   );
-
-
-
 
