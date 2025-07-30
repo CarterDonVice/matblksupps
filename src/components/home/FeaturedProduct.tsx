@@ -72,8 +72,8 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
             <ProductImageGallery images={product.images} altText={product.fullName} dataAiHint={product.dataAiHint} />
             
             <div className="space-y-6">
-                <h1 className="font-headline font-bold text-foreground">
-                    <span className="text-6xl lg:text-7xl">{product.name}</span> <span className="text-4xl lg:text-5xl text-primary">{product.subName}</span>
+                <h1 className="font-headline font-bold">
+                    <span className="text-7xl lg:text-8xl text-primary">{product.name}</span> <span className="text-4xl lg:text-5xl text-foreground">{product.subName}</span>
                 </h1>
                 
                 <p className="font-headline text-3xl text-foreground font-semibold">
@@ -142,4 +142,5 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
         </div>
     </section>
   );
+
 
