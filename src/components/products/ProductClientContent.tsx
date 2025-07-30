@@ -80,7 +80,7 @@ export function ProductClientContent({ product, allProducts }: ProductClientCont
 
           <div className="flex items-center gap-4 pt-4">
             <p className="text-sm font-medium text-foreground">Quantity:</p>
-            <div className="flex items-center border border-border rounded-md">
+            <div className="flex items-center border border-white/20 rounded-md backdrop-blur-sm bg-black/10">
               <Button variant="ghost" size="icon" onClick={decreaseQuantity} className="h-10 w-10 rounded-r-none">
                 <Minus className="h-4 w-4" />
               </Button>
