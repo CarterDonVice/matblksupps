@@ -71,9 +71,9 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
             <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
             <ProductImageGallery images={product.images} altText={product.fullName} dataAiHint={product.dataAiHint} />
             
-            <div className="space-y-6">
+            <div className="space-y-6 bg-black/10 backdrop-blur-sm border border-white/20 p-6 rounded-lg">
                 <h1 className="font-headline font-bold">
-                    <span className="text-5xl lg:text-6xl text-primary">{product.name}</span><span className="text-5xl lg:text-6xl text-foreground ml-4">{product.subName}</span>
+                    <span className="text-5xl lg:text-6xl text-foreground">GO-2</span><span className="text-5xl lg:text-6xl text-primary ml-4">Daily Driver</span>
                 </h1>
                 
                 <p className="font-headline text-3xl text-foreground font-semibold">
@@ -95,7 +95,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
 
                 <div className="flex items-center gap-4 pt-4">
                 <p className="text-sm font-medium text-foreground">Quantity:</p>
-                <div className="flex items-center border border-white/20 rounded-md backdrop-blur-sm bg-black/10">
+                <div className="flex items-center border border-white/20 rounded-md">
                     <Button variant="ghost" size="icon" onClick={decreaseQuantity} className="h-10 w-10 rounded-r-none">
                     <Minus className="h-4 w-4" />
                     </Button>
