@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -51,12 +50,12 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
             <div className="absolute inset-0 flex items-center">
                 <div className="w-full flex animate-scroll-slow">
                     {[...logos, ...logos].map((src, index) => (
-                    <div key={index} className="flex-shrink-0 mx-6" style={{ width: '941px' }}>
+                    <div key={index} className="flex-shrink-0 mx-6" style={{ width: '1035px' }}>
                         <Image
                         src={src}
                         alt=""
-                        width={941}
-                        height={941}
+                        width={1035}
+                        height={1035}
                         className="object-contain"
                         aria-hidden="true"
                         />
@@ -140,4 +139,5 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
         </div>
     </section>
   );
+
 
