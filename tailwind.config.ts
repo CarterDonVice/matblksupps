@@ -119,7 +119,7 @@ export default {
         'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
         'scroll': 'scroll 40s linear infinite',
         'scroll-slow': 'scroll-slow 120s linear infinite',
-        'shimmer': 'shimmer 4s linear infinite',
+        'shimmer': 'shimmer 8s linear infinite',
       },
     },
   },
