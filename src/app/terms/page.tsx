@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -13,28 +14,59 @@ export default function TermsPage() {
           Terms of Service
         </h1>
         <div className="space-y-6 text-muted-foreground prose prose-invert prose-lg max-w-none">
-          <p>Welcome to MAT BLK Supplements. These terms and conditions outline the rules and regulations for the use of MAT BLK Supplements' Website.</p>
-          
-          <h2 className="font-headline text-2xl text-foreground">1. Acceptance of Terms</h2>
-          <p>By accessing this website, we assume you accept these terms and conditions in full. Do not continue to use MAT BLK Supplements' website if you do not accept all of the terms and conditions stated on this page.</p>
+          <p>Last updated: July 29, 2025</p>
+          <p>Welcome to MAT BLK Supplements ("MAT BLK," "we," "us," or "our"). By accessing or using our website, matblksupps.com (the "Site"), you agree to comply with and be bound by these Terms of Service ("Terms"). If you disagree with any part of these Terms, please do not use our Site.</p>
 
-          <h2 className="font-headline text-2xl text-foreground">2. Products</h2>
-          <p>All products listed on the Website are subject to availability, and we cannot guarantee that items will be in stock. We reserve the right to discontinue any product at any time for any reason. Prices for all products are subject to change.</p>
-          <p>Statements made about specific products on this website have not been evaluated by the Food and Drug Administration. Products sold on this website are not intended to diagnose, treat, cure, or prevent any disease.</p>
+          <h2 className="font-headline text-2xl text-foreground">Changes to Terms</h2>
+          <p>We reserve the right to modify these Terms at any time. Updates will be posted on this page with a revised "Last updated" date. Continued use of our Site following changes indicates your acceptance of the updated Terms.</p>
 
-          <h2 className="font-headline text-2xl text-foreground">3. User Accounts</h2>
-          <p>If you create an account on our website, you are responsible for maintaining the security of your account and you are fully responsible for all activities that occur under the account and any other actions taken in connection with it.</p>
-          
-          <h2 className="font-headline text-2xl text-foreground">4. Intellectual Property</h2>
-          <p>The content, layout, design, data, databases and graphics on this website are protected by United States and other international intellectual property laws and are owned by MAT BLK Supplements or its licensors. Unless otherwise stated, MAT BLK Supplements and/or its licensors own the intellectual property rights for all material on MAT BLK Supplements.</p>
+          <h2 className="font-headline text-2xl text-foreground">Age Restrictions</h2>
+          <p>Our Site is not intended for use by individuals under 13 years old. Users between 13 and 18 must have parental or guardian permission to use our Site. By using our Site, you confirm that you meet these age requirements.</p>
 
-          <h2 className="font-headline text-2xl text-foreground">5. Limitation of Liability</h2>
-          <p>In no event shall MAT BLK Supplements, nor any of its officers, directors and employees, be liable to you for anything arising out of or in any way connected with your use of this Website, whether such liability is under contract, tort or otherwise, and MAT BLK Supplements, including its officers, directors and employees shall not be liable for any indirect, consequential or special liability arising out of or in any way related to your use of this Website.</p>
+          <h2 className="font-headline text-2xl text-foreground">Product Information</h2>
+          <p>MAT BLK sells dietary supplements, including pre-workouts, protein powders, creatine, and electrolytes. We make every effort to ensure accurate product descriptions but cannot guarantee absolute accuracy. Product information may change without notice.</p>
 
-          <h2 className="font-headline text-2xl text-foreground">6. Governing Law</h2>
-          <p>These Terms will be governed by and construed in accordance with the laws of the State of [Your State/Country], and you submit to the non-exclusive jurisdiction of the state and federal courts located in [Your State/Country] for the resolution of any disputes.</p>
-          
-          <p className="pt-4">Last updated: {new Date().toLocaleDateString()}</p>
+          <h2 className="font-headline text-2xl text-foreground">Order Acceptance and Cancellation</h2>
+          <p>We reserve the right to refuse, modify, or cancel any order at our discretion. If an order is modified or canceled, we will notify you through the email provided during checkout.</p>
+
+          <h2 className="font-headline text-2xl text-foreground">Return and Refund Policy</h2>
+          <p>Customers must cover return shipping costs. Once your returned item is received, a refund for the product cost will be issued. For return inquiries, contact us at support@matblksupps.com.</p>
+
+          <h2 className="font-headline text-2xl text-foreground">User Accounts</h2>
+          <p>Creating an account on our Site is optional. When creating an account, you agree to provide accurate, complete, and updated information. You are responsible for safeguarding your account credentials.</p>
+
+          <h2 className="font-headline text-2xl text-foreground">Marketing Communications</h2>
+          <p>By opting into our marketing programs through account creation, checkout selection, or promotional pop-ups, you consent to receive periodic SMS/MMS and email marketing messages. Consent is not a condition of purchase. Message and data rates may apply.</p>
+          <p>To opt-out, reply STOP, END, CANCEL, UNSUBSCRIBE, or QUIT to any marketing message. For support, contact support@matblksupps.com.</p>
+
+          <h2 className="font-headline text-2xl text-foreground">Intellectual Property</h2>
+          <p>All content on our Site, including logos, branding, product names, graphics, and text, is owned exclusively by MAT BLK. Use of our content without prior written permission is strictly prohibited.</p>
+
+          <h2 className="font-headline text-2xl text-foreground">Prohibited Uses</h2>
+          <p>You agree not to use our Site for any illegal, harmful, or unauthorized purposes. We reserve the right to terminate your access if prohibited activities are detected.</p>
+
+          <h2 className="font-headline text-2xl text-foreground">Third-Party Payment Processors</h2>
+          <p>Payments are securely processed through third-party providers (Shopify, Stripe, PayPal). MAT BLK does not store or have direct access to your payment information. We are not liable for breaches or issues arising directly from these third-party processors.</p>
+
+          <h2 className="font-headline text-2xl text-foreground">Disclaimer of Warranties</h2>
+          <p>Our Site and products are provided "as is" without warranties of any kind, express or implied. We disclaim any warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+
+          <h2 className="font-headline text-2xl text-foreground">Limitation of Liability</h2>
+          <p>MAT BLK shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Site or products purchased, to the maximum extent permitted by law.</p>
+
+          <h2 className="font-headline text-2xl text-foreground">Indemnification</h2>
+          <p>You agree to indemnify, defend, and hold harmless MAT BLK and its affiliates, officers, employees, and agents from any claims or liabilities arising from your use of the Site or your breach of these Terms.</p>
+
+          <h2 className="font-headline text-2xl text-foreground">Governing Law and Dispute Resolution</h2>
+          <p>These Terms are governed by the laws of Tarrant County, Texas. Any disputes will be resolved through binding arbitration on an individual basis in Tarrant County, Texas, waiving any rights to class action proceedings.</p>
+
+          <h2 className="font-headline text-2xl text-foreground">Contact Us</h2>
+          <p>For any questions or support regarding these Terms, please contact us at:</p>
+          <p>
+            MAT BLK Supplements<br/>
+            Email: support@matblksupps.com<br/>
+            Website: matblksupps.com
+          </p>
         </div>
       </div>
     </div>
