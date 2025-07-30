@@ -47,7 +47,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
 
   return (
     <section className="py-16 md:py-24 bg-background relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-[0.15] pointer-events-none">
+        <div className="absolute inset-0 z-0 opacity-[0.10] pointer-events-none">
             <div className="absolute inset-0 flex items-center">
                 <div className="w-full flex animate-scroll-slow">
                     {[...logos, ...logos].map((src, index) => (
@@ -140,4 +140,3 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
         </div>
     </section>
   );
-}
