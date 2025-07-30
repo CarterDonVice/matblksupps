@@ -60,7 +60,7 @@ export function ProductClientContent({ product, allProducts }: ProductClientCont
         
         <div className="space-y-6">
           <h1 className="font-headline font-bold">
-            <span className="text-4xl lg:text-5xl text-primary">{product.name}</span> <span className="text-5xl lg:text-6xl text-foreground">{product.subName}</span>
+            <span className="text-5xl lg:text-6xl text-foreground">{product.name}</span> <span className="text-6xl lg:text-7xl text-primary">{product.subName}</span>
           </h1>
           
           <p className="font-headline text-3xl text-foreground font-semibold">
