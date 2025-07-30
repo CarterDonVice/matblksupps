@@ -51,12 +51,12 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
             <div className="absolute inset-0 flex items-center">
                 <div className="w-full flex animate-scroll-slow">
                     {[...logos, ...logos].map((src, index) => (
-                    <div key={index} className="flex-shrink-0 mx-6" style={{ width: '750px' }}>
+                    <div key={index} className="flex-shrink-0 mx-6" style={{ width: '825px' }}>
                         <Image
                         src={src}
                         alt=""
-                        width={750}
-                        height={750}
+                        width={825}
+                        height={825}
                         className="object-contain"
                         aria-hidden="true"
                         />
