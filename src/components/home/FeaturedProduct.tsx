@@ -73,7 +73,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
             
             <div className="space-y-6">
                 <h1 className="font-headline font-bold">
-                    <span className="text-5xl lg:text-6xl text-primary">{product.name}</span> <span className="text-5xl lg:text-6xl text-foreground">{product.subName}</span>
+                    <span className="text-5xl lg:text-6xl text-primary">{product.name}</span><span className="text-5xl lg:text-6xl text-foreground ml-4">{product.subName}</span>
                 </h1>
                 
                 <p className="font-headline text-3xl text-foreground font-semibold">
@@ -145,3 +145,6 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
 
 
 
+
+
+    
