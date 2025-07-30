@@ -107,6 +107,10 @@ export default {
         'scroll-slow': {
             '0%': { transform: 'translateX(0)' },
             '100%': { transform: 'translateX(-50%)' },
+        },
+        'shimmer': {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
         }
       },
       animation: {
@@ -115,6 +119,7 @@ export default {
         'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
         'scroll': 'scroll 40s linear infinite',
         'scroll-slow': 'scroll-slow 120s linear infinite',
+        'shimmer': 'shimmer 4s linear infinite',
       },
     },
   },
