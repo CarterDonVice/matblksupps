@@ -1,5 +1,4 @@
 
-import { HeroSection } from '@/components/home/HeroSection';
 import { products } from '@/data/products';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -12,7 +11,6 @@ export default function HomePage() {
     // Fallback or error handling if product not found
     return (
       <div>
-        <HeroSection />
         <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -29,8 +27,6 @@ export default function HomePage() {
 
   return (
     <div>
-      <HeroSection />
-      
       <FeaturedProduct product={dailyDriverProduct} />
 
       <section className="py-16 md:py-24 bg-card">
