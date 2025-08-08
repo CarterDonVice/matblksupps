@@ -67,18 +67,19 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
         </div>
 
-        <section className="py-16 md:py-24 bg-transparent relative">
+        <section className="pt-20 pb-16 md:py-24 bg-transparent relative">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
                   <ProductImageGallery images={product.images} altText={product.fullName} dataAiHint={product.dataAiHint} />
                   
                     <div className="bg-black/10 backdrop-blur-sm border border-white/20 p-6 rounded-lg">
+                      <div className="space-y-6">
                         <h1 className="font-headline font-bold">
-                            <span className="text-5xl lg:text-7xl text-primary">GO-2</span>
-                            <span className="text-5xl lg:text-7xl text-foreground ml-4">Daily Driver</span>
+                            <span className="text-6xl lg:text-7xl text-primary">GO-2</span>
+                            <span className="text-6xl lg:text-7xl text-foreground ml-4">Daily Driver</span>
                         </h1>
                         
-                        <div className="space-y-6 mt-6">
+                        
                             <p className="font-headline text-3xl text-foreground font-semibold">
                                 ${product.price.toFixed(2)}
                             </p>
