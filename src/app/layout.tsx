@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className="font-body antialiased min-h-screen flex flex-col" suppressHydrationWarning={true}>
         <CartProvider>
           <Navbar />
-          <main className="flex-grow">
+          <main className="flex-grow pt-5">
             {children}
           </main>
           <Footer />
