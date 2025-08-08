@@ -1,7 +1,7 @@
 
 export function HeroSection() {
   return (
-    <section className="flex flex-col items-center justify-center text-center bg-transparent px-4 pt-28 pb-16">
+    <section className="flex flex-col items-center justify-center text-center bg-transparent px-4 pt-24 md:pt-28 pb-16">
       <p className="font-headline text-5xl text-foreground max-w-4xl mx-auto leading-tight animate-shimmer bg-[linear-gradient(110deg,hsl(var(--primary)),45%,hsl(var(--foreground)),55%,hsl(var(--primary)))] bg-[length:200%_100%] bg-clip-text text-transparent">
         Engineered for Uncompromising Performance
       </p>
