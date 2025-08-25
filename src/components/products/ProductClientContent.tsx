@@ -10,12 +10,6 @@ import { ProductImageGallery } from '@/components/products/ProductImageGallery';
 import { ProductCard } from '@/components/products/ProductCard';
 import Link from 'next/link';
 import type { Product } from '@/lib/types';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 interface ProductClientContentProps {
   product: Product;
@@ -96,36 +90,43 @@ export function ProductClientContent({ product, allProducts }: ProductClientCont
           <Button size="lg" className="w-full btn-primary py-7 text-lg" onClick={handleAddToCart}>
             <ShoppingCartIcon className="mr-2 h-5 w-5" /> Add to Cart
           </Button>
-          
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="description">
-              <AccordionTrigger className="text-xl font-headline hover:no-underline">Product Description</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground space-y-4 pt-2">
-                {product.description.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-            {product.ingredients && product.ingredients.length > 0 && (
-              <AccordionItem value="ingredients">
-                <AccordionTrigger className="text-xl font-headline hover:no-underline">Ingredients</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pt-2">
-                    <ul className="space-y-2">
-                      {product.ingredients.map((ingredient, index) => {
-                        const isHeader = !ingredient.startsWith('L-') && !ingredient.startsWith('NO3-T') && !ingredient.startsWith('Alpha-GPC') && !ingredient.startsWith('Huperzine') && !ingredient.startsWith('Caffeine') && !ingredient.startsWith('Dicaffeine') && !ingredient.startsWith('Total') && !ingredient.startsWith('Cluster') && !ingredient.startsWith('Taurine') && !ingredient.startsWith('Himalayan') && !ingredient.startsWith('Potassium') && !ingredient.startsWith('Magnesium') && !ingredient.startsWith('Piperine') && !ingredient.startsWith('DMAE') && !ingredient.startsWith('Yohimbine') && !ingredient.startsWith('Hordenine') && !ingredient.startsWith('Rauwolscine') && !ingredient.startsWith('GlycerPump') && !ingredient.startsWith('Nitrosigine') && !ingredient.startsWith('Lion') && !ingredient.startsWith('Creatine') && !ingredient.startsWith('Betaine') && !ingredient.startsWith('Astragin') && !ingredient.startsWith('Whey') && !ingredient.startsWith('Digestive');
-                        return (
-                          <li key={index} className={isHeader ? 'font-bold text-foreground pt-2' : 'ml-4'}>
-                            {ingredient}
-                          </li>
-                        )
-                      })}
-                    </ul>
-                  </AccordionContent>
-              </AccordionItem>
-            )}
-          </Accordion>
         </div>
       </div>
+
+      <section className="py-12 md:py-16 bg-card border-y border-border/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-6 text-center">
+              Product Description
+            </h2>
+            <div className="text-muted-foreground space-y-4">
+              {product.description.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+        </div>
+      </section>
+
+      {product.ingredients && product.ingredients.length > 0 && (
+        <section className="py-12 md:py-16 bg-background">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-6 text-center">
+              Ingredients
+            </h2>
+            <div className="bg-card p-6 rounded-lg border border-border/50">
+              <ul className="space-y-2 text-muted-foreground columns-1 sm:columns-2">
+                {product.ingredients.map((ingredient, index) => {
+                    const isHeader = !ingredient.startsWith('L-') && !ingredient.startsWith('NO3-T') && !ingredient.startsWith('Alpha-GPC') && !ingredient.startsWith('Huperzine') && !ingredient.startsWith('Caffeine') && !ingredient.startsWith('Dicaffeine') && !ingredient.startsWith('Total') && !ingredient.startsWith('Cluster') && !ingredient.startsWith('Taurine') && !ingredient.startsWith('Himalayan') && !ingredient.startsWith('Potassium') && !ingredient.startsWith('Magnesium') && !ingredient.startsWith('Piperine') && !ingredient.startsWith('DMAE') && !ingredient.startsWith('Yohimbine') && !ingredient.startsWith('Hordenine') && !ingredient.startsWith('Rauwolscine') && !ingredient.startsWith('GlycerPump') && !ingredient.startsWith('Nitrosigine') && !ingredient.startsWith('Lion') && !ingredient.startsWith('Creatine') && !ingredient.startsWith('Betaine') && !ingredient.startsWith('Astragin') && !ingredient.startsWith('Whey') && !ingredient.startsWith('Digestive');
+                    return (
+                      <li key={index} className={`${isHeader ? 'font-bold text-foreground pt-2 text-lg' : 'ml-4'} break-inside-avoid-column`}>
+                          {ingredient}
+                      </li>
+                    )
+                })}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
 
       {relatedProducts.length > 0 && (
         <section className="pt-16 border-t border-border/40">
@@ -142,5 +143,3 @@ export function ProductClientContent({ product, allProducts }: ProductClientCont
     </>
   );
 }
-
-    
