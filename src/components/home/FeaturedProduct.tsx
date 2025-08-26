@@ -40,7 +40,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
   const logos = Array(15).fill("/images/matblklogo.png");
 
   return (
-    <div className="relative bg-background overflow-hidden pb-12">
+    <div className="relative bg-background overflow-hidden pb-24">
       <div className="absolute inset-x-0 top-[-128px] h-[1035px] z-0 opacity-[0.10] pointer-events-none">
           <div className="absolute inset-0 flex items-center">
               <div className="w-full flex animate-scroll-slow">
