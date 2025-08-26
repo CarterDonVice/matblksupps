@@ -29,8 +29,8 @@ export function Navbar() {
           <Image
             src="/images/MATBLKfulllogo.png"
             alt="MAT BLK Banner Logo"
-            width={800}
-            height={160}
+            width={1200}
+            height={240}
             className="object-contain h-auto"
             priority
           />
