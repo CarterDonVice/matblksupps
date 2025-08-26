@@ -11,8 +11,8 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center p-4 md:p-6 bg-transparent">
-      <div className="flex-shrink-0">
-        <Link href="/" className="transition-transform hover:scale-110 block">
+      <div className="flex-1">
+        <Link href="/" className="transition-transform hover:scale-110 block w-fit">
           <Image
             src="/images/matblklogo.png"
             alt="MAT BLK Logo"
@@ -24,7 +24,20 @@ export function Navbar() {
         </Link>
       </div>
 
-      <div className="flex-shrink-0">
+      <div className="flex-1 flex justify-center">
+        <Link href="/" className="transition-transform hover:scale-105">
+          <Image
+            src="/images/MATBLKlogofull.png"
+            alt="MAT BLK Banner Logo"
+            width={250}
+            height={50}
+            className="object-contain h-auto"
+            priority
+          />
+        </Link>
+      </div>
+
+      <div className="flex-1 flex justify-end">
         <Link href="/cart" className="relative block text-foreground transition-transform hover:scale-110">
           <ShoppingCart className="h-8 w-8" />
           {itemCount > 0 && (
