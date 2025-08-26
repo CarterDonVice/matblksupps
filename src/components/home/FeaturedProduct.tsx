@@ -40,7 +40,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
   const logos = Array(15).fill("/images/matblklogo.png");
 
   return (
-    <div className="relative bg-background overflow-hidden pb-24">
+    <div className="relative bg-background overflow-hidden flex flex-col justify-center min-h-[1035px]">
       <div className="absolute inset-x-0 top-0 h-[1035px] z-0 opacity-[0.10] pointer-events-none">
           <div className="absolute inset-0 flex items-center">
               <div className="w-full flex animate-scroll-slow">
@@ -61,7 +61,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col pt-24 md:pt-32 pb-12">
+      <div className="relative z-10 flex flex-col py-12">
         <section className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
               <ProductImageGallery images={product.images} altText={product.fullName} dataAiHint={product.dataAiHint} />
