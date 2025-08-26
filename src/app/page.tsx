@@ -3,6 +3,8 @@ import { products } from '@/data/products';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { FeaturedProduct } from '@/components/home/FeaturedProduct';
+import { ProductDescriptionSection } from '@/components/home/ProductDescriptionSection';
+import { ProductIngredientsSection } from '@/components/home/ProductIngredientsSection';
 
 export default function HomePage() {
   const dailyDriverProduct = products.find(p => p.id === '6');
@@ -28,6 +30,8 @@ export default function HomePage() {
   return (
     <div>
       <FeaturedProduct product={dailyDriverProduct} />
+      <ProductDescriptionSection product={dailyDriverProduct} />
+      <ProductIngredientsSection product={dailyDriverProduct} />
 
       <section className="py-16 md:py-24 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
