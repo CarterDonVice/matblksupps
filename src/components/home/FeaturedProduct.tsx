@@ -40,17 +40,17 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
   const logos = Array(15).fill("/images/matblklogo.png");
 
   return (
-    <div className="relative bg-background overflow-hidden flex flex-col justify-center min-h-[1035px]">
-      <div className="absolute inset-x-0 top-0 h-[1035px] z-0 opacity-[0.10] pointer-events-none">
+    <div className="relative bg-background overflow-hidden flex flex-col justify-center min-h-screen pt-16 pb-12">
+      <div className="absolute inset-x-0 top-0 h-[600px] z-0 opacity-[0.10] pointer-events-none">
           <div className="absolute inset-0 flex items-center">
               <div className="w-full flex animate-scroll-slow">
                   {[...logos, ...logos].map((src, index) => (
-                  <div key={index} className="flex-shrink-0 mx-6" style={{ width: '1035px' }}>
+                  <div key={index} className="flex-shrink-0 mx-6" style={{ width: '600px' }}>
                       <Image
                       src={src}
                       alt=""
-                      width={1035}
-                      height={1035}
+                      width={600}
+                      height={600}
                       className="object-contain"
                       aria-hidden="true"
                       />
@@ -61,7 +61,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col py-12">
+      <div className="relative z-10 flex flex-col">
         <section className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
               <ProductImageGallery images={product.images} altText={product.fullName} dataAiHint={product.dataAiHint} />
