@@ -27,7 +27,7 @@ export function Navbar() {
       <div className="flex-1 flex justify-center">
         <Link href="/" className="transition-transform hover:scale-105">
           <Image
-            src="/images/MATBLKlogofull.png"
+            src="/images/MATBLKfulllogo.png"
             alt="MAT BLK Banner Logo"
             width={250}
             height={50}
