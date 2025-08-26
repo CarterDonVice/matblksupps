@@ -24,7 +24,7 @@ export function Navbar() {
         </Link>
       </div>
 
-      <div className="flex-1 flex justify-center px-4">
+      <div className="flex-[2] flex justify-center px-4"> {/* Changed flex-1 to flex-[2] to give it more space */}
         <Link href="/" className="w-full transition-transform hover:scale-105">
           <Image
             src="/images/MATBLKfulllogo.png"
