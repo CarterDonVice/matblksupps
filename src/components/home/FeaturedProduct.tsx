@@ -44,15 +44,15 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative">
           <div className="absolute inset-y-[-50px] inset-x-0 z-0 opacity-[0.10] pointer-events-none">
-              <div className="absolute inset-0 flex items-center">
-                  <div className="w-full flex animate-scroll-slow">
+              <div className="absolute inset-0 flex items-center overflow-hidden">
+                  <div className="flex w-max animate-scroll-logos">
                       {[...logos, ...logos].map((src, index) => (
-                      <div key={index} className="flex-shrink-0 mx-6" style={{ width: '600px' }}>
+                      <div key={index} className="flex-shrink-0 mx-6" style={{ width: '800px' }}>
                           <Image
                           src={src}
                           alt=""
-                          width={600}
-                          height={600}
+                          width={800}
+                          height={800}
                           className="object-contain"
                           aria-hidden="true"
                           />
