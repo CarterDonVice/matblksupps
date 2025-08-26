@@ -41,7 +41,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
 
   return (
     <div className="relative bg-background overflow-hidden">
-      <div className="absolute inset-x-0 top-0 h-[1035px] z-0 opacity-[0.10] pointer-events-none">
+      <div className="absolute inset-x-0 top-[-128px] h-[1035px] z-0 opacity-[0.10] pointer-events-none">
           <div className="absolute inset-0 flex items-center">
               <div className="w-full flex animate-scroll-slow">
                   {[...logos, ...logos].map((src, index) => (
