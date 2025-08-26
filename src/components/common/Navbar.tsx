@@ -10,7 +10,7 @@ export function Navbar() {
   const { itemCount } = useCart();
 
   return (
-    <header className="top-0 left-0 right-0 z-50 flex justify-between items-center p-4 md:p-6 bg-transparent">
+    <header className="flex justify-between items-center p-4 md:p-6 bg-transparent">
       <div className="flex-1">
         <Link href="/" className="transition-transform hover:scale-110 block w-fit">
           <Image
@@ -24,14 +24,14 @@ export function Navbar() {
         </Link>
       </div>
 
-      <div className="flex-1 flex justify-center">
-        <Link href="/" className="transition-transform hover:scale-105">
+      <div className="flex-1 flex justify-center px-4">
+        <Link href="/" className="w-full transition-transform hover:scale-105">
           <Image
             src="/images/MATBLKfulllogo.png"
             alt="MAT BLK Banner Logo"
-            width={600}
-            height={120}
-            className="object-contain h-auto"
+            width={1200}
+            height={240}
+            className="object-contain h-auto w-full"
             priority
           />
         </Link>
