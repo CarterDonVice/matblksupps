@@ -61,7 +61,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
       </div>
 
-      <div className="relative z-10 min-h-[1035px] flex flex-col justify-center">
+      <div className="relative z-10 flex flex-col pt-16 md:pt-24 pb-12">
         <section className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
               <ProductImageGallery images={product.images} altText={product.fullName} dataAiHint={product.dataAiHint} />
