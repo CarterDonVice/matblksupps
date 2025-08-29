@@ -10,7 +10,7 @@ export function Navbar() {
   const { itemCount } = useCart();
 
   return (
-    <header className="flex justify-between items-center p-4 md:p-6 bg-transparent">
+    <header className="flex justify-between items-center py-2 px-4 md:py-2 md:px-6 bg-transparent">
       <div className="flex-1">
         <Link href="/" className="transition-transform hover:scale-110 block w-fit">
           <Image
