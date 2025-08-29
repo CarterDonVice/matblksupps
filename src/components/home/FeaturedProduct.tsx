@@ -62,7 +62,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative z-10 grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
+        <div className="relative z-10 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <ProductImageGallery images={product.images} altText={product.fullName} dataAiHint={product.dataAiHint} />
             
             <div className="bg-black/10 backdrop-blur-sm border border-white/20 p-6 rounded-lg space-y-6">
