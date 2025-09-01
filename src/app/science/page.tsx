@@ -144,34 +144,6 @@ export default function SciencePage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-              <Image
-                src="https://placehold.co/700x500.png" 
-                alt="MAT BLK Scientific Research"
-                width={700}
-                height={500}
-                className="rounded-lg shadow-2xl object-cover"
-                data-ai-hint="scientific research"
-              />
-            </div>
-            <div className="space-y-6 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-              <h2 className="font-headline text-4xl font-bold text-foreground">
-                Driven by Data, <span className="text-primary">Validated by Performance.</span>
-              </h2>
-              <p className="font-body text-lg text-muted-foreground">
-                Our product development process is meticulous and data-driven. We scrutinize scientific literature, collaborate with experts, and focus on synergistic ingredient combinations that amplify results. We don't chase trends; we build formulations that stand up to scientific scrutiny.
-              </p>
-              <p className="font-body text-lg text-muted-foreground">
-                From sourcing premium raw materials to ensuring precise manufacturing, every step is guided by our dedication to delivering supplements that are not only effective but also safe and reliable.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 md:py-24 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
