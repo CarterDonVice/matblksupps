@@ -41,10 +41,30 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
 
   return (
     <div className="relative -mt-4 bg-background overflow-hidden flex flex-col justify-center min-h-screen pt-0 pb-12">
+      <div className="absolute inset-0 z-0 opacity-[0.10] pointer-events-none overflow-hidden md:block">
+        <div className="absolute inset-0 flex items-center">
+          <div className="flex w-max animate-scroll-logos">
+            {[...logos, ...logos].map((src, index) => (
+              <div key={index} className="flex-shrink-0 mx-6" style={{ width: '800px' }}>
+                <Image
+                  src={src}
+                  alt=""
+                  width={800}
+                  height={800}
+                  className="object-contain"
+                  aria-hidden="true"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
+      </div>
+      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative z-10 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="relative h-[400px] md:h-auto flex items-center justify-center">
-              <div className="absolute inset-0 z-0 opacity-[0.10] pointer-events-none overflow-hidden">
+               <div className="absolute inset-0 z-0 opacity-[0.10] pointer-events-none overflow-hidden md:hidden">
                 <div className="absolute inset-0 flex items-center">
                   <div className="flex w-max animate-scroll-logos">
                     {[...logos, ...logos].map((src, index) => (
