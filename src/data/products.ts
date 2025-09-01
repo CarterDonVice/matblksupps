@@ -78,6 +78,24 @@ export const products: Product[] = [
     ingredients: ['L-Citrulline', 'GlycerPump™', 'Nitrosigine®', 'Lion\'s Mane Mushroom', 'Huperzine A'],
   },
   {
+    id: '7',
+    slug: 'pump-primer-pre',
+    name: 'Pump Primer',
+    subName: 'Pre',
+    fullName: 'Pump Primer Pre',
+    category: 'preworkout',
+    price: 42.99,
+    images: ['/images/matblklogo.png'],
+    dataAiHint: 'company logo',
+    shortDescription: 'A versatile, pump-focused pre-workout designed for massive vasodilation, perfect for stacking or standalone use.',
+    description: [
+      'Pump Primer Pre is the ultimate nitric oxide-boosting formula for athletes who demand maximum blood flow and muscle fullness. This stimulant-free powerhouse is engineered to be the perfect standalone pump pre-workout or a versatile stacking partner for your favorite stimulant-based products.',
+      'By focusing exclusively on vasodilation and cellular hydration, Pump Primer Pre delivers skin-splitting pumps and enhances nutrient delivery to your working muscles, helping you achieve a fuller look and improved performance.'
+    ],
+    sellingPoints: ['Maximizes Nitric Oxide Production', 'Stimulant-Free Formula', 'Ideal for Stacking', 'Enhances Nutrient Delivery'],
+    ingredients: ['L-Citrulline Malate 2:1', 'GlycerSize™ (65% Glycerol Powder)', 'Agmatine Sulfate', 'Nitrosigine®', 'Himalayan Pink Salt'],
+  },
+  {
     id: '4',
     slug: 'mat-blk-stacked-creatine',
     name: 'Stacked Creatine',
