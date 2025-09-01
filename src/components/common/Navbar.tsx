@@ -10,8 +10,8 @@ export function Navbar() {
   const { itemCount } = useCart();
 
   const navLinks = [
+    { href: '/', label: 'Home' },
     { href: '/shop', label: 'Shop' },
-    { href: '/science', label: 'Science' },
     { href: '/about', label: 'About' },
     { href: '/ambassador', label: 'Become an Ambassador' },
     { href: '/contact', label: 'Contact' }
@@ -34,7 +34,7 @@ export function Navbar() {
         </div>
 
         <div className="flex-[2] flex justify-center px-4">
-          <Link href="/" className="w-full max-w-sm transition-transform hover:scale-105">
+          <Link href="/" className="w-full max-w-sm transition-transform hover:scale-105 pt-2">
             <Image
               src="/images/MATBLKfulllogo.png"
               alt="MAT BLK Banner Logo"
