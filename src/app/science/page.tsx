@@ -203,21 +203,11 @@ export default function SciencePage() {
           </div>
         </div>
       </section>
-
-      <section className="py-20 md:py-32 text-center bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
-          <Brain className="h-16 w-16 text-primary mx-auto mb-6" />
-          <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Innovate. Validate. Elevate.
-          </h2>
-          <p className="font-body text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            MAT BLK is dedicated to continuous improvement and innovation, always grounded in scientific evidence to help you achieve your peak potential.
-          </p>
-        </div>
-      </section>
     </div>
   );
 }
+    
+
     
 
     
