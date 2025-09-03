@@ -2,16 +2,25 @@
 export interface NavLink {
   href: string;
   label: string;
-  category?: string; // For product category links
+  category?: string;
+  children?: NavLink[];
 }
 
 export const mainNavLinks: NavLink[] = [
   { href: '/', label: 'Home' },
-  { href: '/products/preworkout', label: 'Pre-Workout', category: 'preworkout' },
-  { href: '/products/protein', label: 'Protein', category: 'protein' },
-  { href: '/products/creatine', label: 'Creatine', category: 'creatine' },
+  {
+    href: '/shop',
+    label: 'Shop',
+    children: [
+      { href: '/products/preworkout', label: 'Pre-Workout', category: 'preworkout' },
+      { href: '/products/protein', label: 'Protein', category: 'protein' },
+      { href: '/products/creatine', label: 'Creatine', category: 'creatine' },
+    ],
+  },
   { href: '/science', label: 'Science' },
-  { href: '/about', label: 'About Us' },
+  { href: '/about', label: 'About' },
+  { href: '/ambassador', label: 'Become an Ambassador' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export const footerNavLinks: NavLink[] = [

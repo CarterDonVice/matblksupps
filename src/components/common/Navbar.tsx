@@ -3,24 +3,73 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingCart } from 'lucide-react';
+import { Menu, ShoppingCart, X } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
+import { mainNavLinks, type NavLink } from '@/data/navigation';
+import { useState } from 'react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Button } from '../ui/button';
+import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const { itemCount } = useCart();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/shop', label: 'Shop' },
-    { href: '/about', label: 'About' },
-    { href: '/ambassador', label: 'Become an Ambassador' },
-    { href: '/contact', label: 'Contact' }
-  ];
+  const renderNavLink = (link: NavLink, isMobile = false) => {
+    if (link.children) {
+      return (
+        <DropdownMenu key={link.label}>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className={cn(
+              "font-headline text-lg text-muted-foreground hover:text-primary transition-colors duration-300 tracking-wider hover:bg-transparent p-0",
+              isMobile && "justify-start w-full text-xl"
+            )}>
+              {link.label}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="bg-card border-border/70">
+            {link.children.map((child) => (
+              <DropdownMenuItem key={child.href} asChild>
+                <Link href={child.href} className="font-headline text-base text-muted-foreground hover:text-primary">
+                  {child.label}
+                </Link>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    }
 
+    return (
+      <Link
+        key={link.href}
+        href={link.href}
+        onClick={() => isMobile && setMobileMenuOpen(false)}
+        className={cn(
+            "font-headline text-lg text-muted-foreground hover:text-primary transition-colors duration-300 tracking-wider",
+            isMobile && "text-xl py-2"
+        )}
+      >
+        {link.label}
+      </Link>
+    );
+  };
+  
   return (
     <header className="flex flex-col items-center py-2 px-4 md:px-6 bg-transparent">
       <div className="w-full flex justify-between items-center">
-        <div className="flex-1">
+        <div className="flex-1 md:hidden">
+          <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+            <span className="sr-only">Toggle Menu</span>
+          </Button>
+        </div>
+        <div className="flex-1 hidden md:block">
           <Link href="/" className="transition-transform hover:scale-110 block w-fit">
             <Image
               src="/images/matblklogo.png"
@@ -34,7 +83,7 @@ export function Navbar() {
         </div>
 
         <div className="flex-[2] flex justify-center px-4">
-          <Link href="/" className="w-full max-w-sm transition-transform hover:scale-105 pt-2">
+          <Link href="/" className="w-full max-w-xs md:max-w-sm transition-transform hover:scale-105 pt-2">
             <Image
               src="/images/MATBLKfulllogo.png"
               alt="MAT BLK Banner Logo"
@@ -58,17 +107,20 @@ export function Navbar() {
           </Link>
         </div>
       </div>
-      <nav className="flex justify-center items-center gap-4 md:gap-8 mt-2 pb-2 border-b border-border/50 w-full max-w-2xl">
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="font-headline text-lg text-muted-foreground hover:text-primary transition-colors duration-300 tracking-wider"
-          >
-            {link.label}
-          </Link>
-        ))}
+      
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex justify-center items-center gap-4 md:gap-8 mt-2 pb-2 border-b border-border/50 w-full max-w-3xl">
+        {mainNavLinks.map((link) => renderNavLink(link))}
       </nav>
+      
+      {/* Mobile Navigation Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden w-full bg-background mt-4 absolute top-20 left-0 z-50 shadow-lg">
+             <nav className="flex flex-col items-start gap-4 p-6">
+                {mainNavLinks.map((link) => renderNavLink(link, true))}
+             </nav>
+        </div>
+      )}
     </header>
   );
 }
