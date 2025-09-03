@@ -4,7 +4,9 @@ export interface Product {
   id: string;
   slug: string;
   name: string; 
-  subName: string; 
+  subName: string;
+  baseName: string;
+  flavor: string;
   fullName: string;
   category: ProductCategory;
   price: number;

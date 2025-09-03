@@ -1,12 +1,13 @@
 
 // No "use client" directive here - this is now primarily a Server Component
 
-import { getProductBySlug, products as allProducts } from '@/data/products';
+import { getProductBySlug, getProductsByBaseName, products as allProducts } from '@/data/products';
 import Link from 'next/link';
 import type { Product } from '@/lib/types';
 import { ChevronRight } from 'lucide-react';
 import { ProductClientContent } from '@/components/products/ProductClientContent';
 import { notFound } from 'next/navigation';
+import { Badge } from '@/components/ui/badge';
 
 // This function is for Next.js to know which slugs to pre-render at build time
 export async function generateStaticParams() {
@@ -29,6 +30,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound(); // Use Next.js notFound for server components
   }
 
+  const relatedFlavors = getProductsByBaseName(product.baseName).filter(p => p.id !== product.id);
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <nav className="mb-8 text-sm text-muted-foreground flex items-center space-x-2">
@@ -42,7 +45,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </nav>
 
       {/* Pass product data and allProducts to the client component */}
-      <ProductClientContent product={product} allProducts={allProducts} />
+      <ProductClientContent product={product} allProducts={allProducts} relatedFlavors={relatedFlavors} />
     </div>
   );
 }

@@ -10,13 +10,16 @@ import { ProductImageGallery } from '@/components/products/ProductImageGallery';
 import { ProductCard } from '@/components/products/ProductCard';
 import Link from 'next/link';
 import type { Product } from '@/lib/types';
+import { Badge } from '../ui/badge';
+import { cn } from '@/lib/utils';
 
 interface ProductClientContentProps {
   product: Product;
   allProducts: Product[];
+  relatedFlavors: Product[];
 }
 
-export function ProductClientContent({ product, allProducts }: ProductClientContentProps) {
+export function ProductClientContent({ product, allProducts, relatedFlavors }: ProductClientContentProps) {
   const { addToCart } = useCart();
   const { toast } = useToast();
   const [quantity, setQuantity] = useState(1);
@@ -54,12 +57,28 @@ export function ProductClientContent({ product, allProducts }: ProductClientCont
         
         <div className="space-y-6 bg-black/10 backdrop-blur-sm border border-white/20 p-6 rounded-lg">
           <h1 className="font-headline font-bold">
-            <span className="text-5xl lg:text-6xl text-foreground">{product.name}</span><span className="text-5xl lg:text-6xl text-primary ml-4">{product.subName}</span>
+            <span className="text-5xl lg:text-6xl text-foreground">{product.baseName}</span>
+            <span className="text-5xl lg:text-6xl text-primary ml-4">{product.subName}</span>
           </h1>
           
           <p className="font-headline text-3xl text-foreground font-semibold">
             ${product.price.toFixed(2)}
           </p>
+
+          {relatedFlavors.length > 0 && (
+            <div>
+              <p className="text-sm font-medium text-foreground mb-2">Flavor: <span className="text-primary font-bold">{product.flavor}</span></p>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="default" className="text-lg py-1 px-3 border-primary">{product.flavor}</Badge>
+                {relatedFlavors.map(flavor => (
+                  <Link href={`/product/${flavor.slug}`} key={flavor.id}>
+                    <Badge variant="outline" className="text-lg py-1 px-3 cursor-pointer hover:bg-accent hover:text-accent-foreground">{flavor.flavor}</Badge>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
 
           {product.shortDescription && <p className="text-lg text-muted-foreground">{product.shortDescription}</p>}
           
