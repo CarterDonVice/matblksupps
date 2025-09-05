@@ -12,7 +12,7 @@ export const products: Product[] = [
     fullName: 'MAT BLK GO-2 Daily Driver - Sour Gummy',
     category: 'preworkout',
     price: 49.99,
-    images: ['/images/product image 1.png'], 
+    images: ['/images/matblklogo.png'], 
     dataAiHint: 'preworkout supplement',
     shortDescription: 'Carb-infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
     description: [
@@ -50,7 +50,7 @@ export const products: Product[] = [
     fullName: 'MAT BLK GO-2 Daily Driver - Blue Razz',
     category: 'preworkout',
     price: 49.99,
-    images: ['/images/product image 1.png'], 
+    images: ['/images/matblklogo.png'], 
     dataAiHint: 'preworkout supplement',
     shortDescription: 'Carb-infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
     description: [
