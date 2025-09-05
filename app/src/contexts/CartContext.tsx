@@ -76,7 +76,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   );
 
   if (!isMounted) {
-    return null; // Return null until the component is mounted on the client
+    return null; 
   }
 
   return (
