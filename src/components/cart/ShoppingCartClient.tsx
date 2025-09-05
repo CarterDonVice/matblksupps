@@ -46,6 +46,8 @@ export function ShoppingCartClient() {
       fullName: 'All items in your cart',
       slug: '',
       subName: '',
+      baseName: '',
+      flavor: '',
       category: 'preworkout', // dummy value
       price: 0,
       images: [],
@@ -60,7 +62,7 @@ export function ShoppingCartClient() {
   }
 
 
-  if (itemCount === 0 && !itemToRemove) { // Ensure dialog can still show if cart becomes empty due to other actions
+  if (itemCount === 0) {
     return (
       <div className="text-center py-20">
         <ShoppingBag className="h-24 w-24 text-muted-foreground mx-auto mb-6" />
