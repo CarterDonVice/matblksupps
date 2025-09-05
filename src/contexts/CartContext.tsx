@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { CartItem, Product } from '@/lib/types';
@@ -19,10 +18,8 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
     const storedCart = localStorage.getItem('matblk_cart');
     if (storedCart) {
       setCartItems(JSON.parse(storedCart));
@@ -30,10 +27,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    if (isMounted) {
+    if (cartItems.length >= 0) { // ensure it runs on initial empty cart too to clear old data if any
         localStorage.setItem('matblk_cart', JSON.stringify(cartItems));
     }
-  }, [cartItems, isMounted]);
+  }, [cartItems]);
 
   const addToCart = (product: Product, quantity: number = 1) => {
     setCartItems(prevItems => {
@@ -74,10 +71,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     (count, item) => count + item.quantity,
     0
   );
-
-  if (!isMounted) {
-    return null; 
-  }
 
   return (
     <CartContext.Provider
