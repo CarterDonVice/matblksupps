@@ -2,6 +2,8 @@
 import Image from 'next/image';
 import { Zap, Target, ShieldCheck, TestTube2 } from 'lucide-react';
 import type { Metadata } from 'next';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'About Us | MAT BLK Supplements',
@@ -109,6 +111,9 @@ export default function AboutPage() {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Ready to elevate your game? Experience the MAT BLK difference and redefine your limits.
           </p>
+          <Button size="lg" className="btn-primary px-10 py-7 text-lg" asChild>
+            <Link href="/shop">Shop Our Collection</Link>
+          </Button>
         </div>
       </section>
     </div>
