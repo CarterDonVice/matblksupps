@@ -16,14 +16,13 @@ export const products: Product[] = [
     dataAiHint: 'preworkout supplement',
     shortDescription: 'Carb-infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
     description: [
-      "Enhance your training with MAT BLK's GO-2 Daily Driver. This formula is built on science and backed by clinical research, using clinically dosed ingredients including L-Citrulline, NO3-T Arginine Nitrate, L-Tyrosine, Alpha-GPC, Huperzine A, Cluster Dextrin, Taurine, and a dual-source caffeine system. With added support for nutrient absorption and a smooth, moderate-stim profile, GO-2 is the pre-workout you’ll rely on day in and day out.",
+      "Enhance your training with MAT BLK's GO-2 Daily Driver. This formula is built on science and backed by clinical research, using clinically dosed ingredients including L-Citrulline, L-Tyrosine, Alpha-GPC, Huperzine A, Taurine, and a dual-source caffeine system. With added support for nutrient absorption and a smooth, moderate-stim profile, GO-2 is the pre-workout you’ll rely on day in and day out.",
       "† Based on clinical studies of individual ingredients at matching dosages. This product has not been clinically tested. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
     ],
     sellingPoints: ["Clinically dosed Pump+Focus stack", "Dual-Phase energy complex", "Carb-Fueled endurance", "Enhanced absorption"],
     ingredients: [
       'Pump & Performance',
       'L-Citrulline – 6,000 mg',
-      'NO3-T® (Arginine Nitrate) – 500 mg',
       'Focus & Cognition',
       'L-Tyrosine – 2,000 mg',
       'Alpha-GPC (50%) – 600 mg',
@@ -32,8 +31,6 @@ export const products: Product[] = [
       'Caffeine Anhydrous – 100 mg',
       'Dicaffeine Malate (Infinergy®) – 133 mg (yields ~100 mg caffeine)',
       'Total Caffeine Yield – ~200 mg',
-      'Carbohydrate Fuel',
-      'Cluster Dextrin® (Highly Branched Cyclic Dextrin) – 10,000 mg',
       'Hydration & Support',
       'Taurine – 1,000 mg',
       'Himalayan Pink Salt – 200 mg',
@@ -57,14 +54,13 @@ export const products: Product[] = [
     dataAiHint: 'preworkout supplement',
     shortDescription: 'Carb-infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
     description: [
-      "Enhance your training with MAT BLK's GO-2 Daily Driver. This formula is built on science and backed by clinical research, using clinically dosed ingredients including L-Citrulline, NO3-T Arginine Nitrate, L-Tyrosine, Alpha-GPC, Huperzine A, Cluster Dextrin, Taurine, and a dual-source caffeine system. With added support for nutrient absorption and a smooth, moderate-stim profile, GO-2 is the pre-workout you’ll rely on day in and day out.",
+      "Enhance your training with MAT BLK's GO-2 Daily Driver. This formula is built on science and backed by clinical research, using clinically dosed ingredients including L-Citrulline, L-Tyrosine, Alpha-GPC, Huperzine A, Taurine, and a dual-source caffeine system. With added support for nutrient absorption and a smooth, moderate-stim profile, GO-2 is the pre-workout you’ll rely on day in and day out.",
       "† Based on clinical studies of individual ingredients at matching dosages. This product has not been clinically tested. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
     ],
     sellingPoints: ["Clinically dosed Pump+Focus stack", "Dual-Phase energy complex", "Carb-Fueled endurance", "Enhanced absorption"],
     ingredients: [
       'Pump & Performance',
       'L-Citrulline – 6,000 mg',
-      'NO3-T® (Arginine Nitrate) – 500 mg',
       'Focus & Cognition',
       'L-Tyrosine – 2,000 mg',
       'Alpha-GPC (50%) – 600 mg',
@@ -73,8 +69,6 @@ export const products: Product[] = [
       'Caffeine Anhydrous – 100 mg',
       'Dicaffeine Malate (Infinergy®) – 133 mg (yields ~100 mg caffeine)',
       'Total Caffeine Yield – ~200 mg',
-      'Carbohydrate Fuel',
-      'Cluster Dextrin® (Highly Branched Cyclic Dextrin) – 10,000 mg',
       'Hydration & Support',
       'Taurine – 1,000 mg',
       'Himalayan Pink Salt – 200 mg',

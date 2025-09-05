@@ -29,7 +29,6 @@ const scienceData: IngredientCategory[] = [
     title: "Carbs",
     ingredients: [
       { name: "Palatinose (Isomaltulose)", summary: "A slow-digesting, low-glycemic carbohydrate derived from beet sugar, Palatinose provides sustained blood glucose and energy release. It prevents sharp insulin spikes and crashes, supporting endurance-based performance. It’s included in pre‑workouts to supply long-lasting fuel without gastrointestinal upset." },
-      { name: "Cluster Dextrin", summary: "Cluster Dextrin is a highly-branched cyclic dextrin engineered for rapid gastric emptying and low osmolality. It delivers fast, clean energy while minimizing gut distress—ideal for high-volume or intense sessions. It’s a staple carb in formulas focused on performance and recovery." }
     ]
   },
   {
@@ -183,3 +182,4 @@ export default function SciencePage() {
     
 
     
+
