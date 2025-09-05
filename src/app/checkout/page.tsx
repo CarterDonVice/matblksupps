@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -8,11 +9,18 @@ import { CreditCard, Lock, Mail, MapPin, User } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function CheckoutPage() {
   const { cartItems, cartTotal, clearCart } = useCart();
   const router = useRouter();
   const { toast } = useToast();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,6 +33,10 @@ export default function CheckoutPage() {
     clearCart();
     router.push("/"); 
   };
+
+  if (!isMounted) {
+    return null; // Render nothing until mounted on the client to avoid hydration mismatch
+  }
 
   if (cartItems.length === 0) {
     return (
