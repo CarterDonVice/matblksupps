@@ -88,7 +88,7 @@ export const products: Product[] = [
     fullName: 'Jitter Bug-Ultra High Stim - Fruit Punch',
     category: 'preworkout',
     price: 54.99,
-    images: ['/images/MATBLKfulllogo.png'],
+    images: ['/images/matblklogo.png'],
     dataAiHint: 'company logo',
     shortDescription: 'Unleash unparalleled intensity with our high-stimulant preworkout.',
     description: [
@@ -108,7 +108,7 @@ export const products: Product[] = [
     fullName: 'Tunnel Vision-Nootropic Non-Stim',
     category: 'preworkout',
     price: 45.99,
-    images: ['/images/MATBLKfulllogo.png'],
+    images: ['/images/matblklogo.png'],
     dataAiHint: 'company logo',
     shortDescription: 'Achieve peak mental clarity and pump without stimulants.',
     description: [
@@ -128,7 +128,7 @@ export const products: Product[] = [
     fullName: 'Pump Primer Pre',
     category: 'preworkout',
     price: 42.99,
-    images: ['/images/MATBLKfulllogo.png'],
+    images: ['/images/matblklogo.png'],
     dataAiHint: 'company logo',
     shortDescription: 'A versatile, pump-focused pre-workout designed for massive vasodilation, perfect for stacking or standalone use.',
     description: [
@@ -148,7 +148,7 @@ export const products: Product[] = [
     fullName: 'Stacked Creatine',
     category: 'creatine',
     price: 39.99,
-    images: ['/images/MATBLKfulllogo.png'],
+    images: ['/images/matblklogo.png'],
     dataAiHint: 'company logo',
     shortDescription: 'Elevate your strength and muscle growth with our advanced creatine blend.',
     description: [
@@ -168,7 +168,7 @@ export const products: Product[] = [
     fullName: 'Foundation Fuel Protein',
     category: 'protein',
     price: 59.99,
-    images: ['/images/MATBLKfulllogo.png'],
+    images: ['/images/matblklogo.png'],
     dataAiHint: 'company logo',
     shortDescription: 'Premium quality protein for optimal muscle recovery and growth.',
     description: [

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -9,7 +8,6 @@ import { CreditCard, Lock, Mail, MapPin, User } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
-import Image from "next/image";
 
 export default function CheckoutPage() {
   const { cartItems, cartTotal, clearCart } = useCart();

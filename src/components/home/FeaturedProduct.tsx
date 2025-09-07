@@ -37,7 +37,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
 
   const increaseQuantity = () => setQuantity(prev => prev + 1);
   const decreaseQuantity = () => setQuantity(prev => Math.max(1, prev - 1));
-  const logos = Array(15).fill("/images/MATBLKfulllogo.png");
+  const logos = Array(15).fill("/images/matblklogo.png");
 
   return (
     <div className="relative -mt-4 bg-background overflow-hidden flex flex-col justify-center min-h-screen pt-0 pb-12">
