@@ -20,7 +20,7 @@ interface CategoryPageProps {
 // Function to capitalize first letter for titles
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-export default function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({ params }: CategoryPageProps) {
   const { category } = params;
   const products = getProductsByCategory(category);
 
