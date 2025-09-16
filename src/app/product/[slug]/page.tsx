@@ -32,14 +32,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const relatedFlavors = getProductsByBaseName(product.baseName).filter(p => p.id !== product.id);
 
+  const categoryName = product.category.charAt(0).toUpperCase() + product.category.slice(1);
+  const categoryLink = `/shop/${product.category}`;
+
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <nav className="mb-8 text-sm text-muted-foreground flex items-center space-x-2">
         <Link href="/" className="hover:text-primary">Home</Link>
         <ChevronRight size={16} />
-        <span>
-          {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
-        </span>
+        <Link href={categoryLink} className="hover:text-primary">
+          {categoryName}
+        </Link>
         <ChevronRight size={16} />
         <span className="text-foreground">{product.fullName}</span>
       </nav>

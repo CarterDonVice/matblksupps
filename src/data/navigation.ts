@@ -11,6 +11,9 @@ export const mainNavLinks: NavLink[] = [
   {
     href: '/shop',
     label: 'Shop',
+    children: [
+        { href: '/shop/preworkout', label: 'Pre-workout' },
+    ]
   },
   { href: '/science', label: 'Science' },
   { href: '/about', label: 'About' },
