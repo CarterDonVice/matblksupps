@@ -22,8 +22,7 @@ interface ProductPageProps {
   };
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug } = params;
+export default async function ProductPage({ params: { slug } }: ProductPageProps) {
   const product = getProductBySlug(slug);
 
   if (!product) {
@@ -55,8 +54,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
 }
 
 // Generate metadata for the page
-export async function generateMetadata({ params }: ProductPageProps) {
-  const product = getProductBySlug(params.slug);
+export async function generateMetadata({ params: { slug } }: ProductPageProps) {
+  const product = getProductBySlug(slug);
   if (!product) {
     return {
       title: "Product Not Found",
