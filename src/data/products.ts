@@ -1,4 +1,3 @@
-
 import type { Product, ProductCategory } from '@/lib/types';
 
 export const products: Product[] = [
@@ -12,7 +11,7 @@ export const products: Product[] = [
     fullName: 'MAT BLK Blackout Daily Driver - Sour Gummy',
     category: 'preworkout',
     price: 49.99,
-    images: ['/images/product image 1.png'], 
+    images: ['/images/product image 1.png'],
     dataAiHint: 'preworkout supplement',
     shortDescription: 'Carb-infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
     description: [
@@ -83,14 +82,11 @@ export const products: Product[] = [
   },
 ];
 
-export const getProductBySlug = (slug: string): Product | undefined => {
-  return products.find(product => product.slug === slug);
-};
+export const getProductBySlug = (slug: string): Product | undefined =>
+  products.find(product => product.slug === slug);
 
-export const getProductsByCategory = (category: ProductCategory): Product[] => {
-  return products.filter(product => product.category === category);
-};
+export const getProductsByCategory = (category: ProductCategory): Product[] =>
+  products.filter(product => product.category === category);
 
-export const getProductsByBaseName = (baseName: string): Product[] => {
-  return products.filter(product => product.baseName === baseName);
-}
+export const getProductsByBaseName = (baseName: string): Product[] =>
+  products.filter(product => product.baseName === baseName);
