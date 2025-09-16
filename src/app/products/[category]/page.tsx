@@ -69,9 +69,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 }
 
 export async function generateMetadata({ params }: CategoryPageProps) {
-  const categoryTitle = params.category === 'preworkout' ? 'Pre-Workout' : capitalize(params.category);
+  const { category } = params;
+  const categoryTitle = category === 'preworkout' ? 'Pre-Workout' : capitalize(category);
   return {
     title: `${categoryTitle} | MAT BLK Supplements`,
-    description: `Browse our ${params.category.toLowerCase()} products at MAT BLK Supplements.`,
+    description: `Browse our ${category.toLowerCase()} products at MAT BLK Supplements.`,
   };
 }
