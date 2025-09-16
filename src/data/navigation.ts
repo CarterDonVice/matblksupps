@@ -11,11 +11,6 @@ export const mainNavLinks: NavLink[] = [
   {
     href: '/shop',
     label: 'Shop',
-    children: [
-      { href: '/products/preworkout', label: 'Pre-Workout', category: 'preworkout' },
-      { href: '/products/protein', label: 'Protein', category: 'protein' },
-      { href: '/products/creatine', label: 'Creatine', category: 'creatine' },
-    ],
   },
   { href: '/science', label: 'Science' },
   { href: '/about', label: 'About' },

@@ -37,9 +37,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <nav className="mb-8 text-sm text-muted-foreground flex items-center space-x-2">
         <Link href="/" className="hover:text-primary">Home</Link>
         <ChevronRight size={16} />
-        <Link href={`/products/${product.category}`} className="hover:text-primary">
+        <span>
           {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
-        </Link>
+        </span>
         <ChevronRight size={16} />
         <span className="text-foreground">{product.fullName}</span>
       </nav>
