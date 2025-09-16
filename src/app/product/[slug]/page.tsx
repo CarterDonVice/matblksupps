@@ -22,7 +22,8 @@ interface ProductPageProps {
   };
 }
 
-export default async function ProductPage({ params: { slug } }: ProductPageProps) {
+export default async function ProductPage({ params }: ProductPageProps) {
+  const slug = params.slug;
   const product = getProductBySlug(slug);
 
   if (!product) {
@@ -54,7 +55,8 @@ export default async function ProductPage({ params: { slug } }: ProductPageProps
 }
 
 // Generate metadata for the page
-export async function generateMetadata({ params: { slug } }: ProductPageProps) {
+export async function generateMetadata({ params }: ProductPageProps) {
+  const slug = params.slug;
   const product = getProductBySlug(slug);
   if (!product) {
     return {
