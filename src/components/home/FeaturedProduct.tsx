@@ -90,7 +90,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
             
             <div className="bg-black/10 backdrop-blur-sm border border-white/20 p-6 rounded-lg space-y-6">
               <h1 className="font-headline font-bold">
-                  <span className="text-5xl lg:text-6xl text-primary">GO-2</span>
+                  <span className="text-5xl lg:text-6xl text-primary">Blackout</span>
                   <span className="text-5xl lg:text-6xl text-foreground ml-4">Daily Driver</span>
               </h1>
               
