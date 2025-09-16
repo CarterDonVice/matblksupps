@@ -1,3 +1,4 @@
+
 // Rebuilt from scratch to conform to Next.js 15 architecture.
 
 // This page will be a Server Component to handle data fetching and metadata.
@@ -27,7 +28,8 @@ interface ProductPageProps {
 // It is marked `async` to allow for data fetching.
 // CRITICAL FIX: The `slug` is destructured directly from `params` in the function signature.
 // This is the correct pattern for Next.js 15 to avoid the "param property was accessed directly" error.
-export default async function ProductPage({ params: { slug } }: ProductPageProps) {
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { slug } = params;
   
   // Fetch the specific product data on the server using the slug.
   const product = getProductBySlug(slug);
@@ -75,7 +77,8 @@ export default async function ProductPage({ params: { slug } }: ProductPageProps
 
 // This function generates the page's metadata (like title and description) on the server.
 // CRITICAL FIX: Just like the page component, it destructures `slug` directly from `params`.
-export async function generateMetadata({ params: { slug } }: ProductPageProps) {
+export async function generateMetadata({ params }: ProductPageProps) {
+  const { slug } = params;
   const product = getProductBySlug(slug);
 
   if (!product) {
