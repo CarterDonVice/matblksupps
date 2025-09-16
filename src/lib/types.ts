@@ -16,6 +16,7 @@ export interface Product {
   sellingPoints?: string[];
   ingredients?: string[];
   dataAiHint?: string;
+  isOutOfStock?: boolean;
 }
 
 export interface CartItem extends Product {

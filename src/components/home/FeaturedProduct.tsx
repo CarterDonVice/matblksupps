@@ -114,18 +114,24 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
                   <div className="flex items-center gap-4 pt-4">
                   <p className="text-sm font-medium text-foreground">Quantity:</p>
                   <div className="flex items-center rounded-md border border-white/20">
-                      <Button variant="ghost" size="icon" onClick={decreaseQuantity} className="h-10 w-10 rounded-r-none">
+                      <Button variant="ghost" size="icon" onClick={decreaseQuantity} className="h-10 w-10 rounded-r-none" disabled={product.isOutOfStock}>
                       <Minus className="h-4 w-4" />
                       </Button>
                       <span className="px-4 w-12 text-center font-medium">{quantity}</span>
-                      <Button variant="ghost" size="icon" onClick={increaseQuantity} className="h-10 w-10 rounded-l-none">
+                      <Button variant="ghost" size="icon" onClick={increaseQuantity} className="h-10 w-10 rounded-l-none" disabled={product.isOutOfStock}>
                       <Plus className="h-4 w-4" />
                       </Button>
                   </div>
                   </div>
 
-                  <Button size="lg" className="w-full btn-primary py-7 text-lg" onClick={handleAddToCart}>
-                  <ShoppingCartIcon className="mr-2 h-5 w-5" /> Add to Cart
+                  <Button size="lg" className="w-full btn-primary py-7 text-lg" onClick={handleAddToCart} disabled={product.isOutOfStock}>
+                    {product.isOutOfStock ? (
+                      'Out of Stock'
+                    ) : (
+                      <>
+                        <ShoppingCartIcon className="mr-2 h-5 w-5" /> Add to Cart
+                      </>
+                    )}
                   </Button>
               </div>
           </div>

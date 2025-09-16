@@ -39,6 +39,7 @@ export const products: Product[] = [
       'Absorption Enhancer',
       'Piperine (Black Pepper Extract, 95%) – 5 mg',
     ],
+    isOutOfStock: true,
   },
   {
     id: '4',
