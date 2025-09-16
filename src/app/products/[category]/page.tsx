@@ -1,15 +1,12 @@
 
+"use client";
+
 import { getProductsByCategory } from '@/data/products';
 import { ProductCard } from '@/components/products/ProductCard';
 import type { ProductCategory } from '@/lib/types';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
-
-export async function generateStaticParams() {
-  const categories: ProductCategory[] = ['preworkout', 'protein', 'creatine'];
-  return categories.map(category => ({ category }));
-}
 
 interface CategoryPageProps {
   params: {
@@ -20,7 +17,8 @@ interface CategoryPageProps {
 // Function to capitalize first letter for titles
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-export default function CategoryPage({ params: { category } }: CategoryPageProps) {
+export default function CategoryPage({ params }: CategoryPageProps) {
+  const { category } = params;
   const products = getProductsByCategory(category);
 
   if (!products.length && !['preworkout', 'protein', 'creatine'].includes(category)) {
@@ -67,7 +65,10 @@ export default function CategoryPage({ params: { category } }: CategoryPageProps
   );
 }
 
-export function generateMetadata({ params: { category } }: CategoryPageProps) {
+// Note: generateMetadata still runs on the server.
+// It is kept separate and doesn't affect the client component rendering.
+export function generateMetadata({ params }: CategoryPageProps) {
+  const { category } = params;
   const categoryTitle = category === 'preworkout' ? 'Pre-Workout' : capitalize(category);
   return {
     title: `${categoryTitle} | MAT BLK Supplements`,
