@@ -40,7 +40,7 @@ export default function HomePage() {
   return (
     <div>
       {/* New Hero Section */}
-      <section className="py-24 md:py-32 bg-background text-center">
+      <section className="py-16 md:py-20 bg-background text-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="font-headline text-5xl md:text-7xl font-bold text-primary mb-4 animate-fade-in-up">
               Performance From Every Angle
