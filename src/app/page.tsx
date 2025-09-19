@@ -5,11 +5,31 @@ import Link from 'next/link';
 import { FeaturedProduct } from '@/components/home/FeaturedProduct';
 import { ProductDescriptionSection } from '@/components/home/ProductDescriptionSection';
 import { ProductIngredientsSection } from '@/components/home/ProductIngredientsSection';
-import { Layers, Fuel, Spline, FlaskConical } from 'lucide-react';
+import { Layers, Fuel, FlaskConical } from 'lucide-react';
+
+const DifferentiatorFlexIcon = () => (
+    <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width="24" 
+        height="24" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        className="h-10 w-10 text-primary"
+    >
+        <path d="M8 11.33c0-2.21-.89-4.21-2.34-5.66A7.99 7.99 0 0 0 1.2 3.55c-.7.69-1.2 1.58-1.2 2.58 0 1.66 1.34 3 3 3 .75 0 1.42-.28 1.94-.73.52-.45.94-1.02 1.21-1.64.27-.62.4-1.29.4-1.99 0-.2-.01-.39-.03-.58"/>
+        <path d="m15.66 12.34-2.58 2.58a2 2 0 0 1-2.83 0l-1.41-1.41a2 2 0 0 1 0-2.83l2.58-2.58a2 2 0 0 1 2.83 0l1.41 1.41a2 2 0 0 1 0 2.83z"/>
+        <path d="M18 10.33c0 .7-.13 1.37-.4 1.99-.27.62-.69 1.19-1.21 1.64-.52.45-1.19.73-1.94.73-1.66 0-3-1.34-3-3 0-1 .5-1.89 1.2-2.58a7.99 7.99 0 0 1 4.46-2.11C17.11 7.12 18 8.12 18 9.33V10c0 .2-.01.39-.03.58"/>
+    </svg>
+);
+
 
 const differentiators = [
     {
-        icon: <Spline className="h-10 w-10 text-primary" />,
+        icon: <DifferentiatorFlexIcon />,
         title: 'Dual Pump Pathways',
         description: 'Targeting multiple pathways for a comprehensive and sustained pump.',
     },
