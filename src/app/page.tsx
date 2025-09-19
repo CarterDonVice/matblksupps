@@ -19,11 +19,9 @@ const DifferentiatorFlexIcon = () => (
     className="h-10 w-10 text-primary"
     aria-hidden="true"
   >
-    <path d="M14 5h3a2 2 0 0 1 2 2v2h-5V5z"/>
-    <path d="M14 7h5"/>
-    <path d="M14 9v3c0 1.1-.9 2-2 2h-1"/>
-    <path d="M11 14c-3 0-5 2-5 4s1.8 4 4 4h4c3 0 5-2.2 5-5 0-1.7-1.3-3-3-3"/>
-    <path d="M9.5 15.5c.9-.7 1.9-1 3.5-1"/>
+    <path d="M7.5 13.5c-2.2 2.2 1.2 5.5 4.5 4.5s4.5-4.5 2-6.5-5-4-6.5-2z" />
+    <path d="M18.5 7.5c2.5-2.5-1.5-6.5-4-4s-4.5 4.5-2 6.5" />
+    <path d="M12.5 11.5l-2 2" />
   </svg>
 );
 
