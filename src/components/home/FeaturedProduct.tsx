@@ -42,14 +42,14 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
     <div className="relative bg-background overflow-hidden flex flex-col justify-center py-12 md:py-24">
        {/* Static Logo Grid Background */}
       <div className="absolute inset-0 z-0 opacity-5" aria-hidden="true">
-        <div className="grid grid-cols-5 gap-4">
-          {Array(40).fill("/images/matblklogo.png").map((src, index) => (
+        <div className="grid grid-cols-10 gap-2">
+          {Array(100).fill("/images/matblklogo.png").map((src, index) => (
             <div key={index} className="flex-shrink-0">
               <Image
                 src={src}
                 alt=""
-                width={150}
-                height={150}
+                width={100}
+                height={100}
                 className="object-contain"
               />
             </div>
