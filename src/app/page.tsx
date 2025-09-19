@@ -9,7 +9,7 @@ import { Layers, Fuel, FlaskConical } from 'lucide-react';
 
 const DifferentiatorFlexIcon = () => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
+    xmlns="http://www.w.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -19,9 +19,7 @@ const DifferentiatorFlexIcon = () => (
     className="h-10 w-10 text-primary"
     aria-hidden="true"
   >
-    <path d="M7.5 13.5c-2.2 2.2 1.2 5.5 4.5 4.5s4.5-4.5 2-6.5-5-4-6.5-2z" />
-    <path d="M18.5 7.5c2.5-2.5-1.5-6.5-4-4s-4.5 4.5-2 6.5" />
-    <path d="M12.5 11.5l-2 2" />
+    <path d="M8 20.25c0 .414.336.75.75.75h10.5a.75.75 0 00.75-.75v-6a.75.75 0 00-.75-.75H18c-1.105 0-2-.895-2-2V8c0-1.105-.895-2-2-2H4.75a.75.75 0 010-1.5h10.5c1.933 0 3.5 1.567 3.5 3.5v3.5c0 1.933 1.567 3.5 3.5 3.5h.75a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-3a.75.75 0 000 1.5h2.25v3H21a2.25 2.25 0 01-2.25 2.25H18a2.25 2.25 0 01-2.25-2.25V8A3.5 3.5 0 0012.25 4.5H4.75a.75.75 0 000 1.5H11c.69 0 1.25.56 1.25 1.25v3.5c0 .69.56 1.25 1.25 1.25h1.75c.414 0 .75.336.75.75v5.25H8.75a.75.75 0 00-.75.75z" clipRule="evenodd" fill="currentColor"/>
   </svg>
 );
 
