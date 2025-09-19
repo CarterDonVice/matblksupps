@@ -5,28 +5,11 @@ import Link from 'next/link';
 import { FeaturedProduct } from '@/components/home/FeaturedProduct';
 import { ProductDescriptionSection } from '@/components/home/ProductDescriptionSection';
 import { ProductIngredientsSection } from '@/components/home/ProductIngredientsSection';
-import { Layers, Fuel, FlaskConical } from 'lucide-react';
-
-const DifferentiatorFlexIcon = () => (
-  <svg
-    xmlns="http://www.w.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="h-10 w-10 text-primary"
-    aria-hidden="true"
-  >
-    <path d="M8 20.25c0 .414.336.75.75.75h10.5a.75.75 0 00.75-.75v-6a.75.75 0 00-.75-.75H18c-1.105 0-2-.895-2-2V8c0-1.105-.895-2-2-2H4.75a.75.75 0 010-1.5h10.5c1.933 0 3.5 1.567 3.5 3.5v3.5c0 1.933 1.567 3.5 3.5 3.5h.75a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-3a.75.75 0 000 1.5h2.25v3H21a2.25 2.25 0 01-2.25 2.25H18a2.25 2.25 0 01-2.25-2.25V8A3.5 3.5 0 0012.25 4.5H4.75a.75.75 0 000 1.5H11c.69 0 1.25.56 1.25 1.25v3.5c0 .69.56 1.25 1.25 1.25h1.75c.414 0 .75.336.75.75v5.25H8.75a.75.75 0 00-.75.75z" clipRule="evenodd" fill="currentColor"/>
-  </svg>
-);
-
+import { Layers, Fuel, FlaskConical, Dumbbell } from 'lucide-react';
 
 const differentiators = [
     {
-        icon: <DifferentiatorFlexIcon />,
+        icon: <Dumbbell className="h-10 w-10 text-primary" />,
         title: 'Dual Pump Pathways',
         description: 'Targeting multiple pathways for a comprehensive and sustained pump.',
     },
