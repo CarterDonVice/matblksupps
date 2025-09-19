@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Minus, Plus, ShoppingCartIcon, Zap } from 'lucide-react';
 import { ProductImageGallery } from '@/components/products/ProductImageGallery';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface FeaturedProductProps {
   product: Product;
@@ -39,6 +40,23 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
 
   return (
     <div className="relative bg-background overflow-hidden flex flex-col justify-center py-12 md:py-24">
+       {/* Static Logo Grid Background */}
+      <div className="absolute inset-0 z-0 opacity-5" aria-hidden="true">
+        <div className="grid grid-cols-5 gap-4">
+          {Array(40).fill("/images/matblklogo.png").map((src, index) => (
+            <div key={index} className="flex-shrink-0">
+              <Image
+                src={src}
+                alt=""
+                width={150}
+                height={150}
+                className="object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative z-10 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="relative h-[400px] md:h-auto flex items-center justify-center">
