@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Minus, Plus, ShoppingCartIcon, Zap } from 'lucide-react';
 import { ProductImageGallery } from '@/components/products/ProductImageGallery';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface FeaturedProductProps {
   product: Product;
@@ -18,6 +19,7 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
   const { addToCart } = useCart();
   const { toast } = useToast();
   const [quantity, setQuantity] = useState(1);
+  const logos = Array(18).fill("/images/matblklogo.png");
   
   const handleAddToCart = () => {
     addToCart(product, quantity);
@@ -39,6 +41,19 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
 
   return (
     <div className="relative bg-background overflow-hidden flex flex-col justify-center py-12 md:py-24">
+       <div className="absolute inset-0 grid grid-cols-6 gap-4 opacity-5 pointer-events-none">
+        {logos.map((src, index) => (
+          <div key={index} className="flex-shrink-0">
+            <Image
+              src={src}
+              alt="MAT BLK Logo"
+              width={200}
+              height={200}
+              className="object-contain"
+            />
+          </div>
+        ))}
+      </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative z-10 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="relative h-[400px] md:h-auto flex items-center justify-center">

@@ -6,7 +6,6 @@ import { FeaturedProduct } from '@/components/home/FeaturedProduct';
 import { ProductDescriptionSection } from '@/components/home/ProductDescriptionSection';
 import { ProductIngredientsSection } from '@/components/home/ProductIngredientsSection';
 import { Layers, Fuel, FlaskConical, Dumbbell } from 'lucide-react';
-import { LogoCarousel } from '@/components/home/LogoCarousel';
 
 const differentiators = [
     {
@@ -75,8 +74,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <LogoCarousel />
 
       {/* Featured Product Section - Moved Down */}
       <FeaturedProduct product={dailyDriverProduct} />
