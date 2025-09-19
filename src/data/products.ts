@@ -38,47 +38,7 @@ export const products: Product[] = [
       'Absorption Enhancer',
       'Piperine (Black Pepper Extract, 95%) – 5 mg',
     ],
-    isOutOfStock: true,
-  },
-  {
-    id: '4',
-    slug: 'mat-blk-stacked-creatine',
-    name: 'Stacked Creatine',
-    subName: '',
-    baseName: 'Stacked Creatine',
-    flavor: 'Unflavored',
-    fullName: 'Stacked Creatine',
-    category: 'creatine',
-    price: 39.99,
-    images: ['/images/matblklogo.png'],
-    dataAiHint: 'company logo',
-    shortDescription: 'Elevate your strength and muscle growth with our advanced creatine blend.',
-    description: [
-      'Stacked Creatine combines multiple forms of creatine with synergistic ingredients to maximize absorption and effectiveness. Build lean muscle, increase strength, and improve recovery.',
-      'Our formula ensures you get the most out of every training session.'
-    ],
-    sellingPoints: ['Multi-source creatine blend', 'Enhanced absorption', 'Supports muscle growth', 'Improves strength & power'],
-    ingredients: ['Creatine Monohydrate', 'Creatine HCl', 'Creatine MagnaPower®', 'Betaine Anhydrous', 'Astragin®'],
-  },
-  {
-    id: '5',
-    slug: 'mat-blk-foundation-fuel',
-    name: 'Foundation Fuel',
-    subName: 'Protein',
-    baseName: 'Foundation Fuel Protein',
-    flavor: 'Chocolate',
-    fullName: 'Foundation Fuel Protein',
-    category: 'protein',
-    price: 59.99,
-    images: ['/images/matblklogo.png'],
-    dataAiHint: 'company logo',
-    shortDescription: 'Premium quality protein for optimal muscle recovery and growth.',
-    description: [
-      'Foundation Fuel Protein provides a high-quality, easily digestible protein source to fuel your muscles and support recovery. Our blend is rich in essential amino acids and tastes incredible.',
-      'Perfect for post-workout shakes or as a convenient way to meet your daily protein needs.'
-    ],
-    sellingPoints: ['Premium whey protein blend', 'Supports muscle recovery', 'Promotes lean muscle growth', 'Delicious taste & mixability'],
-    ingredients: ['Whey Protein Isolate', 'Whey Protein Concentrate', 'Digestive Enzyme Blend', 'Natural Flavors'],
+    isOutOfStock: false,
   },
 ];
 
