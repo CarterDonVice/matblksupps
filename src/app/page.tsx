@@ -80,18 +80,6 @@ export default function HomePage() {
       <ProductDescriptionSection product={dailyDriverProduct} />
       <ProductIngredientsSection product={dailyDriverProduct} />
 
-      <section className="py-16 md:py-24 bg-card">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center animate-fade-in-up">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-6">
-              Why MAT BLK?
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              At MAT BLK, we're done with underdosed and overhyped supplements. Every product is built on real science, fully dosed, and made with quality ingredients that deliver. We’re here to raise the standard so you can push harder, train better, and get more out of every workout.
-            </p>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
