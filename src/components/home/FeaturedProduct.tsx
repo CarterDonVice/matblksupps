@@ -6,10 +6,22 @@ import type { Product } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
 import { useToast } from "@/hooks/use-toast";
-import { Minus, Plus, ShoppingCartIcon, Zap } from 'lucide-react';
+import { Minus, Plus, ShoppingCartIcon, Zap, Bell, Mail, Phone } from 'lucide-react';
 import { ProductImageGallery } from '@/components/products/ProductImageGallery';
 import Link from 'next/link';
 import Image from 'next/image';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
 
 interface FeaturedProductProps {
   product: Product;
@@ -19,6 +31,8 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
   const { addToCart } = useCart();
   const { toast } = useToast();
   const [quantity, setQuantity] = useState(1);
+  const [notifyDialogOpen, setNotifyDialogOpen] = useState(false);
+
   const logos = Array(18).fill("/images/matblklogo.png");
   
   const handleAddToCart = () => {
@@ -33,6 +47,16 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
             </Button>
          </Link>
       ),
+    });
+  };
+
+  const handleNotifySubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // In a real app, you'd handle form submission here (e.g., send to an API)
+    setNotifyDialogOpen(false);
+    toast({
+      title: "You're on the list!",
+      description: "We'll notify you as soon as this product is back in stock.",
     });
   };
 
@@ -98,15 +122,56 @@ export function FeaturedProduct({ product }: FeaturedProductProps) {
                   </div>
                   </div>
 
-                  <Button size="lg" className="w-full btn-primary py-7 text-lg" onClick={handleAddToCart} disabled={product.isOutOfStock}>
-                    {product.isOutOfStock ? (
-                      'Out of Stock'
-                    ) : (
-                      <>
-                        <ShoppingCartIcon className="mr-2 h-5 w-5" /> Add to Cart
-                      </>
-                    )}
-                  </Button>
+                  {product.isOutOfStock ? (
+                    <div className="space-y-4">
+                      <Button size="lg" className="w-full btn-primary py-7 text-lg" disabled>
+                        Out of Stock
+                      </Button>
+                       <Dialog open={notifyDialogOpen} onOpenChange={setNotifyDialogOpen}>
+                        <DialogTrigger asChild>
+                          <Button size="lg" variant="outline" className="w-full py-7 text-lg btn-secondary">
+                            <Bell className="mr-2 h-5 w-5" /> Let me know when it's back!
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px]">
+                          <DialogHeader>
+                            <DialogTitle>Get Notified</DialogTitle>
+                            <DialogDescription>
+                              Enter your email and phone number below to be notified when {product.fullName} is back in stock.
+                            </DialogDescription>
+                          </DialogHeader>
+                          <form onSubmit={handleNotifySubmit}>
+                            <div className="grid gap-4 py-4">
+                              <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="email" className="text-right flex items-center justify-end gap-1">
+                                  <Mail className="w-4 h-4" /> Email
+                                </Label>
+                                <Input id="email" type="email" placeholder="you@example.com" required className="col-span-3" />
+                              </div>
+                              <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="phone" className="text-right flex items-center justify-end gap-1">
+                                  <Phone className="w-4 h-4" /> Phone
+                                </Label>
+                                <Input id="phone" type="tel" placeholder="(555) 555-5555" className="col-span-3" />
+                              </div>
+                            </div>
+                            <DialogFooter>
+                              <DialogClose asChild>
+                                <Button type="button" variant="secondary">
+                                  Cancel
+                                </Button>
+                              </DialogClose>
+                              <Button type="submit" className="btn-primary">Notify Me</Button>
+                            </DialogFooter>
+                          </form>
+                        </DialogContent>
+                      </Dialog>
+                    </div>
+                  ) : (
+                    <Button size="lg" className="w-full btn-primary py-7 text-lg" onClick={handleAddToCart}>
+                      <ShoppingCartIcon className="mr-2 h-5 w-5" /> Add to Cart
+                    </Button>
+                  )}
               </div>
           </div>
       </div>
