@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { Check } from 'lucide-react';
 import { useSelection } from '@/contexts/SelectionContext';
 import { blackoutDailyDriver } from '@/lib/products';
 
@@ -11,7 +12,7 @@ export function FlavorSelector() {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
+      <div className="flex items-baseline justify-between">
         <span className="label-eyebrow">Flavor</span>
         <span className="text-bone text-sm font-medium tracking-wide">
           {selected?.name}
@@ -33,27 +34,50 @@ export function FlavorSelector() {
               aria-checked={active}
               onClick={() => setFlavor(flavor.id)}
               className={[
-                'group relative h-[88px] rounded-xl px-4 py-3',
-                'flex flex-col items-center justify-center gap-1 text-center',
-                'transition-all duration-200 ease-out',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone',
+                'group relative aspect-[4/3] rounded-2xl overflow-hidden',
+                'transition-all duration-300 ease-out',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone',
                 active
-                  ? 'border-2 border-white bg-ink-800 text-white shadow-[0_0_0_4px_rgba(240,236,228,0.04)]'
-                  : 'border border-ink-600 bg-ink-800/40 text-bone-600 hover:border-bone-500 hover:text-bone',
+                  ? 'ring-2 ring-white scale-[1.01]'
+                  : 'ring-1 ring-ink-600 hover:ring-bone-500 opacity-90 hover:opacity-100',
               ].join(' ')}
             >
-              <span
-                className="h-3 w-3 rounded-full mb-0.5"
+              {/* Fruit-profile gradient */}
+              <div
+                aria-hidden
+                className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-105"
+                style={{ background: flavor.gradient }}
+              />
+              {/* Subtle dark vignette to keep text legible */}
+              <div
+                aria-hidden
+                className="absolute inset-0"
                 style={{
-                  background: active ? flavor.accentHex : 'transparent',
-                  boxShadow: active
-                    ? `0 0 0 1px ${flavor.accentHex}`
-                    : `inset 0 0 0 1px var(--color-border)`,
+                  background:
+                    'linear-gradient(180deg, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.55) 100%)',
                 }}
               />
-              <span className="font-condensed text-xs font-bold tracking-[0.18em] uppercase leading-tight">
-                {flavor.name}
-              </span>
+              <div
+                aria-hidden
+                className="absolute inset-0 texture-grain opacity-50 mix-blend-overlay"
+              />
+
+              {/* Selected check */}
+              {active && (
+                <span
+                  aria-hidden
+                  className="absolute top-2.5 right-2.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-ink shadow-md"
+                >
+                  <Check className="h-3.5 w-3.5" strokeWidth={2.5} />
+                </span>
+              )}
+
+              {/* Flavor name */}
+              <div className="absolute inset-x-0 bottom-0 p-3 text-left">
+                <p className="font-condensed text-[13px] sm:text-sm font-extrabold tracking-[0.14em] uppercase text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] leading-tight">
+                  {flavor.name}
+                </p>
+              </div>
             </button>
           );
         })}

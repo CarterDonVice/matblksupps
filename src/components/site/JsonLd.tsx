@@ -6,7 +6,7 @@ export function ProductJsonLd() {
     '@type': 'Product',
     name: blackoutDailyDriver.name,
     description: blackoutDailyDriver.shortDescription,
-    image: ['https://matblksupps.com/images/product-1.png'],
+    image: ['https://matblksupps.com/images/product_image_1.png'],
     brand: { '@type': 'Brand', name: 'MAT BLK Supplements' },
     aggregateRating: {
       '@type': 'AggregateRating',

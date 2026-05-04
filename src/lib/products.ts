@@ -13,65 +13,37 @@ export const blackoutDailyDriver: Product = {
       id: 'midnight-limeade',
       name: 'Midnight Limeade',
       shortName: 'Limeade',
-      accentHex: '#9bc23d',
+      // Lemon → lime → blackberry → dark cherry, dark + moody
+      gradient:
+        'radial-gradient(circle at 22% 18%, rgba(238, 224, 96, 0.85) 0%, transparent 38%), radial-gradient(circle at 70% 26%, rgba(155, 194, 61, 0.78) 0%, transparent 42%), radial-gradient(circle at 78% 78%, rgba(80, 26, 90, 0.85) 0%, transparent 50%), radial-gradient(circle at 22% 82%, rgba(102, 24, 36, 0.9) 0%, transparent 52%), linear-gradient(135deg, #0c0c0c 0%, #050505 100%)',
     },
     {
       id: 'mango-passionfruit',
       name: 'Mango Passionfruit',
       shortName: 'Mango',
-      accentHex: '#e08a3c',
+      // Mango orange/yellow → passionfruit purple-orange, warm + tropical
+      gradient:
+        'radial-gradient(circle at 22% 18%, rgba(245, 198, 88, 0.92) 0%, transparent 42%), radial-gradient(circle at 78% 30%, rgba(225, 122, 56, 0.92) 0%, transparent 46%), radial-gradient(circle at 78% 80%, rgba(120, 38, 92, 0.85) 0%, transparent 50%), radial-gradient(circle at 22% 78%, rgba(208, 80, 50, 0.85) 0%, transparent 50%), linear-gradient(135deg, #1f0e0a 0%, #0a0606 100%)',
     },
   ],
-  images: ['/images/product-1.png'],
+  // Slot 1 = real product image. Slots 2-4 = "coming soon" placeholders.
+  images: ['/images/product_image_1.png', null, null, null],
   shortDescription:
     'Carb-infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
   longDescription:
-    "Enhance your training with MAT BLK's Blackout Daily Driver. This formula is built on science and backed by clinical research, using clinically dosed ingredients including L-Citrulline, L-Tyrosine, Alpha-GPC, Huperzine A, Taurine, and a dual-source caffeine system. With added support for nutrient absorption and a smooth, moderate-stim profile, Blackout is the pre-workout you'll rely on day in and day out.",
-  sellingPoints: [
-    'Clinically dosed Pump+Focus stack',
-    'Dual-Phase energy complex',
-    'Carb-Fueled endurance',
-    'Enhanced absorption',
-  ],
-  ingredientGroups: [
-    {
-      title: 'Pump & Performance',
-      blurb: 'Nitric oxide pathway support for sustained, full-body pumps.',
-      items: [{ name: 'L-Citrulline', dose: '6,000 mg' }],
-    },
-    {
-      title: 'Focus & Cognition',
-      blurb: 'Sharpens the mind-muscle connection from rep one.',
-      items: [
-        { name: 'L-Tyrosine', dose: '2,000 mg' },
-        { name: 'Alpha-GPC (50%)', dose: '600 mg' },
-        { name: 'Huperzine A (1%)', dose: '150 mcg' },
-      ],
-    },
-    {
-      title: 'Energy & Stimulants',
-      blurb: 'Dual caffeine: hit hard, stay smooth, no crash.',
-      items: [
-        { name: 'Caffeine Anhydrous', dose: '100 mg' },
-        { name: 'Dicaffeine Malate (Infinergy®)', dose: '133 mg' },
-        { name: 'Total Caffeine Yield', dose: '~200 mg' },
-      ],
-    },
-    {
-      title: 'Hydration & Support',
-      blurb: 'Full electrolyte matrix to keep performance sharp.',
-      items: [
-        { name: 'Taurine', dose: '1,000 mg' },
-        { name: 'Himalayan Pink Salt', dose: '200 mg' },
-        { name: 'Potassium Chloride', dose: '300 mg' },
-        { name: 'Magnesium Glycinate', dose: '100 mg' },
-      ],
-    },
-    {
-      title: 'Absorption Enhancer',
-      blurb: 'Ensures your body actually uses what you take.',
-      items: [{ name: 'Piperine (Black Pepper Extract, 95%)', dose: '5 mg' }],
-    },
+    "Enhance your training with MAT BLK's Blackout Daily Driver. This formula is built on science and backed by clinical research, using clinically dosed ingredients for pump, focus, energy, and absorption. With a smooth, moderate-stim profile, Blackout is the pre-workout you'll rely on day in and day out.",
+  ingredients: [
+    { name: 'L-Citrulline', dose: '6,000 mg', hero: true },
+    { name: 'Sodium Nitrate', dose: '1,000 mg', hero: true },
+    { name: 'Beta-Alanine', dose: '3,200 mg' },
+    { name: 'Maltodextrin', dose: '10,000 mg' },
+    { name: 'Alpha-GPC (50%)', dose: '600 mg', hero: true },
+    { name: 'L-Tyrosine', dose: '2,000 mg', hero: true },
+    { name: 'Taurine', dose: '1,000 mg' },
+    { name: 'Caffeine Anhydrous', dose: '100 mg' },
+    { name: 'Di-Caffeine Malate', dose: '133 mg' },
+    { name: 'Huperzine A (1% extract)', dose: '15 mg' },
+    { name: 'Piperine (95%)', dose: '5 mg' },
   ],
   inStock: true,
   reviewCount: 47,
@@ -82,9 +54,9 @@ export const reviews: Review[] = [
   {
     id: '1',
     stars: 5,
-    title: 'Smoothest pre I\'ve run',
+    title: "Smoothest pre I've run",
     body:
-      'No itch, no jitters, just clean energy and an actual pump that lasts the whole session. The limeade flavor is unreal.',
+      'No itch, no jitters, just clean energy and an actual pump that lasts the whole session. Limeade is unreal.',
     author: 'Marcus T.',
     date: '2026-04-22',
     verified: true,
@@ -112,8 +84,9 @@ export const reviews: Review[] = [
   {
     id: '4',
     stars: 5,
+    title: 'Mixes clean, tastes clean',
     body:
-      'Mixes clean, tastes like an actual drink not a chemical bomb. Pumps are stupid.',
+      'Tastes like an actual drink not a chemical bomb. Pumps are stupid.',
     author: 'Alex P.',
     date: '2026-04-05',
     verified: true,
@@ -126,6 +99,25 @@ export const reviews: Review[] = [
       'Energy is smooth, focus is real. Wish there was a stronger stim option but for daily this is perfect.',
     author: 'Ryan S.',
     date: '2026-03-29',
+    verified: true,
+  },
+  {
+    id: '6',
+    stars: 5,
+    title: 'Goes down easy',
+    body:
+      'Didn\'t expect the flavor to be this clean. No grit, no aftertaste. Limeade tastes like an actual drink.',
+    author: 'Tyler M.',
+    date: '2026-03-21',
+    verified: true,
+  },
+  {
+    id: '7',
+    stars: 4,
+    body:
+      'Pump is real and lasts. Focus kicks in around 25 min. Smooth come down too.',
+    author: 'Cole D.',
+    date: '2026-03-14',
     verified: true,
   },
 ];

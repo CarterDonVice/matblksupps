@@ -150,17 +150,20 @@ export function CouponPopup() {
           <div className="px-6 pt-9 pb-7 sm:px-8 sm:pt-10 sm:pb-8">
             {!submitted ? (
               <>
-                <p className="label-eyebrow mb-3">Members Only</p>
+                <p className="label-eyebrow mb-3">A note from us</p>
                 <h3
                   id="coupon-title"
-                  className="font-display text-4xl sm:text-5xl text-white tracking-[0.01em] leading-[0.95] mb-2"
+                  className="font-display text-4xl sm:text-5xl text-white tracking-[0.01em] leading-[0.95] mb-3"
                 >
-                  You've Unlocked
+                  Let Us
                   <br />
-                  <span className="text-bone">20% Off</span>
+                  <span className="text-bone">Earn Your Trust</span>
                 </h3>
-                <p className="text-bone-600 text-[14px] mb-6">
-                  Enter your email to claim your first-order discount.
+                <p className="text-bone text-[15px] mb-1.5 font-medium">
+                  Get 20% off your first order.
+                </p>
+                <p className="text-bone-600 text-[13px] mb-6">
+                  Enter your email below — we'll send your code instantly.
                 </p>
 
                 <form onSubmit={onSubmit} className="space-y-3" noValidate>
