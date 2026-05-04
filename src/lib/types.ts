@@ -1,24 +1,44 @@
-export type ProductCategory = "preworkout" | "protein" | "creatine";
+export type FlavorId = 'midnight-limeade' | 'mango-passionfruit';
+export type PurchaseTypeId = 'subscribe' | 'one-time';
+
+export interface Flavor {
+  id: FlavorId;
+  name: string;
+  shortName: string;
+  accentHex: string;
+}
+
+export interface IngredientGroup {
+  title: string;
+  blurb: string;
+  items: { name: string; dose: string }[];
+}
+
+export interface Review {
+  id: string;
+  stars: number;
+  title?: string;
+  body: string;
+  author: string;
+  date: string;
+  verified?: boolean;
+}
 
 export interface Product {
   id: string;
   slug: string;
-  name: string; 
+  name: string;
   subName: string;
-  baseName: string;
-  flavor: string;
-  fullName: string;
-  category: ProductCategory;
+  category: 'pre-workout';
   price: number;
-  description: string[];
-  shortDescription?: string;
+  subscribePrice: number;
+  flavors: Flavor[];
   images: string[];
-  sellingPoints?: string[];
-  ingredients?: string[];
-  dataAiHint?: string;
-  isOutOfStock?: boolean;
-}
-
-export interface CartItem extends Product {
-  quantity: number;
+  shortDescription: string;
+  longDescription: string;
+  sellingPoints: string[];
+  ingredientGroups: IngredientGroup[];
+  inStock: boolean;
+  reviewCount: number;
+  averageRating: number;
 }
