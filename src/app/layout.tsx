@@ -49,17 +49,17 @@ export const metadata: Metadata = {
     url: 'https://matblksupps.com',
     siteName: 'MAT BLK Supplements',
     type: 'website',
-    images: [{ url: '/images/product-1.png' }],
+    images: [{ url: '/images/product_image_1.png' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Blackout Daily Driver — MAT BLK Supplements',
     description: 'Clinically dosed. Every rep. Every set.',
-    images: ['/images/product-1.png'],
+    images: ['/images/product_image_1.png'],
   },
   icons: {
     icon: [
-      { url: '/images/lowreslogo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/AbrevLogoMini.png', sizes: '32x32', type: 'image/png' },
     ],
   },
 };

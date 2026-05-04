@@ -1,14 +1,12 @@
 import { AnnouncementBar } from '@/components/site/AnnouncementBar';
 import { Header } from '@/components/site/Header';
 import { Hero } from '@/components/product/Hero';
-import { TrustBar } from '@/components/site/TrustBar';
-import { KeyBenefits } from '@/components/site/KeyBenefits';
-import { IngredientAccordion } from '@/components/site/IngredientAccordion';
-import { SatisfactionGuarantee } from '@/components/site/SatisfactionGuarantee';
+import { IngredientList } from '@/components/site/IngredientList';
+import { FeatureCards } from '@/components/site/FeatureCards';
 import { CustomerReviews } from '@/components/site/CustomerReviews';
+import { NewsletterSignup } from '@/components/site/NewsletterSignup';
 import { Footer } from '@/components/site/Footer';
 import { ProductJsonLd } from '@/components/site/JsonLd';
-import { StickyAddToCart } from '@/components/product/StickyAddToCart';
 
 export default function HomePage() {
   return (
@@ -18,14 +16,12 @@ export default function HomePage() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <TrustBar />
-        <KeyBenefits />
-        <IngredientAccordion />
-        <SatisfactionGuarantee />
+        <IngredientList />
+        <FeatureCards />
         <CustomerReviews />
+        <NewsletterSignup />
       </main>
       <Footer />
-      <StickyAddToCart />
     </>
   );
 }

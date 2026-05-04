@@ -20,11 +20,10 @@ export function PurchaseTypeSelector() {
 
       <div role="radiogroup" aria-label="Purchase type" className="space-y-2.5">
         <Option
-          id="subscribe"
           active={purchaseType === 'subscribe'}
           onSelect={() => setPurchaseType('subscribe')}
           title="Subscribe & Save"
-          badge="SAVE 10%"
+          badge="Save 10%"
           price={blackoutDailyDriver.subscribePrice}
           comparePrice={blackoutDailyDriver.price}
         >
@@ -42,7 +41,6 @@ export function PurchaseTypeSelector() {
         </Option>
 
         <Option
-          id="one-time"
           active={purchaseType === 'one-time'}
           onSelect={() => setPurchaseType('one-time')}
           title="One Time Purchase"
@@ -54,7 +52,6 @@ export function PurchaseTypeSelector() {
 }
 
 interface OptionProps {
-  id: string;
   active: boolean;
   onSelect: () => void;
   title: string;
@@ -65,7 +62,6 @@ interface OptionProps {
 }
 
 function Option({
-  id,
   active,
   onSelect,
   title,

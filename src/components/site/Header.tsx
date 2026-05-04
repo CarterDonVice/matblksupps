@@ -16,7 +16,9 @@ const navItems = [
 export function Header() {
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const [bumping, setBumping] = React.useState(false);
   const { cartCount } = useSelection();
+  const previousCount = React.useRef(cartCount);
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -31,6 +33,17 @@ export function Header() {
       document.body.style.overflow = '';
     };
   }, [open]);
+
+  // Bounce cart icon when count goes up
+  React.useEffect(() => {
+    if (cartCount > previousCount.current) {
+      setBumping(true);
+      const t = window.setTimeout(() => setBumping(false), 450);
+      previousCount.current = cartCount;
+      return () => window.clearTimeout(t);
+    }
+    previousCount.current = cartCount;
+  }, [cartCount]);
 
   return (
     <>
@@ -54,17 +67,25 @@ export function Header() {
           <Link
             href="/"
             aria-label="MAT BLK Supplements home"
-            className="flex items-center justify-center"
+            className="flex items-center justify-center h-9 sm:h-10 select-none"
           >
-            <span className="font-display text-[22px] sm:text-2xl tracking-[0.32em] leading-none text-bone select-none">
-              MAT&nbsp;BLK
-            </span>
+            <Image
+              src="/images/FullLogo.png"
+              alt="MAT BLK Supplements"
+              width={180}
+              height={48}
+              priority
+              className="h-7 sm:h-8 w-auto object-contain"
+            />
           </Link>
 
           <button
             type="button"
             aria-label={`Cart, ${cartCount} item${cartCount === 1 ? '' : 's'}`}
-            className="relative -mr-2 inline-flex h-11 w-11 items-center justify-center rounded-md text-bone hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone"
+            className={`relative -mr-2 inline-flex h-11 w-11 items-center justify-center rounded-md text-bone hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone ${
+              bumping ? 'scale-110' : 'scale-100'
+            }`}
+            style={{ transitionDuration: '350ms' }}
           >
             <ShoppingBag className="h-[22px] w-[22px]" strokeWidth={1.75} />
             {cartCount > 0 && (
@@ -87,7 +108,7 @@ function NavDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
       <div
         aria-hidden
         onClick={onClose}
-        className={`fixed inset-0 z-50 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-50 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
           open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       />
@@ -95,17 +116,17 @@ function NavDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
         role="dialog"
         aria-modal="true"
         aria-label="Site navigation"
-        className={`fixed inset-0 z-50 flex flex-col bg-ink text-bone transition-transform duration-300 ease-out ${
+        className={`fixed inset-y-0 left-0 z-50 w-[88%] max-w-sm flex flex-col bg-ink text-bone border-r border-ink-600 shadow-[8px_0_40px_rgba(0,0,0,0.6)] transition-transform duration-300 ease-out ${
           open ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="container h-14 sm:h-16 flex items-center justify-between border-b border-ink-600">
+        <div className="px-5 h-14 sm:h-16 flex items-center justify-between border-b border-ink-600">
           <Image
-            src="/images/lowreslogo.png"
+            src="/images/AbrevLogoMini.png"
             alt="MAT BLK"
             width={32}
             height={32}
-            className="h-8 w-8 object-contain"
+            className="h-7 w-7 object-contain"
           />
           <button
             type="button"
@@ -117,7 +138,7 @@ function NavDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
           </button>
         </div>
 
-        <nav className="flex-1 container py-10 flex flex-col gap-2">
+        <nav className="flex-1 px-5 py-8 flex flex-col gap-2">
           {navItems.map((item, i) => (
             <Link
               key={item.label}
@@ -128,7 +149,7 @@ function NavDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
                 animation: open ? `fade-in-up 0.5s ease-out ${i * 0.06}s both` : undefined,
               }}
             >
-              <span className="font-display text-4xl sm:text-5xl tracking-[0.04em]">
+              <span className="font-display text-4xl tracking-[0.04em]">
                 {item.label.toUpperCase()}
               </span>
               <span className="label-eyebrow text-bone-500 group-hover:text-bone transition-colors">
@@ -138,7 +159,7 @@ function NavDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
           ))}
         </nav>
 
-        <div className="container py-8 border-t border-ink-600 flex items-center justify-between">
+        <div className="px-5 py-6 border-t border-ink-600 flex items-center justify-between">
           <span className="label-eyebrow">Follow</span>
           <a
             href="https://www.instagram.com/matblksupps/"

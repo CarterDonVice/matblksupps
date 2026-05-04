@@ -5,13 +5,15 @@ export interface Flavor {
   id: FlavorId;
   name: string;
   shortName: string;
-  accentHex: string;
+  /** CSS gradient string applied as background to flavor selector swatches. */
+  gradient: string;
 }
 
-export interface IngredientGroup {
-  title: string;
-  blurb: string;
-  items: { name: string; dose: string }[];
+export interface Ingredient {
+  name: string;
+  dose: string;
+  /** Underlined + bolder weight in the open ingredient list. */
+  hero?: boolean;
 }
 
 export interface Review {
@@ -33,11 +35,11 @@ export interface Product {
   price: number;
   subscribePrice: number;
   flavors: Flavor[];
-  images: string[];
+  /** First image is the hero. Subsequent slots may be `null` for "coming soon" placeholders. */
+  images: (string | null)[];
   shortDescription: string;
   longDescription: string;
-  sellingPoints: string[];
-  ingredientGroups: IngredientGroup[];
+  ingredients: Ingredient[];
   inStock: boolean;
   reviewCount: number;
   averageRating: number;

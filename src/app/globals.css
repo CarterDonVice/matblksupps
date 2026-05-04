@@ -93,10 +93,30 @@
     );
   }
 
-  .grain {
+  /* Subtle film grain texture, sits at 3-5% opacity */
+  .texture-grain {
     background-image:
-      radial-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px);
-    background-size: 3px 3px;
+      radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+  }
+
+  /* Massive faded MAT BLK wordmark watermark */
+  .texture-wordmark {
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 200'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='central' font-family='Bebas Neue, Arial Black, sans-serif' font-weight='900' font-size='200' letter-spacing='4' fill='%23f0ece4' fill-opacity='0.045'%3EMAT BLK%3C/text%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .product-glow {
+    background: radial-gradient(
+      ellipse at center 60%,
+      rgba(240, 236, 228, 0.16) 0%,
+      rgba(240, 236, 228, 0.08) 25%,
+      transparent 60%
+    );
   }
 
   /* Reduced motion */

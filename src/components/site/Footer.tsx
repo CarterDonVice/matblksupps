@@ -2,23 +2,29 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Instagram } from 'lucide-react';
 
-const links = [
+const quickLinks = [
+  { label: 'Shop', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const legalLinks = [
   { label: 'Terms of Service', href: '/terms' },
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Refund Policy', href: '/refund' },
-  { label: 'Contact Us', href: '/contact' },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-ink border-t border-ink-600 pt-14 pb-32 sm:pb-14">
-      <div className="container">
+    <footer className="relative bg-ink border-t border-ink-600 pt-14 pb-10 overflow-hidden">
+      <div className="absolute inset-0 texture-wordmark opacity-40 pointer-events-none" aria-hidden />
+      <div className="container relative">
         <div className="flex flex-col items-center text-center gap-5 mb-10">
           <Image
-            src="/images/lowreslogo.png"
+            src="/images/AbrevLogoMini.png"
             alt="MAT BLK"
-            width={48}
-            height={48}
+            width={56}
+            height={56}
             className="h-12 w-12 object-contain opacity-90"
           />
           <p className="text-bone-600 text-sm max-w-xs">
@@ -35,20 +41,30 @@ export function Footer() {
           </a>
         </div>
 
-        <nav
-          aria-label="Footer"
-          className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mb-8"
-        >
-          {links.map((l) => (
-            <Link
-              key={l.label}
-              href={l.href}
-              className="text-bone-600 hover:text-bone transition-colors text-[11px] sm:text-xs font-semibold tracking-[0.16em] uppercase"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="grid sm:grid-cols-2 gap-y-3 gap-x-10 max-w-xl mx-auto mb-10">
+          <nav aria-label="Quick links" className="flex flex-wrap items-center justify-center sm:justify-end gap-x-5 gap-y-2">
+            {quickLinks.map((l) => (
+              <Link
+                key={l.label}
+                href={l.href}
+                className="text-bone-600 hover:text-bone transition-colors text-[11px] sm:text-xs font-semibold tracking-[0.16em] uppercase"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+          <nav aria-label="Legal" className="flex flex-wrap items-center justify-center sm:justify-start gap-x-5 gap-y-2">
+            {legalLinks.map((l) => (
+              <Link
+                key={l.label}
+                href={l.href}
+                className="text-bone-600 hover:text-bone transition-colors text-[11px] sm:text-xs font-semibold tracking-[0.16em] uppercase"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
 
         <div className="border-t border-ink-600 pt-6 flex flex-col items-center gap-1 text-center">
           <p className="text-bone-500 text-[11px] tracking-[0.12em] uppercase">
