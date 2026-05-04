@@ -1,71 +1,115 @@
-// src/app/product/[slug]/page.tsx
-
-import { getProductBySlug, getProductsByBaseName, products as allProducts } from '@/data/products';
-import Link from 'next/link';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ChevronRight } from 'lucide-react';
-import { ProductClientContent } from '@/components/products/ProductClientContent';
+import { Star } from 'lucide-react';
+import { AnnouncementBar } from '@/components/site/AnnouncementBar';
+import { Header } from '@/components/site/Header';
+import { Footer } from '@/components/site/Footer';
+import { TrustBar } from '@/components/site/TrustBar';
+import { IngredientAccordion } from '@/components/site/IngredientAccordion';
+import { CustomerReviews } from '@/components/site/CustomerReviews';
+import { SatisfactionGuarantee } from '@/components/site/SatisfactionGuarantee';
+import { FlavorSelector } from '@/components/product/FlavorSelector';
+import { PurchaseTypeSelector } from '@/components/product/PurchaseTypeSelector';
+import { StickyAddToCart } from '@/components/product/StickyAddToCart';
+import { ProductDetailAccordion } from '@/components/product/ProductDetailAccordion';
+import { ProductGallery } from '@/components/product/ProductGallery';
+import { ReadMoreDescription } from '@/components/product/ReadMoreDescription';
+import { ProductJsonLd } from '@/components/site/JsonLd';
+import { blackoutDailyDriver } from '@/lib/products';
 
-// Prebuild dynamic routes for SSG
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  return allProducts.map(p => ({ slug: p.slug }));
-}
-
-// If you want ISR, uncomment and tune:
-// export const revalidate = 60; // seconds
-
-// Next.js 15: params is a Promise in Server Components
-interface ProductPageProps {
+interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug } = await params;
-
-  const product = getProductBySlug(slug);
-  if (!product) notFound();
-
-  const relatedFlavors = getProductsByBaseName(product.baseName).filter(p => p.id !== product.id);
-
-  const categoryName = product.category.charAt(0).toUpperCase() + product.category.slice(1);
-  const categoryLink = `/shop/${product.category}`;
-
-  return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-      {/* Breadcrumb */}
-      <nav className="mb-8 text-sm text-muted-foreground flex items-center space-x-2">
-        <Link href="/" className="hover:text-primary">Home</Link>
-        <ChevronRight size={16} />
-        <Link href={categoryLink} className="hover:text-primary">
-          {categoryName}
-        </Link>
-        <ChevronRight size={16} />
-        <span className="text-foreground">{product.fullName}</span>
-      </nav>
-
-      <ProductClientContent
-        product={product}
-        allProducts={allProducts}
-        relatedFlavors={relatedFlavors}
-      />
-    </div>
-  );
+export function generateStaticParams() {
+  return [{ slug: blackoutDailyDriver.slug }];
 }
 
-// Next.js 15: generateMetadata also receives params as a Promise
-export async function generateMetadata({ params }: ProductPageProps) {
+export const metadata: Metadata = {
+  title: 'Blackout Daily Driver — Best Clinically Dosed Pre-Workout',
+  description:
+    'Best clinically dosed pre-workout supplement. Science-backed daily driver formula with L-Citrulline, Alpha-GPC, dual caffeine. No proprietary blends.',
+};
+
+export default async function ProductDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = blackoutDailyDriver;
+  if (slug !== product.slug) notFound();
 
-  if (!product) {
-    return {
-      title: 'Product Not Found',
-      description: 'The product you are looking for does not exist.',
-    };
-  }
+  return (
+    <>
+      <ProductJsonLd />
+      <AnnouncementBar />
+      <Header />
 
-  return {
-    title: `${product.fullName} | MAT BLK Supplements`,
-    description: product.shortDescription || product.description[0],
-  };
+      <main className="flex-1">
+        <section className="bg-ink pt-2 pb-10 sm:pt-6 sm:pb-14">
+          <div className="container">
+            <div className="grid lg:grid-cols-2 lg:gap-12">
+              <ProductGallery
+                images={product.images}
+                alt={`${product.name} pre-workout`}
+              />
+
+              <div className="mt-6 lg:mt-0 max-w-md mx-auto lg:mx-0 lg:pt-8 space-y-6">
+                <div>
+                  <p className="label-eyebrow mb-2">Pre-Workout</p>
+                  <h1 className="font-display text-4xl sm:text-5xl text-white tracking-[0.01em] leading-[0.95]">
+                    {product.name}
+                  </h1>
+                  <p className="mt-2 text-bone-600 text-sm tracking-[0.18em] uppercase font-semibold">
+                    {product.subName}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div
+                    className="flex items-center gap-0.5"
+                    aria-label={`${product.averageRating} stars`}
+                  >
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-4 w-4 ${
+                          i < Math.round(product.averageRating)
+                            ? 'text-bone fill-bone'
+                            : 'text-bone-500'
+                        }`}
+                        strokeWidth={1.5}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-bone-600 text-xs">
+                    <span className="text-bone font-medium">
+                      {product.averageRating.toFixed(1)}
+                    </span>{' '}
+                    · {product.reviewCount} reviews
+                  </span>
+                  <span aria-hidden className="text-bone-500">·</span>
+                  <span className="inline-flex items-center gap-1.5 text-xs text-bone-600">
+                    <span className="h-1.5 w-1.5 rounded-full bg-success" />
+                    In Stock
+                  </span>
+                </div>
+
+                <FlavorSelector />
+                <PurchaseTypeSelector />
+
+                <ReadMoreDescription text={product.longDescription} />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <TrustBar />
+        <ProductDetailAccordion />
+        <IngredientAccordion />
+        <SatisfactionGuarantee />
+        <CustomerReviews />
+      </main>
+
+      <Footer />
+      <StickyAddToCart />
+    </>
+  );
 }
