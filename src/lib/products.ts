@@ -13,17 +13,17 @@ export const blackoutDailyDriver: Product = {
       id: 'midnight-limeade',
       name: 'Midnight Limeade',
       shortName: 'Limeade',
-      // Lemon → lime → blackberry → dark cherry, dark + moody
+      // Lemon → lime → blackberry (more vibrant) → cherry (more vibrant), dark + moody
       gradient:
-        'radial-gradient(circle at 22% 18%, rgba(238, 224, 96, 0.85) 0%, transparent 38%), radial-gradient(circle at 70% 26%, rgba(155, 194, 61, 0.78) 0%, transparent 42%), radial-gradient(circle at 78% 78%, rgba(80, 26, 90, 0.85) 0%, transparent 50%), radial-gradient(circle at 22% 82%, rgba(102, 24, 36, 0.9) 0%, transparent 52%), linear-gradient(135deg, #0c0c0c 0%, #050505 100%)',
+        'radial-gradient(circle at 22% 18%, rgba(245, 226, 90, 0.88) 0%, transparent 38%), radial-gradient(circle at 70% 26%, rgba(160, 200, 60, 0.82) 0%, transparent 42%), radial-gradient(circle at 78% 78%, rgba(120, 32, 140, 0.95) 0%, transparent 52%), radial-gradient(circle at 22% 82%, rgba(165, 28, 50, 0.98) 0%, transparent 54%), linear-gradient(135deg, #0c0c0c 0%, #050505 100%)',
     },
     {
       id: 'mango-passionfruit',
       name: 'Mango Passionfruit',
       shortName: 'Mango',
-      // Mango orange/yellow → passionfruit purple-orange, warm + tropical
+      // Mango orange/yellow + passionfruit purple/orange — overall more vibrant
       gradient:
-        'radial-gradient(circle at 22% 18%, rgba(245, 198, 88, 0.92) 0%, transparent 42%), radial-gradient(circle at 78% 30%, rgba(225, 122, 56, 0.92) 0%, transparent 46%), radial-gradient(circle at 78% 80%, rgba(120, 38, 92, 0.85) 0%, transparent 50%), radial-gradient(circle at 22% 78%, rgba(208, 80, 50, 0.85) 0%, transparent 50%), linear-gradient(135deg, #1f0e0a 0%, #0a0606 100%)',
+        'radial-gradient(circle at 22% 18%, rgba(255, 210, 80, 1) 0%, transparent 44%), radial-gradient(circle at 78% 28%, rgba(244, 130, 38, 1) 0%, transparent 48%), radial-gradient(circle at 78% 82%, rgba(150, 42, 122, 0.95) 0%, transparent 52%), radial-gradient(circle at 22% 78%, rgba(232, 78, 42, 0.95) 0%, transparent 52%), linear-gradient(135deg, #28140e 0%, #0a0606 100%)',
     },
   ],
   // Slot 1 = real product image. Slots 2-4 = "coming soon" placeholders.

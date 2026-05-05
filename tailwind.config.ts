@@ -29,10 +29,10 @@ export default {
       colors: {
         // Brand tokens (raw hex for precision)
         ink: {
-          DEFAULT: '#1a1a1a',
-          900: '#1a1a1a',
-          800: '#242424',
-          700: '#2e2e2e',
+          DEFAULT: '#141414',
+          900: '#141414',
+          800: '#1e1e1e',
+          700: '#262626',
           600: '#333333',
         },
         bone: {
@@ -43,38 +43,38 @@ export default {
         success: '#4caf7d',
 
         // shadcn semantic mappings
-        background: '#1a1a1a',
+        background: '#141414',
         foreground: '#f0ece4',
         card: {
-          DEFAULT: '#242424',
+          DEFAULT: '#1e1e1e',
           foreground: '#f0ece4',
         },
         popover: {
-          DEFAULT: '#242424',
+          DEFAULT: '#1e1e1e',
           foreground: '#f0ece4',
         },
         primary: {
           DEFAULT: '#ffffff',
-          foreground: '#1a1a1a',
+          foreground: '#141414',
         },
         secondary: {
-          DEFAULT: '#2e2e2e',
+          DEFAULT: '#262626',
           foreground: '#f0ece4',
         },
         muted: {
-          DEFAULT: '#2e2e2e',
+          DEFAULT: '#262626',
           foreground: '#b0aca4',
         },
         accent: {
           DEFAULT: '#f0ece4',
-          foreground: '#1a1a1a',
+          foreground: '#141414',
         },
         destructive: {
           DEFAULT: '#dc2626',
           foreground: '#ffffff',
         },
         border: '#333333',
-        input: '#2e2e2e',
+        input: '#262626',
         ring: '#f0ece4',
       },
       borderRadius: {

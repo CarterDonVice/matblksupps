@@ -187,7 +187,7 @@ export function CouponPopup() {
                   <button
                     type="submit"
                     disabled={!email.includes('@')}
-                    className="w-full h-12 rounded-xl bg-white text-ink font-condensed font-extrabold tracking-[0.16em] uppercase text-sm transition-transform duration-150 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
+                    className="w-full h-12 rounded-xl bg-white text-ink font-condensed font-extrabold tracking-[0.16em] uppercase text-sm transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
                   >
                     Claim 20% Off
                   </button>
@@ -226,7 +226,7 @@ export function CouponPopup() {
                       // window.location.href = '/checkout';
                     }
                   }}
-                  className="w-full h-12 rounded-xl bg-white text-ink font-condensed font-extrabold tracking-[0.16em] uppercase text-sm hover:scale-[1.01] active:scale-[0.99] transition-transform"
+                  className="w-full h-12 rounded-xl bg-white text-ink font-condensed font-extrabold tracking-[0.16em] uppercase text-sm transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99]"
                 >
                   {source === 'add-to-cart' ? 'Continue to Checkout' : 'Keep Browsing'}
                 </button>

@@ -5,9 +5,9 @@
 @layer base {
   :root {
     --radius: 0.75rem;
-    --color-bg: #1a1a1a;
-    --color-bg-elev-1: #242424;
-    --color-bg-elev-2: #2e2e2e;
+    --color-bg: #141414;
+    --color-bg-elev-1: #1e1e1e;
+    --color-bg-elev-2: #262626;
     --color-text: #f0ece4;
     --color-text-muted: #b0aca4;
     --color-text-dim: #6e6a64;
