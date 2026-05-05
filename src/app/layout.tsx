@@ -28,7 +28,7 @@ const body = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://matblksupps.com'),
   title: {
-    default: 'MAT BLK Supplements — Blackout Daily Driver Pre-Workout',
+    default: 'TENET — Daily Driver Pre-Workout · MAT BLK Supplements',
     template: '%s · MAT BLK Supplements',
   },
   description:
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     'MAT BLK',
   ],
   openGraph: {
-    title: 'Blackout Daily Driver — MAT BLK Supplements',
+    title: 'TENET — MAT BLK Supplements',
     description:
       'Clinically dosed. Every rep. Every set. Science-backed daily driver pre-workout.',
     url: 'https://matblksupps.com',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blackout Daily Driver — MAT BLK Supplements',
+    title: 'TENET — MAT BLK Supplements',
     description: 'Clinically dosed. Every rep. Every set.',
     images: ['/images/product_image_1.png'],
   },

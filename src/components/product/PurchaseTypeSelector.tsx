@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Check } from 'lucide-react';
 import { useSelection } from '@/contexts/SelectionContext';
-import { blackoutDailyDriver } from '@/lib/products';
+import { tenet } from '@/lib/products';
 
 const subscribeBenefits = [
   'Save 10% on every order',
@@ -24,8 +24,8 @@ export function PurchaseTypeSelector() {
           onSelect={() => setPurchaseType('subscribe')}
           title="Subscribe & Save"
           badge="Save 10%"
-          price={blackoutDailyDriver.subscribePrice}
-          comparePrice={blackoutDailyDriver.price}
+          price={tenet.subscribePrice}
+          comparePrice={tenet.price}
         >
           <ul className="mt-3 space-y-1.5">
             {subscribeBenefits.map((b) => (
@@ -44,7 +44,7 @@ export function PurchaseTypeSelector() {
           active={purchaseType === 'one-time'}
           onSelect={() => setPurchaseType('one-time')}
           title="One Time Purchase"
-          price={blackoutDailyDriver.price}
+          price={tenet.price}
         />
       </div>
     </div>

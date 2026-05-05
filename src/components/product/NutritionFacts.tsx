@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { ChevronDown } from 'lucide-react';
-import { blackoutDailyDriver } from '@/lib/products';
+import { tenet } from '@/lib/products';
 
 export function NutritionFacts() {
   const [open, setOpen] = React.useState(false);
@@ -41,7 +41,7 @@ export function NutritionFacts() {
         <div className="overflow-hidden">
           <div className="px-4 sm:px-5 pb-4 sm:pb-5">
             <ul className="border-t border-ink-600 divide-y divide-ink-600">
-              {blackoutDailyDriver.ingredients.map((ing) => (
+              {tenet.ingredients.map((ing) => (
                 <li
                   key={ing.name}
                   className="flex items-baseline justify-between gap-3 py-2.5"

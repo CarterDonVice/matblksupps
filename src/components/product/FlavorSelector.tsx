@@ -3,11 +3,11 @@
 import * as React from 'react';
 import { Check } from 'lucide-react';
 import { useSelection } from '@/contexts/SelectionContext';
-import { blackoutDailyDriver } from '@/lib/products';
+import { tenet } from '@/lib/products';
 
 export function FlavorSelector() {
   const { flavorId, setFlavor } = useSelection();
-  const flavors = blackoutDailyDriver.flavors;
+  const flavors = tenet.flavors;
 
   return (
     <div className="space-y-3">

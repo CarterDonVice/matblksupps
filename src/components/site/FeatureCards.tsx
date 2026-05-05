@@ -54,7 +54,7 @@ export function FeatureCards() {
             id="why-blackout"
             className="font-display text-5xl sm:text-7xl text-white tracking-[0.01em] leading-[0.92]"
           >
-            Why Blackout
+            Why TENET
           </h2>
         </header>
 

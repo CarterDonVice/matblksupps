@@ -7,6 +7,7 @@ import { FlavorSelector } from './FlavorSelector';
 import { PurchaseTypeSelector } from './PurchaseTypeSelector';
 import { QuantitySelector } from './QuantitySelector';
 import { NutritionFacts } from './NutritionFacts';
+import { TrustBadges } from './TrustBadges';
 import { openCouponPopup } from '@/components/marketing/CouponPopup';
 
 export function PurchaseBlock() {
@@ -50,6 +51,8 @@ export function PurchaseBlock() {
             — Love it or we make it right.
           </span>
         </p>
+
+        <TrustBadges />
 
         <NutritionFacts />
       </div>

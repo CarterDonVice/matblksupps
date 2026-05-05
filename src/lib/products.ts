@@ -1,10 +1,10 @@
 import type { Product, Review } from './types';
 
-export const blackoutDailyDriver: Product = {
-  id: 'blackout-daily-driver',
-  slug: 'blackout-daily-driver',
-  name: 'Blackout Daily Driver',
-  subName: 'GO-2 Daily Driver',
+export const tenet: Product = {
+  id: 'tenet',
+  slug: 'tenet',
+  name: 'TENET',
+  subName: 'The Daily Driver Pre-Workout',
   category: 'pre-workout',
   price: 44.99,
   subscribePrice: 40.49,
@@ -31,7 +31,7 @@ export const blackoutDailyDriver: Product = {
   shortDescription:
     'Carb-infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
   longDescription:
-    "Enhance your training with MAT BLK's Blackout Daily Driver. This formula is built on science and backed by clinical research, using clinically dosed ingredients for pump, focus, energy, and absorption. With a smooth, moderate-stim profile, Blackout is the pre-workout you'll rely on day in and day out.",
+    "Enhance your training with TENET. This formula is built on science and backed by clinical research, using clinically dosed ingredients for pump, focus, energy, and absorption. With a smooth, moderate-stim profile, TENET is the pre-workout you'll rely on day in and day out.",
   ingredients: [
     { name: 'L-Citrulline', dose: '6,000 mg', hero: true },
     { name: 'Sodium Nitrate', dose: '1,000 mg', hero: true },

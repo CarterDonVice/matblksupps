@@ -3,29 +3,34 @@ import { notFound } from 'next/navigation';
 import { Header } from '@/components/site/Header';
 import { Footer } from '@/components/site/Footer';
 import { Hero } from '@/components/product/Hero';
+import { SocialProofBar } from '@/components/site/SocialProofBar';
 import { FeatureCards } from '@/components/site/FeatureCards';
+import { WhatYoullFeel } from '@/components/site/WhatYoullFeel';
+import { Testimonials } from '@/components/site/Testimonials';
 import { CustomerReviews } from '@/components/site/CustomerReviews';
+import { FAQ } from '@/components/site/FAQ';
+import { GuaranteeSection } from '@/components/site/GuaranteeSection';
 import { NewsletterSignup } from '@/components/site/NewsletterSignup';
 import { ProductJsonLd } from '@/components/site/JsonLd';
-import { blackoutDailyDriver } from '@/lib/products';
+import { tenet } from '@/lib/products';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
-  return [{ slug: blackoutDailyDriver.slug }];
+  return [{ slug: tenet.slug }];
 }
 
 export const metadata: Metadata = {
-  title: 'Blackout Daily Driver — Best Clinically Dosed Pre-Workout',
+  title: 'TENET — Best Clinically Dosed Daily Pre-Workout',
   description:
-    'Best clinically dosed pre-workout supplement. Science-backed daily driver formula with L-Citrulline, Sodium Nitrate, Beta-Alanine, Alpha-GPC, and dual caffeine. No proprietary blends.',
+    'TENET is a clinically dosed daily driver pre-workout. Science-backed formula with L-Citrulline, Sodium Nitrate, Beta-Alanine, Alpha-GPC, and dual caffeine. No proprietary blends.',
 };
 
 export default async function ProductDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  if (slug !== blackoutDailyDriver.slug) notFound();
+  if (slug !== tenet.slug) notFound();
 
   return (
     <>
@@ -33,9 +38,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <Header />
       <main className="flex-1">
         <Hero />
+        <SocialProofBar />
         <ProductDescription />
         <FeatureCards />
+        <WhatYoullFeel />
+        <Testimonials />
         <CustomerReviews />
+        <FAQ />
+        <GuaranteeSection />
         <NewsletterSignup />
       </main>
       <Footer />
@@ -57,7 +67,7 @@ function ProductDescription() {
           About the Formula
         </h2>
         <p className="text-bone-600 text-[15px] sm:text-base leading-relaxed">
-          {blackoutDailyDriver.longDescription}
+          {tenet.longDescription}
         </p>
       </div>
     </section>
