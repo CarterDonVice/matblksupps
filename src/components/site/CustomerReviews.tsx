@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Star, Plus, ChevronDown } from 'lucide-react';
-import { reviews as seedReviews, blackoutDailyDriver } from '@/lib/products';
+import { reviews as seedReviews, tenet } from '@/lib/products';
 import type { Review } from '@/lib/types';
 import { WriteReviewModal } from './WriteReviewModal';
 
@@ -47,8 +47,8 @@ export function CustomerReviews() {
   const ratingSummary = React.useMemo(() => {
     if (allReviews.length === 0) {
       return {
-        rating: blackoutDailyDriver.averageRating,
-        count: blackoutDailyDriver.reviewCount,
+        rating: tenet.averageRating,
+        count: tenet.reviewCount,
       };
     }
     const total = allReviews.reduce((sum, r) => sum + r.stars, 0);

@@ -1,17 +1,17 @@
-import { blackoutDailyDriver, reviews } from '@/lib/products';
+import { tenet, reviews } from '@/lib/products';
 
 export function ProductJsonLd() {
   const data = {
     '@context': 'https://schema.org/',
     '@type': 'Product',
-    name: blackoutDailyDriver.name,
-    description: blackoutDailyDriver.shortDescription,
+    name: tenet.name,
+    description: tenet.shortDescription,
     image: ['https://matblksupps.com/images/product_image_1.png'],
     brand: { '@type': 'Brand', name: 'MAT BLK Supplements' },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: blackoutDailyDriver.averageRating,
-      reviewCount: blackoutDailyDriver.reviewCount,
+      ratingValue: tenet.averageRating,
+      reviewCount: tenet.reviewCount,
     },
     review: reviews.slice(0, 3).map((r) => ({
       '@type': 'Review',
@@ -24,8 +24,8 @@ export function ProductJsonLd() {
       '@type': 'Offer',
       url: 'https://matblksupps.com/',
       priceCurrency: 'USD',
-      price: blackoutDailyDriver.price.toFixed(2),
-      availability: blackoutDailyDriver.inStock
+      price: tenet.price.toFixed(2),
+      availability: tenet.inStock
         ? 'https://schema.org/InStock'
         : 'https://schema.org/OutOfStock',
     },

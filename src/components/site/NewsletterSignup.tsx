@@ -18,7 +18,7 @@ export function NewsletterSignup() {
   return (
     <section
       aria-labelledby="newsletter"
-      className="relative bg-ink-800 py-14 sm:py-20 border-y border-ink-600 overflow-hidden"
+      className="relative bg-ink-800 py-14 sm:py-20 border-t border-ink-600 overflow-hidden"
     >
       <div
         aria-hidden
@@ -26,15 +26,15 @@ export function NewsletterSignup() {
       />
       <div className="container relative">
         <div className="max-w-xl mx-auto text-center space-y-5">
-          <p className="label-eyebrow">The Inside Track</p>
+          <p className="label-eyebrow">Members Only</p>
           <h2
             id="newsletter"
             className="font-display text-4xl sm:text-5xl text-white tracking-[0.01em] leading-[0.95]"
           >
-            Stay in the Loop
+            The Blacklist
           </h2>
           <p className="text-bone-600 text-[15px] max-w-md mx-auto">
-            First access to drops, restocks, and exclusive deals.
+            First access to drops, restocks, and exclusive offers. Members only.
           </p>
 
           {submitted ? (
@@ -42,9 +42,7 @@ export function NewsletterSignup() {
               <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-success/15 text-success">
                 <Check className="h-4 w-4" strokeWidth={2.5} />
               </span>
-              <span className="font-medium">
-                You're in. Watch your inbox.
-              </span>
+              <span className="font-medium">You're on the list.</span>
             </div>
           ) : (
             <form
@@ -70,11 +68,15 @@ export function NewsletterSignup() {
                 disabled={!email.includes('@')}
                 className="h-12 px-5 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase inline-flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
               >
-                Subscribe
+                Join the Blacklist
                 <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
               </button>
             </form>
           )}
+          <p className="text-bone-500 text-[10px] max-w-md mx-auto leading-relaxed">
+            By signing up you agree to receive marketing emails. Unsubscribe
+            anytime.
+          </p>
         </div>
       </div>
     </section>

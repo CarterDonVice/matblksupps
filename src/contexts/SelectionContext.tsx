@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { blackoutDailyDriver } from '@/lib/products';
+import { tenet } from '@/lib/products';
 import type { FlavorId, PurchaseTypeId } from '@/lib/types';
 
 interface SelectionContextValue {
@@ -28,8 +28,8 @@ export function SelectionProvider({ children }: { children: React.ReactNode }) {
 
   const unitPrice =
     purchaseType === 'subscribe'
-      ? blackoutDailyDriver.subscribePrice
-      : blackoutDailyDriver.price;
+      ? tenet.subscribePrice
+      : tenet.price;
   const totalPrice = unitPrice * quantity;
 
   const setQuantity = React.useCallback((q: number | ((prev: number) => number)) => {
