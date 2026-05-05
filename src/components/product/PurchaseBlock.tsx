@@ -6,6 +6,7 @@ import { useSelection } from '@/contexts/SelectionContext';
 import { FlavorSelector } from './FlavorSelector';
 import { PurchaseTypeSelector } from './PurchaseTypeSelector';
 import { QuantitySelector } from './QuantitySelector';
+import { NutritionFacts } from './NutritionFacts';
 import { openCouponPopup } from '@/components/marketing/CouponPopup';
 
 export function PurchaseBlock() {
@@ -22,11 +23,11 @@ export function PurchaseBlock() {
       <PurchaseTypeSelector />
       <QuantitySelector />
 
-      <div className="space-y-2.5 pt-1">
+      <div className="space-y-3 pt-1">
         <button
           type="button"
           onClick={onAdd}
-          className="group relative w-full h-14 sm:h-15 rounded-xl bg-white text-ink overflow-hidden flex items-center justify-between px-5 transition-transform duration-200 hover:scale-[1.005] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
+          className="group relative w-full h-14 sm:h-15 rounded-xl bg-white text-ink overflow-hidden flex items-center justify-between px-5 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.99] hover:bg-bone focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
         >
           <span className="flex items-center gap-3">
             <ShoppingBag className="h-5 w-5" strokeWidth={2.25} />
@@ -49,6 +50,8 @@ export function PurchaseBlock() {
             — Love it or we make it right.
           </span>
         </p>
+
+        <NutritionFacts />
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { Star } from 'lucide-react';
-import { reviews, blackoutDailyDriver } from '@/lib/products';
+import { Star, Plus, ChevronDown } from 'lucide-react';
+import { reviews as seedReviews, blackoutDailyDriver } from '@/lib/products';
 import type { Review } from '@/lib/types';
+import { WriteReviewModal } from './WriteReviewModal';
 
 type SortKey = 'recent' | 'highest' | 'lowest';
 
@@ -13,14 +14,21 @@ const sortOptions: { id: SortKey; label: string }[] = [
   { id: 'lowest', label: 'Lowest Rated' },
 ];
 
-const INITIAL_VISIBLE = 3;
+const PAGE_SIZE = 3;
 
 export function CustomerReviews() {
   const [sort, setSort] = React.useState<SortKey>('recent');
-  const [showAll, setShowAll] = React.useState(false);
+  const [visibleCount, setVisibleCount] = React.useState(PAGE_SIZE);
+  const [userReviews, setUserReviews] = React.useState<Review[]>([]);
+  const [modalOpen, setModalOpen] = React.useState(false);
+
+  const allReviews = React.useMemo(
+    () => [...userReviews, ...seedReviews],
+    [userReviews],
+  );
 
   const sorted = React.useMemo(() => {
-    const r = [...reviews];
+    const r = [...allReviews];
     if (sort === 'recent') {
       r.sort((a, b) => +new Date(b.date) - +new Date(a.date));
     } else if (sort === 'highest') {
@@ -29,10 +37,37 @@ export function CustomerReviews() {
       r.sort((a, b) => a.stars - b.stars || +new Date(b.date) - +new Date(a.date));
     }
     return r;
-  }, [sort]);
+  }, [sort, allReviews]);
 
-  const visible = showAll ? sorted : sorted.slice(0, INITIAL_VISIBLE);
-  const hidden = sorted.length - INITIAL_VISIBLE;
+  const visible = sorted.slice(0, visibleCount);
+  const remaining = sorted.length - visibleCount;
+  const hasMore = remaining > 0;
+
+  // Aggregate rating includes user-submitted reviews
+  const ratingSummary = React.useMemo(() => {
+    if (allReviews.length === 0) {
+      return {
+        rating: blackoutDailyDriver.averageRating,
+        count: blackoutDailyDriver.reviewCount,
+      };
+    }
+    const total = allReviews.reduce((sum, r) => sum + r.stars, 0);
+    return {
+      rating: total / allReviews.length,
+      count: allReviews.length,
+    };
+  }, [allReviews]);
+
+  const handleSubmit = (r: Review) => {
+    setUserReviews((prev) => [r, ...prev]);
+    setVisibleCount((c) => Math.max(c, 1));
+  };
+
+  const showMore = () => {
+    setVisibleCount((c) => Math.min(c + PAGE_SIZE, sorted.length));
+  };
+
+  const showLess = () => setVisibleCount(PAGE_SIZE);
 
   return (
     <section
@@ -48,10 +83,7 @@ export function CustomerReviews() {
           >
             What They're Saying
           </h2>
-          <RatingSummary
-            rating={blackoutDailyDriver.averageRating}
-            count={blackoutDailyDriver.reviewCount}
-          />
+          <RatingSummary rating={ratingSummary.rating} count={ratingSummary.count} />
         </header>
 
         {/* Filter bar */}
@@ -61,10 +93,13 @@ export function CustomerReviews() {
             <button
               key={opt.id}
               type="button"
-              onClick={() => setSort(opt.id)}
+              onClick={() => {
+                setSort(opt.id);
+                setVisibleCount(PAGE_SIZE);
+              }}
               aria-pressed={sort === opt.id}
               className={[
-                'shrink-0 inline-flex items-center px-3.5 h-8 rounded-full text-[11px] font-semibold tracking-[0.14em] uppercase transition-colors',
+                'shrink-0 inline-flex items-center px-3.5 h-8 rounded-full text-[11px] font-semibold tracking-[0.14em] uppercase transition-all duration-200',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone',
                 sort === opt.id
                   ? 'bg-bone text-ink'
@@ -83,25 +118,46 @@ export function CustomerReviews() {
           ))}
         </div>
 
-        {/* Footer actions */}
-        <div className="mt-8 flex items-center justify-between gap-4 flex-wrap">
-          {hidden > 0 && (
+        {/* Footer actions: Show More + Write a Review */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4">
+          {hasMore ? (
             <button
               type="button"
-              onClick={() => setShowAll((v) => !v)}
-              className="text-bone hover:text-white text-xs tracking-[0.16em] uppercase font-semibold transition-colors underline underline-offset-4 decoration-ink-600"
+              onClick={showMore}
+              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
             >
-              {showAll ? 'Show Less' : `Show ${hidden} More`}
+              Show {Math.min(remaining, PAGE_SIZE)} More
+              <ChevronDown className="h-4 w-4" strokeWidth={2.25} />
             </button>
+          ) : visibleCount > PAGE_SIZE ? (
+            <button
+              type="button"
+              onClick={showLess}
+              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
+            >
+              Show Less
+              <ChevronDown className="h-4 w-4 rotate-180" strokeWidth={2.25} />
+            </button>
+          ) : (
+            <span className="hidden sm:block" />
           )}
+
           <button
             type="button"
-            className="ml-auto inline-flex items-center h-10 px-5 rounded-lg border border-bone-500/40 text-bone hover:text-white hover:border-bone-500 transition-colors text-xs tracking-[0.16em] uppercase font-semibold"
+            onClick={() => setModalOpen(true)}
+            className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
           >
+            <Plus className="h-4 w-4" strokeWidth={2.25} />
             Write a Review
           </button>
         </div>
       </div>
+
+      <WriteReviewModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onSubmit={handleSubmit}
+      />
     </section>
   );
 }
@@ -144,12 +200,10 @@ function Stars({ rating, size = 'md' }: { rating: number; size?: 'md' | 'lg' }) 
 function ReviewRow({ review }: { review: Review }) {
   return (
     <article className="grid grid-cols-[auto_1fr] sm:grid-cols-[80px_1fr_auto] gap-x-4 sm:gap-x-6 gap-y-2 py-5 sm:py-6">
-      {/* Stars (left) */}
       <div className="row-start-1 col-start-1 sm:col-start-1 flex items-start pt-0.5">
         <Stars rating={review.stars} />
       </div>
 
-      {/* Title + body (center) */}
       <div className="col-start-2 sm:col-start-2 sm:row-start-1 sm:row-span-2">
         {review.title && (
           <h3 className="font-condensed text-[15px] sm:text-base font-extrabold tracking-[0.04em] uppercase text-white leading-snug mb-1.5">
@@ -161,7 +215,6 @@ function ReviewRow({ review }: { review: Review }) {
         </p>
       </div>
 
-      {/* Author + date (right on desktop, below on mobile) */}
       <div className="col-start-2 sm:col-start-3 sm:row-start-1 sm:row-span-2 sm:text-right text-[12px] sm:text-xs space-y-0.5 sm:pl-3">
         <div className="text-bone font-medium">{review.author}</div>
         <time className="text-bone-500 block" dateTime={review.date}>
