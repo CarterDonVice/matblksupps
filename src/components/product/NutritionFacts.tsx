@@ -4,14 +4,46 @@ import * as React from 'react';
 import { ChevronDown } from 'lucide-react';
 import { tenet } from '@/lib/products';
 
-export function NutritionFacts() {
-  const [open, setOpen] = React.useState(false);
+interface Props {
+  /** "dropdown" = collapsible accordion (mobile right-column).
+   *  "static"   = always-open list (desktop left-column under the gallery). */
+  variant?: 'dropdown' | 'static';
+  className?: string;
+}
 
+export function NutritionFacts({ variant = 'dropdown', className }: Props) {
+  if (variant === 'static') {
+    return <StaticPanel className={className} />;
+  }
+  return <DropdownPanel className={className} />;
+}
+
+function StaticPanel({ className }: { className?: string }) {
+  return (
+    <section
+      aria-label="Nutrition facts"
+      className={[
+        'rounded-xl border border-ink-600 bg-ink-800/40 px-5 py-5',
+        className ?? '',
+      ].join(' ')}
+    >
+      <h2 className="font-condensed text-sm font-extrabold tracking-[0.16em] uppercase text-bone mb-4">
+        Nutrition Facts
+      </h2>
+      <List />
+      <Disclaimer />
+    </section>
+  );
+}
+
+function DropdownPanel({ className }: { className?: string }) {
+  const [open, setOpen] = React.useState(false);
   return (
     <div
       className={[
         'rounded-xl border bg-ink-800/60 transition-colors duration-200',
         open ? 'border-bone-500/40' : 'border-ink-600',
+        className ?? '',
       ].join(' ')}
     >
       <button
@@ -40,30 +72,44 @@ export function NutritionFacts() {
       >
         <div className="overflow-hidden">
           <div className="px-4 sm:px-5 pb-4 sm:pb-5">
-            <ul className="border-t border-ink-600 divide-y divide-ink-600">
-              {tenet.ingredients.map((ing) => (
-                <li
-                  key={ing.name}
-                  className="flex items-baseline justify-between gap-3 py-2.5"
-                >
-                  <span className="text-bone text-[13px] sm:text-sm">
-                    {ing.name}
-                  </span>
-                  <span className="font-condensed text-sm font-bold tabular-nums text-bone tracking-wide">
-                    {ing.dose}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-3 text-bone-500 text-[10px] leading-relaxed">
-              † Based on clinical studies of individual ingredients at matching
-              dosages. These statements have not been evaluated by the FDA. This
-              product is not intended to diagnose, treat, cure, or prevent any
-              disease.
-            </p>
+            <List bordered />
+            <Disclaimer />
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function List({ bordered = false }: { bordered?: boolean }) {
+  return (
+    <ul
+      className={[
+        'divide-y divide-ink-600',
+        bordered ? 'border-t border-ink-600' : '',
+      ].join(' ')}
+    >
+      {tenet.ingredients.map((ing) => (
+        <li
+          key={ing.name}
+          className="flex items-baseline justify-between gap-3 py-2.5"
+        >
+          <span className="text-bone text-[13px] sm:text-sm">{ing.name}</span>
+          <span className="font-condensed text-sm font-bold tabular-nums text-bone tracking-wide">
+            {ing.dose}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Disclaimer() {
+  return (
+    <p className="mt-3 text-bone-500 text-[10px] leading-relaxed">
+      † Based on clinical studies of individual ingredients at matching dosages.
+      These statements have not been evaluated by the FDA. This product is not
+      intended to diagnose, treat, cure, or prevent any disease.
+    </p>
   );
 }

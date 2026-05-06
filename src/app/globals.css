@@ -13,6 +13,8 @@
     --color-text-dim: #6e6a64;
     --color-border: #333333;
     --color-success: #4caf7d;
+    /* Reserved for review stars only */
+    --color-gold: #D4AF37;
   }
 
   * {

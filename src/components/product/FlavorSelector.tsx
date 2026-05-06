@@ -20,6 +20,8 @@ export function FlavorSelector() {
       >
         {flavors.map((flavor) => {
           const active = flavor.id === flavorId;
+          const [line1, ...rest] = flavor.name.split(' ');
+          const line2 = rest.join(' ');
           return (
             <button
               key={flavor.id}
@@ -42,13 +44,13 @@ export function FlavorSelector() {
                 className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-105"
                 style={{ background: flavor.gradient }}
               />
-              {/* Subtle dark vignette to keep text legible */}
+              {/* Subtle bottom vignette to keep stacked text legible */}
               <div
                 aria-hidden
                 className="absolute inset-0"
                 style={{
                   background:
-                    'linear-gradient(180deg, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.55) 100%)',
+                    'linear-gradient(180deg, rgba(0,0,0,0.0) 35%, rgba(0,0,0,0.6) 100%)',
                 }}
               />
               <div
@@ -56,7 +58,6 @@ export function FlavorSelector() {
                 className="absolute inset-0 texture-grain opacity-50 mix-blend-overlay"
               />
 
-              {/* Selected check */}
               {active && (
                 <span
                   aria-hidden
@@ -66,10 +67,16 @@ export function FlavorSelector() {
                 </span>
               )}
 
-              {/* Flavor name — larger, more prominent */}
+              {/* Stacked flavor name — two lines, larger */}
               <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-4 text-left">
-                <p className="font-condensed text-base sm:text-lg font-extrabold tracking-[0.12em] uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] leading-[0.95]">
-                  {flavor.name}
+                <p className="font-condensed font-extrabold tracking-[0.08em] uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] leading-[0.95] text-xl sm:text-2xl">
+                  {line1}
+                  {line2 && (
+                    <>
+                      <br />
+                      {line2}
+                    </>
+                  )}
                 </p>
               </div>
             </button>

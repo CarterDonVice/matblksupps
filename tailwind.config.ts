@@ -41,6 +41,8 @@ export default {
           500: '#6e6a64',
         },
         success: '#4caf7d',
+        // Reserved for review stars only — like success is reserved for verified badges
+        gold: '#D4AF37',
 
         // shadcn semantic mappings
         background: '#141414',
