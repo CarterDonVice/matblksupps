@@ -36,7 +36,7 @@ export const tenet: Product = {
     "Enhance your training with TENET. This formula is built on science and backed by clinical research, using clinically dosed ingredients for pump, focus, energy, and absorption. With a smooth, moderate-stim profile, TENET is the pre-workout you'll rely on day in and day out.",
   ingredients: [
     { name: 'L-Citrulline', dose: '6,000 mg', hero: true },
-    { name: 'Sodium Nitrate', dose: '1,000 mg', hero: true },
+    { name: 'Sodium Nitrate (NO3-T®)', dose: '1,000 mg', hero: true },
     { name: 'Beta-Alanine', dose: '3,200 mg' },
     { name: 'Maltodextrin', dose: '10,000 mg' },
     { name: 'Alpha-GPC (50%)', dose: '600 mg', hero: true },

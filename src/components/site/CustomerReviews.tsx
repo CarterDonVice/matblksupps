@@ -1,7 +1,14 @@
 'use client';
 
 import * as React from 'react';
-import { Star, Plus, ChevronDown } from 'lucide-react';
+import {
+  Star,
+  Plus,
+  ChevronDown,
+  Search,
+  X,
+  SlidersHorizontal,
+} from 'lucide-react';
 import { reviews as seedReviews, tenet } from '@/lib/products';
 import type { Review } from '@/lib/types';
 import { WriteReviewModal } from './WriteReviewModal';
@@ -18,6 +25,8 @@ const PAGE_SIZE = 3;
 
 export function CustomerReviews() {
   const [sort, setSort] = React.useState<SortKey>('recent');
+  const [search, setSearch] = React.useState('');
+  const [stars, setStars] = React.useState<Set<number>>(new Set());
   const [visibleCount, setVisibleCount] = React.useState(PAGE_SIZE);
   const [userReviews, setUserReviews] = React.useState<Review[]>([]);
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -27,8 +36,23 @@ export function CustomerReviews() {
     [userReviews],
   );
 
-  const sorted = React.useMemo(() => {
-    const r = [...allReviews];
+  const filtered = React.useMemo(() => {
+    let r = [...allReviews];
+
+    if (stars.size > 0) {
+      r = r.filter((rev) => stars.has(rev.stars));
+    }
+
+    const q = search.trim().toLowerCase();
+    if (q) {
+      r = r.filter(
+        (rev) =>
+          (rev.title?.toLowerCase().includes(q) ?? false) ||
+          rev.body.toLowerCase().includes(q) ||
+          rev.author.toLowerCase().includes(q),
+      );
+    }
+
     if (sort === 'recent') {
       r.sort((a, b) => +new Date(b.date) - +new Date(a.date));
     } else if (sort === 'highest') {
@@ -36,38 +60,46 @@ export function CustomerReviews() {
     } else {
       r.sort((a, b) => a.stars - b.stars || +new Date(b.date) - +new Date(a.date));
     }
+
     return r;
-  }, [sort, allReviews]);
+  }, [allReviews, stars, search, sort]);
 
-  const visible = sorted.slice(0, visibleCount);
-  const remaining = sorted.length - visibleCount;
+  // Reset pagination when filters change
+  React.useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [search, stars, sort]);
+
+  const visible = filtered.slice(0, visibleCount);
+  const remaining = filtered.length - visibleCount;
   const hasMore = remaining > 0;
+  const isFiltered =
+    stars.size > 0 || search.trim().length > 0;
 
-  // Aggregate rating includes user-submitted reviews
   const ratingSummary = React.useMemo(() => {
     if (allReviews.length === 0) {
-      return {
-        rating: tenet.averageRating,
-        count: tenet.reviewCount,
-      };
+      return { rating: tenet.averageRating, count: tenet.reviewCount };
     }
     const total = allReviews.reduce((sum, r) => sum + r.stars, 0);
-    return {
-      rating: total / allReviews.length,
-      count: allReviews.length,
-    };
+    return { rating: total / allReviews.length, count: allReviews.length };
   }, [allReviews]);
 
   const handleSubmit = (r: Review) => {
     setUserReviews((prev) => [r, ...prev]);
-    setVisibleCount((c) => Math.max(c, 1));
   };
 
-  const showMore = () => {
-    setVisibleCount((c) => Math.min(c + PAGE_SIZE, sorted.length));
+  const toggleStar = (n: number) => {
+    setStars((prev) => {
+      const next = new Set(prev);
+      if (next.has(n)) next.delete(n);
+      else next.add(n);
+      return next;
+    });
   };
 
-  const showLess = () => setVisibleCount(PAGE_SIZE);
+  const clearFilters = () => {
+    setStars(new Set());
+    setSearch('');
+  };
 
   return (
     <section
@@ -86,71 +118,107 @@ export function CustomerReviews() {
           <RatingSummary rating={ratingSummary.rating} count={ratingSummary.count} />
         </header>
 
-        {/* Filter bar */}
-        <div className="flex items-center gap-2 mb-6 -mx-5 px-5 overflow-x-auto scrollbar-hide">
-          <span className="label-eyebrow shrink-0 mr-2">Sort by</span>
-          {sortOptions.map((opt) => (
-            <button
-              key={opt.id}
-              type="button"
-              onClick={() => {
-                setSort(opt.id);
-                setVisibleCount(PAGE_SIZE);
-              }}
-              aria-pressed={sort === opt.id}
-              className={[
-                'shrink-0 inline-flex items-center px-3.5 h-8 rounded-full text-[11px] font-semibold tracking-[0.14em] uppercase transition-all duration-200',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone',
-                sort === opt.id
-                  ? 'bg-bone text-ink'
-                  : 'bg-ink-800 text-bone-600 border border-ink-600 hover:text-bone hover:border-bone-500',
-              ].join(' ')}
-            >
-              {opt.label}
-            </button>
-          ))}
+        {/* Controls */}
+        <div className="mb-3 space-y-3 lg:space-y-3">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-3">
+            <SearchInput value={search} onChange={setSearch} />
+            <div className="flex items-center gap-2 -mx-5 lg:mx-0 px-5 lg:px-0 overflow-x-auto scrollbar-hide lg:flex-1 lg:justify-end">
+              <StarFilter stars={stars} onToggle={toggleStar} onClearAll={() => setStars(new Set())} />
+              <SortDropdown sort={sort} onChange={setSort} />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between gap-3 flex-wrap">
+            <p className="text-bone-500 text-[12px]">
+              Showing{' '}
+              <span className="text-bone font-medium">{filtered.length}</span> of{' '}
+              <span className="text-bone font-medium">{allReviews.length}</span> reviews
+            </p>
+            {isFiltered && (
+              <button
+                type="button"
+                onClick={clearFilters}
+                className="text-bone-600 hover:text-bone text-[11px] tracking-[0.16em] uppercase font-semibold transition-colors inline-flex items-center gap-1"
+              >
+                <X className="h-3 w-3" strokeWidth={2.25} />
+                Clear filters
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Stacked rows */}
-        <div className="divide-y divide-ink-600 border-y border-ink-600">
-          {visible.map((r) => (
-            <ReviewRow key={r.id} review={r} />
-          ))}
-        </div>
-
-        {/* Footer actions: Show More + Write a Review */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4">
-          {hasMore ? (
-            <button
-              type="button"
-              onClick={showMore}
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
-            >
-              Show {Math.min(remaining, PAGE_SIZE)} More
-              <ChevronDown className="h-4 w-4" strokeWidth={2.25} />
-            </button>
-          ) : visibleCount > PAGE_SIZE ? (
-            <button
-              type="button"
-              onClick={showLess}
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
-            >
-              Show Less
-              <ChevronDown className="h-4 w-4 rotate-180" strokeWidth={2.25} />
-            </button>
+        <div className="divide-y divide-ink-600 border-y border-ink-600 mt-3">
+          {visible.length === 0 ? (
+            <div className="py-12 text-center space-y-2">
+              <SlidersHorizontal
+                className="h-6 w-6 text-bone-500 mx-auto"
+                strokeWidth={1.5}
+              />
+              <p className="text-bone-600 text-sm">
+                No reviews match your filters.
+              </p>
+              <button
+                type="button"
+                onClick={clearFilters}
+                className="text-bone hover:text-white text-xs tracking-[0.16em] uppercase font-semibold transition-colors underline underline-offset-4 decoration-ink-600"
+              >
+                Clear filters
+              </button>
+            </div>
           ) : (
-            <span className="hidden sm:block" />
+            visible.map((r) => <ReviewRow key={r.id} review={r} />)
           )}
-
-          <button
-            type="button"
-            onClick={() => setModalOpen(true)}
-            className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
-          >
-            <Plus className="h-4 w-4" strokeWidth={2.25} />
-            Write a Review
-          </button>
         </div>
+
+        {/* Footer actions */}
+        {visible.length > 0 && (
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4">
+            {hasMore ? (
+              <button
+                type="button"
+                onClick={() => setVisibleCount((c) => Math.min(c + PAGE_SIZE, filtered.length))}
+                className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
+              >
+                Show {Math.min(remaining, PAGE_SIZE)} More
+                <ChevronDown className="h-4 w-4" strokeWidth={2.25} />
+              </button>
+            ) : visibleCount > PAGE_SIZE ? (
+              <button
+                type="button"
+                onClick={() => setVisibleCount(PAGE_SIZE)}
+                className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
+              >
+                Show Less
+                <ChevronDown className="h-4 w-4 rotate-180" strokeWidth={2.25} />
+              </button>
+            ) : (
+              <span className="hidden sm:block" />
+            )}
+
+            <button
+              type="button"
+              onClick={() => setModalOpen(true)}
+              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
+            >
+              <Plus className="h-4 w-4" strokeWidth={2.25} />
+              Write a Review
+            </button>
+          </div>
+        )}
+
+        {visible.length === 0 && (
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setModalOpen(true)}
+              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
+            >
+              <Plus className="h-4 w-4" strokeWidth={2.25} />
+              Write a Review
+            </button>
+          </div>
+        )}
       </div>
 
       <WriteReviewModal
@@ -159,6 +227,130 @@ export function CustomerReviews() {
         onSubmit={handleSubmit}
       />
     </section>
+  );
+}
+
+function SearchInput({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div className="relative lg:w-1/2 lg:max-w-md">
+      <Search
+        className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-bone-500 pointer-events-none"
+        strokeWidth={1.75}
+      />
+      <input
+        type="search"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder="Search reviews..."
+        aria-label="Search reviews"
+        className="w-full h-11 pl-10 pr-9 rounded-xl bg-ink-800 border border-ink-600 text-bone placeholder:text-bone-500 text-sm outline-none transition-colors focus:border-bone-500 focus-visible:ring-2 focus-visible:ring-bone/20"
+      />
+      {value && (
+        <button
+          type="button"
+          aria-label="Clear search"
+          onClick={() => onChange('')}
+          className="absolute right-2 top-1/2 -translate-y-1/2 inline-flex h-7 w-7 items-center justify-center rounded-full text-bone-500 hover:text-bone hover:bg-ink-700 transition-colors"
+        >
+          <X className="h-3.5 w-3.5" strokeWidth={2} />
+        </button>
+      )}
+    </div>
+  );
+}
+
+function StarFilter({
+  stars,
+  onToggle,
+  onClearAll,
+}: {
+  stars: Set<number>;
+  onToggle: (n: number) => void;
+  onClearAll: () => void;
+}) {
+  const allActive = stars.size === 0;
+  return (
+    <div className="flex items-center gap-1.5 shrink-0" role="group" aria-label="Filter by rating">
+      <FilterPill active={allActive} onClick={onClearAll} label="All" />
+      {[5, 4, 3, 2, 1].map((n) => (
+        <FilterPill
+          key={n}
+          active={stars.has(n)}
+          onClick={() => onToggle(n)}
+          label={
+            <>
+              {n}
+              <Star
+                className="h-2.5 w-2.5 ml-0.5 inline text-current fill-current"
+                strokeWidth={1.5}
+              />
+            </>
+          }
+        />
+      ))}
+    </div>
+  );
+}
+
+function FilterPill({
+  active,
+  onClick,
+  label,
+}: {
+  active: boolean;
+  onClick: () => void;
+  label: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={[
+        'shrink-0 inline-flex items-center px-3 h-8 rounded-full text-[11px] font-semibold tracking-[0.12em] uppercase transition-all duration-200',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone',
+        active
+          ? 'bg-bone text-ink'
+          : 'bg-ink-800 text-bone-600 border border-ink-600 hover:text-bone hover:border-bone-500',
+      ].join(' ')}
+    >
+      {label}
+    </button>
+  );
+}
+
+function SortDropdown({
+  sort,
+  onChange,
+}: {
+  sort: SortKey;
+  onChange: (s: SortKey) => void;
+}) {
+  return (
+    <div className="relative shrink-0">
+      <select
+        value={sort}
+        onChange={(e) => onChange(e.target.value as SortKey)}
+        aria-label="Sort reviews"
+        className="appearance-none h-8 pl-3 pr-8 rounded-full bg-ink-800 border border-ink-600 text-bone text-[11px] font-semibold tracking-[0.14em] uppercase cursor-pointer hover:border-bone-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone"
+      >
+        {sortOptions.map((opt) => (
+          <option key={opt.id} value={opt.id}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+      <ChevronDown
+        className="absolute right-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-bone-500 pointer-events-none"
+        strokeWidth={1.75}
+      />
+    </div>
   );
 }
 
