@@ -13,17 +13,19 @@ export const tenet: Product = {
       id: 'midnight-limeade',
       name: 'Midnight Limeade',
       shortName: 'Limeade',
-      // Lemon TL → lime TR → blackberry BR → cherry BL — tight radial blobs, distinct zones
+      // Lemon TL → lime TR → blackberry BR → cherry BL — middle ground:
+      // each color holds its quadrant identity but melts smoothly into neighbors
       gradient:
-        'radial-gradient(circle at 22% 22%, rgba(245, 226, 90, 1) 0%, rgba(245, 226, 90, 0.95) 14%, transparent 26%), radial-gradient(circle at 78% 22%, rgba(160, 200, 60, 1) 0%, rgba(160, 200, 60, 0.95) 14%, transparent 26%), radial-gradient(circle at 78% 78%, rgba(126, 36, 144, 1) 0%, rgba(126, 36, 144, 0.95) 16%, transparent 30%), radial-gradient(circle at 22% 78%, rgba(170, 30, 52, 1) 0%, rgba(170, 30, 52, 0.95) 16%, transparent 30%), linear-gradient(135deg, #0c0c0c 0%, #050505 100%)',
+        'radial-gradient(circle at 22% 22%, rgba(245, 226, 90, 0.95) 0%, rgba(245, 226, 90, 0.55) 22%, transparent 38%), radial-gradient(circle at 78% 22%, rgba(160, 200, 60, 0.95) 0%, rgba(160, 200, 60, 0.55) 22%, transparent 38%), radial-gradient(circle at 78% 78%, rgba(126, 36, 144, 0.98) 0%, rgba(126, 36, 144, 0.6) 24%, transparent 42%), radial-gradient(circle at 22% 78%, rgba(170, 30, 52, 0.98) 0%, rgba(170, 30, 52, 0.6) 24%, transparent 42%), linear-gradient(135deg, #0c0c0c 0%, #050505 100%)',
     },
     {
       id: 'mango-passionfruit',
       name: 'Mango Passionfruit',
       shortName: 'Mango',
-      // Mango orange (top half) + passionfruit magenta-purple (bottom half), 50/50 dominance
+      // Mango orange (top half) ↔ passionfruit magenta-purple (bottom half),
+      // closer-to-equal presence with soft horizontal blend at the meridian
       gradient:
-        'radial-gradient(ellipse 110% 70% at 50% 22%, rgba(255, 148, 36, 1) 0%, rgba(255, 148, 36, 0.92) 40%, transparent 65%), radial-gradient(ellipse 110% 70% at 50% 78%, rgba(154, 36, 116, 1) 0%, rgba(154, 36, 116, 0.92) 40%, transparent 65%), linear-gradient(135deg, #1a0a06 0%, #0a0606 100%)',
+        'radial-gradient(ellipse 110% 75% at 50% 18%, rgba(255, 148, 36, 0.98) 0%, rgba(255, 148, 36, 0.7) 28%, rgba(255, 148, 36, 0.25) 48%, transparent 72%), radial-gradient(ellipse 110% 75% at 50% 82%, rgba(168, 38, 124, 1) 0%, rgba(168, 38, 124, 0.78) 28%, rgba(168, 38, 124, 0.3) 48%, transparent 72%), linear-gradient(135deg, #1a0a06 0%, #0a0606 100%)',
     },
   ],
   // Slot 1 = real product image. Slots 2-4 = "coming soon" placeholders.

@@ -19,12 +19,12 @@ export function PurchaseBlock() {
   }, [bumpCart, quantity]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 lg:space-y-4">
       <FlavorSelector />
       <PurchaseTypeSelector />
       <QuantitySelector />
 
-      <div className="space-y-3 pt-1">
+      <div className="space-y-3 pt-1 lg:pt-0">
         <button
           type="button"
           onClick={onAdd}
@@ -54,7 +54,9 @@ export function PurchaseBlock() {
 
         <TrustBadges />
 
-        <NutritionFacts />
+        {/* Mobile-only collapsible nutrition facts. Desktop renders the
+            permanent static panel under the product gallery instead. */}
+        <NutritionFacts variant="dropdown" className="lg:hidden" />
       </div>
     </div>
   );
