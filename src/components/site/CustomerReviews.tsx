@@ -188,7 +188,7 @@ function Stars({ rating, size = 'md' }: { rating: number; size?: 'md' | 'lg' }) 
         return (
           <Star
             key={i}
-            className={`${cls} ${filled ? 'text-bone fill-bone' : 'text-bone-500'}`}
+            className={`${cls} ${filled ? 'text-gold fill-gold' : 'text-bone-500'}`}
             strokeWidth={1.5}
           />
         );

@@ -70,7 +70,7 @@ export function Testimonials() {
                 {Array.from({ length: 5 }).map((_, n) => (
                   <Star
                     key={n}
-                    className="h-4 w-4 text-white fill-white"
+                    className="h-4 w-4 text-gold fill-gold"
                     strokeWidth={1.5}
                   />
                 ))}

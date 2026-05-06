@@ -143,7 +143,7 @@ export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
                         >
                           <Star
                             className={`h-7 w-7 transition-colors ${
-                              filled ? 'text-bone fill-bone' : 'text-bone-500'
+                              filled ? 'text-gold fill-gold' : 'text-bone-500'
                             }`}
                             strokeWidth={1.5}
                           />
