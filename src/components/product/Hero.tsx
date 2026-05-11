@@ -8,6 +8,7 @@ import { tenet } from '@/lib/products';
 import { useReviews } from '@/contexts/ReviewsContext';
 import { scrollToId } from '@/lib/scroll';
 import { StarRow } from '@/components/ui/StarSharp';
+import { FillerBand } from '@/components/site/FillerBand';
 
 export function Hero() {
   const product = tenet;
@@ -68,6 +69,13 @@ export function Hero() {
                 In Stock
               </span>
             </button>
+
+            {/* Sub-hero trust line (Band 1) */}
+            <FillerBand
+              variant="inline-trust"
+              text="Clinically Dosed. Transparent Formula. Made in USA."
+              className="pt-1"
+            />
 
             {/* Anchor for Guarantee CTA */}
             <div id="purchase" className="scroll-mt-20 pt-2 lg:pt-1">

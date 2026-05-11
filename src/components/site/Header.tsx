@@ -9,6 +9,7 @@ import { useCart } from '@/contexts/CartContext';
 const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
+  { label: 'Science', href: '/science' },
   { label: 'Contact', href: '/contact' },
 ];
 

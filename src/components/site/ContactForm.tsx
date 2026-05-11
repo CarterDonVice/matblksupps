@@ -4,10 +4,11 @@ import * as React from 'react';
 import { Send, Check, ChevronDown } from 'lucide-react';
 
 const subjects = [
-  'General Inquiry',
-  'Order Issue',
+  'General Question',
+  'Order Support',
+  'Subscription Help',
+  'Athlete Inquiry',
   'Press',
-  'Wholesale',
   'Other',
 ] as const;
 
@@ -16,7 +17,7 @@ type Subject = (typeof subjects)[number];
 export function ContactForm() {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
-  const [subject, setSubject] = React.useState<Subject>('General Inquiry');
+  const [subject, setSubject] = React.useState<Subject>('General Question');
   const [message, setMessage] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
 
@@ -27,7 +28,8 @@ export function ContactForm() {
     e.preventDefault();
     if (!valid) return;
     setSubmitted(true);
-    // TODO: wire to a transactional email/forms service (Resend, Formspree, etc.)
+    // TODO: wire to transactional email / Formspree / Resend
+    // Currently: send to support@matblksupps.com via backend integration when ready.
   };
 
   if (submitted) {
@@ -37,11 +39,11 @@ export function ContactForm() {
           <Check className="h-6 w-6" strokeWidth={2.5} />
         </span>
         <h2 className="font-display text-3xl text-white tracking-[0.01em]">
-          Message sent
+          Got it.
         </h2>
         <p className="text-bone-600 text-sm max-w-md mx-auto">
-          Thanks for reaching out. We'll get back to you at{' '}
-          <span className="text-bone">{email}</span> within 24 hours.
+          We'll be in touch within 24 business hours at{' '}
+          <span className="text-bone">{email}</span>.
         </p>
       </div>
     );

@@ -10,6 +10,7 @@ import { QuantitySelector } from './QuantitySelector';
 import { NutritionFacts } from './NutritionFacts';
 import { TrustBadges } from './TrustBadges';
 import { QuickTestimonial } from './QuickTestimonial';
+import { FillerBand } from '@/components/site/FillerBand';
 import { tenet } from '@/lib/products';
 
 export function PurchaseBlock() {
@@ -54,6 +55,12 @@ export function PurchaseBlock() {
             ${unitPrice.toFixed(2)}
           </span>
         </button>
+
+        {/* Band 2 — quiet reassurance under the cart button */}
+        <FillerBand
+          variant="inline-soft"
+          text="Pump. Energy. Focus. No crash."
+        />
 
         <p className="flex items-center gap-2 text-bone-600 text-[12px]">
           <ShieldCheck

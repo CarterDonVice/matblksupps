@@ -10,36 +10,56 @@ interface Faq {
 
 const faqs: Faq[] = [
   {
+    q: 'Why TENET?',
+    a: 'TENET exists because most pre workouts are built to look strong on the label and feel weak in the gym. Hidden doses behind proprietary blends. Cheap fillers padding the tub. Single source caffeine that crashes you at 2pm. TENET strips all of that out. Ten ingredients. All clinically dosed. All fully disclosed. Built to be the foundation you train on every day.',
+  },
+  {
+    q: "What's in TENET's formula?",
+    a: '10 clinically dosed ingredients. No proprietary blends. No fillers. Every milligram fully disclosed. The full label sits visible above.',
+  },
+  {
     q: 'When should I take TENET?',
-    a: 'Take TENET 20–30 minutes before training. Mix one scoop with 8–12 oz of cold water. For best results, take on an empty or near-empty stomach.',
+    a: 'Take TENET 20 to 30 minutes before training. Mix one scoop with 8 to 12 ounces of cold water. For best results, take it on an empty or near empty stomach.',
   },
   {
     q: 'Can I take TENET every day?',
-    a: 'Yes — TENET is formulated as a daily driver. Caffeine content (~233mg total) is moderate compared to high-stim formulas, making it suitable for daily use. As with any caffeinated supplement, listen to your body and consider taking 1–2 days off per week.',
+    a: 'Yes. TENET is formulated as a daily driver. The 233mg total caffeine sits in the moderate range, which makes it suitable for everyday training. Listen to your body and consider taking 1 or 2 days off per week if needed.',
+  },
+  {
+    q: "What if I'm sensitive to caffeine?",
+    a: 'TENET sits at 233mg total caffeine, roughly equivalent to two strong coffees. If you\'re caffeine sensitive, start with half a scoop to assess tolerance. For a fully stim free option, watch for future TENET variants.',
   },
   {
     q: 'Will TENET cause a crash?',
-    a: 'TENET uses a dual caffeine system — 100mg of caffeine anhydrous for the initial kick, plus 133mg of di-caffeine malate for sustained release. This combination is specifically designed to provide smooth, sustained energy without the sharp crash of single-source caffeine formulas.',
+    a: 'TENET uses a DUAL CAFFEINE SYSTEM designed specifically to prevent the crash. 100mg of Caffeine Anhydrous delivers the initial kick. 133mg of Di Caffeine Malate extends the release for sustained energy. The result is a smooth taper, not a hard cliff.',
   },
   {
-    q: 'What does the tingle feel like?',
-    a: "That tingle is beta-alanine — clinically dosed at 3,200mg. It's harmless and indicates the ingredient is working to buffer lactic acid in your muscles. The sensation typically diminishes after 2–3 weeks of consistent use.",
+    q: 'How is TENET different from other pre workouts?',
+    a: 'Three ways stand out. Every ingredient is clinically dosed without any underdosing to cut costs. No proprietary blends and full transparency on every milligram. No fillers like maltodextrin. TENET is built to be your foundation, not your gimmick.',
   },
   {
-    q: 'Are there any banned substances?',
-    a: 'No. TENET is formulated without WADA-banned substances or proprietary blends. Every ingredient and dosage is fully disclosed on the label.',
+    q: 'Why no fillers or proprietary blends?',
+    a: 'Fillers like maltodextrin add weight to the tub but nothing to your training. Proprietary blends hide doses behind vague labels. TENET skips both. Every ingredient is disclosed at clinical dose. What you read on the label is exactly what you get.',
+  },
+  {
+    q: 'Is TENET safe for tested athletes?',
+    a: "TENET's formula contains no substances on the WADA Prohibited List or the NCAA banned drug list. However, we are not currently NSF Certified for Sport or Informed Sport. Those certifications guarantee batch level cleanliness through third party testing, which is something we may pursue in the future. Athletes in tested competition should verify with their compliance officer before use.",
+  },
+  {
+    q: 'Can I stack TENET with other supplements?',
+    a: "Yes. TENET pairs well with creatine, protein, electrolytes, and other non stimulant supplements. Keep total daily caffeine intake under 400mg. If you're already taking caffeinated supplements, factor that in.",
   },
   {
     q: 'How does Subscribe & Save work?',
-    a: 'Subscribe & Save delivers TENET to your door at your chosen frequency (every 30, 45, or 60 days) with 10% off every order. Cancel, pause, or modify anytime — no commitment required.',
+    a: 'Subscribe & Save delivers TENET to your door at your chosen frequency of every 30, 45, or 60 days with 10% off every order. Cancel, pause, or modify anytime with no commitment required.',
   },
   {
     q: "What's your return policy?",
-    a: "We offer a 100% satisfaction guarantee. If TENET doesn't meet your expectations, contact us within 30 days of purchase for a full refund — no questions asked.",
+    a: "100% satisfaction guarantee. If TENET doesn't perform like we say it does, contact us within 30 days for a full refund, even if the tub is empty. No hoops. No questions.",
   },
   {
-    q: 'Where is TENET manufactured?',
-    a: 'TENET is manufactured in Carrollton, Texas in a GMP-compliant, FDA-registered facility. Made in USA.',
+    q: 'Where is TENET made?',
+    a: 'TENET is manufactured in Carrollton, Texas at a GMP compliant, FDA registered facility. Every batch follows current Good Manufacturing Practice standards for dietary supplements, the same regulatory framework that governs how supplements must be produced in the United States. Made in USA. Dosed transparently. No compromises on quality control.',
   },
 ];
 
@@ -69,10 +89,7 @@ export function FAQ() {
           {faqs.map((item, i) => {
             const isOpen = openIndex === i;
             return (
-              <li
-                key={i}
-                className="border-b border-ink-600"
-              >
+              <li key={i} className="border-b border-ink-600">
                 <button
                   type="button"
                   aria-expanded={isOpen}
