@@ -7,8 +7,23 @@ interface Row {
 const rows: Row[] = [
   {
     label: 'Clinical doses on every ingredient',
-    tenet: 'Yes',
+    tenet: 'Yes, every milligram',
     typical: 'Underdosed to cut costs',
+  },
+  {
+    label: 'Pump system',
+    tenet: 'DUAL PUMP PATHWAYS (Citrulline + Nitrate)',
+    typical: 'Single pathway, often weak dose',
+  },
+  {
+    label: 'Caffeine system',
+    tenet: 'DUAL CAFFEINE SYSTEM (sustained)',
+    typical: 'Single source (crash risk)',
+  },
+  {
+    label: 'Absorption enhancer',
+    tenet: 'Piperine (95%) for bioavailability',
+    typical: 'Often missing entirely',
   },
   {
     label: 'Proprietary blends',
@@ -19,11 +34,6 @@ const rows: Row[] = [
     label: 'Fillers like maltodextrin',
     tenet: 'Never',
     typical: 'Common',
-  },
-  {
-    label: 'Caffeine system',
-    tenet: 'DUAL CAFFEINE SYSTEM (sustained)',
-    typical: 'Single source (crash risk)',
   },
   {
     label: 'Label transparency',
@@ -55,7 +65,7 @@ export function Comparison() {
     >
       <div className="container max-w-5xl">
         <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <p className="label-eyebrow mb-3">The Difference</p>
+          <p className="label-eyebrow mb-3">Why TENET</p>
           <h2
             id="whats-different"
             className="font-display text-5xl sm:text-7xl text-white tracking-[0.01em] leading-[0.92] mb-3"
