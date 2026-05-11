@@ -2,7 +2,13 @@ import type { Metadata, Viewport } from 'next';
 import { Bebas_Neue, Barlow_Condensed, DM_Sans } from 'next/font/google';
 import './globals.css';
 import { SelectionProvider } from '@/contexts/SelectionContext';
-import { CouponPopup } from '@/components/marketing/CouponPopup';
+import { ReviewsProvider } from '@/contexts/ReviewsContext';
+import { CartProvider } from '@/contexts/CartContext';
+import {
+  CouponProvider,
+  StickyDiscountButton,
+} from '@/components/marketing/CouponPopup';
+import { CartDrawer } from '@/components/cart/CartDrawer';
 
 const display = Bebas_Neue({
   subsets: ['latin'],
@@ -80,10 +86,17 @@ export default function RootLayout({
       className={`${display.variable} ${condensed.variable} ${body.variable}`}
     >
       <body className="bg-ink text-bone min-h-screen flex flex-col antialiased">
-        <SelectionProvider>
-          {children}
-          <CouponPopup />
-        </SelectionProvider>
+        <ReviewsProvider>
+          <CartProvider>
+            <SelectionProvider>
+              <CouponProvider>
+                {children}
+                <CartDrawer />
+                <StickyDiscountButton />
+              </CouponProvider>
+            </SelectionProvider>
+          </CartProvider>
+        </ReviewsProvider>
       </body>
     </html>
   );

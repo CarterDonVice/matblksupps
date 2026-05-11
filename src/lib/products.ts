@@ -38,7 +38,6 @@ export const tenet: Product = {
     { name: 'L-Citrulline', dose: '6,000 mg', hero: true },
     { name: 'Sodium Nitrate (NO3-T®)', dose: '1,000 mg', hero: true },
     { name: 'Beta-Alanine', dose: '3,200 mg' },
-    { name: 'Maltodextrin', dose: '10,000 mg' },
     { name: 'Alpha-GPC (50%)', dose: '600 mg', hero: true },
     { name: 'L-Tyrosine', dose: '2,000 mg', hero: true },
     { name: 'Taurine', dose: '1,000 mg' },

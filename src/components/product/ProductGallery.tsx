@@ -2,20 +2,19 @@
 
 import * as React from 'react';
 import Image from 'next/image';
-import { ImageOff, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ImageOff, ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
 
 interface Props {
-  /** First non-null image is the hero. `null` slots are "coming soon" placeholders. */
   images: (string | null)[];
   alt: string;
 }
 
 export function ProductGallery({ images, alt }: Props) {
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const [zoomOpen, setZoomOpen] = React.useState(false);
   const slidesRef = React.useRef<HTMLDivElement>(null);
   const total = images.length;
 
-  // Sync active dot with horizontal mobile scroll
   React.useEffect(() => {
     const el = slidesRef.current;
     if (!el) return;
@@ -34,9 +33,10 @@ export function ProductGallery({ images, alt }: Props) {
     setActiveIndex(i);
   };
 
+  const activeSrc = images[activeIndex];
+
   return (
     <div className="space-y-4 sm:space-y-5">
-      {/* Hero stage: swipeable on mobile, single big image on desktop */}
       <div className="relative">
         <div
           ref={slidesRef}
@@ -47,7 +47,12 @@ export function ProductGallery({ images, alt }: Props) {
               key={i}
               className="snap-center shrink-0 w-screen sm:w-full aspect-square relative"
             >
-              <Slide src={src} alt={`${alt} ${i + 1}`} priority={i === 0} />
+              <Slide
+                src={src}
+                alt={`${alt} ${i + 1}`}
+                priority={i === 0}
+                onTap={src ? () => setZoomOpen(true) : undefined}
+              />
             </div>
           ))}
         </div>
@@ -70,6 +75,18 @@ export function ProductGallery({ images, alt }: Props) {
         >
           <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
         </button>
+
+        {/* Mobile zoom hint */}
+        {activeSrc && (
+          <button
+            type="button"
+            aria-label="View image fullscreen"
+            onClick={() => setZoomOpen(true)}
+            className="sm:hidden absolute bottom-3 right-5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-ink/80 backdrop-blur border border-ink-600 text-bone z-10"
+          >
+            <ZoomIn className="h-4 w-4" strokeWidth={1.75} />
+          </button>
+        )}
       </div>
 
       {/* Thumbnail strip */}
@@ -97,19 +114,27 @@ export function ProductGallery({ images, alt }: Props) {
           );
         })}
       </div>
+
+      <ZoomViewer
+        open={zoomOpen}
+        src={activeSrc}
+        alt={alt}
+        onClose={() => setZoomOpen(false)}
+      />
     </div>
   );
 }
 
-/** Main slide. Real product image renders ZoomableImage on desktop; placeholder otherwise. */
 function Slide({
   src,
   alt,
   priority,
+  onTap,
 }: {
   src: string | null;
   alt: string;
   priority?: boolean;
+  onTap?: () => void;
 }) {
   if (!src) return <PlaceholderSlide />;
   return (
@@ -125,23 +150,21 @@ function Slide({
           background: 'radial-gradient(ellipse, rgba(0,0,0,0.7), transparent 70%)',
         }}
       />
-      <ZoomableImage src={src} alt={alt} priority={priority} />
+      <ZoomableImage src={src} alt={alt} priority={priority} onTap={onTap} />
     </>
   );
 }
 
-/**
- * Cursor-tracked hover zoom on desktop (≥1024px hover-capable).
- * On mobile/touch the image is plain. Uses transform-origin tied to cursor.
- */
 function ZoomableImage({
   src,
   alt,
   priority,
+  onTap,
 }: {
   src: string;
   alt: string;
   priority?: boolean;
+  onTap?: () => void;
 }) {
   const [hovered, setHovered] = React.useState(false);
   const [origin, setOrigin] = React.useState({ x: 50, y: 50 });
@@ -160,39 +183,147 @@ function ZoomableImage({
   };
 
   return (
-    <div
-      ref={stageRef}
-      className="absolute inset-0 hidden sm:block group/zoom cursor-zoom-in"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onMouseMove={onMove}
-    >
+    <>
+      {/* Desktop: cursor-tracked hover zoom */}
       <div
-        className="absolute inset-0 transition-transform duration-200 ease-out will-change-transform"
-        style={{
-          transform: hovered ? 'scale(2)' : 'scale(1)',
-          transformOrigin: `${origin.x}% ${origin.y}%`,
-        }}
+        ref={stageRef}
+        className="absolute inset-0 hidden sm:block cursor-zoom-in"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onMouseMove={onMove}
+      >
+        <div
+          className="absolute inset-0 transition-transform duration-200 ease-out will-change-transform"
+          style={{
+            transform: hovered ? 'scale(2)' : 'scale(1)',
+            transformOrigin: `${origin.x}% ${origin.y}%`,
+          }}
+        >
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            priority={priority}
+            sizes="(max-width: 1024px) 100vw, 600px"
+            quality={95}
+            className="object-contain p-4 sm:p-6 drop-shadow-[0_30px_40px_rgba(0,0,0,0.65)]"
+          />
+        </div>
+      </div>
+
+      {/* Mobile: tap to open fullscreen viewer */}
+      <button
+        type="button"
+        onClick={onTap}
+        aria-label="Tap to zoom"
+        className="sm:hidden absolute inset-0 z-[1]"
       >
         <Image
           src={src}
           alt={alt}
           fill
           priority={priority}
-          sizes="(max-width: 1024px) 100vw, 600px"
-          className="object-contain p-4 sm:p-6 drop-shadow-[0_30px_40px_rgba(0,0,0,0.65)]"
-        />
-      </div>
-      {/* Mobile fallback (always-on, no zoom) */}
-      <div className="sm:hidden absolute inset-0">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          priority={priority}
           sizes="100vw"
+          quality={95}
           className="object-contain p-4 drop-shadow-[0_30px_40px_rgba(0,0,0,0.65)]"
         />
+      </button>
+    </>
+  );
+}
+
+function ZoomViewer({
+  open,
+  src,
+  alt,
+  onClose,
+}: {
+  open: boolean;
+  src: string | null;
+  alt: string;
+  onClose: () => void;
+}) {
+  const [scale, setScale] = React.useState(1);
+
+  // Lock scroll + reset zoom on open
+  React.useEffect(() => {
+    if (!open) {
+      setScale(1);
+      return;
+    }
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [open, onClose]);
+
+  const lastTap = React.useRef(0);
+  const handleTap = () => {
+    const now = Date.now();
+    // Double-tap detection
+    if (now - lastTap.current < 300) {
+      setScale((s) => (s > 1 ? 1 : 2.2));
+    }
+    lastTap.current = now;
+  };
+
+  if (!src) return null;
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image viewer"
+      aria-hidden={!open}
+      className={`fixed inset-0 z-[70] bg-ink/98 backdrop-blur-md transition-opacity duration-300 ${
+        open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      }`}
+      style={{ touchAction: 'pinch-zoom' }}
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close image viewer"
+        className="absolute top-4 right-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-ink-800/80 backdrop-blur border border-ink-600 text-bone hover:text-white transition-colors"
+      >
+        <X className="h-5 w-5" strokeWidth={1.75} />
+      </button>
+
+      <p className="absolute top-5 left-5 z-10 label-eyebrow text-bone-500">
+        Double-tap or pinch to zoom
+      </p>
+
+      <div
+        className="absolute inset-0 flex items-center justify-center p-6 overflow-auto"
+        onClick={onClose}
+      >
+        <div
+          className="relative w-full max-w-[600px] aspect-square transition-transform duration-300 ease-out"
+          style={{
+            transform: `scale(${scale})`,
+            transformOrigin: 'center',
+            touchAction: 'pinch-zoom',
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleTap();
+          }}
+        >
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="(max-width: 768px) 100vw, 600px"
+            quality={100}
+            className="object-contain pointer-events-none"
+          />
+        </div>
       </div>
     </div>
   );
@@ -217,7 +348,7 @@ function ThumbContent({ src, alt }: { src: string | null; alt: string }) {
   }
   return (
     <div className="absolute inset-0 bg-ink-800/60">
-      <Image src={src} alt={alt} fill sizes="120px" className="object-contain p-1" />
+      <Image src={src} alt={alt} fill sizes="120px" quality={90} className="object-contain p-1" />
     </div>
   );
 }

@@ -3,20 +3,34 @@
 import * as React from 'react';
 import { ShoppingBag, ShieldCheck } from 'lucide-react';
 import { useSelection } from '@/contexts/SelectionContext';
+import { useCart } from '@/contexts/CartContext';
 import { FlavorSelector } from './FlavorSelector';
 import { PurchaseTypeSelector } from './PurchaseTypeSelector';
 import { QuantitySelector } from './QuantitySelector';
 import { NutritionFacts } from './NutritionFacts';
 import { TrustBadges } from './TrustBadges';
-import { openCouponPopup } from '@/components/marketing/CouponPopup';
+import { QuickTestimonial } from './QuickTestimonial';
+import { tenet } from '@/lib/products';
 
 export function PurchaseBlock() {
-  const { totalPrice, quantity, bumpCart } = useSelection();
+  const { flavorId, purchaseType, quantity, unitPrice } = useSelection();
+  const { addItem, openCart } = useCart();
 
   const onAdd = React.useCallback(() => {
-    bumpCart(quantity);
-    openCouponPopup('add-to-cart');
-  }, [bumpCart, quantity]);
+    const flavor = tenet.flavors.find((f) => f.id === flavorId);
+    if (!flavor) return;
+    addItem({
+      productId: tenet.id,
+      productName: tenet.name,
+      productImage: tenet.images.find((src) => !!src) ?? '',
+      flavorId,
+      flavorName: flavor.name,
+      purchaseType,
+      unitPrice,
+      quantity,
+    });
+    openCart();
+  }, [addItem, openCart, flavorId, purchaseType, quantity, unitPrice]);
 
   return (
     <div className="space-y-6 lg:space-y-4">
@@ -37,7 +51,7 @@ export function PurchaseBlock() {
             </span>
           </span>
           <span className="font-display text-2xl leading-none tabular-nums">
-            ${totalPrice.toFixed(2)}
+            ${unitPrice.toFixed(2)}
           </span>
         </button>
 
@@ -54,8 +68,12 @@ export function PurchaseBlock() {
 
         <TrustBadges />
 
-        {/* Mobile-only collapsible nutrition facts. Desktop renders the
-            permanent static panel under the product gallery instead. */}
+        {/* Desktop-only pull quote — fills the right-column space below trust badges */}
+        <div className="hidden lg:block">
+          <QuickTestimonial />
+        </div>
+
+        {/* Mobile-only nutrition facts dropdown */}
         <NutritionFacts variant="dropdown" className="lg:hidden" />
       </div>
     </div>

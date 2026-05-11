@@ -1,15 +1,17 @@
 'use client';
 
 import * as React from 'react';
-import { Star } from 'lucide-react';
 import { ProductGallery } from './ProductGallery';
 import { PurchaseBlock } from './PurchaseBlock';
 import { NutritionFacts } from './NutritionFacts';
 import { tenet } from '@/lib/products';
+import { useReviews } from '@/contexts/ReviewsContext';
 import { scrollToId } from '@/lib/scroll';
+import { StarRow } from '@/components/ui/StarSharp';
 
 export function Hero() {
   const product = tenet;
+  const { averageRating, count } = useReviews();
 
   return (
     <section
@@ -35,7 +37,7 @@ export function Hero() {
             />
           </div>
 
-          {/* RIGHT COLUMN — title block + meta + purchase block */}
+          {/* RIGHT COLUMN — title + meta + purchase block */}
           <div className="mt-8 lg:mt-2 max-w-md mx-auto lg:mx-0 space-y-5 lg:space-y-3">
             <div>
               <p className="label-eyebrow mb-3 lg:mb-2">Pre-Workout</p>
@@ -43,22 +45,22 @@ export function Hero() {
                 TENET
               </h1>
               <p className="mt-3 lg:mt-2 font-condensed text-base sm:text-lg font-bold tracking-[0.18em] uppercase text-bone-600">
-                — Daily Pre-Workout
+                — Full Stack Daily Driver
               </p>
             </div>
 
             <button
               type="button"
               onClick={() => scrollToId('reviews')}
-              aria-label={`Read ${product.reviewCount} verified reviews — average ${product.averageRating} stars`}
+              aria-label={`Read ${count} verified reviews — average ${averageRating.toFixed(1)} stars`}
               className="group flex items-center gap-3 flex-wrap pt-1 -mx-1 px-1 py-1 rounded-md transition-colors hover:bg-ink-800/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone text-left"
             >
-              <Stars rating={product.averageRating} />
+              <StarRow rating={averageRating} size={21} />
               <span className="text-bone-600 text-xs group-hover:text-bone transition-colors">
                 <span className="text-bone font-medium">
-                  {product.averageRating.toFixed(1)}
+                  {averageRating.toFixed(1)}
                 </span>{' '}
-                · {product.reviewCount} verified reviews
+                · {count} verified reviews
               </span>
               <span aria-hidden className="text-bone-500">·</span>
               <span className="inline-flex items-center gap-1.5 text-xs text-bone-600">
@@ -75,25 +77,5 @@ export function Hero() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Stars({ rating }: { rating: number }) {
-  return (
-    <div
-      className="flex items-center gap-0.5"
-      aria-label={`${rating} out of 5 stars`}
-    >
-      {Array.from({ length: 5 }).map((_, i) => {
-        const filled = i < Math.round(rating);
-        return (
-          <Star
-            key={i}
-            className={`h-[18px] w-[18px] ${filled ? 'text-gold fill-gold' : 'text-bone-500'}`}
-            strokeWidth={1.5}
-          />
-        );
-      })}
-    </div>
   );
 }

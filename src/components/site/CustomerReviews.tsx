@@ -2,16 +2,16 @@
 
 import * as React from 'react';
 import {
-  Star,
   Plus,
   ChevronDown,
   Search,
   X,
   SlidersHorizontal,
 } from 'lucide-react';
-import { reviews as seedReviews, tenet } from '@/lib/products';
+import { useReviews } from '@/contexts/ReviewsContext';
 import type { Review } from '@/lib/types';
 import { WriteReviewModal } from './WriteReviewModal';
+import { StarRow, StarSharp } from '@/components/ui/StarSharp';
 
 type SortKey = 'recent' | 'highest' | 'lowest';
 
@@ -24,20 +24,16 @@ const sortOptions: { id: SortKey; label: string }[] = [
 const PAGE_SIZE = 3;
 
 export function CustomerReviews() {
+  const { reviews, averageRating, count, addReview } = useReviews();
+
   const [sort, setSort] = React.useState<SortKey>('recent');
   const [search, setSearch] = React.useState('');
   const [stars, setStars] = React.useState<Set<number>>(new Set());
   const [visibleCount, setVisibleCount] = React.useState(PAGE_SIZE);
-  const [userReviews, setUserReviews] = React.useState<Review[]>([]);
   const [modalOpen, setModalOpen] = React.useState(false);
 
-  const allReviews = React.useMemo(
-    () => [...userReviews, ...seedReviews],
-    [userReviews],
-  );
-
   const filtered = React.useMemo(() => {
-    let r = [...allReviews];
+    let r = [...reviews];
 
     if (stars.size > 0) {
       r = r.filter((rev) => stars.has(rev.stars));
@@ -62,9 +58,8 @@ export function CustomerReviews() {
     }
 
     return r;
-  }, [allReviews, stars, search, sort]);
+  }, [reviews, stars, search, sort]);
 
-  // Reset pagination when filters change
   React.useEffect(() => {
     setVisibleCount(PAGE_SIZE);
   }, [search, stars, sort]);
@@ -72,20 +67,7 @@ export function CustomerReviews() {
   const visible = filtered.slice(0, visibleCount);
   const remaining = filtered.length - visibleCount;
   const hasMore = remaining > 0;
-  const isFiltered =
-    stars.size > 0 || search.trim().length > 0;
-
-  const ratingSummary = React.useMemo(() => {
-    if (allReviews.length === 0) {
-      return { rating: tenet.averageRating, count: tenet.reviewCount };
-    }
-    const total = allReviews.reduce((sum, r) => sum + r.stars, 0);
-    return { rating: total / allReviews.length, count: allReviews.length };
-  }, [allReviews]);
-
-  const handleSubmit = (r: Review) => {
-    setUserReviews((prev) => [r, ...prev]);
-  };
+  const isFiltered = stars.size > 0 || search.trim().length > 0;
 
   const toggleStar = (n: number) => {
     setStars((prev) => {
@@ -115,24 +97,34 @@ export function CustomerReviews() {
           >
             What They're Saying
           </h2>
-          <RatingSummary rating={ratingSummary.rating} count={ratingSummary.count} />
+          <div className="flex items-center gap-3 flex-wrap">
+            <StarRow rating={averageRating} size={18} />
+            <span className="font-display text-2xl text-white">
+              {averageRating.toFixed(1)}
+            </span>
+            <span className="text-bone-600 text-sm">
+              based on <span className="text-bone">{count}</span> verified reviews
+            </span>
+          </div>
         </header>
 
-        {/* Controls */}
-        <div className="mb-3 space-y-3 lg:space-y-3">
-          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-3">
-            <SearchInput value={search} onChange={setSearch} />
-            <div className="flex items-center gap-2 -mx-5 lg:mx-0 px-5 lg:px-0 overflow-x-auto scrollbar-hide lg:flex-1 lg:justify-end">
-              <StarFilter stars={stars} onToggle={toggleStar} onClearAll={() => setStars(new Set())} />
+        <div className="mb-3 space-y-3">
+          <SearchInput value={search} onChange={setSearch} />
+          <div className="flex items-center gap-2 flex-wrap">
+            <StarFilter
+              stars={stars}
+              onToggle={toggleStar}
+              onClearAll={() => setStars(new Set())}
+            />
+            <div className="ml-auto">
               <SortDropdown sort={sort} onChange={setSort} />
             </div>
           </div>
-
           <div className="flex items-center justify-between gap-3 flex-wrap">
             <p className="text-bone-500 text-[12px]">
               Showing{' '}
               <span className="text-bone font-medium">{filtered.length}</span> of{' '}
-              <span className="text-bone font-medium">{allReviews.length}</span> reviews
+              <span className="text-bone font-medium">{reviews.length}</span> reviews
             </p>
             {isFiltered && (
               <button
@@ -147,7 +139,6 @@ export function CustomerReviews() {
           </div>
         </div>
 
-        {/* Stacked rows */}
         <div className="divide-y divide-ink-600 border-y border-ink-600 mt-3">
           {visible.length === 0 ? (
             <div className="py-12 text-center space-y-2">
@@ -171,64 +162,51 @@ export function CustomerReviews() {
           )}
         </div>
 
-        {/* Footer actions */}
-        {visible.length > 0 && (
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4">
-            {hasMore ? (
-              <button
-                type="button"
-                onClick={() => setVisibleCount((c) => Math.min(c + PAGE_SIZE, filtered.length))}
-                className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
-              >
-                Show {Math.min(remaining, PAGE_SIZE)} More
-                <ChevronDown className="h-4 w-4" strokeWidth={2.25} />
-              </button>
-            ) : visibleCount > PAGE_SIZE ? (
-              <button
-                type="button"
-                onClick={() => setVisibleCount(PAGE_SIZE)}
-                className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
-              >
-                Show Less
-                <ChevronDown className="h-4 w-4 rotate-180" strokeWidth={2.25} />
-              </button>
-            ) : (
-              <span className="hidden sm:block" />
-            )}
-
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4">
+          {visible.length > 0 && hasMore ? (
             <button
               type="button"
-              onClick={() => setModalOpen(true)}
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
+              onClick={() => setVisibleCount((c) => Math.min(c + PAGE_SIZE, filtered.length))}
+              className={whitePill}
             >
-              <Plus className="h-4 w-4" strokeWidth={2.25} />
-              Write a Review
+              Show {Math.min(remaining, PAGE_SIZE)} More
+              <ChevronDown className="h-4 w-4" strokeWidth={2.25} />
             </button>
-          </div>
-        )}
-
-        {visible.length === 0 && (
-          <div className="mt-8 flex justify-center">
+          ) : visible.length > 0 && visibleCount > PAGE_SIZE ? (
             <button
               type="button"
-              onClick={() => setModalOpen(true)}
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone"
+              onClick={() => setVisibleCount(PAGE_SIZE)}
+              className={whitePill}
             >
-              <Plus className="h-4 w-4" strokeWidth={2.25} />
-              Write a Review
+              Show Less
+              <ChevronDown className="h-4 w-4 rotate-180" strokeWidth={2.25} />
             </button>
-          </div>
-        )}
+          ) : (
+            <span className="hidden sm:block" />
+          )}
+
+          <button
+            type="button"
+            onClick={() => setModalOpen(true)}
+            className={whitePill}
+          >
+            <Plus className="h-4 w-4" strokeWidth={2.25} />
+            Write a Review
+          </button>
+        </div>
       </div>
 
       <WriteReviewModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
-        onSubmit={handleSubmit}
+        onSubmit={addReview}
       />
     </section>
   );
 }
+
+const whitePill =
+  'inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone';
 
 function SearchInput({
   value,
@@ -238,7 +216,7 @@ function SearchInput({
   onChange: (v: string) => void;
 }) {
   return (
-    <div className="relative lg:w-1/2 lg:max-w-md">
+    <div className="relative">
       <Search
         className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-bone-500 pointer-events-none"
         strokeWidth={1.75}
@@ -276,23 +254,21 @@ function StarFilter({
 }) {
   const allActive = stars.size === 0;
   return (
-    <div className="flex items-center gap-1.5 shrink-0" role="group" aria-label="Filter by rating">
-      <FilterPill active={allActive} onClick={onClearAll} label="All" />
+    <div
+      className="flex items-center gap-1.5 flex-wrap"
+      role="group"
+      aria-label="Filter by rating"
+    >
+      <FilterPill active={allActive} onClick={onClearAll}>
+        All
+      </FilterPill>
       {[5, 4, 3, 2, 1].map((n) => (
-        <FilterPill
-          key={n}
-          active={stars.has(n)}
-          onClick={() => onToggle(n)}
-          label={
-            <>
-              {n}
-              <Star
-                className="h-2.5 w-2.5 ml-0.5 inline text-current fill-current"
-                strokeWidth={1.5}
-              />
-            </>
-          }
-        />
+        <FilterPill key={n} active={stars.has(n)} onClick={() => onToggle(n)}>
+          <span className="inline-flex items-center gap-0.5">
+            {n}
+            <StarSharp size={10} className="text-current" />
+          </span>
+        </FilterPill>
       ))}
     </div>
   );
@@ -301,11 +277,11 @@ function StarFilter({
 function FilterPill({
   active,
   onClick,
-  label,
+  children,
 }: {
   active: boolean;
   onClick: () => void;
-  label: React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <button
@@ -313,14 +289,14 @@ function FilterPill({
       onClick={onClick}
       aria-pressed={active}
       className={[
-        'shrink-0 inline-flex items-center px-3 h-8 rounded-full text-[11px] font-semibold tracking-[0.12em] uppercase transition-all duration-200',
+        'shrink-0 inline-flex items-center px-2.5 sm:px-3 h-8 rounded-full text-[11px] font-semibold tracking-[0.12em] uppercase transition-all duration-200',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone',
         active
           ? 'bg-bone text-ink'
           : 'bg-ink-800 text-bone-600 border border-ink-600 hover:text-bone hover:border-bone-500',
       ].join(' ')}
     >
-      {label}
+      {children}
     </button>
   );
 }
@@ -354,46 +330,11 @@ function SortDropdown({
   );
 }
 
-function RatingSummary({ rating, count }: { rating: number; count: number }) {
-  return (
-    <div className="flex items-center gap-3 flex-wrap">
-      <Stars rating={rating} size="lg" />
-      <span className="font-display text-2xl text-white">
-        {rating.toFixed(1)}
-      </span>
-      <span className="text-bone-600 text-sm">
-        based on <span className="text-bone">{count}</span> verified reviews
-      </span>
-    </div>
-  );
-}
-
-function Stars({ rating, size = 'md' }: { rating: number; size?: 'md' | 'lg' }) {
-  const cls = size === 'lg' ? 'h-4 w-4' : 'h-3.5 w-3.5';
-  return (
-    <div
-      className="flex items-center gap-0.5"
-      aria-label={`${rating} out of 5 stars`}
-    >
-      {Array.from({ length: 5 }).map((_, i) => {
-        const filled = i < Math.round(rating);
-        return (
-          <Star
-            key={i}
-            className={`${cls} ${filled ? 'text-gold fill-gold' : 'text-bone-500'}`}
-            strokeWidth={1.5}
-          />
-        );
-      })}
-    </div>
-  );
-}
-
 function ReviewRow({ review }: { review: Review }) {
   return (
     <article className="grid grid-cols-[auto_1fr] sm:grid-cols-[80px_1fr_auto] gap-x-4 sm:gap-x-6 gap-y-2 py-5 sm:py-6">
       <div className="row-start-1 col-start-1 sm:col-start-1 flex items-start pt-0.5">
-        <Stars rating={review.stars} />
+        <StarRow rating={review.stars} size={14} />
       </div>
 
       <div className="col-start-2 sm:col-start-2 sm:row-start-1 sm:row-span-2">

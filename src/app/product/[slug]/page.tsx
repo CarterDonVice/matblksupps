@@ -11,6 +11,7 @@ import { CustomerReviews } from '@/components/site/CustomerReviews';
 import { FAQ } from '@/components/site/FAQ';
 import { GuaranteeAndBlacklist } from '@/components/site/GuaranteeAndBlacklist';
 import { ProductJsonLd } from '@/components/site/JsonLd';
+import { Reveal } from '@/components/site/Reveal';
 import { tenet } from '@/lib/products';
 
 interface PageProps {
@@ -37,16 +38,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <Header />
       <main className="flex-1">
         <Hero />
-        <SocialProofBar />
-        <ProductDescription />
-        <FeatureCards />
-        <WhatYoullFeel />
-        <Testimonials />
-        <CustomerReviews />
-        <FAQ />
-        <GuaranteeAndBlacklist />
+        <Reveal><SocialProofBar /></Reveal>
+        <Reveal><ProductDescription /></Reveal>
+        <Reveal><FeatureCards /></Reveal>
+        <Reveal><WhatYoullFeel /></Reveal>
+        <Reveal><Testimonials /></Reveal>
+        <Reveal><CustomerReviews /></Reveal>
+        <Reveal><FAQ /></Reveal>
+        <Reveal><GuaranteeAndBlacklist /></Reveal>
       </main>
-      <Footer />
+      <Reveal><Footer /></Reveal>
     </>
   );
 }

@@ -21,11 +21,11 @@ export function Footer() {
       <div className="container relative">
         <div className="flex flex-col items-center text-center gap-5 mb-10">
           <Image
-            src="/images/AbrevLogoMini.png"
-            alt="MAT BLK"
-            width={56}
+            src="/images/FullLogo.png"
+            alt="MAT BLK Supplements"
+            width={200}
             height={56}
-            className="h-12 w-12 object-contain opacity-90"
+            className="h-9 sm:h-10 w-auto object-contain opacity-95"
           />
           <p className="text-bone-600 text-sm max-w-xs">
             Elevating performance with premium supplements.

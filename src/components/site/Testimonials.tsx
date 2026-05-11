@@ -1,4 +1,5 @@
-import { Star, BadgeCheck } from 'lucide-react';
+import { BadgeCheck } from 'lucide-react';
+import { StarRow } from '@/components/ui/StarSharp';
 
 interface Testimonial {
   body: string;
@@ -63,18 +64,7 @@ export function Testimonials() {
               >
                 "
               </span>
-              <div
-                className="flex items-center gap-0.5 relative"
-                aria-label="5 out of 5 stars"
-              >
-                {Array.from({ length: 5 }).map((_, n) => (
-                  <Star
-                    key={n}
-                    className="h-4 w-4 text-gold fill-gold"
-                    strokeWidth={1.5}
-                  />
-                ))}
-              </div>
+              <StarRow rating={5} size={17} className="relative" />
               <blockquote className="relative">
                 <p className="text-bone text-[15px] sm:text-base leading-relaxed italic">
                   {t.body}

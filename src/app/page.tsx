@@ -9,6 +9,7 @@ import { FAQ } from '@/components/site/FAQ';
 import { GuaranteeAndBlacklist } from '@/components/site/GuaranteeAndBlacklist';
 import { Footer } from '@/components/site/Footer';
 import { ProductJsonLd } from '@/components/site/JsonLd';
+import { Reveal } from '@/components/site/Reveal';
 
 export default function HomePage() {
   return (
@@ -17,15 +18,15 @@ export default function HomePage() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <SocialProofBar />
-        <FeatureCards />
-        <WhatYoullFeel />
-        <Testimonials />
-        <CustomerReviews />
-        <FAQ />
-        <GuaranteeAndBlacklist />
+        <Reveal><SocialProofBar /></Reveal>
+        <Reveal><FeatureCards /></Reveal>
+        <Reveal><WhatYoullFeel /></Reveal>
+        <Reveal><Testimonials /></Reveal>
+        <Reveal><CustomerReviews /></Reveal>
+        <Reveal><FAQ /></Reveal>
+        <Reveal><GuaranteeAndBlacklist /></Reveal>
       </main>
-      <Footer />
+      <Reveal><Footer /></Reveal>
     </>
   );
 }

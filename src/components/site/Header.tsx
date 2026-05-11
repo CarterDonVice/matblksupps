@@ -4,11 +4,10 @@ import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, ShoppingBag, X, Instagram } from 'lucide-react';
-import { useSelection } from '@/contexts/SelectionContext';
+import { useCart } from '@/contexts/CartContext';
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'Shop', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -17,8 +16,8 @@ export function Header() {
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [bumping, setBumping] = React.useState(false);
-  const { cartCount } = useSelection();
-  const previousCount = React.useRef(cartCount);
+  const { itemCount, openCart } = useCart();
+  const previousCount = React.useRef(itemCount);
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -36,14 +35,14 @@ export function Header() {
 
   // Bounce cart icon when count goes up
   React.useEffect(() => {
-    if (cartCount > previousCount.current) {
+    if (itemCount > previousCount.current) {
       setBumping(true);
       const t = window.setTimeout(() => setBumping(false), 450);
-      previousCount.current = cartCount;
+      previousCount.current = itemCount;
       return () => window.clearTimeout(t);
     }
-    previousCount.current = cartCount;
-  }, [cartCount]);
+    previousCount.current = itemCount;
+  }, [itemCount]);
 
   return (
     <>
@@ -81,16 +80,17 @@ export function Header() {
 
           <button
             type="button"
-            aria-label={`Cart, ${cartCount} item${cartCount === 1 ? '' : 's'}`}
+            onClick={openCart}
+            aria-label={`Open cart, ${itemCount} item${itemCount === 1 ? '' : 's'}`}
             className={`relative -mr-2 inline-flex h-11 w-11 items-center justify-center rounded-md text-bone hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone ${
               bumping ? 'scale-110' : 'scale-100'
             }`}
             style={{ transitionDuration: '350ms' }}
           >
             <ShoppingBag className="h-[22px] w-[22px]" strokeWidth={1.75} />
-            {cartCount > 0 && (
-              <span className="absolute top-1.5 right-1.5 inline-flex min-w-[18px] h-[18px] items-center justify-center rounded-full bg-white text-ink text-[10px] font-semibold px-1">
-                {cartCount}
+            {itemCount > 0 && (
+              <span className="absolute top-1.5 right-1.5 inline-flex min-w-[18px] h-[18px] items-center justify-center rounded-full bg-white text-ink text-[10px] font-semibold px-1 tabular-nums">
+                {itemCount}
               </span>
             )}
           </button>
