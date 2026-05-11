@@ -4,12 +4,12 @@ import { Header } from '@/components/site/Header';
 import { Footer } from '@/components/site/Footer';
 import { Hero } from '@/components/product/Hero';
 import { SocialProofBar } from '@/components/site/SocialProofBar';
-import { FeatureCards } from '@/components/site/FeatureCards';
+import { Comparison } from '@/components/site/Comparison';
 import { WhatYoullFeel } from '@/components/site/WhatYoullFeel';
-import { Testimonials } from '@/components/site/Testimonials';
 import { CustomerReviews } from '@/components/site/CustomerReviews';
 import { FAQ } from '@/components/site/FAQ';
 import { GuaranteeAndBlacklist } from '@/components/site/GuaranteeAndBlacklist';
+import { FillerBand } from '@/components/site/FillerBand';
 import { ProductJsonLd } from '@/components/site/JsonLd';
 import { Reveal } from '@/components/site/Reveal';
 import { tenet } from '@/lib/products';
@@ -40,11 +40,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
         <Hero />
         <Reveal><SocialProofBar /></Reveal>
         <Reveal><ProductDescription /></Reveal>
-        <Reveal><FeatureCards /></Reveal>
+        <Reveal><Comparison /></Reveal>
         <Reveal><WhatYoullFeel /></Reveal>
-        <Reveal><Testimonials /></Reveal>
+        <Reveal><FillerBand text="Train by the Tenet." /></Reveal>
         <Reveal><CustomerReviews /></Reveal>
         <Reveal><FAQ /></Reveal>
+        <Reveal><FillerBand text="Every Milligram. Every Ingredient. Every Day." /></Reveal>
         <Reveal><GuaranteeAndBlacklist /></Reveal>
       </main>
       <Reveal><Footer /></Reveal>

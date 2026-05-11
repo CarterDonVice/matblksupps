@@ -7,6 +7,7 @@ import {
   Search,
   X,
   SlidersHorizontal,
+  BadgeCheck,
 } from 'lucide-react';
 import { useReviews } from '@/contexts/ReviewsContext';
 import type { Review } from '@/lib/types';
@@ -22,6 +23,33 @@ const sortOptions: { id: SortKey; label: string }[] = [
 ];
 
 const PAGE_SIZE = 3;
+
+interface FeaturedTestimonial {
+  body: string;
+  author: string;
+  context: string;
+}
+
+const featuredTestimonials: FeaturedTestimonial[] = [
+  {
+    body:
+      "Finally a daily that doesn't wreck my sleep or leave me crashing at 2pm. The pumps on Mango Passionfruit are absurd.",
+    author: 'Marcus T.',
+    context: '5 days a week lifter',
+  },
+  {
+    body:
+      'The Midnight Limeade tastes like an actual drink, not chemicals. And I can feel every ingredient working, not just caffeine.',
+    author: 'Jay R.',
+    context: 'Powerlifter, 3 years training',
+  },
+  {
+    body:
+      "I've cycled through 6 pre workouts this year. TENET is the first one I've actually re-ordered.",
+    author: 'David L.',
+    context: 'Hybrid athlete',
+  },
+];
 
 export function CustomerReviews() {
   const { reviews, averageRating, count, addReview } = useReviews();
@@ -86,18 +114,26 @@ export function CustomerReviews() {
   return (
     <section
       aria-labelledby="reviews"
-      className="bg-ink py-16 sm:py-24 border-t border-ink-600"
+      className="relative bg-ink-800 py-16 sm:py-24 border-y border-ink-600 overflow-hidden"
     >
-      <div className="container max-w-3xl">
-        <header className="mb-8 sm:mb-10">
+      <div
+        aria-hidden
+        className="absolute inset-0 texture-wordmark opacity-25 pointer-events-none"
+      />
+      <div className="container relative max-w-5xl">
+        {/* Master header */}
+        <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <p className="label-eyebrow mb-3">Reviews</p>
           <h2
             id="reviews"
-            className="font-display text-5xl sm:text-6xl text-white tracking-[0.01em] leading-[0.92] mb-5"
+            className="font-display text-5xl sm:text-7xl text-white tracking-[0.01em] leading-[0.92] mb-4"
           >
             What They're Saying
           </h2>
-          <div className="flex items-center gap-3 flex-wrap">
+          <p className="text-bone-600 text-[15px] sm:text-base mb-5">
+            Real lifters. Real sessions. Real results.
+          </p>
+          <div className="flex items-center gap-3 justify-center flex-wrap">
             <StarRow rating={averageRating} size={18} />
             <span className="font-display text-2xl text-white">
               {averageRating.toFixed(1)}
@@ -108,91 +144,142 @@ export function CustomerReviews() {
           </div>
         </header>
 
-        <div className="mb-3 space-y-3">
-          <SearchInput value={search} onChange={setSearch} />
-          <div className="flex items-center gap-2 flex-wrap">
-            <StarFilter
-              stars={stars}
-              onToggle={toggleStar}
-              onClearAll={() => setStars(new Set())}
-            />
-            <div className="ml-auto">
-              <SortDropdown sort={sort} onChange={setSort} />
-            </div>
-          </div>
-          <div className="flex items-center justify-between gap-3 flex-wrap">
+        {/* Featured highlights */}
+        <div className="mb-12 sm:mb-16">
+          <p className="label-eyebrow text-center mb-5">Featured</p>
+          <ul className="grid md:grid-cols-3 gap-4 sm:gap-5">
+            {featuredTestimonials.map((t, i) => (
+              <li
+                key={i}
+                className="relative rounded-2xl border border-ink-600 bg-ink p-7 sm:p-8 flex flex-col gap-5"
+              >
+                <span
+                  aria-hidden
+                  className="absolute top-4 left-5 font-display text-7xl text-ink-700 leading-none select-none pointer-events-none"
+                >
+                  "
+                </span>
+                <StarRow rating={5} size={17} className="relative" />
+                <blockquote className="relative">
+                  <p className="text-bone text-[15px] sm:text-base leading-relaxed italic">
+                    {t.body}
+                  </p>
+                </blockquote>
+                <footer className="mt-auto pt-4 border-t border-ink-600 flex items-center justify-between gap-3">
+                  <div>
+                    <p className="font-condensed text-sm font-extrabold tracking-[0.12em] uppercase text-white">
+                      {t.author}
+                    </p>
+                    <p className="text-bone-600 text-[12px]">{t.context}</p>
+                  </div>
+                  <BadgeCheck
+                    className="h-5 w-5 text-success shrink-0"
+                    strokeWidth={1.75}
+                    aria-label="Verified"
+                  />
+                </footer>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* All Reviews */}
+        <div className="max-w-3xl mx-auto">
+          <div className="flex items-baseline justify-between flex-wrap gap-3 mb-5">
+            <p className="label-eyebrow">All Reviews</p>
             <p className="text-bone-500 text-[12px]">
               Showing{' '}
-              <span className="text-bone font-medium">{filtered.length}</span> of{' '}
-              <span className="text-bone font-medium">{reviews.length}</span> reviews
+              <span className="text-bone font-medium">{filtered.length}</span>{' '}
+              of <span className="text-bone font-medium">{reviews.length}</span>
             </p>
+          </div>
+
+          {/* Controls */}
+          <div className="mb-3 space-y-3">
+            <SearchInput value={search} onChange={setSearch} />
+            <div className="flex items-center gap-2 flex-wrap">
+              <StarFilter
+                stars={stars}
+                onToggle={toggleStar}
+                onClearAll={() => setStars(new Set())}
+              />
+              <div className="ml-auto">
+                <SortDropdown sort={sort} onChange={setSort} />
+              </div>
+            </div>
             {isFiltered && (
-              <button
-                type="button"
-                onClick={clearFilters}
-                className="text-bone-600 hover:text-bone text-[11px] tracking-[0.16em] uppercase font-semibold transition-colors inline-flex items-center gap-1"
-              >
-                <X className="h-3 w-3" strokeWidth={2.25} />
-                Clear filters
-              </button>
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={clearFilters}
+                  className="text-bone-600 hover:text-bone text-[11px] tracking-[0.16em] uppercase font-semibold transition-colors inline-flex items-center gap-1"
+                >
+                  <X className="h-3 w-3" strokeWidth={2.25} />
+                  Clear filters
+                </button>
+              </div>
             )}
           </div>
-        </div>
 
-        <div className="divide-y divide-ink-600 border-y border-ink-600 mt-3">
-          {visible.length === 0 ? (
-            <div className="py-12 text-center space-y-2">
-              <SlidersHorizontal
-                className="h-6 w-6 text-bone-500 mx-auto"
-                strokeWidth={1.5}
-              />
-              <p className="text-bone-600 text-sm">
-                No reviews match your filters.
-              </p>
+          {/* Stacked rows */}
+          <div className="divide-y divide-ink-600 border-y border-ink-600 mt-3">
+            {visible.length === 0 ? (
+              <div className="py-12 text-center space-y-2">
+                <SlidersHorizontal
+                  className="h-6 w-6 text-bone-500 mx-auto"
+                  strokeWidth={1.5}
+                />
+                <p className="text-bone-600 text-sm">
+                  No reviews match your filters.
+                </p>
+                <button
+                  type="button"
+                  onClick={clearFilters}
+                  className="text-bone hover:text-white text-xs tracking-[0.16em] uppercase font-semibold transition-colors underline underline-offset-4 decoration-ink-600"
+                >
+                  Clear filters
+                </button>
+              </div>
+            ) : (
+              visible.map((r) => <ReviewRow key={r.id} review={r} />)
+            )}
+          </div>
+
+          {/* Footer actions */}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4">
+            {visible.length > 0 && hasMore ? (
               <button
                 type="button"
-                onClick={clearFilters}
-                className="text-bone hover:text-white text-xs tracking-[0.16em] uppercase font-semibold transition-colors underline underline-offset-4 decoration-ink-600"
+                onClick={() =>
+                  setVisibleCount((c) => Math.min(c + PAGE_SIZE, filtered.length))
+                }
+                className={whitePill}
               >
-                Clear filters
+                Show {Math.min(remaining, PAGE_SIZE)} More
+                <ChevronDown className="h-4 w-4" strokeWidth={2.25} />
               </button>
-            </div>
-          ) : (
-            visible.map((r) => <ReviewRow key={r.id} review={r} />)
-          )}
-        </div>
+            ) : visible.length > 0 && visibleCount > PAGE_SIZE ? (
+              <button
+                type="button"
+                onClick={() => setVisibleCount(PAGE_SIZE)}
+                className={whitePill}
+              >
+                Show Less
+                <ChevronDown className="h-4 w-4 rotate-180" strokeWidth={2.25} />
+              </button>
+            ) : (
+              <span className="hidden sm:block" />
+            )}
 
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4">
-          {visible.length > 0 && hasMore ? (
             <button
               type="button"
-              onClick={() => setVisibleCount((c) => Math.min(c + PAGE_SIZE, filtered.length))}
+              onClick={() => setModalOpen(true)}
               className={whitePill}
             >
-              Show {Math.min(remaining, PAGE_SIZE)} More
-              <ChevronDown className="h-4 w-4" strokeWidth={2.25} />
+              <Plus className="h-4 w-4" strokeWidth={2.25} />
+              Write a Review
             </button>
-          ) : visible.length > 0 && visibleCount > PAGE_SIZE ? (
-            <button
-              type="button"
-              onClick={() => setVisibleCount(PAGE_SIZE)}
-              className={whitePill}
-            >
-              Show Less
-              <ChevronDown className="h-4 w-4 rotate-180" strokeWidth={2.25} />
-            </button>
-          ) : (
-            <span className="hidden sm:block" />
-          )}
-
-          <button
-            type="button"
-            onClick={() => setModalOpen(true)}
-            className={whitePill}
-          >
-            <Plus className="h-4 w-4" strokeWidth={2.25} />
-            Write a Review
-          </button>
+          </div>
         </div>
       </div>
 
@@ -206,7 +293,7 @@ export function CustomerReviews() {
 }
 
 const whitePill =
-  'inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone';
+  'inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone';
 
 function SearchInput({
   value,
@@ -227,7 +314,7 @@ function SearchInput({
         onChange={(e) => onChange(e.target.value)}
         placeholder="Search reviews..."
         aria-label="Search reviews"
-        className="w-full h-11 pl-10 pr-9 rounded-xl bg-ink-800 border border-ink-600 text-bone placeholder:text-bone-500 text-sm outline-none transition-colors focus:border-bone-500 focus-visible:ring-2 focus-visible:ring-bone/20"
+        className="w-full h-11 pl-10 pr-9 rounded-xl bg-ink border border-ink-600 text-bone placeholder:text-bone-500 text-sm outline-none transition-colors focus:border-bone-500 focus-visible:ring-2 focus-visible:ring-bone/20"
       />
       {value && (
         <button
@@ -293,7 +380,7 @@ function FilterPill({
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone',
         active
           ? 'bg-bone text-ink'
-          : 'bg-ink-800 text-bone-600 border border-ink-600 hover:text-bone hover:border-bone-500',
+          : 'bg-ink border border-ink-600 text-bone-600 hover:text-bone hover:border-bone-500',
       ].join(' ')}
     >
       {children}
@@ -314,7 +401,7 @@ function SortDropdown({
         value={sort}
         onChange={(e) => onChange(e.target.value as SortKey)}
         aria-label="Sort reviews"
-        className="appearance-none h-8 pl-3 pr-8 rounded-full bg-ink-800 border border-ink-600 text-bone text-[11px] font-semibold tracking-[0.14em] uppercase cursor-pointer hover:border-bone-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone"
+        className="appearance-none h-8 pl-3 pr-8 rounded-full bg-ink border border-ink-600 text-bone text-[11px] font-semibold tracking-[0.14em] uppercase cursor-pointer hover:border-bone-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone"
       >
         {sortOptions.map((opt) => (
           <option key={opt.id} value={opt.id}>
