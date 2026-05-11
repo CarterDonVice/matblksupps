@@ -3,7 +3,6 @@ import { Hero } from '@/components/product/Hero';
 import { SocialProofBar } from '@/components/site/SocialProofBar';
 import { Comparison } from '@/components/site/Comparison';
 import { WhatYoullFeel } from '@/components/site/WhatYoullFeel';
-import { Testimonials } from '@/components/site/Testimonials';
 import { CustomerReviews } from '@/components/site/CustomerReviews';
 import { FAQ } from '@/components/site/FAQ';
 import { GuaranteeAndBlacklist } from '@/components/site/GuaranteeAndBlacklist';
@@ -23,7 +22,6 @@ export default function HomePage() {
         <Reveal><Comparison /></Reveal>
         <Reveal><WhatYoullFeel /></Reveal>
         <Reveal><FillerBand text="Train by the Tenet." /></Reveal>
-        <Reveal><Testimonials /></Reveal>
         <Reveal><CustomerReviews /></Reveal>
         <Reveal><FAQ /></Reveal>
         <Reveal><FillerBand text="Every Milligram. Every Ingredient. Every Day." /></Reveal>
