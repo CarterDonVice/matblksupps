@@ -44,7 +44,7 @@ export function Testimonials() {
             id="testimonials"
             className="font-display text-5xl sm:text-7xl text-white tracking-[0.01em] leading-[0.92] mb-3"
           >
-            What They're Saying
+            Featured Reviews
           </h2>
           <p className="text-bone-600 text-[15px] sm:text-base">
             Real lifters. Real sessions. Real results.
