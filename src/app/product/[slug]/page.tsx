@@ -9,9 +9,9 @@ import { WhatYoullFeel } from '@/components/site/WhatYoullFeel';
 import { Testimonials } from '@/components/site/Testimonials';
 import { CustomerReviews } from '@/components/site/CustomerReviews';
 import { FAQ } from '@/components/site/FAQ';
-import { GuaranteeSection } from '@/components/site/GuaranteeSection';
-import { NewsletterSignup } from '@/components/site/NewsletterSignup';
+import { GuaranteeAndBlacklist } from '@/components/site/GuaranteeAndBlacklist';
 import { ProductJsonLd } from '@/components/site/JsonLd';
+import { Reveal } from '@/components/site/Reveal';
 import { tenet } from '@/lib/products';
 
 interface PageProps {
@@ -38,17 +38,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <Header />
       <main className="flex-1">
         <Hero />
-        <SocialProofBar />
-        <ProductDescription />
-        <FeatureCards />
-        <WhatYoullFeel />
-        <Testimonials />
-        <CustomerReviews />
-        <FAQ />
-        <GuaranteeSection />
-        <NewsletterSignup />
+        <Reveal><SocialProofBar /></Reveal>
+        <Reveal><ProductDescription /></Reveal>
+        <Reveal><FeatureCards /></Reveal>
+        <Reveal><WhatYoullFeel /></Reveal>
+        <Reveal><Testimonials /></Reveal>
+        <Reveal><CustomerReviews /></Reveal>
+        <Reveal><FAQ /></Reveal>
+        <Reveal><GuaranteeAndBlacklist /></Reveal>
       </main>
-      <Footer />
+      <Reveal><Footer /></Reveal>
     </>
   );
 }

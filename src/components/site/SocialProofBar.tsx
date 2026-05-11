@@ -2,9 +2,9 @@ import { Star } from 'lucide-react';
 
 const stats = [
   { value: '4.9', label: 'From 200+ Reviews', isStar: true },
-  { value: '100+', label: 'Servings per Tub' },
+  { value: '0', label: 'Fillers' },
   { value: '0', label: 'Proprietary Blends' },
-  { value: '11', label: 'Clinical Doses' },
+  { value: '10', label: 'Clinical Doses' },
 ];
 
 export function SocialProofBar() {

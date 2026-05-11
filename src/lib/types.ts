@@ -18,12 +18,16 @@ export interface Ingredient {
 
 export interface Review {
   id: string;
+  /** 1–5 */
   stars: number;
   title?: string;
   body: string;
   author: string;
+  /** ISO date string YYYY-MM-DD */
   date: string;
   verified?: boolean;
+  /** Optional flavor association — set when user submits via modal */
+  flavor?: FlavorId;
 }
 
 export interface Product {
@@ -43,4 +47,17 @@ export interface Product {
   inStock: boolean;
   reviewCount: number;
   averageRating: number;
+}
+
+export interface CartItem {
+  /** Unique line ID — typically `${productId}-${flavorId}-${purchaseType}` */
+  id: string;
+  productId: string;
+  productName: string;
+  productImage: string;
+  flavorId: FlavorId;
+  flavorName: string;
+  purchaseType: PurchaseTypeId;
+  unitPrice: number;
+  quantity: number;
 }

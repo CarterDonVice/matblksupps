@@ -1,13 +1,14 @@
 'use client';
 
 import * as React from 'react';
-import { Star, X, Check, Send } from 'lucide-react';
+import { X, Check, Send } from 'lucide-react';
 import type { Review } from '@/lib/types';
+import { StarSharp } from '@/components/ui/StarSharp';
 
 interface Props {
   open: boolean;
   onClose: () => void;
-  onSubmit: (review: Review) => void;
+  onSubmit: (review: Omit<Review, 'id' | 'date' | 'verified'>) => void;
 }
 
 export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
@@ -50,16 +51,12 @@ export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!valid) return;
-    const review: Review = {
-      id: `user-${Date.now()}`,
+    onSubmit({
       stars,
       title: title.trim() || undefined,
       body: body.trim(),
       author: author.trim(),
-      date: new Date().toISOString().slice(0, 10),
-      verified: false,
-    };
-    onSubmit(review);
+    });
     setSubmitted(true);
     window.setTimeout(onClose, 1500);
   };
@@ -141,11 +138,12 @@ export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
                           onClick={() => setStars(n)}
                           className="p-1 -m-1 inline-flex items-center justify-center rounded transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone"
                         >
-                          <Star
-                            className={`h-7 w-7 transition-colors ${
-                              filled ? 'text-gold fill-gold' : 'text-bone-500'
+                          <StarSharp
+                            size={28}
+                            empty={!filled}
+                            className={`transition-colors ${
+                              filled ? 'text-gold' : 'text-bone-500'
                             }`}
-                            strokeWidth={1.5}
                           />
                         </button>
                       );
