@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = { title: 'Privacy Policy' };
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description:
+    'How MAT BLK Supplements collects, uses, and protects your personal information when you shop or sign up for the Blacklist.',
+};
 
 export default function PrivacyPage() {
   return (
     <article className="prose-content space-y-6">
-      <p className="label-eyebrow">Last updated May 2026</p>
+      <p className="label-eyebrow">Last updated</p>
       <h1 className="font-display text-5xl sm:text-6xl text-white">Privacy Policy</h1>
       <p className="text-bone-600">
         We respect your privacy. This page is a placeholder for the full privacy

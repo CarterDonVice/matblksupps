@@ -3,9 +3,9 @@ import { Mail, Clock, Calendar } from 'lucide-react';
 import { ContactForm } from '@/components/site/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: 'Contact MAT BLK Supplements',
   description:
-    'Questions, feedback, or athlete inquiries. We respond within 24 business hours.',
+    'Questions about TENET Daily Driver Pre-Workout, order support, athlete inquiries, or press. We respond within 24 business hours.',
 };
 
 export default function ContactPage() {

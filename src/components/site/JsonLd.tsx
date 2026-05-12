@@ -1,4 +1,5 @@
 import { tenet, reviews } from '@/lib/products';
+import { faqItems } from '@/lib/faq';
 
 export function ProductJsonLd() {
   const data = {
@@ -29,6 +30,33 @@ export function ProductJsonLd() {
         ? 'https://schema.org/InStock'
         : 'https://schema.org/OutOfStock',
     },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+/**
+ * FAQPage schema for the product detail page.
+ * Sourced from the same FAQ items rendered visibly in the FAQ section,
+ * so visible content and structured data stay in sync.
+ */
+export function FAQJsonLd() {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
   };
 
   return (

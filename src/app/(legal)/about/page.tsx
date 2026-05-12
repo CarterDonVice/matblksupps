@@ -1,28 +1,28 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { FlaskConical, Microscope, ShieldCheck } from 'lucide-react';
+import { FlaskConical, FileSearch, Dumbbell } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: 'About MAT BLK — Clinically Dosed, Transparent-Label Pre-Workout',
   description:
-    'MAT BLK Supplements builds clinically dosed, science-backed formulas for the lifter who shows up every day. No proprietary blends. No gimmicks.',
+    'MAT BLK builds clinically dosed, transparent-label pre-workout for serious lifters. Every ingredient, every dose, printed on the label. No proprietary blends.',
 };
 
 const principles = [
   {
     icon: FlaskConical,
-    title: 'Clinical Doses',
-    body: 'Every active ingredient hits the dose used in the studies. Nothing tucked behind a "proprietary blend."',
+    title: 'Clinically Dosed',
+    body: 'Every active ingredient in TENET is dosed at the level used in published research. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine anhydrous.',
   },
   {
-    icon: Microscope,
-    title: 'Proven Ingredients',
-    body: 'No frontier chemistry, no flavor-of-the-month patents. The stack is what works — at the grams that work.',
+    icon: FileSearch,
+    title: 'Transparent Label',
+    body: 'No proprietary blends. No hidden underdoses. Every ingredient and every dose is on the supplement panel.',
   },
   {
-    icon: ShieldCheck,
-    title: 'No Compromises',
-    body: 'Premium quality, accessible pricing, and a 100% satisfaction guarantee. Love it or we make it right.',
+    icon: Dumbbell,
+    title: 'For Lifters Who Read the Panel',
+    body: 'TENET is for serious lifters and advanced trainees who check what is in their formula before they buy.',
   },
 ];
 
@@ -37,8 +37,9 @@ export default function AboutPage() {
           <span className="text-bone">Daily Driver</span>
         </h1>
         <p className="text-bone-600 text-lg leading-relaxed max-w-prose">
-          MAT BLK Supplements was founded on a simple principle: the gym doesn't
-          care about marketing copy. It cares about what's actually in the scoop.
+          MAT BLK Supplements builds clinically dosed, transparent-label
+          pre-workout for the lifters who read the supplement panel before
+          they buy.
         </p>
       </header>
 
@@ -50,28 +51,31 @@ export default function AboutPage() {
         <div className="relative grid lg:grid-cols-[1fr_auto] gap-8 p-7 sm:p-10 items-center">
           <div className="space-y-4 text-bone-600 text-[15px] sm:text-base leading-relaxed">
             <p>
-              We started in the same place a lot of lifters do — frustrated. Tubs
-              of pre-workout listing 17 ingredients in a 4-gram blend. Brands
-              chasing the next exotic compound instead of dosing the basics
-              properly. Hot pink tubs in the brightest possible packaging.
+              We started in the same place a lot of lifters do, frustrated.
+              Tubs of pre-workout listing 17 ingredients in a 4-gram blend.
+              Brands chasing the next exotic compound instead of dosing the
+              basics properly. Hot pink tubs in the brightest possible
+              packaging.
             </p>
             <p>
-              We wanted the opposite. A daily driver. The pre you reach for five
-              days a week without thinking about it. Clinical doses on the things
-              that move the needle: pump, focus, energy, absorption. Smooth stim
-              profile. Flavor that tastes like a drink, not a chemistry set.
+              We wanted the opposite. A daily driver. The pre you reach for
+              five days a week without thinking about it. Clinical doses on
+              the things that move the needle: pump, focus, energy,
+              absorption. Smooth stim profile. Flavor that tastes like a drink,
+              not a chemistry set.
             </p>
             <p>
               <span className="text-white font-medium">
                 That's it. That's the brand.
               </span>{' '}
               No inflated claims. No hero athlete on the bottle. Just a formula
-              built on science and a label built to disappear into your gym bag.
+              built on science and a label built to disappear into your gym
+              bag.
             </p>
           </div>
           <Image
             src="/images/AbrevLogo.png"
-            alt="MAT BLK monogram"
+            alt="MAT BLK Supplements logo monogram"
             width={140}
             height={140}
             className="h-24 w-24 sm:h-32 sm:w-32 object-contain opacity-90 mx-auto"
