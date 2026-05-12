@@ -10,8 +10,9 @@ import { CustomerReviews } from '@/components/site/CustomerReviews';
 import { FAQ } from '@/components/site/FAQ';
 import { GuaranteeAndBlacklist } from '@/components/site/GuaranteeAndBlacklist';
 import { FillerBand } from '@/components/site/FillerBand';
-import { ProductJsonLd } from '@/components/site/JsonLd';
+import { ProductJsonLd, FAQJsonLd } from '@/components/site/JsonLd';
 import { Reveal } from '@/components/site/Reveal';
+import { ProductSEOContent } from '@/components/product/ProductSEOContent';
 import { tenet } from '@/lib/products';
 
 interface PageProps {
@@ -23,9 +24,10 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: 'TENET — Best Clinically Dosed Daily Pre-Workout',
+  title:
+    'TENET Daily Driver Pre-Workout — Clinically Dosed, Transparent Label | MAT BLK',
   description:
-    'TENET is a clinically dosed daily driver pre-workout. Science-backed formula with L-Citrulline, Sodium Nitrate, Beta-Alanine, Alpha-GPC, and dual caffeine. No proprietary blends.',
+    'TENET 2026 daily driver pre-workout. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine anhydrous. Transparent label. No proprietary blends.',
 };
 
 export default async function ProductDetailPage({ params }: PageProps) {
@@ -35,11 +37,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
   return (
     <>
       <ProductJsonLd />
+      <FAQJsonLd />
       <Header />
       <main className="flex-1">
         <Hero />
         <Reveal><SocialProofBar /></Reveal>
-        <Reveal><ProductDescription /></Reveal>
+        <Reveal><ProductSEOContent /></Reveal>
         <Reveal><Comparison /></Reveal>
         <Reveal><WhatYoullFeel /></Reveal>
         <Reveal><FillerBand text="Train by the Tenet." /></Reveal>
@@ -50,26 +53,5 @@ export default async function ProductDetailPage({ params }: PageProps) {
       </main>
       <Reveal><Footer /></Reveal>
     </>
-  );
-}
-
-function ProductDescription() {
-  return (
-    <section
-      aria-labelledby="product-description"
-      className="bg-ink-800 py-14 sm:py-20 border-t border-ink-600"
-    >
-      <div className="container max-w-2xl">
-        <h2
-          id="product-description"
-          className="font-display text-4xl sm:text-5xl text-white tracking-[0.01em] leading-[0.95] mb-5"
-        >
-          About the Formula
-        </h2>
-        <p className="text-bone-600 text-[15px] sm:text-base leading-relaxed">
-          {tenet.longDescription}
-        </p>
-      </div>
-    </section>
   );
 }

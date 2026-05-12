@@ -49,7 +49,11 @@ export function ProductGallery({ images, alt }: Props) {
             >
               <Slide
                 src={src}
-                alt={`${alt} ${i + 1}`}
+                alt={
+                  i === 0
+                    ? 'TENET Daily Driver Pre-Workout by MAT BLK — clinically dosed, transparent-label, moderate-stim formula'
+                    : `TENET Daily Driver Pre-Workout — clinically dosed pre-workout for serious lifters (view ${i + 1})`
+                }
                 priority={i === 0}
                 onTap={src ? () => setZoomOpen(true) : undefined}
               />
@@ -109,7 +113,10 @@ export function ProductGallery({ images, alt }: Props) {
                   : 'border-ink-600 opacity-60 hover:opacity-100 hover:border-bone-500 hover:scale-[1.02]',
               ].join(' ')}
             >
-              <ThumbContent src={src} alt={`${alt} thumbnail ${i + 1}`} />
+              <ThumbContent
+                src={src}
+                alt={`TENET Daily Driver Pre-Workout thumbnail ${i + 1}`}
+              />
             </button>
           );
         })}

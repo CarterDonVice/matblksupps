@@ -44,6 +44,10 @@ export function Hero() {
               <p className="label-eyebrow mb-3 lg:mb-2">Pre-Workout</p>
               <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl text-white tracking-[0.01em] leading-[0.9]">
                 TENET
+                <span className="sr-only">
+                  {' '}Daily Driver Pre-Workout — Clinically Dosed, Transparent
+                  Label, Moderate-Stim
+                </span>
               </h1>
               <p className="mt-3 lg:mt-2 font-condensed text-base sm:text-lg font-bold tracking-[0.18em] uppercase text-bone-600">
                 — Full Stack Daily Driver

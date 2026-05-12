@@ -34,24 +34,26 @@ const body = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://matblksupps.com'),
   title: {
-    default: 'TENET — Daily Driver Pre-Workout · MAT BLK Supplements',
+    default:
+      'MAT BLK Supplements — Clinically Dosed, Transparent-Label Pre-Workout',
     template: '%s · MAT BLK Supplements',
   },
   description:
-    'Clinically dosed daily driver pre-workout. Science-backed ingredients at proper doses. No proprietary blends. Premium performance, accessibly priced.',
+    'MAT BLK builds clinically dosed, transparent-label daily driver pre-workout. Every ingredient. Every dose. Printed on the label. No proprietary blends. No fillers.',
   keywords: [
-    'best pre-workout',
     'clinically dosed pre-workout',
-    'science-backed pre-workout supplement',
+    'transparent label pre-workout',
     'daily driver pre-workout',
-    'pre-workout without crash',
     'moderate stim pre-workout',
+    'best pre-workout for serious lifters',
+    'pre-workout no proprietary blend',
+    'TENET',
     'MAT BLK',
   ],
   openGraph: {
-    title: 'TENET — MAT BLK Supplements',
+    title: 'TENET Daily Driver Pre-Workout — MAT BLK Supplements',
     description:
-      'Clinically dosed. Every rep. Every set. Science-backed daily driver pre-workout.',
+      'Clinically dosed, transparent-label daily driver pre-workout. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine.',
     url: 'https://matblksupps.com',
     siteName: 'MAT BLK Supplements',
     type: 'website',
@@ -59,8 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TENET — MAT BLK Supplements',
-    description: 'Clinically dosed. Every rep. Every set.',
+    title: 'TENET Daily Driver Pre-Workout — MAT BLK Supplements',
+    description:
+      'Clinically dosed, transparent-label daily driver pre-workout. Every ingredient, every dose, on the label.',
     images: ['/images/product_image_1.png'],
   },
   icons: {
