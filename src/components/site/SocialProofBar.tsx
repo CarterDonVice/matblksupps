@@ -2,9 +2,9 @@ import { Star } from 'lucide-react';
 
 const stats = [
   { value: '4.9', label: 'From 200+ Reviews', isStar: true },
+  { value: '7', label: 'Clinical Doses' },
   { value: '0', label: 'Fillers' },
   { value: '0', label: 'Proprietary Blends' },
-  { value: '10', label: 'Clinical Doses' },
 ];
 
 export function SocialProofBar() {
@@ -20,15 +20,14 @@ export function SocialProofBar() {
               key={i}
               className={[
                 'flex flex-col items-center text-center px-3 py-3 sm:py-2',
-                // Mobile dividers between cells in the 2x2 grid
                 i % 2 === 0 ? 'border-r border-ink-700 sm:border-r-0' : '',
                 i < 2 ? 'border-b border-ink-700 sm:border-b-0 sm:border-r-0' : '',
               ].join(' ')}
             >
-              <div className="font-display text-3xl sm:text-4xl text-white tracking-[0.01em] leading-none flex items-center gap-1.5 tabular-nums">
+              <div className="font-display text-5xl sm:text-6xl text-white tracking-[0.01em] leading-none flex items-center gap-2 tabular-nums">
                 {s.isStar && (
                   <Star
-                    className="h-5 w-5 text-bone fill-bone"
+                    className="h-7 w-7 sm:h-8 sm:w-8 text-bone fill-bone"
                     strokeWidth={1.5}
                   />
                 )}

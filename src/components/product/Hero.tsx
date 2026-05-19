@@ -50,7 +50,7 @@ export function Hero() {
                 </span>
               </h1>
               <p className="mt-3 lg:mt-2 font-condensed text-base sm:text-lg font-bold tracking-[0.18em] uppercase text-bone-600">
-                — Full Stack Daily Driver
+                Full Stack Daily Driver
               </p>
             </div>
 
@@ -74,12 +74,10 @@ export function Hero() {
               </span>
             </button>
 
-            {/* Sub-hero trust line (Band 1) */}
-            <FillerBand
-              variant="inline-trust"
-              text="Clinically Dosed. Transparent Formula. Made in USA."
-              className="pt-1"
-            />
+            {/* Sub-hero trust line (Band 1) — left-aligned with TENET title */}
+            <p className="pt-1 text-left font-condensed font-bold tracking-[0.18em] uppercase text-bone-600 text-[11px] sm:text-[12px]">
+              Clinically Dosed. Transparent Formula. Made in USA.
+            </p>
 
             {/* Anchor for Guarantee CTA */}
             <div id="purchase" className="scroll-mt-20 pt-2 lg:pt-1">

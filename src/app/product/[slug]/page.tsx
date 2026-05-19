@@ -48,7 +48,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
         <Reveal><FillerBand text="Train by the Tenet." /></Reveal>
         <Reveal><CustomerReviews /></Reveal>
         <Reveal><FAQ /></Reveal>
-        <Reveal><FillerBand text="Every Milligram. Every Ingredient. Every Day." /></Reveal>
         <Reveal><GuaranteeAndBlacklist /></Reveal>
       </main>
       <Reveal><Footer /></Reveal>

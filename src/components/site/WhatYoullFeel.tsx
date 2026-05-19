@@ -38,7 +38,7 @@ export function WhatYoullFeel() {
   return (
     <section
       aria-labelledby="what-youll-feel"
-      className="relative bg-ink py-16 sm:py-24 border-t border-ink-600"
+      className="relative bg-ink pt-16 sm:pt-24 pb-6 sm:pb-8 border-t border-ink-600"
     >
       <div className="container">
         <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
