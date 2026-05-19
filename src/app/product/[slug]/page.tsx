@@ -25,9 +25,9 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   title:
-    'TENET Daily Driver Pre-Workout — Clinically Dosed, Transparent Label | MAT BLK',
+    'TENET Daily Driver Pre Workout — Clinically Dosed, Transparent Label | MAT BLK',
   description:
-    'TENET 2026 daily driver pre-workout. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine anhydrous. Transparent label. No proprietary blends.',
+    'TENET 2026 daily driver pre workout. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine anhydrous. Transparent label. No proprietary blends.',
 };
 
 export default async function ProductDetailPage({ params }: PageProps) {

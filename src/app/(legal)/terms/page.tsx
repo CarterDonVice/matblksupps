@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description:
-    'Terms of service for MAT BLK Supplements and the TENET Daily Driver Pre-Workout. Read before purchase.',
+    'Terms of service for MAT BLK Supplements and the TENET Daily Driver Pre Workout. Read before purchase.',
 };
 
 export default function TermsPage() {

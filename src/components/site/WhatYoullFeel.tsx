@@ -12,7 +12,7 @@ const stages: Stage[] = [
     time: '0–15',
     name: 'Absorption',
     icon: Coffee,
-    body: 'Mix, drink, and start your warm-up. Citrulline and beta-alanine begin entering your bloodstream.',
+    body: 'Mix, drink, and start your warm up. Citrulline and beta-alanine begin entering your bloodstream.',
   },
   {
     time: '15–30',
@@ -24,13 +24,13 @@ const stages: Stage[] = [
     time: '30–90',
     name: 'Peak',
     icon: Mountain,
-    body: 'Sustained energy from dual caffeine sources. Maximum pump. Locked-in mind-muscle connection.',
+    body: 'Sustained energy from dual caffeine sources. Maximum pump. Locked in mind muscle connection.',
   },
   {
     time: '90+',
     name: 'Taper',
     icon: Waves,
-    body: 'Smooth comedown. No jitters, no crash. Just the satisfaction of a session well-trained.',
+    body: 'Smooth comedown. No jitters, no crash. Just the satisfaction of a session well trained.',
   },
 ];
 

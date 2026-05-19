@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { FlaskConical, FileSearch, Dumbbell } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About MAT BLK — Clinically Dosed, Transparent-Label Pre-Workout',
+  title: 'About MAT BLK — Clinically Dosed, Transparent Label Pre Workout',
   description:
-    'MAT BLK builds clinically dosed, transparent-label pre-workout for serious lifters. Every ingredient, every dose, printed on the label. No proprietary blends.',
+    'MAT BLK builds clinically dosed, transparent label pre workout for serious lifters. Every ingredient, every dose, printed on the label. No proprietary blends.',
 };
 
 const principles = [
@@ -37,8 +37,8 @@ export default function AboutPage() {
           <span className="text-bone">Daily Driver</span>
         </h1>
         <p className="text-bone-600 text-lg leading-relaxed max-w-prose">
-          MAT BLK Supplements builds clinically dosed, transparent-label
-          pre-workout for the lifters who read the supplement panel before
+          MAT BLK Supplements builds clinically dosed, transparent label
+          pre workout for the lifters who read the supplement panel before
           they buy.
         </p>
       </header>
@@ -52,7 +52,7 @@ export default function AboutPage() {
           <div className="space-y-4 text-bone-600 text-[15px] sm:text-base leading-relaxed">
             <p>
               We started in the same place a lot of lifters do, frustrated.
-              Tubs of pre-workout listing 17 ingredients in a 4-gram blend.
+              Tubs of pre workout listing 17 ingredients in a 4 gram blend.
               Brands chasing the next exotic compound instead of dosing the
               basics properly. Hot pink tubs in the brightest possible
               packaging.

@@ -17,7 +17,7 @@ export function QuickTestimonial() {
       <StarRow rating={5} size={14} className="mb-3" />
       <blockquote>
         <p className="text-bone text-[14px] leading-relaxed italic">
-          Smoothest pre-workout I've used daily for months. No crash, real
+          Smoothest pre workout I've used daily for months. No crash, real
           pumps.
         </p>
       </blockquote>

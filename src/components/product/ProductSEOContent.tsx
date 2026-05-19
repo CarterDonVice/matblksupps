@@ -16,16 +16,16 @@ export function ProductSEOContent() {
             id="product-seo"
             className="font-display text-4xl sm:text-5xl text-white tracking-[0.01em] leading-[0.95]"
           >
-            TENET Daily Driver Pre-Workout
+            TENET Daily Driver Pre Workout
           </h2>
           <p className="mt-3 font-condensed text-sm sm:text-base font-bold tracking-[0.14em] uppercase text-bone-600">
-            Clinically Dosed, Transparent Label, Moderate-Stim
+            Clinically Dosed, Transparent Label, Moderate Stim
           </p>
         </header>
 
         <p className="text-bone-600 text-[15px] sm:text-base leading-relaxed">
-          TENET is a transparent-label, moderate-stim daily driver pre-workout
-          built around four research-backed ingredients: 6g L-citrulline, 3.2g
+          TENET is a transparent label, moderate stim daily driver pre workout
+          built around four research backed ingredients: 6g L-citrulline, 3.2g
           beta-alanine, 600mg Alpha-GPC, and 100mg caffeine anhydrous. Every
           dose is what's used in the actual studies, not a token amount tucked
           behind a proprietary blend. No fillers. The full panel is printed on
@@ -35,7 +35,7 @@ export function ProductSEOContent() {
 
         <Detail title="What's in TENET">
           <p>
-            TENET contains four research-backed ingredients at the doses used
+            TENET contains four research backed ingredients at the doses used
             in published research:
           </p>
           <ul className="list-disc pl-5 space-y-1 mt-2 text-bone-600">
@@ -55,7 +55,7 @@ export function ProductSEOContent() {
             L-citrulline supports nitric oxide production, which supports
             healthy blood flow to working muscles and supports muscle pumps
             during training.* The clinical research on citrulline for pumps and
-            endurance uses doses in the 6 to 8g range. Many pre-workouts cut
+            endurance uses doses in the 6 to 8g range. Many pre workouts cut
             citrulline to 3 to 4g to save formula cost. TENET runs the full 6g.
           </p>
         </Detail>
@@ -63,7 +63,7 @@ export function ProductSEOContent() {
         <Detail title="Why 3.2g of beta-alanine">
           <p>
             Beta-alanine supports muscular endurance and helps delay muscle
-            fatigue during high-intensity exercise.* The research dose is 3.2g
+            fatigue during high intensity exercise.* The research dose is 3.2g
             per serving, taken consistently. Beta-alanine works by saturating
             intracellular carnosine over time, so it's the daily dose that
             matters, not a single huge hit. TENET runs the research dose every
@@ -74,8 +74,8 @@ export function ProductSEOContent() {
         <Detail title="Why 600mg of Alpha-GPC">
           <p>
             Alpha-GPC supports focus during training, supports mental clarity,
-            and supports mind-muscle connection.* The studies on Alpha-GPC for
-            cognitive performance and power output use 600mg. Many pre-workouts
+            and supports mind muscle connection.* The studies on Alpha-GPC for
+            cognitive performance and power output use 600mg. Many pre workouts
             include Alpha-GPC at 150 to 300mg, which is under the dose where
             the research effects appear. TENET runs the full 600mg.
           </p>
@@ -83,15 +83,15 @@ export function ProductSEOContent() {
 
         <Detail title="Why 100mg of caffeine anhydrous, not 300mg">
           <p>
-            TENET is a moderate-stim daily driver pre-workout. 100mg of
+            TENET is a moderate stim daily driver pre workout. 100mg of
             caffeine anhydrous, roughly one cup of coffee, supports energy
             levels and supports alertness during training.* It's paired with
             133mg of Di Caffeine Malate for sustained release as part of
             TENET's DUAL CAFFEINE SYSTEM. This is a deliberate choice.
-            High-stim formulas at 300 to 400mg of caffeine work for some
+            High stim formulas at 300 to 400mg of caffeine work for some
             lifters and not for others. TENET is built for the lifter who
             wants clinically dosed performance ingredients without the
-            high-stim load.
+            high stim load.
           </p>
         </Detail>
 
@@ -105,11 +105,11 @@ export function ProductSEOContent() {
           </p>
         </Detail>
 
-        <Detail title="How TENET compares to other clinically dosed pre-workouts">
+        <Detail title="How TENET compares to other clinically dosed pre workouts">
           <p>
             TENET hits the clinically researched doses across the four
             headline ingredients. That puts it in line with the transparent-
-            label pre-workouts that don't underdose. Many pre-workouts list
+            label pre workouts that don't underdose. Many pre workouts list
             ingredients but cut L-citrulline to 3 to 4g or hide totals behind
             a proprietary blend. TENET runs the full 6g of L-citrulline and
             shows the rest of the panel openly.
@@ -120,7 +120,7 @@ export function ProductSEOContent() {
           <p>
             TENET is built for serious lifters and advanced trainees who read
             the supplement panel before they buy. If you've been looking for a
-            pre-workout that isn't underdosed, doesn't hide behind a
+            pre workout that isn't underdosed, doesn't hide behind a
             proprietary blend, and uses ingredients at the doses they were
             actually researched at, TENET is built for you.
           </p>

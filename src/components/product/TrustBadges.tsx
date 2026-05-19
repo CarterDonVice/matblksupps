@@ -8,7 +8,7 @@ interface Badge {
 }
 
 const badges: Badge[] = [
-  { icon: ShieldCheck, label: 'GMP-Compliant Facility' },
+  { icon: ShieldCheck, label: 'GMP Compliant Facility' },
   { icon: FlagUSA, label: 'Made in USA' },
   { icon: Eye, label: 'Transparent Formula' },
 ];
