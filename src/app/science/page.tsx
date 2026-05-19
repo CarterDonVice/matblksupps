@@ -7,9 +7,9 @@ import { IngredientStack, type IngredientCardData } from '@/components/site/Ingr
 import { Reveal } from '@/components/site/Reveal';
 
 export const metadata: Metadata = {
-  title: 'The Science Behind TENET Daily Driver Pre-Workout',
+  title: 'The Science Behind TENET Daily Driver Pre Workout',
   description:
-    'The full ingredient breakdown for TENET Daily Driver Pre-Workout. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine anhydrous, plus the supporting cast. Clinically dosed, transparent label.',
+    'The full ingredient breakdown for TENET Daily Driver Pre Workout. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine anhydrous, plus the supporting cast. Clinically dosed, transparent label.',
 };
 
 const ingredients: IngredientCardData[] = [

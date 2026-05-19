@@ -35,7 +35,7 @@ export interface Product {
   slug: string;
   name: string;
   subName: string;
-  category: 'pre-workout';
+  category: 'pre workout';
   price: number;
   subscribePrice: number;
   flavors: Flavor[];

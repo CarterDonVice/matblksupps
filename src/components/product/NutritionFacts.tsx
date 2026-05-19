@@ -106,10 +106,16 @@ function List({ bordered = false }: { bordered?: boolean }) {
 
 function Disclaimer() {
   return (
-    <p className="mt-3 text-bone-500 text-[10px] leading-relaxed">
-      † Based on clinical studies of individual ingredients at matching dosages.
-      These statements have not been evaluated by the FDA. This product is not
-      intended to diagnose, treat, cure, or prevent any disease.
-    </p>
+    <div className="mt-3 space-y-2">
+      <p className="text-bone-500 text-[10px] leading-relaxed">
+        † Based on clinical studies of individual ingredients at matching dosages.
+        These statements have not been evaluated by the FDA. This product is not
+        intended to diagnose, treat, cure, or prevent any disease.
+      </p>
+      <p className="text-bone-500 text-[10px] leading-relaxed">
+        NO3-T® is a registered trademark of ThermoLife International, LLC. This
+        product practices one or more patents listed at www.NO3-T.com/patents.
+      </p>
+    </div>
   );
 }

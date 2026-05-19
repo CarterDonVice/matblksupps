@@ -51,8 +51,8 @@ export function ProductGallery({ images, alt }: Props) {
                 src={src}
                 alt={
                   i === 0
-                    ? 'TENET Daily Driver Pre-Workout by MAT BLK — clinically dosed, transparent-label, moderate-stim formula'
-                    : `TENET Daily Driver Pre-Workout — clinically dosed pre-workout for serious lifters (view ${i + 1})`
+                    ? 'TENET Daily Driver Pre Workout by MAT BLK — clinically dosed, transparent label, moderate stim formula'
+                    : `TENET Daily Driver Pre Workout — clinically dosed pre workout for serious lifters (view ${i + 1})`
                 }
                 priority={i === 0}
                 onTap={src ? () => setZoomOpen(true) : undefined}
@@ -115,7 +115,7 @@ export function ProductGallery({ images, alt }: Props) {
             >
               <ThumbContent
                 src={src}
-                alt={`TENET Daily Driver Pre-Workout thumbnail ${i + 1}`}
+                alt={`TENET Daily Driver Pre Workout thumbnail ${i + 1}`}
               />
             </button>
           );

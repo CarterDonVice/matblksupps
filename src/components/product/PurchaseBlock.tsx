@@ -59,7 +59,7 @@ export function PurchaseBlock() {
         {/* Band 2 — quiet reassurance under the cart button */}
         <FillerBand
           variant="inline-soft"
-          text="Pump. Energy. Focus. No crash."
+          text="Fast onset, extended curve, smooth finish."
         />
 
         <p className="flex items-center gap-2 text-bone-600 text-[12px]">

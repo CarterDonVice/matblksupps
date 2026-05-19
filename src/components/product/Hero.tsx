@@ -30,7 +30,7 @@ export function Hero() {
           <div>
             <ProductGallery
               images={product.images}
-              alt={`${product.name} pre-workout`}
+              alt={`${product.name} pre workout`}
             />
             <NutritionFacts
               variant="static"
@@ -41,16 +41,16 @@ export function Hero() {
           {/* RIGHT COLUMN — title + meta + purchase block */}
           <div className="mt-8 lg:mt-2 max-w-md mx-auto lg:mx-0 space-y-5 lg:space-y-3">
             <div>
-              <p className="label-eyebrow mb-3 lg:mb-2">Pre-Workout</p>
+              <p className="label-eyebrow mb-3 lg:mb-2">Pre Workout</p>
               <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl text-white tracking-[0.01em] leading-[0.9]">
                 TENET
                 <span className="sr-only">
-                  {' '}Daily Driver Pre-Workout — Clinically Dosed, Transparent
-                  Label, Moderate-Stim
+                  {' '}Daily Driver Pre Workout — Clinically Dosed, Transparent
+                  Label, Moderate Stim
                 </span>
               </h1>
               <p className="mt-3 lg:mt-2 font-condensed text-base sm:text-lg font-bold tracking-[0.18em] uppercase text-bone-600">
-                — Full Stack Daily Driver
+                Full Stack Daily Driver
               </p>
             </div>
 
@@ -74,12 +74,10 @@ export function Hero() {
               </span>
             </button>
 
-            {/* Sub-hero trust line (Band 1) */}
-            <FillerBand
-              variant="inline-trust"
-              text="Clinically Dosed. Transparent Formula. Made in USA."
-              className="pt-1"
-            />
+            {/* Sub-hero trust line (Band 1) — left-aligned with TENET title */}
+            <p className="pt-1 text-left font-condensed font-bold tracking-[0.18em] uppercase text-bone-600 text-[11px] sm:text-[12px]">
+              Clinically Dosed. Transparent Formula. Made in USA.
+            </p>
 
             {/* Anchor for Guarantee CTA */}
             <div id="purchase" className="scroll-mt-20 pt-2 lg:pt-1">

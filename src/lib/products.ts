@@ -4,8 +4,8 @@ export const tenet: Product = {
   id: 'tenet',
   slug: 'tenet',
   name: 'TENET',
-  subName: 'The Daily Driver Pre-Workout',
-  category: 'pre-workout',
+  subName: 'The Daily Driver Pre Workout',
+  category: 'pre workout',
   price: 44.99,
   subscribePrice: 40.49,
   flavors: [
@@ -37,9 +37,9 @@ export const tenet: Product = {
     '/images/product_image_1.png',
   ],
   shortDescription:
-    'Carb-infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
+    'Carb infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
   longDescription:
-    "Enhance your training with TENET. This formula is built on science and backed by clinical research, using clinically dosed ingredients for pump, focus, energy, and absorption. With a smooth, moderate-stim profile, TENET is the pre-workout you'll rely on day in and day out.",
+    "Enhance your training with TENET. This formula is built on science, with seven of our active ingredients at clinically dosed levels across pump, focus, endurance, and absorption pathways. The supporting cast (caffeine anhydrous, di caffeine malate, and Huperzine A) is included at clinically referenced doses and fully disclosed on the panel. With a smooth, moderate stim profile, TENET is the pre workout you'll rely on day in and day out.",
   ingredients: [
     { name: 'L-Citrulline', dose: '6,000 mg', hero: true },
     { name: 'Sodium Nitrate (NO3-T®)', dose: '1,000 mg', hero: true },
@@ -48,7 +48,7 @@ export const tenet: Product = {
     { name: 'L-Tyrosine', dose: '2,000 mg', hero: true },
     { name: 'Taurine', dose: '1,000 mg' },
     { name: 'Caffeine Anhydrous', dose: '100 mg' },
-    { name: 'Di-Caffeine Malate', dose: '133 mg' },
+    { name: 'Di Caffeine Malate', dose: '133 mg' },
     { name: 'Huperzine A (1% extract)', dose: '15 mg' },
     { name: 'Piperine (95%)', dose: '5 mg' },
   ],
@@ -83,7 +83,7 @@ export const reviews: Review[] = [
     stars: 5,
     title: 'Daily driver, lives up to the name',
     body:
-      'Been using it 5x a week for a month. No tolerance build-up, no crash. Mango is the move.',
+      'Been using it 5x a week for a month. No tolerance build up, no crash. Mango is the move.',
     author: 'Devin R.',
     date: '2026-04-10',
     verified: true,

@@ -6,8 +6,8 @@ interface Row {
 
 const rows: Row[] = [
   {
-    label: 'Clinical doses on every ingredient',
-    tenet: 'Yes, every milligram',
+    label: 'Clinically Dosed',
+    tenet: 'Absolutely',
     typical: 'Underdosed to cut costs',
   },
   {
@@ -26,12 +26,7 @@ const rows: Row[] = [
     typical: 'Often missing entirely',
   },
   {
-    label: 'Proprietary blends',
-    tenet: 'Never',
-    typical: 'Common',
-  },
-  {
-    label: 'Fillers like maltodextrin',
+    label: 'Proprietary Blends / Fillers',
     tenet: 'Never',
     typical: 'Common',
   },
@@ -42,12 +37,12 @@ const rows: Row[] = [
   },
   {
     label: 'Daily use safe',
-    tenet: 'Yes at 233mg moderate stim',
+    tenet: 'Yes',
     typical: 'Varies',
   },
   {
     label: 'Made in USA',
-    tenet: 'Carrollton, TX',
+    tenet: 'Yes',
     typical: 'Varies',
   },
   {
