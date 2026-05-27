@@ -42,7 +42,7 @@ export const tenet: Product = {
     "Enhance your training with TENET. This formula is built on science, with seven of our active ingredients at clinically dosed levels across pump, focus, endurance, and absorption pathways. The supporting cast (caffeine anhydrous, di caffeine malate, and Huperzine A) is included at clinically referenced doses and fully disclosed on the panel. With a smooth, moderate stim profile, TENET is the pre workout you'll rely on day in and day out.",
   ingredients: [
     { name: 'L-Citrulline', dose: '6,000 mg', hero: true },
-    { name: 'Sodium Nitrate (NO3-T®)', dose: '1,000 mg', hero: true },
+    { name: 'Glycerol (HydroPrime®)', dose: '3,000 mg', hero: true },
     { name: 'Beta-Alanine', dose: '3,200 mg' },
     { name: 'Alpha-GPC (50%)', dose: '600 mg', hero: true },
     { name: 'L-Tyrosine', dose: '2,000 mg', hero: true },

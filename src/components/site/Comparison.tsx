@@ -12,7 +12,7 @@ const rows: Row[] = [
   },
   {
     label: 'Pump system',
-    tenet: 'DUAL PUMP PATHWAYS (Citrulline + Nitrate)',
+    tenet: 'DUAL PUMP PATHWAYS (Citrulline + Glycerol)',
     typical: 'Single pathway, often weak dose',
   },
   {

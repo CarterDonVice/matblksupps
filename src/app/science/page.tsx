@@ -27,14 +27,15 @@ const ingredients: IngredientCardData[] = [
     ),
   },
   {
-    name: 'Sodium Nitrate (NO3-T®)',
-    dose: '1,000 mg',
+    name: 'Glycerol (HydroPrime®)',
+    dose: '3,000 mg',
     body: (
       <>
-        The second pump pathway. ThermoLife's patented sodium nitrate delivers
-        nitrate to your muscles for vasodilation through a separate pathway from
-        citrulline. Stacked together with L Citrulline, you get amplified blood
-        flow and pumps that don't quit. The second half of{' '}
+        The cell volumizer. HydroPrime® Glycerol pulls water into muscle
+        cells, expanding them for fuller, longer lasting pumps. Works
+        through a separate pathway from L-Citrulline's nitric oxide route.
+        Stacked together, you get pump expansion driven by both blood flow
+        and cellular hydration. The second half of{' '}
         <span className="text-white font-medium">DUAL PUMP PATHWAYS</span>.
       </>
     ),
