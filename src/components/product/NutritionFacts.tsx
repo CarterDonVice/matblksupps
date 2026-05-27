@@ -113,8 +113,7 @@ function Disclaimer() {
         intended to diagnose, treat, cure, or prevent any disease.
       </p>
       <p className="text-bone-500 text-[10px] leading-relaxed">
-        NO3-T® is a registered trademark of ThermoLife International, LLC. This
-        product practices one or more patents listed at www.NO3-T.com/patents.
+        HydroPrime® is a registered trademark of Pinnacle Ingredients, LLC.
       </p>
     </div>
   );

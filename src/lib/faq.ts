@@ -13,11 +13,11 @@ export interface FaqItem {
 export const faqItems: FaqItem[] = [
   {
     q: "What's in TENET Daily Driver Pre Workout?",
-    a: 'TENET contains clinical doses of L-citrulline (6g), beta-alanine (3.2g), L-tyrosine (2g), taurine (1g), piperine (5mg), sodium nitrate (1g), and Alpha-GPC (600mg at 50% yield), as well as caffeine anhydrous, di caffeine malate, and Huperzine A. Every ingredient and every dose is printed on the supplement panel, with no proprietary blends and no fillers.',
+    a: 'TENET contains clinical doses of L-citrulline (6g), beta-alanine (3.2g), glycerol (3g), L-tyrosine (2g), taurine (1g), piperine (5mg), and Alpha-GPC (600mg at 50% yield), as well as caffeine anhydrous, di caffeine malate, and Huperzine A. Every ingredient and every dose is printed on the supplement panel, with no proprietary blends and no fillers.',
   },
   {
     q: 'Is TENET clinically dosed?',
-    a: "Yes. Seven of TENET's ingredients are dosed at the level used in published clinical research: L-citrulline (6g), beta-alanine (3.2g), L-tyrosine (2g), taurine (1g), piperine (5mg), sodium nitrate (1g), and Alpha-GPC (600mg at 50% yield). The remaining ingredients (caffeine anhydrous, di caffeine malate, and Huperzine A) are included at clinically referenced doses and are fully disclosed on the panel.",
+    a: "Yes. Seven of TENET's ingredients are dosed at the level used in published clinical research: L-citrulline (6g), beta-alanine (3.2g), glycerol (3g), L-tyrosine (2g), taurine (1g), piperine (5mg), and Alpha-GPC (600mg at 50% yield). The remaining ingredients (caffeine anhydrous, di caffeine malate, and Huperzine A) are included at clinically referenced doses and are fully disclosed on the panel.",
   },
   {
     q: 'Is TENET high stim or low stim?',
