@@ -340,10 +340,10 @@ function ZoomViewer({
 
 function PlaceholderSlide() {
   return (
-    <div className="absolute inset-3 sm:inset-5 rounded-2xl border border-dashed border-ink-600 bg-ink-800/40 flex flex-col items-center justify-center text-center px-6 gap-3">
-      <ImageOff className="h-8 w-8 text-bone-500" strokeWidth={1.5} />
-      <p className="label-eyebrow">Image Coming Soon</p>
-    </div>
+    <div
+      aria-hidden
+      className="absolute inset-3 sm:inset-5 rounded-2xl bg-ink-800/40"
+    />
   );
 }
 
