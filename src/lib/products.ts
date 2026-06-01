@@ -28,14 +28,7 @@ export const tenet: Product = {
         'radial-gradient(ellipse 110% 75% at 50% 18%, rgba(255, 148, 36, 0.98) 0%, rgba(255, 148, 36, 0.7) 28%, rgba(255, 148, 36, 0.25) 48%, transparent 72%), radial-gradient(ellipse 110% 75% at 50% 82%, rgba(168, 38, 124, 1) 0%, rgba(168, 38, 124, 0.78) 28%, rgba(168, 38, 124, 0.3) 48%, transparent 72%), linear-gradient(135deg, #1a0a06 0%, #0a0606 100%)',
     },
   ],
-  // All 4 slots show the real product image until we have alternate angles.
-  // Click behavior on thumbnails still swaps the main image normally.
-  images: [
-    '/images/product_image_1.png',
-    '/images/product_image_1.png',
-    '/images/product_image_1.png',
-    '/images/product_image_1.png',
-  ],
+  images: ['/images/product_image_1.png'],
   shortDescription:
     'Carb infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
   longDescription:

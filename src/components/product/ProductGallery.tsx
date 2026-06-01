@@ -93,8 +93,9 @@ export function ProductGallery({ images, alt }: Props) {
         )}
       </div>
 
-      {/* Thumbnail strip */}
-      <div className="grid grid-cols-4 gap-2 sm:gap-3 px-1">
+      {/* Thumbnail strip (hidden when there's only one image) */}
+      {images.length > 1 && (
+        <div className="grid grid-cols-4 gap-2 sm:gap-3 px-1">
         {images.map((src, i) => {
           const isActive = activeIndex === i;
           return (
@@ -120,7 +121,8 @@ export function ProductGallery({ images, alt }: Props) {
             </button>
           );
         })}
-      </div>
+        </div>
+      )}
 
       <ZoomViewer
         open={zoomOpen}
