@@ -294,6 +294,12 @@ As of the last handoff commit:
 git log --oneline -5
 ```
 
+### Version tracking
+- Every merge to `main` is logged in `CHANGELOG.md` (newest first).
+- Scheme: **vMAJOR.MINOR** — MINOR per approved branch merged to main, MAJOR for big redesigns.
+- Tracked versioning starts at **v10.0** (2026-06-10). Update `CHANGELOG.md` on every merge.
+- Workflow rule the owner set: every change → its own temp branch → review on the Vercel preview → merge to main only after explicit approval. **Branches are kept, not deleted**, so any prior version can be revisited.
+
 ### Recent versions / themes (for context only — code is the source of truth)
 - v1–v4: scaffolded the site, picked the matte black aesthetic, renamed product to TENET
 - v5–v6: desktop refinements, static nutrition facts under gallery, larger flavor card text
