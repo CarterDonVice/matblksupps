@@ -13,8 +13,8 @@ interface FooterLink {
 }
 
 const shopLinks: FooterLink[] = [
-  { label: 'All Products', href: '/' },
-  { label: 'Subscribe & Save', href: '/' },
+  { label: 'TENET Daily Driver', href: '/product/tenet' },
+  { label: 'Subscribe & Save', href: '/product/tenet#purchase' },
   { label: 'The Blacklist', href: '/#newsletter' },
 ];
 

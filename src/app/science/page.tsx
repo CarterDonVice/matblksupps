@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   title: 'The Science Behind TENET Daily Driver Pre Workout',
   description:
     'The full ingredient breakdown for TENET Daily Driver Pre Workout. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine anhydrous, plus the supporting cast. Clinically dosed, transparent label.',
+  alternates: { canonical: '/science' },
+  openGraph: { title: 'The Science Behind TENET Daily Driver Pre Workout' },
 };
 
 const ingredients: IngredientCardData[] = [

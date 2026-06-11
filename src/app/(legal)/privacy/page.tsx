@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
     'How MAT BLK Supplements collects, uses, and protects your personal information when you shop or sign up for the Blacklist.',
+  alternates: { canonical: '/privacy' },
 };
 
 export default function PrivacyPage() {

@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Refund Policy',
   description:
     '100% satisfaction guarantee on TENET Daily Driver Pre Workout. Contact us within 30 days for a full refund.',
+  alternates: { canonical: '/refund' },
 };
 
 export default function RefundPage() {
