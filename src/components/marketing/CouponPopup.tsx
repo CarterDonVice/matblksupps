@@ -4,11 +4,13 @@ import * as React from 'react';
 import { X, Check, Gift } from 'lucide-react';
 import { useDialogFocus } from '@/hooks/useDialogFocus';
 import { isValidEmail } from '@/lib/validate';
+import { subscribe } from '@/lib/marketing';
 
 const STORAGE_SEEN = 'tenet:discount:seen';
 const STORAGE_CLAIMED = 'tenet:discount:claimed';
 const STORAGE_STICKY_HIDDEN = 'tenet:discount:sticky-hidden';
-const AUTO_DELAY_MS = 10000;
+/** Auto-open once the visitor scrolls past this fraction of the page. */
+const AUTO_OPEN_SCROLL_FRACTION = 0.5;
 
 interface CouponState {
   isPopupOpen: boolean;
@@ -60,15 +62,24 @@ export function CouponProvider({ children }: { children: React.ReactNode }) {
     setHydrated(true);
   }, []);
 
-  // Auto-trigger 10s after page load if never seen
+  // Auto-trigger once the visitor scrolls past half the page, if never seen
   React.useEffect(() => {
     if (!hydrated || seen || claimed) return;
-    const t = window.setTimeout(() => {
+    let fired = false;
+    const onScroll = () => {
+      if (fired) return;
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      if (window.scrollY / scrollable < AUTO_OPEN_SCROLL_FRACTION) return;
+      fired = true;
+      window.removeEventListener('scroll', onScroll);
       writeFlag(STORAGE_SEEN, true);
       setSeen(true);
       setIsPopupOpen(true);
-    }, AUTO_DELAY_MS);
-    return () => window.clearTimeout(t);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [hydrated, seen, claimed]);
 
   const openPopup = React.useCallback(() => {
@@ -157,16 +168,20 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
     };
   }, [isPopupOpen, closePopup]);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isValidEmail(email)) {
       setEmailError('Enter a valid email address.');
       return;
     }
     setEmailError('');
+    await subscribe({
+      email,
+      phone: phone.trim() || undefined,
+      source: 'coupon-popup',
+    });
     setSubmitted(true);
     onClaim();
-    // TODO: wire to email marketing platform (Klaviyo)
   };
 
   return (
@@ -247,6 +262,21 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
                   placeholder="(555) 123-4567"
                   autoComplete="tel"
                 />
+                <p className="text-bone-600 text-[10px] leading-relaxed">
+                  By providing your number you agree to receive recurring
+                  automated marketing texts from MAT BLK at the number
+                  provided. Consent is not a condition of purchase. Message
+                  frequency varies. Message and data rates may apply. Reply
+                  STOP to cancel or HELP for help. See our{' '}
+                  <a href="/terms" className="underline underline-offset-2 hover:text-bone">
+                    Terms
+                  </a>{' '}
+                  and{' '}
+                  <a href="/privacy" className="underline underline-offset-2 hover:text-bone">
+                    Privacy Policy
+                  </a>
+                  .
+                </p>
                 <button
                   type="submit"
                   className="w-full h-12 rounded-xl bg-white text-ink font-condensed font-extrabold tracking-[0.16em] uppercase text-sm transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
@@ -276,8 +306,8 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
                 Code on the way
               </h3>
               <p className="text-bone-600 text-sm mb-6">
-                Check your inbox for your{' '}
-                <span className="text-white">20% off</span> code.
+                You're locked in. Your <span className="text-white">20%</span>{' '}
+                code arrives by email when we launch.
               </p>
               <button
                 type="button"

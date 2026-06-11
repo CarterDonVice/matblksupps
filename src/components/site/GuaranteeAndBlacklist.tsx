@@ -4,6 +4,7 @@ import * as React from 'react';
 import { ShieldCheck, ArrowUp, ArrowRight, Check } from 'lucide-react';
 import { scrollToId } from '@/lib/scroll';
 import { isValidEmail } from '@/lib/validate';
+import { subscribe } from '@/lib/marketing';
 
 /**
  * Combined banner — Satisfaction Guarantee + Blacklist newsletter.
@@ -82,13 +83,14 @@ function BlacklistPanel() {
   const inputId = React.useId();
   const errorId = `${inputId}-error`;
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isValidEmail(email)) {
       setError('Enter a valid email address.');
       return;
     }
     setError('');
+    await subscribe({ email, source: 'blacklist' });
     setSubmitted(true);
   };
 

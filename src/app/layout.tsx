@@ -8,6 +8,7 @@ import {
   CouponProvider,
   StickyDiscountButton,
 } from '@/components/marketing/CouponPopup';
+import { AnnouncementBanner } from '@/components/marketing/AnnouncementBanner';
 import { CartDrawer } from '@/components/cart/CartDrawer';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/site/JsonLd';
 import { SITE_URL } from '@/lib/site';
@@ -105,6 +106,7 @@ export default function RootLayout({
           <CartProvider>
             <SelectionProvider>
               <CouponProvider>
+                <AnnouncementBanner />
                 {children}
                 <CartDrawer />
                 <StickyDiscountButton />
