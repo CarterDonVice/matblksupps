@@ -2,11 +2,15 @@
 
 import * as React from 'react';
 import { X, Check, Gift } from 'lucide-react';
+import { useDialogFocus } from '@/hooks/useDialogFocus';
+import { isValidEmail } from '@/lib/validate';
+import { subscribe } from '@/lib/marketing';
 
 const STORAGE_SEEN = 'tenet:discount:seen';
 const STORAGE_CLAIMED = 'tenet:discount:claimed';
 const STORAGE_STICKY_HIDDEN = 'tenet:discount:sticky-hidden';
-const AUTO_DELAY_MS = 10000;
+/** Auto-open once the visitor scrolls past this fraction of the page. */
+const AUTO_OPEN_SCROLL_FRACTION = 0.5;
 
 interface CouponState {
   isPopupOpen: boolean;
@@ -58,15 +62,24 @@ export function CouponProvider({ children }: { children: React.ReactNode }) {
     setHydrated(true);
   }, []);
 
-  // Auto-trigger 10s after page load if never seen
+  // Auto-trigger once the visitor scrolls past half the page, if never seen
   React.useEffect(() => {
     if (!hydrated || seen || claimed) return;
-    const t = window.setTimeout(() => {
+    let fired = false;
+    const onScroll = () => {
+      if (fired) return;
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      if (window.scrollY / scrollable < AUTO_OPEN_SCROLL_FRACTION) return;
+      fired = true;
+      window.removeEventListener('scroll', onScroll);
       writeFlag(STORAGE_SEEN, true);
       setSeen(true);
       setIsPopupOpen(true);
-    }, AUTO_DELAY_MS);
-    return () => window.clearTimeout(t);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [hydrated, seen, claimed]);
 
   const openPopup = React.useCallback(() => {
@@ -133,6 +146,8 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
   const [email, setEmail] = React.useState('');
   const [phone, setPhone] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
+  const [emailError, setEmailError] = React.useState('');
+  const dialogRef = useDialogFocus<HTMLDivElement>(isPopupOpen);
 
   React.useEffect(() => {
     if (isPopupOpen) setSubmitted(false);
@@ -153,16 +168,25 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
     };
   }, [isPopupOpen, closePopup]);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.includes('@')) return;
+    if (!isValidEmail(email)) {
+      setEmailError('Enter a valid email address.');
+      return;
+    }
+    setEmailError('');
+    await subscribe({
+      email,
+      phone: phone.trim() || undefined,
+      source: 'coupon-popup',
+    });
     setSubmitted(true);
     onClaim();
-    // TODO: wire to email marketing platform (Klaviyo)
   };
 
   return (
     <div
+      ref={dialogRef}
       aria-hidden={!isPopupOpen}
       className={`fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-4 sm:p-6 transition-opacity duration-300 ${
         isPopupOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -214,14 +238,21 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
               </p>
 
               <form onSubmit={onSubmit} noValidate className="space-y-3">
+                <p aria-live="polite" className="sr-only">
+                  {emailError}
+                </p>
                 <Field
                   label="Email"
                   type="email"
                   required
                   value={email}
-                  onChange={setEmail}
+                  onChange={(v) => {
+                    setEmail(v);
+                    if (emailError) setEmailError('');
+                  }}
                   placeholder="you@email.com"
                   autoComplete="email"
+                  error={emailError}
                 />
                 <Field
                   label="Phone (optional)"
@@ -231,10 +262,24 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
                   placeholder="(555) 123-4567"
                   autoComplete="tel"
                 />
+                <p className="text-bone-600 text-[10px] leading-relaxed">
+                  By providing your number you agree to receive recurring
+                  automated marketing texts from MAT BLK at the number
+                  provided. Consent is not a condition of purchase. Message
+                  frequency varies. Message and data rates may apply. Reply
+                  STOP to cancel or HELP for help. See our{' '}
+                  <a href="/terms" className="underline underline-offset-2 hover:text-bone">
+                    Terms
+                  </a>{' '}
+                  and{' '}
+                  <a href="/privacy" className="underline underline-offset-2 hover:text-bone">
+                    Privacy Policy
+                  </a>
+                  .
+                </p>
                 <button
                   type="submit"
-                  disabled={!email.includes('@')}
-                  className="w-full h-12 rounded-xl bg-white text-ink font-condensed font-extrabold tracking-[0.16em] uppercase text-sm transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
+                  className="w-full h-12 rounded-xl bg-white text-ink font-condensed font-extrabold tracking-[0.16em] uppercase text-sm transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
                 >
                   Claim 20% Off
                 </button>
@@ -261,8 +306,8 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
                 Code on the way
               </h3>
               <p className="text-bone-600 text-sm mb-6">
-                Check your inbox for your{' '}
-                <span className="text-white">20% off</span> code.
+                You're locked in. Your <span className="text-white">20%</span>{' '}
+                code arrives by email when we launch.
               </p>
               <button
                 type="button"
@@ -287,6 +332,7 @@ function Field({
   onChange,
   placeholder,
   autoComplete,
+  error,
 }: {
   label: string;
   type: string;
@@ -295,8 +341,10 @@ function Field({
   onChange: (v: string) => void;
   placeholder?: string;
   autoComplete?: string;
+  error?: string;
 }) {
   const id = React.useId();
+  const errorId = `${id}-error`;
   return (
     <div>
       <label htmlFor={id} className="block label-eyebrow mb-1.5">
@@ -310,8 +358,15 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? errorId : undefined}
         className="w-full h-12 rounded-lg bg-ink-700 border border-ink-600 px-4 text-bone placeholder:text-bone-500 outline-none transition-colors focus:border-bone-500 focus-visible:ring-2 focus-visible:ring-bone/20"
       />
+      {error && (
+        <p id={errorId} className="mt-1.5 text-bone text-[12px]">
+          {error}
+        </p>
+      )}
     </div>
   );
 }
@@ -354,7 +409,7 @@ export function StickyDiscountButton() {
           type="button"
           onClick={dismissSticky}
           aria-label="Dismiss offer"
-          className="absolute top-1/2 right-1.5 -translate-y-1/2 inline-flex h-7 w-7 items-center justify-center rounded-full text-ink/60 hover:text-ink hover:bg-ink/10 transition-colors"
+          className="absolute top-1/2 right-1.5 -translate-y-1/2 inline-flex h-7 w-7 items-center justify-center rounded-full text-ink/60 hover:text-ink hover:bg-ink/10 transition-colors after:absolute after:-inset-2 after:content-['']"
         >
           <X className="h-3.5 w-3.5" strokeWidth={2} />
         </button>

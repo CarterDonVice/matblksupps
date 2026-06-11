@@ -35,7 +35,6 @@ export function FillerBand({ text, variant = 'band', className }: Props) {
   }
   return (
     <section
-      aria-hidden="true"
       className={`bg-ink py-[60px] sm:py-[80px] px-5 ${className ?? ''}`}
     >
       <p className="container max-w-3xl text-center font-condensed font-extrabold tracking-[0.14em] uppercase text-white text-2xl sm:text-4xl leading-tight">

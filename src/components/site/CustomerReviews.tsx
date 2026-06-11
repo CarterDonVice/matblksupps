@@ -7,9 +7,9 @@ import {
   Search,
   X,
   SlidersHorizontal,
-  BadgeCheck,
 } from 'lucide-react';
 import { useReviews } from '@/contexts/ReviewsContext';
+import { tenet } from '@/lib/products';
 import type { Review } from '@/lib/types';
 import { WriteReviewModal } from './WriteReviewModal';
 import { StarRow, StarSharp } from '@/components/ui/StarSharp';
@@ -130,16 +130,13 @@ export function CustomerReviews() {
           >
             What They're Saying
           </h2>
-          <p className="text-bone-600 text-[15px] sm:text-base mb-5">
-            Real lifters. Real sessions. Real results.
-          </p>
           <div className="flex items-center gap-3 justify-center flex-wrap">
             <StarRow rating={averageRating} size={18} />
             <span className="font-display text-2xl text-white">
               {averageRating.toFixed(1)}
             </span>
             <span className="text-bone-600 text-sm">
-              based on <span className="text-bone">{count}</span> verified reviews
+              based on <span className="text-bone">{count}</span> reviews
             </span>
           </div>
         </header>
@@ -172,11 +169,6 @@ export function CustomerReviews() {
                     </p>
                     <p className="text-bone-600 text-[12px]">{t.context}</p>
                   </div>
-                  <BadgeCheck
-                    className="h-5 w-5 text-success shrink-0"
-                    strokeWidth={1.75}
-                    aria-label="Verified"
-                  />
                 </footer>
               </li>
             ))}
@@ -271,14 +263,20 @@ export function CustomerReviews() {
               <span className="hidden sm:block" />
             )}
 
-            <button
-              type="button"
-              onClick={() => setModalOpen(true)}
-              className={whitePill}
-            >
-              <Plus className="h-4 w-4" strokeWidth={2.25} />
-              Write a Review
-            </button>
+            {tenet.hasRealReviews ? (
+              <button
+                type="button"
+                onClick={() => setModalOpen(true)}
+                className={whitePill}
+              >
+                <Plus className="h-4 w-4" strokeWidth={2.25} />
+                Write a Review
+              </button>
+            ) : (
+              <p className="text-bone-500 text-[11px] tracking-[0.16em] uppercase font-semibold">
+                Customer reviews open at launch.
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -321,7 +319,7 @@ function SearchInput({
           type="button"
           aria-label="Clear search"
           onClick={() => onChange('')}
-          className="absolute right-2 top-1/2 -translate-y-1/2 inline-flex h-7 w-7 items-center justify-center rounded-full text-bone-500 hover:text-bone hover:bg-ink-700 transition-colors"
+          className="absolute right-2 top-1/2 -translate-y-1/2 inline-flex h-7 w-7 items-center justify-center rounded-full text-bone-500 hover:text-bone hover:bg-ink-700 transition-colors after:absolute after:-inset-2 after:content-['']"
         >
           <X className="h-3.5 w-3.5" strokeWidth={2} />
         </button>

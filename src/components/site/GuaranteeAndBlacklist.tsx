@@ -3,6 +3,8 @@
 import * as React from 'react';
 import { ShieldCheck, ArrowUp, ArrowRight, Check } from 'lucide-react';
 import { scrollToId } from '@/lib/scroll';
+import { isValidEmail } from '@/lib/validate';
+import { subscribe } from '@/lib/marketing';
 
 /**
  * Combined banner — Satisfaction Guarantee + Blacklist newsletter.
@@ -55,9 +57,8 @@ function GuaranteePanel() {
         </p>
 
         <p className="text-bone-600 text-[13px] sm:text-sm max-w-md leading-relaxed">
-          We back every tub with a 30-day satisfaction guarantee. If TENET
-          doesn't perform like we say it does, contact us for a full refund —
-          even if the tub is empty.
+          30 day money back guarantee. If TENET is not for you, contact us
+          within 30 days for a full refund, even if the tub is empty.
         </p>
 
         <div className="pt-1 flex justify-center lg:justify-start">
@@ -66,7 +67,7 @@ function GuaranteePanel() {
             onClick={() => scrollToId('purchase')}
             className="inline-flex items-center gap-2 h-12 px-6 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
           >
-            Shop TENET Risk-Free
+            Shop TENET Risk Free
             <ArrowUp className="h-4 w-4" strokeWidth={2.25} />
           </button>
         </div>
@@ -78,11 +79,18 @@ function GuaranteePanel() {
 function BlacklistPanel() {
   const [email, setEmail] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
+  const [error, setError] = React.useState('');
   const inputId = React.useId();
+  const errorId = `${inputId}-error`;
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.includes('@')) return;
+    if (!isValidEmail(email)) {
+      setError('Enter a valid email address.');
+      return;
+    }
+    setError('');
+    await subscribe({ email, source: 'blacklist' });
     setSubmitted(true);
   };
 
@@ -116,20 +124,34 @@ function BlacklistPanel() {
             <label htmlFor={inputId} className="sr-only">
               Email address
             </label>
-            <input
-              id={inputId}
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@email.com"
-              autoComplete="email"
-              required
-              className="flex-1 h-12 rounded-xl bg-ink border border-ink-600 px-4 text-bone placeholder:text-bone-500 outline-none transition-colors focus:border-bone-500 focus-visible:ring-2 focus-visible:ring-bone/20"
-            />
+            <p aria-live="polite" className="sr-only">
+              {error}
+            </p>
+            <div className="flex-1">
+              <input
+                id={inputId}
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (error) setError('');
+                }}
+                placeholder="you@email.com"
+                autoComplete="email"
+                required
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? errorId : undefined}
+                className="w-full h-12 rounded-xl bg-ink border border-ink-600 px-4 text-bone placeholder:text-bone-500 outline-none transition-colors focus:border-bone-500 focus-visible:ring-2 focus-visible:ring-bone/20"
+              />
+              {error && (
+                <p id={errorId} className="mt-1.5 text-bone text-[12px] text-left">
+                  {error}
+                </p>
+              )}
+            </div>
             <button
               type="submit"
-              disabled={!email.includes('@')}
-              className="h-12 px-5 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase inline-flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
+              className="h-12 px-5 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase inline-flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
             >
               Join the Blacklist
               <ArrowRight className="h-4 w-4" strokeWidth={2.25} />

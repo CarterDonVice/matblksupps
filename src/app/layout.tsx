@@ -8,7 +8,10 @@ import {
   CouponProvider,
   StickyDiscountButton,
 } from '@/components/marketing/CouponPopup';
+import { AnnouncementBanner } from '@/components/marketing/AnnouncementBanner';
 import { CartDrawer } from '@/components/cart/CartDrawer';
+import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/site/JsonLd';
+import { SITE_URL } from '@/lib/site';
 
 const display = Bebas_Neue({
   subsets: ['latin'],
@@ -32,7 +35,8 @@ const body = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://matblksupps.com'),
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: '/' },
   title: {
     default:
       'MAT BLK Supplements — Clinically Dosed, Transparent Label Pre Workout',
@@ -54,10 +58,17 @@ export const metadata: Metadata = {
     title: 'TENET Daily Driver Pre Workout — MAT BLK Supplements',
     description:
       'Clinically dosed, transparent label daily driver pre workout. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine.',
-    url: 'https://matblksupps.com',
+    url: SITE_URL,
     siteName: 'MAT BLK Supplements',
     type: 'website',
-    images: [{ url: '/images/product_image_1.png' }],
+    images: [
+      {
+        url: '/images/product_image_1.png',
+        width: 1024,
+        height: 1024,
+        alt: 'TENET Daily Driver Pre Workout tub by MAT BLK Supplements',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -89,10 +100,13 @@ export default function RootLayout({
       className={`${display.variable} ${condensed.variable} ${body.variable}`}
     >
       <body className="bg-ink text-bone min-h-screen flex flex-col antialiased">
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
         <ReviewsProvider>
           <CartProvider>
             <SelectionProvider>
               <CouponProvider>
+                <AnnouncementBanner />
                 {children}
                 <CartDrawer />
                 <StickyDiscountButton />

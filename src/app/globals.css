@@ -10,7 +10,7 @@
     --color-bg-elev-2: #262626;
     --color-text: #f0ece4;
     --color-text-muted: #b0aca4;
-    --color-text-dim: #6e6a64;
+    --color-text-dim: #8a867e;
     --color-border: #333333;
     --color-success: #4caf7d;
     /* Reserved for review stars only */
@@ -84,15 +84,6 @@
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
-  }
-
-  .vignette {
-    background: radial-gradient(
-      ellipse at center,
-      transparent 0%,
-      transparent 45%,
-      rgba(0, 0, 0, 0.55) 100%
-    );
   }
 
   /* Subtle film grain texture, sits at 3-5% opacity */

@@ -33,6 +33,7 @@ export function FAQ() {
               <li key={i} className="border-b border-ink-600">
                 <button
                   type="button"
+                  id={`faq-question-${i}`}
                   aria-expanded={isOpen}
                   aria-controls={`faq-panel-${i}`}
                   onClick={() => setOpenIndex(isOpen ? null : i)}
@@ -51,6 +52,7 @@ export function FAQ() {
                 <div
                   id={`faq-panel-${i}`}
                   role="region"
+                  aria-labelledby={`faq-question-${i}`}
                   className={`grid transition-all duration-300 ease-out ${
                     isOpen
                       ? 'grid-rows-[1fr] opacity-100'

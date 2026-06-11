@@ -13,8 +13,8 @@ interface FooterLink {
 }
 
 const shopLinks: FooterLink[] = [
-  { label: 'All Products', href: '/' },
-  { label: 'Subscribe & Save', href: '/' },
+  { label: 'TENET Daily Driver', href: '/product/tenet' },
+  { label: 'Subscribe & Save', href: '/product/tenet#purchase' },
   { label: 'The Blacklist', href: '/#newsletter' },
 ];
 
@@ -104,9 +104,13 @@ export function Footer() {
         </div>
 
         <div className="max-w-md mx-auto text-center mt-6 space-y-2">
-          <p className="text-bone-500 text-[10px] leading-relaxed">
-            These statements have not been evaluated by the FDA. This product is
-            not intended to diagnose, treat, cure, or prevent any disease.
+          <p className="text-bone-600 text-xs leading-relaxed">
+            Statements marked with an asterisk refer to the disclaimer below.
+          </p>
+          <p className="text-bone-600 text-xs leading-relaxed">
+            These statements have not been evaluated by the Food and Drug
+            Administration. This product is not intended to diagnose, treat,
+            cure, or prevent any disease.
           </p>
           <p className="text-bone-500 text-[10px] leading-relaxed">
             HydroPrime® is a registered trademark of Pinnacle Ingredients, LLC.

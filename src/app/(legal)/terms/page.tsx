@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Terms of Service',
   description:
     'Terms of service for MAT BLK Supplements and the TENET Daily Driver Pre Workout. Read before purchase.',
+  alternates: { canonical: '/terms' },
 };
 
 export default function TermsPage() {

@@ -21,6 +21,9 @@ export default {
       },
     },
     extend: {
+      screens: {
+        xs: '480px',
+      },
       fontFamily: {
         display: ['var(--font-display)', 'Bebas Neue', 'sans-serif'],
         condensed: ['var(--font-condensed)', 'Barlow Condensed', 'sans-serif'],
@@ -38,7 +41,7 @@ export default {
         bone: {
           DEFAULT: '#f0ece4',
           600: '#b0aca4',
-          500: '#6e6a64',
+          500: '#8a867e',
         },
         success: '#4caf7d',
         // Reserved for review stars only — like success is reserved for verified badges
@@ -110,21 +113,12 @@ export default {
           '33%, 95%': { opacity: '0', transform: 'translateY(-8px)' },
           '100%': { opacity: '0', transform: 'translateY(-8px)' },
         },
-        'marquee': {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
-        'shimmer': {
-          '0%': { backgroundPosition: '-200% 0' },
-          '100%': { backgroundPosition: '200% 0' },
-        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.25s ease-out',
         'accordion-up': 'accordion-up 0.25s ease-out',
         'fade-in': 'fade-in 0.5s ease-out forwards',
         'fade-in-up': 'fade-in-up 0.7s ease-out forwards',
-        'marquee': 'marquee 40s linear infinite',
       },
     },
   },

@@ -30,7 +30,7 @@ const stages: Stage[] = [
     time: '90+',
     name: 'Taper',
     icon: Waves,
-    body: 'Smooth comedown. No jitters, no crash. Just the satisfaction of a session well trained.',
+    body: 'Smooth comedown. No jitters, just a gradual taper. Just the satisfaction of a session well trained.',
   },
 ];
 

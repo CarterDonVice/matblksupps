@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: 'About MAT BLK — Clinically Dosed, Transparent Label Pre Workout',
   description:
     'MAT BLK builds clinically dosed, transparent label pre workout for serious lifters. Every ingredient, every dose, printed on the label. No proprietary blends.',
+  alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'About MAT BLK — Clinically Dosed, Transparent Label Pre Workout',
+  },
 };
 
 const principles = [
@@ -60,7 +64,7 @@ export default function AboutPage() {
             <p>
               We wanted the opposite. A daily driver. The pre you reach for
               five days a week without thinking about it. Clinical doses on
-              the things that move the needle: pump, focus, energy,
+              the things that move the needle. Pump, focus, energy,
               absorption. Smooth stim profile. Flavor that tastes like a drink,
               not a chemistry set.
             </p>

@@ -13,8 +13,6 @@ interface SelectionContextValue {
   setQuantity: (q: number | ((prev: number) => number)) => void;
   unitPrice: number;
   totalPrice: number;
-  cartCount: number;
-  bumpCart: (amount?: number) => void;
 }
 
 const SelectionContext = React.createContext<SelectionContextValue | null>(null);
@@ -24,7 +22,6 @@ export function SelectionProvider({ children }: { children: React.ReactNode }) {
   const [purchaseType, setPurchaseTypeState] =
     React.useState<PurchaseTypeId>('subscribe');
   const [quantity, setQuantityState] = React.useState(1);
-  const [cartCount, setCartCount] = React.useState(0);
 
   const unitPrice =
     purchaseType === 'subscribe'
@@ -39,10 +36,6 @@ export function SelectionProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const bumpCart = React.useCallback((amount: number = 1) => {
-    setCartCount((c) => c + amount);
-  }, []);
-
   const value: SelectionContextValue = {
     flavorId,
     purchaseType,
@@ -52,8 +45,6 @@ export function SelectionProvider({ children }: { children: React.ReactNode }) {
     setQuantity,
     unitPrice,
     totalPrice,
-    cartCount,
-    bumpCart,
   };
 
   return (

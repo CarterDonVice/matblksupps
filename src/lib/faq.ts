@@ -17,11 +17,11 @@ export const faqItems: FaqItem[] = [
   },
   {
     q: 'Is TENET clinically dosed?',
-    a: "Yes. Seven of TENET's ingredients are dosed at the level used in published clinical research: L-citrulline (6g), beta-alanine (3.2g), glycerol (3g), L-tyrosine (2g), taurine (1g), piperine (5mg), and Alpha-GPC (600mg at 50% yield). The remaining ingredients (caffeine anhydrous, di caffeine malate, and Huperzine A) are included at clinically referenced doses and are fully disclosed on the panel.",
+    a: "Yes. Seven of TENET's ingredients are dosed at the level used in published clinical research, including L-citrulline (6g), beta-alanine (3.2g), glycerol (3g), L-tyrosine (2g), taurine (1g), piperine (5mg), and Alpha-GPC (600mg at 50% yield). The remaining ingredients (caffeine anhydrous, di caffeine malate, and Huperzine A) are included at clinically referenced doses and are fully disclosed on the panel.",
   },
   {
     q: 'Is TENET high stim or low stim?',
-    a: 'TENET is a moderate stim daily driver pre workout. 100mg of caffeine anhydrous is paired with 133mg of Di Caffeine Malate as part of the DUAL CAFFEINE SYSTEM. It supports energy levels and supports alertness during training* without the 300 to 400mg caffeine loads of high stim formulas.',
+    a: 'TENET is a moderate stim daily driver pre workout. 100mg of caffeine anhydrous is paired with 133mg of Di Caffeine Malate as part of the DUAL CAFFEINE SYSTEM. TENET delivers approximately 200mg of total caffeine per serving. It supports energy levels and supports alertness during training* without the 300 to 400mg caffeine loads of high stim formulas.',
   },
   {
     q: 'When should I take TENET?',
@@ -37,7 +37,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     q: 'Is TENET safe for tested athletes?',
-    a: "TENET's formula contains no substances on the WADA Prohibited List or the NCAA banned drug list. However, TENET is not currently NSF Certified for Sport or Informed Sport. Those certifications guarantee batch level cleanliness through third party testing, which is something we may pursue in the future. Athletes in tested competition should verify with their compliance officer before use.",
+    a: 'TENET is not currently certified by any third party sport certification program. The formula is fully disclosed with no proprietary blends, and it is formulated without ingredients prohibited by major athletic organizations. Tested athletes should review the label with their compliance officer before use.',
   },
   {
     q: 'How does Subscribe & Save work?',
@@ -45,7 +45,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     q: "What's your return policy?",
-    a: "100% satisfaction guarantee. If TENET doesn't perform like we say it does, contact us within 30 days for a full refund, even if the tub is empty. No hoops. No questions.",
+    a: '30 day money back guarantee. If TENET is not for you, contact us within 30 days for a full refund, even if the tub is empty.',
   },
   {
     q: 'Where is TENET made?',

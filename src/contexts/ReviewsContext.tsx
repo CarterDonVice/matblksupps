@@ -6,6 +6,21 @@ import type { Review } from '@/lib/types';
 
 const STORAGE_KEY = 'tenet:reviews';
 
+/** Shape check for persisted reviews so corrupted storage can't break rendering. */
+function isReview(value: unknown): value is Review {
+  if (typeof value !== 'object' || value === null) return false;
+  const v = value as Record<string, unknown>;
+  return (
+    typeof v.id === 'string' &&
+    typeof v.stars === 'number' &&
+    v.stars >= 1 &&
+    v.stars <= 5 &&
+    typeof v.body === 'string' &&
+    typeof v.author === 'string' &&
+    typeof v.date === 'string'
+  );
+}
+
 interface ReviewsValue {
   /** All reviews — user-submitted first, then seed reviews */
   reviews: Review[];
@@ -29,7 +44,7 @@ export function ReviewsProvider({ children }: { children: React.ReactNode }) {
       if (!raw) return;
       const parsed: unknown = JSON.parse(raw);
       if (Array.isArray(parsed)) {
-        setUserReviews(parsed as Review[]);
+        setUserReviews(parsed.filter(isReview));
       }
     } catch {
       /* noop — bad json shouldn't kill the app */

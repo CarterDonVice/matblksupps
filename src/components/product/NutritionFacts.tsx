@@ -27,9 +27,9 @@ function StaticPanel({ className }: { className?: string }) {
         className ?? '',
       ].join(' ')}
     >
-      <h2 className="font-condensed text-sm font-extrabold tracking-[0.16em] uppercase text-bone mb-4">
+      <p className="font-condensed text-sm font-extrabold tracking-[0.16em] uppercase text-bone mb-4">
         Nutrition Facts
-      </h2>
+      </p>
       <List />
       <Disclaimer />
     </section>
@@ -107,10 +107,11 @@ function List({ bordered = false }: { bordered?: boolean }) {
 function Disclaimer() {
   return (
     <div className="mt-3 space-y-2">
-      <p className="text-bone-500 text-[10px] leading-relaxed">
+      <p className="text-bone-600 text-xs leading-relaxed">
         † Based on clinical studies of individual ingredients at matching dosages.
-        These statements have not been evaluated by the FDA. This product is not
-        intended to diagnose, treat, cure, or prevent any disease.
+        These statements have not been evaluated by the Food and Drug
+        Administration. This product is not intended to diagnose, treat, cure, or
+        prevent any disease.
       </p>
       <p className="text-bone-500 text-[10px] leading-relaxed">
         HydroPrime® is a registered trademark of Pinnacle Ingredients, LLC.

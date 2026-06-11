@@ -36,7 +36,7 @@ const rows: Row[] = [
     typical: 'Often hidden',
   },
   {
-    label: 'Daily use safe',
+    label: 'Formulated for daily use',
     tenet: 'Yes',
     typical: 'Varies',
   },
