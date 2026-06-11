@@ -27,6 +27,28 @@ function makeLineId(input: Pick<CartItem, 'productId' | 'flavorId' | 'purchaseTy
   return `${input.productId}-${input.flavorId}-${input.purchaseType}`;
 }
 
+const MAX_QUANTITY = 99;
+
+/** Shape check for persisted cart lines so corrupted storage can't render NaN prices. */
+function isCartItem(value: unknown): value is CartItem {
+  if (typeof value !== 'object' || value === null) return false;
+  const v = value as Record<string, unknown>;
+  return (
+    typeof v.id === 'string' &&
+    typeof v.productId === 'string' &&
+    typeof v.productName === 'string' &&
+    typeof v.productImage === 'string' &&
+    typeof v.flavorId === 'string' &&
+    typeof v.flavorName === 'string' &&
+    (v.purchaseType === 'subscribe' || v.purchaseType === 'one-time') &&
+    typeof v.unitPrice === 'number' &&
+    Number.isFinite(v.unitPrice) &&
+    typeof v.quantity === 'number' &&
+    Number.isInteger(v.quantity) &&
+    v.quantity > 0
+  );
+}
+
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = React.useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -38,7 +60,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed: unknown = JSON.parse(raw);
-        if (Array.isArray(parsed)) setItems(parsed as CartItem[]);
+        if (Array.isArray(parsed)) setItems(parsed.filter(isCartItem));
       }
     } catch {
       /* noop */
@@ -84,7 +106,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const updateQuantity = React.useCallback((id: string, quantity: number) => {
     setItems((prev) =>
       prev
-        .map((i) => (i.id === id ? { ...i, quantity: Math.max(0, quantity) } : i))
+        .map((i) =>
+          i.id === id
+            ? { ...i, quantity: Math.max(0, Math.min(MAX_QUANTITY, quantity)) }
+            : i,
+        )
         .filter((i) => i.quantity > 0),
     );
   }, []);

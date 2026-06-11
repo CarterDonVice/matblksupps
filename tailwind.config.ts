@@ -21,6 +21,9 @@ export default {
       },
     },
     extend: {
+      screens: {
+        xs: '480px',
+      },
       fontFamily: {
         display: ['var(--font-display)', 'Bebas Neue', 'sans-serif'],
         condensed: ['var(--font-condensed)', 'Barlow Condensed', 'sans-serif'],
@@ -38,7 +41,7 @@ export default {
         bone: {
           DEFAULT: '#f0ece4',
           600: '#b0aca4',
-          500: '#6e6a64',
+          500: '#8a867e',
         },
         success: '#4caf7d',
         // Reserved for review stars only — like success is reserved for verified badges

@@ -13,11 +13,7 @@ export function FlavorSelector() {
     <div className="space-y-3">
       <span className="label-eyebrow">Flavor</span>
 
-      <div
-        role="radiogroup"
-        aria-label="Select flavor"
-        className="grid grid-cols-2 gap-3"
-      >
+      <div aria-label="Select flavor" className="grid grid-cols-2 gap-3">
         {flavors.map((flavor) => {
           const active = flavor.id === flavorId;
           const [line1, ...rest] = flavor.name.split(' ');
@@ -26,8 +22,7 @@ export function FlavorSelector() {
             <button
               key={flavor.id}
               type="button"
-              role="radio"
-              aria-checked={active}
+              aria-pressed={active}
               onClick={() => setFlavor(flavor.id)}
               className={[
                 'group relative aspect-[4/3] rounded-2xl overflow-hidden',

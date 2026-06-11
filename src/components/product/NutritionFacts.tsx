@@ -27,9 +27,9 @@ function StaticPanel({ className }: { className?: string }) {
         className ?? '',
       ].join(' ')}
     >
-      <h2 className="font-condensed text-sm font-extrabold tracking-[0.16em] uppercase text-bone mb-4">
+      <p className="font-condensed text-sm font-extrabold tracking-[0.16em] uppercase text-bone mb-4">
         Nutrition Facts
-      </h2>
+      </p>
       <List />
       <Disclaimer />
     </section>

@@ -3,6 +3,7 @@
 import * as React from 'react';
 import Image from 'next/image';
 import { ImageOff, ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
+import { useDialogFocus } from '@/hooks/useDialogFocus';
 
 interface Props {
   images: (string | null)[];
@@ -253,6 +254,7 @@ function ZoomViewer({
   onClose: () => void;
 }) {
   const [scale, setScale] = React.useState(1);
+  const dialogRef = useDialogFocus<HTMLDivElement>(open);
 
   // Lock scroll + reset zoom on open
   React.useEffect(() => {
@@ -286,6 +288,7 @@ function ZoomViewer({
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label="Image viewer"
@@ -308,10 +311,14 @@ function ZoomViewer({
         Double-tap or pinch to zoom
       </p>
 
-      <div
-        className="absolute inset-0 flex items-center justify-center p-6 overflow-auto"
-        onClick={onClose}
-      >
+      <div className="absolute inset-0 flex items-center justify-center p-6 overflow-auto">
+        <button
+          type="button"
+          aria-label="Close"
+          tabIndex={-1}
+          onClick={onClose}
+          className="absolute inset-0"
+        />
         <div
           className="relative w-full max-w-[600px] aspect-square transition-transform duration-300 ease-out"
           style={{

@@ -23,6 +23,7 @@ function FlagUSA(props: React.SVGProps<SVGSVGElement>) {
       strokeWidth="1.4"
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-hidden="true"
       {...props}
     >
       <rect x="0.6" y="0.6" width="22.8" height="14.8" rx="1" />

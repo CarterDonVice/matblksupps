@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, ShoppingBag, X, Instagram } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
+import { useDialogFocus } from '@/hooks/useDialogFocus';
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -104,18 +105,23 @@ export function Header() {
 }
 
 function NavDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const dialogRef = useDialogFocus<HTMLElement>(open);
   return (
     <>
-      <div
-        aria-hidden
+      <button
+        type="button"
+        aria-label="Close"
+        tabIndex={-1}
         onClick={onClose}
         className={`fixed inset-0 z-50 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
           open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       />
       <aside
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
+        aria-hidden={!open}
         aria-label="Site navigation"
         className={`fixed inset-y-0 left-0 z-50 w-[88%] max-w-sm flex flex-col bg-ink text-bone border-r border-ink-600 shadow-[8px_0_40px_rgba(0,0,0,0.6)] transition-transform duration-300 ease-out ${
           open ? 'translate-x-0' : '-translate-x-full'

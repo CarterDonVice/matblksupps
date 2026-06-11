@@ -6,5 +6,8 @@ export function scrollToId(id: string, offset = 80) {
   const el = document.getElementById(id);
   if (!el) return;
   const top = el.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({ top, behavior: 'smooth' });
+  const reduceMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)',
+  ).matches;
+  window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
 }

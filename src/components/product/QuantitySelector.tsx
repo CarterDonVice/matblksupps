@@ -3,10 +3,13 @@
 import * as React from 'react';
 import { Minus, Plus } from 'lucide-react';
 import { useSelection } from '@/contexts/SelectionContext';
+import { useCart, FREE_SHIPPING_THRESHOLD } from '@/contexts/CartContext';
 
 export function QuantitySelector() {
   const { quantity, setQuantity } = useSelection();
+  const { itemCount } = useCart();
   const inputId = React.useId();
+  const unlocksFreeShipping = itemCount + quantity >= FREE_SHIPPING_THRESHOLD;
 
   const dec = () => setQuantity((q) => q - 1);
   const inc = () => setQuantity((q) => q + 1);
@@ -17,7 +20,7 @@ export function QuantitySelector() {
         <label htmlFor={inputId} className="label-eyebrow">
           Quantity
         </label>
-        {quantity >= 2 && (
+        {unlocksFreeShipping && (
           <span className="text-success text-[10px] font-semibold tracking-[0.18em] uppercase">
             ✓ Free shipping unlocked
           </span>
@@ -46,7 +49,6 @@ export function QuantitySelector() {
           min={1}
           max={99}
           className="h-12 w-14 bg-transparent text-center font-display text-xl text-white tabular-nums [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:outline-none border-x border-ink-600"
-          aria-label="Quantity"
         />
         <button
           type="button"

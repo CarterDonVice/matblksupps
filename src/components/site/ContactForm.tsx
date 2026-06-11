@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { Send, Check, ChevronDown } from 'lucide-react';
+import { isValidEmail } from '@/lib/validate';
 
 const subjects = [
   'General Question',
@@ -20,13 +21,23 @@ export function ContactForm() {
   const [subject, setSubject] = React.useState<Subject>('General Question');
   const [message, setMessage] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
-
-  const valid =
-    name.trim().length > 0 && email.includes('@') && message.trim().length > 4;
+  const [errors, setErrors] = React.useState<{
+    name?: string;
+    email?: string;
+    message?: string;
+  }>({});
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!valid) return;
+    const next: { name?: string; email?: string; message?: string } = {};
+    if (name.trim().length === 0) next.name = 'Enter your name.';
+    if (!isValidEmail(email)) next.email = 'Enter a valid email address.';
+    if (message.trim().length <= 4) next.message = 'Tell us a little more so we can help.';
+    if (next.name || next.email || next.message) {
+      setErrors(next);
+      return;
+    }
+    setErrors({});
     setSubmitted(true);
     // TODO: wire to transactional email / Formspree / Resend
     // Currently: send to support@matblksupps.com via backend integration when ready.
@@ -55,23 +66,32 @@ export function ContactForm() {
       noValidate
       className="space-y-4 rounded-2xl border border-ink-600 bg-ink-800 p-6 sm:p-8"
     >
+      <p aria-live="polite" className="sr-only">
+        {errors.name ?? errors.email ?? errors.message ?? ''}
+      </p>
       <div className="grid sm:grid-cols-2 gap-4">
-        <Field label="Name" required>
+        <Field label="Name" required error={errors.name}>
           <input
             type="text"
             required
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value);
+              if (errors.name) setErrors((p) => ({ ...p, name: undefined }));
+            }}
             autoComplete="name"
             className={inputCls}
           />
         </Field>
-        <Field label="Email" required>
+        <Field label="Email" required error={errors.email}>
           <input
             type="email"
             required
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (errors.email) setErrors((p) => ({ ...p, email: undefined }));
+            }}
             autoComplete="email"
             placeholder="you@email.com"
             className={inputCls}
@@ -99,11 +119,14 @@ export function ContactForm() {
         </div>
       </Field>
 
-      <Field label="Message" required>
+      <Field label="Message" required error={errors.message}>
         <textarea
           required
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) => {
+            setMessage(e.target.value);
+            if (errors.message) setErrors((p) => ({ ...p, message: undefined }));
+          }}
           rows={5}
           placeholder="What's up?"
           className={`${inputCls} h-auto py-3 resize-y min-h-[120px]`}
@@ -112,8 +135,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        disabled={!valid}
-        className="w-full h-12 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase inline-flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
+        className="w-full h-12 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase inline-flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
       >
         Send Message
         <Send className="h-4 w-4" strokeWidth={2.25} />
@@ -128,13 +150,16 @@ const inputCls =
 function Field({
   label,
   required,
+  error,
   children,
 }: {
   label: string;
   required?: boolean;
+  error?: string;
   children: React.ReactNode;
 }) {
   const id = React.useId();
+  const errorId = `${id}-error`;
   return (
     <div className="space-y-1.5">
       <label htmlFor={id} className="block label-eyebrow">
@@ -142,8 +167,24 @@ function Field({
         {required && <span className="text-bone-500 ml-1">*</span>}
       </label>
       {React.isValidElement(children)
-        ? React.cloneElement(children as React.ReactElement<{ id?: string }>, { id })
+        ? React.cloneElement(
+            children as React.ReactElement<{
+              id?: string;
+              'aria-invalid'?: boolean;
+              'aria-describedby'?: string;
+            }>,
+            {
+              id,
+              'aria-invalid': error ? true : undefined,
+              'aria-describedby': error ? errorId : undefined,
+            },
+          )
         : children}
+      {error && (
+        <p id={errorId} className="text-bone text-[12px]">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

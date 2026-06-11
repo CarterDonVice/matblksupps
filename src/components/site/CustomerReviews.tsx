@@ -136,7 +136,7 @@ export function CustomerReviews() {
               {averageRating.toFixed(1)}
             </span>
             <span className="text-bone-600 text-sm">
-              based on <span className="text-bone">{count}</span> verified reviews
+              based on <span className="text-bone">{count}</span> reviews
             </span>
           </div>
         </header>
@@ -319,7 +319,7 @@ function SearchInput({
           type="button"
           aria-label="Clear search"
           onClick={() => onChange('')}
-          className="absolute right-2 top-1/2 -translate-y-1/2 inline-flex h-7 w-7 items-center justify-center rounded-full text-bone-500 hover:text-bone hover:bg-ink-700 transition-colors"
+          className="absolute right-2 top-1/2 -translate-y-1/2 inline-flex h-7 w-7 items-center justify-center rounded-full text-bone-500 hover:text-bone hover:bg-ink-700 transition-colors after:absolute after:-inset-2 after:content-['']"
         >
           <X className="h-3.5 w-3.5" strokeWidth={2} />
         </button>

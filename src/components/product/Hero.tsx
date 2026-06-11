@@ -54,7 +54,7 @@ export function Hero() {
             <button
               type="button"
               onClick={() => scrollToId('reviews')}
-              aria-label={`Read ${count} verified reviews — average ${averageRating.toFixed(1)} stars`}
+              aria-label={`Read ${count} reviews. Average ${averageRating.toFixed(1)} stars`}
               className="group flex items-center gap-3 flex-wrap pt-1 -mx-1 px-1 py-1 rounded-md transition-colors hover:bg-ink-800/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone text-left"
             >
               <StarRow rating={averageRating} size={21} />
@@ -62,7 +62,7 @@ export function Hero() {
                 <span className="text-bone font-medium">
                   {averageRating.toFixed(1)}
                 </span>{' '}
-                · {count} verified reviews
+                · {count} reviews
               </span>
               <span aria-hidden className="text-bone-500">·</span>
               <span className="inline-flex items-center gap-1.5 text-xs text-bone-600">

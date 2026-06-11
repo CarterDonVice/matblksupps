@@ -4,6 +4,7 @@ import * as React from 'react';
 import { X, Check, Send } from 'lucide-react';
 import type { Review } from '@/lib/types';
 import { StarSharp } from '@/components/ui/StarSharp';
+import { useDialogFocus } from '@/hooks/useDialogFocus';
 
 interface Props {
   open: boolean;
@@ -18,6 +19,12 @@ export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
   const [title, setTitle] = React.useState('');
   const [body, setBody] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
+  const [errors, setErrors] = React.useState<{
+    stars?: string;
+    author?: string;
+    body?: string;
+  }>({});
+  const dialogRef = useDialogFocus<HTMLDivElement>(open);
 
   // Reset on open
   React.useEffect(() => {
@@ -28,6 +35,7 @@ export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
       setTitle('');
       setBody('');
       setSubmitted(false);
+      setErrors({});
     }
   }, [open]);
 
@@ -46,11 +54,17 @@ export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
     };
   }, [open, onClose]);
 
-  const valid = stars >= 1 && author.trim().length > 0 && body.trim().length > 4;
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!valid) return;
+    const next: { stars?: string; author?: string; body?: string } = {};
+    if (stars < 1) next.stars = 'Select a star rating.';
+    if (author.trim().length === 0) next.author = 'Enter your name.';
+    if (body.trim().length <= 4) next.body = 'Tell us a little more about your experience.';
+    if (next.stars || next.author || next.body) {
+      setErrors(next);
+      return;
+    }
+    setErrors({});
     onSubmit({
       stars,
       title: title.trim() || undefined,
@@ -63,6 +77,7 @@ export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
 
   return (
     <div
+      ref={dialogRef}
       aria-hidden={!open}
       className={`fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-4 sm:p-6 transition-opacity duration-300 ${
         open ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -116,6 +131,9 @@ export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
               </h3>
 
               <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                <p aria-live="polite" className="sr-only">
+                  {errors.stars ?? errors.author ?? errors.body ?? ''}
+                </p>
                 {/* Star rating */}
                 <div className="space-y-1.5">
                   <span className="label-eyebrow">Rating *</span>
@@ -149,14 +167,20 @@ export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
                       );
                     })}
                   </div>
+                  {errors.stars && (
+                    <p className="text-bone text-[12px]">{errors.stars}</p>
+                  )}
                 </div>
 
-                <Field label="Name" required>
+                <Field label="Name" required error={errors.author}>
                   <input
                     type="text"
                     required
                     value={author}
-                    onChange={(e) => setAuthor(e.target.value)}
+                    onChange={(e) => {
+                      setAuthor(e.target.value);
+                      if (errors.author) setErrors((p) => ({ ...p, author: undefined }));
+                    }}
                     placeholder="Your name"
                     className={inputCls}
                   />
@@ -173,11 +197,14 @@ export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
                   />
                 </Field>
 
-                <Field label="Review" required>
+                <Field label="Review" required error={errors.body}>
                   <textarea
                     required
                     value={body}
-                    onChange={(e) => setBody(e.target.value)}
+                    onChange={(e) => {
+                      setBody(e.target.value);
+                      if (errors.body) setErrors((p) => ({ ...p, body: undefined }));
+                    }}
                     placeholder="What did you think?"
                     rows={4}
                     maxLength={500}
@@ -187,8 +214,7 @@ export function WriteReviewModal({ open, onClose, onSubmit }: Props) {
 
                 <button
                   type="submit"
-                  disabled={!valid}
-                  className="w-full h-12 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase inline-flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
+                  className="w-full h-12 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase inline-flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
                 >
                   Submit Review
                   <Send className="h-4 w-4" strokeWidth={2.25} />
@@ -208,13 +234,16 @@ const inputCls =
 function Field({
   label,
   required,
+  error,
   children,
 }: {
   label: string;
   required?: boolean;
+  error?: string;
   children: React.ReactNode;
 }) {
   const id = React.useId();
+  const errorId = `${id}-error`;
   return (
     <div className="space-y-1.5">
       <label htmlFor={id} className="block label-eyebrow">
@@ -222,8 +251,24 @@ function Field({
         {required && <span className="text-bone-500 ml-1">*</span>}
       </label>
       {React.isValidElement(children)
-        ? React.cloneElement(children as React.ReactElement<{ id?: string }>, { id })
+        ? React.cloneElement(
+            children as React.ReactElement<{
+              id?: string;
+              'aria-invalid'?: boolean;
+              'aria-describedby'?: string;
+            }>,
+            {
+              id,
+              'aria-invalid': error ? true : undefined,
+              'aria-describedby': error ? errorId : undefined,
+            },
+          )
         : children}
+      {error && (
+        <p id={errorId} className="text-bone text-[12px]">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

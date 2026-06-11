@@ -7,7 +7,6 @@ import { tenet } from '@/lib/products';
 
 const subscribeBenefits = [
   'Save 10% on every order',
-  'Free shipping on 2+ bottles',
   'Cancel anytime',
 ];
 
@@ -18,7 +17,7 @@ export function PurchaseTypeSelector() {
     <div className="space-y-3">
       <span className="label-eyebrow">Purchase Type</span>
 
-      <div role="radiogroup" aria-label="Purchase type" className="space-y-2.5">
+      <div aria-label="Purchase type" className="space-y-2.5">
         <Option
           active={purchaseType === 'subscribe'}
           onSelect={() => setPurchaseType('subscribe')}
@@ -47,6 +46,11 @@ export function PurchaseTypeSelector() {
           price={tenet.price}
         />
       </div>
+
+      <p className="flex items-center gap-2 text-[13px] text-bone-600">
+        <Check className="h-3.5 w-3.5 text-success" strokeWidth={2.5} />
+        <span>Free shipping on 2+ bottles</span>
+      </p>
     </div>
   );
 }
@@ -73,8 +77,7 @@ function Option({
   return (
     <button
       type="button"
-      role="radio"
-      aria-checked={active}
+      aria-pressed={active}
       onClick={onSelect}
       className={[
         'w-full text-left relative block rounded-xl p-4 transition-all duration-200 ease-out',

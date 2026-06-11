@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { ShieldCheck, ArrowUp, ArrowRight, Check } from 'lucide-react';
 import { scrollToId } from '@/lib/scroll';
+import { isValidEmail } from '@/lib/validate';
 
 /**
  * Combined banner — Satisfaction Guarantee + Blacklist newsletter.
@@ -77,11 +78,17 @@ function GuaranteePanel() {
 function BlacklistPanel() {
   const [email, setEmail] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
+  const [error, setError] = React.useState('');
   const inputId = React.useId();
+  const errorId = `${inputId}-error`;
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.includes('@')) return;
+    if (!isValidEmail(email)) {
+      setError('Enter a valid email address.');
+      return;
+    }
+    setError('');
     setSubmitted(true);
   };
 
@@ -115,20 +122,34 @@ function BlacklistPanel() {
             <label htmlFor={inputId} className="sr-only">
               Email address
             </label>
-            <input
-              id={inputId}
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@email.com"
-              autoComplete="email"
-              required
-              className="flex-1 h-12 rounded-xl bg-ink border border-ink-600 px-4 text-bone placeholder:text-bone-500 outline-none transition-colors focus:border-bone-500 focus-visible:ring-2 focus-visible:ring-bone/20"
-            />
+            <p aria-live="polite" className="sr-only">
+              {error}
+            </p>
+            <div className="flex-1">
+              <input
+                id={inputId}
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (error) setError('');
+                }}
+                placeholder="you@email.com"
+                autoComplete="email"
+                required
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? errorId : undefined}
+                className="w-full h-12 rounded-xl bg-ink border border-ink-600 px-4 text-bone placeholder:text-bone-500 outline-none transition-colors focus:border-bone-500 focus-visible:ring-2 focus-visible:ring-bone/20"
+              />
+              {error && (
+                <p id={errorId} className="mt-1.5 text-bone text-[12px] text-left">
+                  {error}
+                </p>
+              )}
+            </div>
             <button
               type="submit"
-              disabled={!email.includes('@')}
-              className="h-12 px-5 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase inline-flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
+              className="h-12 px-5 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase inline-flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
             >
               Join the Blacklist
               <ArrowRight className="h-4 w-4" strokeWidth={2.25} />

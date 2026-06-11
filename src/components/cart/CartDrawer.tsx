@@ -2,9 +2,11 @@
 
 import * as React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { X, Minus, Plus, Trash2, Truck, Check } from 'lucide-react';
 import { useCart, FREE_SHIPPING_THRESHOLD } from '@/contexts/CartContext';
 import { scrollToId } from '@/lib/scroll';
+import { useDialogFocus } from '@/hooks/useDialogFocus';
 
 export function CartDrawer() {
   const {
@@ -17,6 +19,14 @@ export function CartDrawer() {
     updateQuantity,
     removeItem,
   } = useCart();
+  const dialogRef = useDialogFocus<HTMLElement>(isOpen);
+  const [checkoutNotice, setCheckoutNotice] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!checkoutNotice) return;
+    const t = window.setTimeout(() => setCheckoutNotice(false), 4000);
+    return () => window.clearTimeout(t);
+  }, [checkoutNotice]);
 
   React.useEffect(() => {
     if (!isOpen) return;
@@ -39,16 +49,20 @@ export function CartDrawer() {
 
   return (
     <>
-      <div
-        aria-hidden
+      <button
+        type="button"
+        aria-label="Close"
+        tabIndex={-1}
         onClick={closeCart}
         className={`fixed inset-0 z-50 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       />
       <aside
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
+        aria-hidden={!isOpen}
         aria-label="Shopping cart"
         className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col bg-ink text-bone border-l border-ink-600 shadow-[-8px_0_40px_rgba(0,0,0,0.6)] transition-transform duration-300 ease-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
@@ -187,11 +201,19 @@ export function CartDrawer() {
               <p className="text-bone-500 text-[11px]">
                 Shipping and taxes calculated at checkout.
               </p>
+              <p
+                aria-live="polite"
+                className={`text-bone text-[12px] text-center rounded-lg border border-ink-600 bg-ink-800 px-3 transition-all duration-300 overflow-hidden ${
+                  checkoutNotice ? 'py-2 opacity-100' : 'h-0 py-0 border-0 opacity-0'
+                }`}
+              >
+                {checkoutNotice ? 'Checkout opens at launch.' : ''}
+              </p>
               <button
                 type="button"
                 onClick={() => {
                   // TODO: wire Shopify checkout
-                  alert('Checkout coming soon. Shopify integration in progress.');
+                  setCheckoutNotice(true);
                 }}
                 className="w-full h-12 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase inline-flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.01] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
               >
@@ -225,7 +247,7 @@ function QtyControl({
         type="button"
         aria-label="Decrease quantity"
         onClick={() => onChange(value - 1)}
-        className="inline-flex h-8 w-8 items-center justify-center text-bone hover:text-white hover:bg-ink-700 transition-colors"
+        className="relative inline-flex h-8 w-8 items-center justify-center text-bone hover:text-white hover:bg-ink-700 transition-colors after:absolute after:-inset-1.5 after:content-['']"
       >
         <Minus className="h-3 w-3" strokeWidth={2} />
       </button>
@@ -236,7 +258,7 @@ function QtyControl({
         type="button"
         aria-label="Increase quantity"
         onClick={() => onChange(value + 1)}
-        className="inline-flex h-8 w-8 items-center justify-center text-bone hover:text-white hover:bg-ink-700 transition-colors"
+        className="relative inline-flex h-8 w-8 items-center justify-center text-bone hover:text-white hover:bg-ink-700 transition-colors after:absolute after:-inset-1.5 after:content-['']"
       >
         <Plus className="h-3 w-3" strokeWidth={2} />
       </button>
@@ -245,6 +267,7 @@ function QtyControl({
 }
 
 function EmptyState({ onClose }: { onClose: () => void }) {
+  const router = useRouter();
   return (
     <div className="flex-1 flex flex-col items-center justify-center text-center p-8 space-y-4">
       <span className="inline-flex h-16 w-16 items-center justify-center rounded-full border border-ink-600 text-bone-500">
@@ -260,7 +283,11 @@ function EmptyState({ onClose }: { onClose: () => void }) {
         type="button"
         onClick={() => {
           onClose();
-          scrollToId('purchase');
+          if (document.getElementById('purchase')) {
+            scrollToId('purchase');
+          } else {
+            router.push('/#purchase');
+          }
         }}
         className="h-12 px-6 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone"
       >

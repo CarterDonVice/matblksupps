@@ -2,6 +2,8 @@
 
 import * as React from 'react';
 import { X, Check, Gift } from 'lucide-react';
+import { useDialogFocus } from '@/hooks/useDialogFocus';
+import { isValidEmail } from '@/lib/validate';
 
 const STORAGE_SEEN = 'tenet:discount:seen';
 const STORAGE_CLAIMED = 'tenet:discount:claimed';
@@ -133,6 +135,8 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
   const [email, setEmail] = React.useState('');
   const [phone, setPhone] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
+  const [emailError, setEmailError] = React.useState('');
+  const dialogRef = useDialogFocus<HTMLDivElement>(isPopupOpen);
 
   React.useEffect(() => {
     if (isPopupOpen) setSubmitted(false);
@@ -155,7 +159,11 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.includes('@')) return;
+    if (!isValidEmail(email)) {
+      setEmailError('Enter a valid email address.');
+      return;
+    }
+    setEmailError('');
     setSubmitted(true);
     onClaim();
     // TODO: wire to email marketing platform (Klaviyo)
@@ -163,6 +171,7 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
 
   return (
     <div
+      ref={dialogRef}
       aria-hidden={!isPopupOpen}
       className={`fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-4 sm:p-6 transition-opacity duration-300 ${
         isPopupOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -214,14 +223,21 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
               </p>
 
               <form onSubmit={onSubmit} noValidate className="space-y-3">
+                <p aria-live="polite" className="sr-only">
+                  {emailError}
+                </p>
                 <Field
                   label="Email"
                   type="email"
                   required
                   value={email}
-                  onChange={setEmail}
+                  onChange={(v) => {
+                    setEmail(v);
+                    if (emailError) setEmailError('');
+                  }}
                   placeholder="you@email.com"
                   autoComplete="email"
+                  error={emailError}
                 />
                 <Field
                   label="Phone (optional)"
@@ -233,8 +249,7 @@ function CouponDialog({ onClaim }: { onClaim: () => void }) {
                 />
                 <button
                   type="submit"
-                  disabled={!email.includes('@')}
-                  className="w-full h-12 rounded-xl bg-white text-ink font-condensed font-extrabold tracking-[0.16em] uppercase text-sm transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
+                  className="w-full h-12 rounded-xl bg-white text-ink font-condensed font-extrabold tracking-[0.16em] uppercase text-sm transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
                 >
                   Claim 20% Off
                 </button>
@@ -287,6 +302,7 @@ function Field({
   onChange,
   placeholder,
   autoComplete,
+  error,
 }: {
   label: string;
   type: string;
@@ -295,8 +311,10 @@ function Field({
   onChange: (v: string) => void;
   placeholder?: string;
   autoComplete?: string;
+  error?: string;
 }) {
   const id = React.useId();
+  const errorId = `${id}-error`;
   return (
     <div>
       <label htmlFor={id} className="block label-eyebrow mb-1.5">
@@ -310,8 +328,15 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? errorId : undefined}
         className="w-full h-12 rounded-lg bg-ink-700 border border-ink-600 px-4 text-bone placeholder:text-bone-500 outline-none transition-colors focus:border-bone-500 focus-visible:ring-2 focus-visible:ring-bone/20"
       />
+      {error && (
+        <p id={errorId} className="mt-1.5 text-bone text-[12px]">
+          {error}
+        </p>
+      )}
     </div>
   );
 }
@@ -354,7 +379,7 @@ export function StickyDiscountButton() {
           type="button"
           onClick={dismissSticky}
           aria-label="Dismiss offer"
-          className="absolute top-1/2 right-1.5 -translate-y-1/2 inline-flex h-7 w-7 items-center justify-center rounded-full text-ink/60 hover:text-ink hover:bg-ink/10 transition-colors"
+          className="absolute top-1/2 right-1.5 -translate-y-1/2 inline-flex h-7 w-7 items-center justify-center rounded-full text-ink/60 hover:text-ink hover:bg-ink/10 transition-colors after:absolute after:-inset-2 after:content-['']"
         >
           <X className="h-3.5 w-3.5" strokeWidth={2} />
         </button>
