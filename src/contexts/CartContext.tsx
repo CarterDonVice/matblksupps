@@ -4,7 +4,8 @@ import * as React from 'react';
 import type { CartItem } from '@/lib/types';
 
 const STORAGE_KEY = 'tenet:cart';
-const FREE_SHIPPING_THRESHOLD = 2;
+/** Item count at which an order ships free. Single source of truth. */
+export const FREE_SHIPPING_THRESHOLD = 2;
 
 interface CartValue {
   items: CartItem[];

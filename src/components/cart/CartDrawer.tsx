@@ -3,10 +3,8 @@
 import * as React from 'react';
 import Image from 'next/image';
 import { X, Minus, Plus, Trash2, Truck, Check } from 'lucide-react';
-import { useCart } from '@/contexts/CartContext';
+import { useCart, FREE_SHIPPING_THRESHOLD } from '@/contexts/CartContext';
 import { scrollToId } from '@/lib/scroll';
-
-const FREE_SHIPPING_THRESHOLD = 2;
 
 export function CartDrawer() {
   const {
