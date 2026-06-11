@@ -9,18 +9,24 @@ export function ProductJsonLd() {
     description: tenet.shortDescription,
     image: ['https://matblksupps.com/images/product_image_1.png'],
     brand: { '@type': 'Brand', name: 'MAT BLK Supplements' },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: tenet.averageRating,
-      reviewCount: tenet.reviewCount,
-    },
-    review: reviews.slice(0, 3).map((r) => ({
-      '@type': 'Review',
-      reviewRating: { '@type': 'Rating', ratingValue: r.stars },
-      author: { '@type': 'Person', name: r.author },
-      reviewBody: r.body,
-      datePublished: r.date,
-    })),
+    // Rating/review markup is gated: fabricated review structured data risks a
+    // Google manual action, so it only ships once genuine reviews exist.
+    ...(tenet.hasRealReviews
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: tenet.averageRating,
+            reviewCount: tenet.reviewCount,
+          },
+          review: reviews.slice(0, 3).map((r) => ({
+            '@type': 'Review',
+            reviewRating: { '@type': 'Rating', ratingValue: r.stars },
+            author: { '@type': 'Person', name: r.author },
+            reviewBody: r.body,
+            datePublished: r.date,
+          })),
+        }
+      : {}),
     offers: {
       '@type': 'Offer',
       url: 'https://matblksupps.com/',

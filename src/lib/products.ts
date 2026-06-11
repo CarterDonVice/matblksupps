@@ -48,6 +48,7 @@ export const tenet: Product = {
   inStock: true,
   reviewCount: 47,
   averageRating: 4.9,
+  hasRealReviews: false,
 };
 
 export const reviews: Review[] = [
@@ -59,7 +60,7 @@ export const reviews: Review[] = [
       'No itch, no jitters, just clean energy and an actual pump that lasts the whole session. Limeade is unreal.',
     author: 'Marcus T.',
     date: '2026-04-22',
-    verified: true,
+    verified: false,
   },
   {
     id: '2',
@@ -69,17 +70,17 @@ export const reviews: Review[] = [
       'Tired of prop blends. 6g cit and full Alpha-GPC dose at this price is a steal. Focus is dialed.',
     author: 'Jordan K.',
     date: '2026-04-18',
-    verified: true,
+    verified: false,
   },
   {
     id: '3',
     stars: 5,
     title: 'Daily driver, lives up to the name',
     body:
-      'Been using it 5x a week for a month. No tolerance build up, no crash. Mango is the move.',
+      'Been using it 5x a week for a month. No tolerance build up, smooth from start to finish. Mango is the move.',
     author: 'Devin R.',
     date: '2026-04-10',
-    verified: true,
+    verified: false,
   },
   {
     id: '4',
@@ -89,7 +90,7 @@ export const reviews: Review[] = [
       'Tastes like an actual drink not a chemical bomb. Pumps are stupid.',
     author: 'Alex P.',
     date: '2026-04-05',
-    verified: true,
+    verified: false,
   },
   {
     id: '5',
@@ -99,7 +100,7 @@ export const reviews: Review[] = [
       'Energy is smooth, focus is real. Wish there was a stronger stim option but for daily this is perfect.',
     author: 'Ryan S.',
     date: '2026-03-29',
-    verified: true,
+    verified: false,
   },
   {
     id: '6',
@@ -109,7 +110,7 @@ export const reviews: Review[] = [
       'Didn\'t expect the flavor to be this clean. No grit, no aftertaste. Limeade tastes like an actual drink.',
     author: 'Tyler M.',
     date: '2026-03-21',
-    verified: true,
+    verified: false,
   },
   {
     id: '7',
@@ -118,6 +119,6 @@ export const reviews: Review[] = [
       'Pump is real and lasts. Focus kicks in around 25 min. Smooth come down too.',
     author: 'Cole D.',
     date: '2026-03-14',
-    verified: true,
+    verified: false,
   },
 ];

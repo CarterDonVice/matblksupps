@@ -25,7 +25,7 @@ export function ProductSEOContent() {
 
         <p className="text-bone-600 text-[15px] sm:text-base leading-relaxed">
           TENET is a transparent label, moderate stim daily driver pre workout
-          built around four research backed ingredients: 6g L-citrulline, 3.2g
+          built around four headline ingredients. 6g L-citrulline, 3.2g
           beta-alanine, 600mg Alpha-GPC, and 100mg caffeine anhydrous. Every
           dose is what's used in the actual studies, not a token amount tucked
           behind a proprietary blend. No fillers. The full panel is printed on
@@ -35,8 +35,8 @@ export function ProductSEOContent() {
 
         <Detail title="What's in TENET">
           <p>
-            TENET contains four research backed ingredients at the doses used
-            in published research:
+            Four of TENET's seven clinical doses anchor the formula at the
+            levels used in published research.
           </p>
           <ul className="list-disc pl-5 space-y-1 mt-2 text-bone-600">
             <li>6g L-citrulline</li>
@@ -108,7 +108,7 @@ export function ProductSEOContent() {
         <Detail title="How TENET compares to other clinically dosed pre workouts">
           <p>
             TENET hits the clinically researched doses across the four
-            headline ingredients. That puts it in line with the transparent-
+            headline ingredients. That puts it in line with the transparent
             label pre workouts that don't underdose. Many pre workouts list
             ingredients but cut L-citrulline to 3 to 4g or hide totals behind
             a proprietary blend. TENET runs the full 6g of L-citrulline and

@@ -14,13 +14,13 @@ export const metadata: Metadata = {
 
 const ingredients: IngredientCardData[] = [
   {
-    name: 'L Citrulline',
+    name: 'L-Citrulline',
     dose: '6,000 mg',
     body: (
       <>
-        The pump ingredient. L Citrulline converts to L Arginine in your kidneys,
-        boosting nitric oxide production for better blood flow and sustained
-        pumps. 6,000mg is the clinically validated dose. Most pre workouts use
+        The pump ingredient. L Citrulline converts to L Arginine in your kidneys
+        and supports nitric oxide production and healthy blood flow* for
+        sustained pumps. 6,000mg is the clinically validated dose. Most pre workouts use
         3,000mg or less. Half the dose, half the result. Part of TENET's{' '}
         <span className="text-white font-medium">DUAL PUMP PATHWAYS</span>.
       </>
@@ -41,30 +41,31 @@ const ingredients: IngredientCardData[] = [
     ),
   },
   {
-    name: 'Beta Alanine',
+    name: 'Beta-Alanine',
     dose: '3,200 mg',
     body: (
       <>
-        The endurance ingredient. Beta Alanine increases muscle carnosine, which
-        buffers lactic acid during high intensity training. 3,200mg is the daily
+        The endurance ingredient. Beta Alanine increases muscle carnosine and
+        supports muscular endurance by helping buffer acid buildup* during high
+        intensity training. 3,200mg is the daily
         dose backed by clinical research. That tingle you feel is the ingredient
         working.
       </>
     ),
   },
   {
-    name: 'Alpha GPC (50%)',
+    name: 'Alpha-GPC (50%)',
     dose: '600 mg',
     body: (
       <>
-        The focus ingredient. Alpha GPC increases acetylcholine production for
+        The focus ingredient. Alpha GPC supports acetylcholine production* for
         sharper mind muscle connection and cognitive performance during
         training. 600mg at 50% potency is the clinical dose.
       </>
     ),
   },
   {
-    name: 'L Tyrosine',
+    name: 'L-Tyrosine',
     dose: '2,000 mg',
     body: (
       <>
@@ -104,8 +105,8 @@ const ingredients: IngredientCardData[] = [
     body: (
       <>
         The sustained release. 133mg of Di Caffeine Malate bonds caffeine with
-        malic acid for slower absorption and extended energy without the hard
-        crash of single source caffeine. The second half of TENET's{' '}
+        malic acid for slower absorption and extended energy with a smoother
+        taper than single source caffeine. The second half of TENET's{' '}
         <span className="text-white font-medium">DUAL CAFFEINE SYSTEM</span>.
       </>
     ),

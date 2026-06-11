@@ -47,6 +47,9 @@ export interface Product {
   inStock: boolean;
   reviewCount: number;
   averageRating: number;
+  /** Gate for rating/review structured data and the review-submission UI.
+   *  Must stay false until genuine customer reviews exist. */
+  hasRealReviews: boolean;
 }
 
 export interface CartItem {

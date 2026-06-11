@@ -1,4 +1,3 @@
-import { BadgeCheck } from 'lucide-react';
 import { StarRow } from '@/components/ui/StarSharp';
 
 /**
@@ -17,17 +16,13 @@ export function QuickTestimonial() {
       <StarRow rating={5} size={14} className="mb-3" />
       <blockquote>
         <p className="text-bone text-[14px] leading-relaxed italic">
-          Smoothest pre workout I've used daily for months. No crash, real
+          Smoothest pre workout I've used daily for months. Clean energy, real
           pumps.
         </p>
       </blockquote>
       <figcaption className="mt-3 pt-3 border-t border-ink-600 flex items-center justify-between gap-3 text-[11px]">
         <span className="font-condensed font-extrabold tracking-[0.16em] uppercase text-white">
           — Marcus T.
-        </span>
-        <span className="inline-flex items-center gap-1 text-success tracking-[0.16em] uppercase font-semibold text-[10px]">
-          <BadgeCheck className="h-3.5 w-3.5" strokeWidth={2} />
-          Verified
         </span>
       </figcaption>
     </figure>
