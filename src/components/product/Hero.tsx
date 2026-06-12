@@ -28,10 +28,10 @@ export function Hero() {
       <div className="container pt-1 pb-8 sm:pt-6 sm:pb-12">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start">
           {/* LEFT COLUMN — gallery (or branded panel) + desktop nutrition facts.
-              While no product image exists, the gallery is replaced by a
-              branded panel on desktop and hidden on mobile so the buy box
-              lands in the first screenful. */}
-          <div className={hasImages ? '' : 'hidden lg:block'}>
+              While no product image exists, the gallery slot is filled by a
+              branded panel on both mobile (stacked above the title) and
+              desktop, so a real photo can drop in with no layout change. */}
+          <div className={hasImages ? '' : 'max-w-md mx-auto lg:max-w-none'}>
             {hasImages ? (
               <ProductGallery
                 images={product.images}
@@ -44,11 +44,7 @@ export function Hero() {
           </div>
 
           {/* RIGHT COLUMN — title + meta + purchase block */}
-          <div
-            className={`${
-              hasImages ? 'mt-8' : 'mt-2'
-            } lg:mt-2 max-w-md mx-auto lg:mx-0 space-y-4 lg:space-y-3`}
-          >
+          <div className="mt-6 lg:mt-2 max-w-md mx-auto lg:mx-0 space-y-4 lg:space-y-3">
             <div>
               <p className="label-eyebrow mb-2">Pre Workout</p>
               <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl text-white tracking-[0.01em] leading-[0.9]">

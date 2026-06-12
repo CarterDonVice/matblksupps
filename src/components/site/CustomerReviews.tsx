@@ -114,7 +114,7 @@ export function CustomerReviews() {
   return (
     <section
       aria-labelledby="reviews"
-      className="relative bg-ink-800 pt-12 pb-12 sm:pt-16 sm:pb-16 border-y border-ink-600 overflow-hidden"
+      className="relative bg-ink-800 pt-10 pb-10 sm:pt-12 sm:pb-12 border-y border-ink-600 overflow-hidden"
     >
       <div
         aria-hidden
@@ -153,7 +153,7 @@ export function CustomerReviews() {
         </div>
 
         {/* Featured highlights */}
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-8 sm:mb-10">
           <p className="label-eyebrow text-center mb-5">Featured</p>
           <ul className="grid md:grid-cols-3 gap-4 sm:gap-5">
             {featuredTestimonials.map((t, i) => (
@@ -188,8 +188,7 @@ export function CustomerReviews() {
 
         {/* All Reviews — full content width, merged into the same section */}
         <div>
-          <div className="flex items-baseline justify-between flex-wrap gap-3 mb-5">
-            <p className="label-eyebrow">All Reviews</p>
+          <div className="flex items-baseline justify-end flex-wrap gap-3 mb-5">
             <p className="text-bone-500 text-[12px]">
               Showing{' '}
               <span className="text-bone font-medium">{filtered.length}</span>{' '}

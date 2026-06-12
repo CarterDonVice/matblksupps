@@ -1,7 +1,7 @@
 import { Star } from 'lucide-react';
 
 const stats = [
-  { value: '4.9', label: 'From 200+ Reviews', isStar: true },
+  { value: '4.7', label: 'From 7 Reviews', isStar: true },
   { value: '10', label: 'Active Ingredients' },
   { value: '0', label: 'Fillers' },
   { value: '0', label: 'Proprietary Blends' },

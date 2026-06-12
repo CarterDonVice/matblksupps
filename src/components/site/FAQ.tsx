@@ -11,10 +11,10 @@ export function FAQ() {
   return (
     <section
       aria-labelledby="faq"
-      className="bg-ink py-12 sm:py-16 border-t border-ink-600"
+      className="bg-ink py-10 sm:py-12 border-t border-ink-600"
     >
       <div className="container max-w-3xl lg:max-w-5xl">
-        <header className="text-center mb-8 sm:mb-10">
+        <header className="text-center mb-6 sm:mb-8">
           <p className="label-eyebrow mb-3">Answers</p>
           <h2
             id="faq"

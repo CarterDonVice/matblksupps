@@ -1,12 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import { ChevronDown } from 'lucide-react';
 import { tenet } from '@/lib/products';
 
 interface Props {
-  /** "dropdown" = collapsible accordion (mobile right-column).
-   *  "static"   = always-open list (desktop left-column under the gallery). */
+  /** "dropdown" = condensed open panel (mobile right-column): four headliners
+   *  visible by default with a "see the full formula" expand.
+   *  "static"   = always-open full list (desktop left-column under the gallery). */
   variant?: 'dropdown' | 'static';
   className?: string;
 }
@@ -15,7 +15,7 @@ export function NutritionFacts({ variant = 'dropdown', className }: Props) {
   if (variant === 'static') {
     return <StaticPanel className={className} />;
   }
-  return <DropdownPanel className={className} />;
+  return <CondensedPanel className={className} />;
 }
 
 function StaticPanel({ className }: { className?: string }) {
@@ -36,48 +36,21 @@ function StaticPanel({ className }: { className?: string }) {
   );
 }
 
-function DropdownPanel({ className }: { className?: string }) {
-  const [open, setOpen] = React.useState(false);
+function CondensedPanel({ className }: { className?: string }) {
   return (
-    <div
+    <section
+      aria-label="Nutrition facts"
       className={[
-        'rounded-xl border bg-ink-800/60 transition-colors duration-200',
-        open ? 'border-bone-500/40' : 'border-ink-600',
+        'rounded-xl border border-ink-600 bg-ink-800/60 px-4 sm:px-5 pt-4 pb-4 sm:pb-5',
         className ?? '',
       ].join(' ')}
     >
-      <button
-        type="button"
-        aria-expanded={open}
-        aria-controls="nutrition-facts-panel"
-        onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between gap-3 px-4 sm:px-5 py-3.5 sm:py-4 text-left rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone"
-      >
-        <span className="font-condensed text-[13px] sm:text-sm font-extrabold tracking-[0.16em] uppercase text-bone">
-          Nutrition Facts
-        </span>
-        <ChevronDown
-          className={`h-4 w-4 shrink-0 text-bone-600 transition-transform duration-300 ${
-            open ? 'rotate-180 text-white' : ''
-          }`}
-          strokeWidth={1.75}
-        />
-      </button>
-
-      <div
-        id="nutrition-facts-panel"
-        className={`grid transition-all duration-300 ease-out ${
-          open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-        }`}
-      >
-        <div className="overflow-hidden">
-          <div className="px-4 sm:px-5 pb-4 sm:pb-5">
-            <List bordered condensed />
-            <Disclaimer />
-          </div>
-        </div>
-      </div>
-    </div>
+      <p className="font-condensed text-[13px] sm:text-sm font-extrabold tracking-[0.16em] uppercase text-bone mb-3">
+        Nutrition Facts
+      </p>
+      <List bordered condensed />
+      <Disclaimer />
+    </section>
   );
 }
 

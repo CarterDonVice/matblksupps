@@ -65,9 +65,9 @@ export const reviews: Review[] = [
   {
     id: '2',
     stars: 5,
-    title: 'Finally clinically dosed',
+    title: 'Finally fully dosed',
     body:
-      'Tired of prop blends. 6g cit and full Alpha-GPC dose at this price is a steal. Focus is dialed.',
+      'Tired of prop blends. 6g cit and a real Alpha-GPC dose at this price is a steal. Focus is dialed.',
     author: 'Jordan K.',
     date: '2026-04-18',
     verified: false,

@@ -38,10 +38,10 @@ export function WhatYoullFeel() {
   return (
     <section
       aria-labelledby="what-youll-feel"
-      className="relative bg-ink pt-16 sm:pt-24 pb-6 sm:pb-8 border-t border-ink-600"
+      className="relative bg-ink pt-12 sm:pt-16 pb-6 sm:pb-8 border-t border-ink-600"
     >
       <div className="container">
-        <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+        <header className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
           <p className="label-eyebrow mb-3">The Experience</p>
           <h2
             id="what-youll-feel"

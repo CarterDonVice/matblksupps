@@ -68,8 +68,13 @@ export function AnnouncementBanner() {
         }
         className="absolute inset-0 w-full h-full flex items-center justify-center px-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-bone"
       >
+        {/* Mobile: static first-order offer, identical to the popup headline */}
+        <span className="sm:hidden text-[13px] font-semibold uppercase tracking-wide text-bone truncate">
+          {messages[0]}
+        </span>
+        {/* Desktop: cycling messages, unchanged */}
         <span
-          className={`text-[13px] sm:text-xs font-semibold sm:font-normal uppercase tracking-wide text-bone sm:text-bone-600 truncate transition-opacity duration-200 ${
+          className={`hidden sm:inline text-xs uppercase tracking-wide text-bone-600 truncate transition-opacity duration-200 ${
             fading ? 'opacity-0' : 'opacity-100'
           }`}
         >

@@ -32,11 +32,11 @@ export function GuaranteeAndBlacklist() {
 
 function GuaranteePanel() {
   return (
-    <div className="py-14 sm:py-20 lg:py-16 lg:pr-10 xl:pr-14 border-b border-ink-600 lg:border-b-0 lg:border-r">
-      <div className="max-w-md mx-auto lg:mx-0 text-center lg:text-left space-y-5">
-        <span className="inline-flex h-14 w-14 lg:h-12 lg:w-12 items-center justify-center rounded-full border border-bone-500/40 bg-ink/40">
+    <div className="py-8 sm:py-10 lg:pr-10 xl:pr-14 border-b border-ink-600 lg:border-b-0 lg:border-r">
+      <div className="max-w-md mx-auto lg:mx-0 text-center lg:text-left space-y-3">
+        <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-bone-500/40 bg-ink/40">
           <ShieldCheck
-            className="h-7 w-7 lg:h-6 lg:w-6 text-white"
+            className="h-5 w-5 text-white"
             strokeWidth={1.5}
           />
         </span>
@@ -77,8 +77,8 @@ function BlacklistPanel() {
   };
 
   return (
-    <div className="py-14 sm:py-20 lg:py-16 lg:pl-10 xl:pl-14">
-      <div className="max-w-md mx-auto lg:mx-0 text-center lg:text-left space-y-5">
+    <div className="py-8 sm:py-10 lg:pl-10 xl:pl-14">
+      <div className="max-w-md mx-auto lg:mx-0 text-center lg:text-left space-y-3">
         <p className="label-eyebrow">Members Only</p>
         <h2
           id="newsletter"
