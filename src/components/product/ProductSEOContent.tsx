@@ -35,8 +35,8 @@ export function ProductSEOContent() {
 
         <Detail title="What's in TENET">
           <p>
-            Four of TENET's seven clinical doses anchor the formula at the
-            levels used in published research.
+            Every ingredient in TENET is fully disclosed and dosed effectively,
+            with the headline ingredients anchoring the formula.
           </p>
           <ul className="list-disc pl-5 space-y-1 mt-2 text-bone-600">
             <li>6g L-citrulline</li>
@@ -75,9 +75,8 @@ export function ProductSEOContent() {
           <p>
             Alpha-GPC supports focus during training, supports mental clarity,
             and supports mind muscle connection.* The studies on Alpha-GPC for
-            cognitive performance and power output use 600mg. Many pre workouts
-            include Alpha-GPC at 150 to 300mg, which is under the dose where
-            the research effects appear. TENET runs the full 600mg.
+            cognitive performance and power output use 600mg. TENET runs the
+            full 600mg.
           </p>
         </Detail>
 

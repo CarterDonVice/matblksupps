@@ -1,8 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { ShieldCheck, ArrowUp, ArrowRight, Check } from 'lucide-react';
-import { scrollToId } from '@/lib/scroll';
+import { ShieldCheck, ArrowRight, Check } from 'lucide-react';
 import { isValidEmail } from '@/lib/validate';
 import { subscribe } from '@/lib/marketing';
 
@@ -48,29 +47,12 @@ function GuaranteePanel() {
         >
           100% Satisfaction
           <br />
-          Guaranteed
+          Guarantee
         </h2>
 
         <p className="text-bone text-[15px] sm:text-base lg:text-[15px] max-w-md leading-relaxed">
-          Try TENET. If you don't feel the difference, we'll refund you. No
-          hoops. No questions.
+          We stand behind every tub of TENET.
         </p>
-
-        <p className="text-bone-600 text-[13px] sm:text-sm max-w-md leading-relaxed">
-          30 day money back guarantee. If TENET is not for you, contact us
-          within 30 days for a full refund, even if the tub is empty.
-        </p>
-
-        <div className="pt-1 flex justify-center lg:justify-start">
-          <button
-            type="button"
-            onClick={() => scrollToId('purchase')}
-            className="inline-flex items-center gap-2 h-12 px-6 rounded-xl bg-white text-ink font-condensed text-sm font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
-          >
-            Shop TENET Risk Free
-            <ArrowUp className="h-4 w-4" strokeWidth={2.25} />
-          </button>
-        </div>
       </div>
     </div>
   );

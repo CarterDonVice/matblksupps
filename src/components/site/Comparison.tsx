@@ -18,7 +18,7 @@ const rows: Row[] = [
   {
     label: 'Caffeine system',
     tenet: 'DUAL CAFFEINE SYSTEM (sustained)',
-    typical: 'Single source (crash risk)',
+    typical: 'Single source, spikes and fades',
   },
   {
     label: 'Absorption enhancer',

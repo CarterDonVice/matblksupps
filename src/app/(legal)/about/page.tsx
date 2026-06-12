@@ -16,7 +16,7 @@ const principles = [
   {
     icon: FlaskConical,
     title: 'Clinically Dosed',
-    body: 'Every active ingredient in TENET is dosed at the level used in published research. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine anhydrous.',
+    body: 'Every ingredient in TENET is fully disclosed and dosed effectively. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine anhydrous.',
   },
   {
     icon: FileSearch,

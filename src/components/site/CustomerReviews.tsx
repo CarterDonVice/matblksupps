@@ -121,6 +121,17 @@ export function CustomerReviews() {
         className="absolute inset-0 texture-wordmark opacity-25 pointer-events-none"
       />
       <div className="container relative max-w-5xl">
+        {/* Placeholder disclosure — prominent, not fine print */}
+        <div className="mb-10 sm:mb-12 max-w-3xl mx-auto rounded-xl border-2 border-bone-500/50 bg-ink px-5 py-4 sm:px-6 sm:py-5 text-center">
+          <p className="font-condensed text-sm sm:text-base font-extrabold tracking-[0.18em] uppercase text-white">
+            Sample Content
+          </p>
+          <p className="mt-2 text-bone text-[13px] sm:text-sm leading-relaxed">
+            These reviews and ratings are placeholders for layout and are not
+            from real customers.
+          </p>
+        </div>
+
         {/* Master header */}
         <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <p className="label-eyebrow mb-3">Reviews</p>
@@ -139,6 +150,10 @@ export function CustomerReviews() {
               based on <span className="text-bone">{count}</span> reviews
             </span>
           </div>
+          <p className="mt-3 inline-block rounded-md border border-bone-500/50 px-3 py-1.5 text-bone text-[11px] sm:text-[12px] font-semibold tracking-[0.12em] uppercase">
+            Sample content. These reviews and ratings are placeholders for
+            layout and are not from real customers.
+          </p>
         </header>
 
         {/* Featured highlights */}
@@ -442,11 +457,6 @@ function ReviewRow({ review }: { review: Review }) {
             year: 'numeric',
           })}
         </time>
-        {review.verified && (
-          <span className="text-success text-[10px] tracking-[0.18em] uppercase font-semibold">
-            ✓ Verified
-          </span>
-        )}
       </div>
     </article>
   );

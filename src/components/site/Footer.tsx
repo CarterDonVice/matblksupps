@@ -28,7 +28,6 @@ const supportLinks: FooterLink[] = [
 const aboutLinks: FooterLink[] = [
   { label: 'Our Story', href: '/about' },
   { label: 'The Science', href: '/science' },
-  { label: 'Manufacturing', href: '/about' },
 ];
 
 const legalLinks: FooterLink[] = [
