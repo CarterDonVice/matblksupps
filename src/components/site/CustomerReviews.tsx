@@ -114,26 +114,15 @@ export function CustomerReviews() {
   return (
     <section
       aria-labelledby="reviews"
-      className="relative bg-ink-800 py-16 sm:py-24 border-y border-ink-600 overflow-hidden"
+      className="relative bg-ink-800 pt-12 pb-12 sm:pt-16 sm:pb-16 border-y border-ink-600 overflow-hidden"
     >
       <div
         aria-hidden
         className="absolute inset-0 texture-wordmark opacity-25 pointer-events-none"
       />
       <div className="container relative max-w-5xl">
-        {/* Placeholder disclosure — prominent, not fine print */}
-        <div className="mb-10 sm:mb-12 max-w-3xl mx-auto rounded-xl border-2 border-bone-500/50 bg-ink px-5 py-4 sm:px-6 sm:py-5 text-center">
-          <p className="font-condensed text-sm sm:text-base font-extrabold tracking-[0.18em] uppercase text-white">
-            Sample Content
-          </p>
-          <p className="mt-2 text-bone text-[13px] sm:text-sm leading-relaxed">
-            These reviews and ratings are placeholders for layout and are not
-            from real customers.
-          </p>
-        </div>
-
-        {/* Master header */}
-        <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        {/* Single unified header */}
+        <header className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
           <p className="label-eyebrow mb-3">Reviews</p>
           <h2
             id="reviews"
@@ -150,11 +139,18 @@ export function CustomerReviews() {
               based on <span className="text-bone">{count}</span> reviews
             </span>
           </div>
-          <p className="mt-3 inline-block rounded-md border border-bone-500/50 px-3 py-1.5 text-bone text-[11px] sm:text-[12px] font-semibold tracking-[0.12em] uppercase">
-            Sample content. These reviews and ratings are placeholders for
-            layout and are not from real customers.
-          </p>
         </header>
+
+        {/* Single placeholder disclosure — prominent, not fine print */}
+        <div className="mb-10 sm:mb-12 max-w-3xl mx-auto rounded-xl border-2 border-bone-500/50 bg-ink px-5 py-4 sm:px-6 sm:py-5 text-center">
+          <p className="font-condensed text-sm sm:text-base font-extrabold tracking-[0.18em] uppercase text-white">
+            Sample Content
+          </p>
+          <p className="mt-2 text-bone text-[13px] sm:text-sm leading-relaxed">
+            These reviews and ratings are placeholders for layout and are not
+            from real customers.
+          </p>
+        </div>
 
         {/* Featured highlights */}
         <div className="mb-12 sm:mb-16">
@@ -190,8 +186,8 @@ export function CustomerReviews() {
           </ul>
         </div>
 
-        {/* All Reviews */}
-        <div className="max-w-3xl mx-auto">
+        {/* All Reviews — full content width, merged into the same section */}
+        <div>
           <div className="flex items-baseline justify-between flex-wrap gap-3 mb-5">
             <p className="label-eyebrow">All Reviews</p>
             <p className="text-bone-500 text-[12px]">

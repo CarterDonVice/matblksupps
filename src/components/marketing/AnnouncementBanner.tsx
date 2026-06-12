@@ -8,9 +8,9 @@ const STORAGE_BANNER_HIDDEN = 'tenet:banner:hidden';
 const CYCLE_MS = 5000;
 
 const messages = [
-  'Unlock 20% off your first order. Tap to claim.',
+  'Get 20% off your first order.',
   'Free shipping on 2 or more tubs.',
-  '30 day money back guarantee.',
+  '100% satisfaction guarantee.',
 ];
 
 /**
@@ -60,7 +60,7 @@ export function AnnouncementBanner() {
   if (hydrated && (dismissed || claimed)) return null;
 
   return (
-    <div className="relative w-full h-9 bg-ink-800 border-b border-ink-600">
+    <div className="relative w-full h-11 sm:h-9 bg-ink-800 border-b border-ink-600">
       <button
         type="button"
         onClick={() =>
@@ -69,7 +69,7 @@ export function AnnouncementBanner() {
         className="absolute inset-0 w-full h-full flex items-center justify-center px-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-bone"
       >
         <span
-          className={`text-xs uppercase tracking-wide text-bone-600 truncate transition-opacity duration-200 ${
+          className={`text-[13px] sm:text-xs font-semibold sm:font-normal uppercase tracking-wide text-bone sm:text-bone-600 truncate transition-opacity duration-200 ${
             fading ? 'opacity-0' : 'opacity-100'
           }`}
         >

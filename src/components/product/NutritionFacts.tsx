@@ -72,7 +72,7 @@ function DropdownPanel({ className }: { className?: string }) {
       >
         <div className="overflow-hidden">
           <div className="px-4 sm:px-5 pb-4 sm:pb-5">
-            <List bordered />
+            <List bordered condensed />
             <Disclaimer />
           </div>
         </div>
@@ -81,26 +81,60 @@ function DropdownPanel({ className }: { className?: string }) {
   );
 }
 
-function List({ bordered = false }: { bordered?: boolean }) {
+/** The four label-order headliners shown before the full-formula expand. */
+const PREVIEW_NAMES = [
+  'L-Citrulline',
+  'Glycerol (HydroPrime®)',
+  'Beta-Alanine',
+  'L-Tyrosine',
+];
+
+function List({
+  bordered = false,
+  condensed = false,
+}: {
+  bordered?: boolean;
+  /** Show only the four headliners with a "see the full formula" expand. */
+  condensed?: boolean;
+}) {
+  const [expanded, setExpanded] = React.useState(false);
+  const showAll = !condensed || expanded;
+  const preview = tenet.ingredients.filter((ing) =>
+    PREVIEW_NAMES.includes(ing.name),
+  );
+  const items = showAll ? tenet.ingredients : preview;
+  const hiddenCount = tenet.ingredients.length - preview.length;
+
   return (
-    <ul
-      className={[
-        'divide-y divide-ink-600',
-        bordered ? 'border-t border-ink-600' : '',
-      ].join(' ')}
-    >
-      {tenet.ingredients.map((ing) => (
-        <li
-          key={ing.name}
-          className="flex items-baseline justify-between gap-3 py-2.5"
+    <>
+      <ul
+        className={[
+          'divide-y divide-ink-600',
+          bordered ? 'border-t border-ink-600' : '',
+        ].join(' ')}
+      >
+        {items.map((ing) => (
+          <li
+            key={ing.name}
+            className="flex items-baseline justify-between gap-3 py-2.5"
+          >
+            <span className="text-bone text-[13px] sm:text-sm">{ing.name}</span>
+            <span className="font-condensed text-sm font-bold tabular-nums text-bone tracking-wide">
+              {ing.dose}
+            </span>
+          </li>
+        ))}
+      </ul>
+      {condensed && !expanded && (
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          className="mt-2 w-full py-2 text-center text-bone text-[12px] tracking-[0.16em] uppercase font-semibold border-t border-ink-600 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bone rounded-sm"
         >
-          <span className="text-bone text-[13px] sm:text-sm">{ing.name}</span>
-          <span className="font-condensed text-sm font-bold tabular-nums text-bone tracking-wide">
-            {ing.dose}
-          </span>
-        </li>
-      ))}
-    </ul>
+          See the full formula ({hiddenCount} more)
+        </button>
+      )}
+    </>
   );
 }
 

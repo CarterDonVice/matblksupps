@@ -98,7 +98,7 @@ function Stage({ stage, index }: { stage: Stage; index: number }) {
       <p className="mt-1 label-eyebrow">
         Stage {index + 1} · {stage.name}
       </p>
-      <p className="mt-3 text-bone-600 text-sm leading-relaxed max-w-[200px]">
+      <p className="mt-3 text-bone-600 text-sm leading-relaxed max-w-[200px] md:text-left">
         {stage.body}
       </p>
     </li>

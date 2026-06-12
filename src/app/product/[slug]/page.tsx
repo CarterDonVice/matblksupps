@@ -49,9 +49,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
         <Reveal><ProductSEOContent /></Reveal>
         <Reveal><Comparison /></Reveal>
         <Reveal><WhatYoullFeel /></Reveal>
-        <Reveal><FillerBand text="Train by the Tenet." /></Reveal>
         <Reveal><CustomerReviews /></Reveal>
         <Reveal><FAQ /></Reveal>
+        <Reveal><FillerBand text="Train by the Tenet." /></Reveal>
         <Reveal><GuaranteeAndBlacklist /></Reveal>
       </main>
       <Reveal><Footer /></Reveal>

@@ -19,7 +19,7 @@ export function ProductSEOContent() {
             TENET Daily Driver Pre Workout
           </h2>
           <p className="mt-3 font-condensed text-sm sm:text-base font-bold tracking-[0.14em] uppercase text-bone-600">
-            Clinically Dosed, Transparent Label, Moderate Stim
+            Fully Dosed, Transparent Label, Moderate Stim
           </p>
         </header>
 
@@ -89,7 +89,7 @@ export function ProductSEOContent() {
             TENET's DUAL CAFFEINE SYSTEM. This is a deliberate choice.
             High stim formulas at 300 to 400mg of caffeine work for some
             lifters and not for others. TENET is built for the lifter who
-            wants clinically dosed performance ingredients without the
+            wants fully dosed performance ingredients without the
             high stim load.
           </p>
         </Detail>
@@ -104,9 +104,9 @@ export function ProductSEOContent() {
           </p>
         </Detail>
 
-        <Detail title="How TENET compares to other clinically dosed pre workouts">
+        <Detail title="How TENET compares to other fully dosed pre workouts">
           <p>
-            TENET hits the clinically researched doses across the four
+            TENET runs full, effective doses across the four
             headline ingredients. That puts it in line with the transparent
             label pre workouts that don't underdose. Many pre workouts list
             ingredients but cut L-citrulline to 3 to 4g or hide totals behind

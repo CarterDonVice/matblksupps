@@ -25,7 +25,7 @@ export function FlavorSelector() {
               aria-pressed={active}
               onClick={() => setFlavor(flavor.id)}
               className={[
-                'group relative aspect-[4/3] rounded-2xl overflow-hidden',
+                'group relative aspect-[16/9] sm:aspect-[4/3] rounded-2xl overflow-hidden',
                 'transition-all duration-200',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone',
                 active
@@ -63,7 +63,7 @@ export function FlavorSelector() {
               )}
 
               {/* Stacked flavor name — two lines, larger */}
-              <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-4 text-left">
+              <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 text-left">
                 <p className="font-condensed font-extrabold tracking-[0.08em] uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] leading-[0.95] text-xl sm:text-2xl">
                   {line1}
                   {line2 && (

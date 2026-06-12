@@ -13,11 +13,11 @@ export interface FaqItem {
 export const faqItems: FaqItem[] = [
   {
     q: "What's in TENET Daily Driver Pre Workout?",
-    a: 'TENET contains clinical doses of L-citrulline (6g), beta-alanine (3.2g), glycerol (3g), L-tyrosine (2g), taurine (1g), piperine (5mg), and Alpha-GPC (600mg at 50% yield), as well as caffeine anhydrous, di caffeine malate, and Huperzine A. Every ingredient and every dose is printed on the supplement panel, with no proprietary blends and no fillers.',
+    a: 'TENET contains effective, fully disclosed doses of L-citrulline (6g), beta-alanine (3.2g), glycerol (3g), L-tyrosine (2g), taurine (1g), piperine (5mg), and Alpha-GPC (600mg at 50% yield), as well as caffeine anhydrous, di caffeine malate, and Huperzine A. Every ingredient and every dose is printed on the supplement panel, with no proprietary blends and no fillers.',
   },
   {
-    q: 'Is TENET clinically dosed?',
-    a: 'Every ingredient in TENET is fully disclosed and dosed effectively, with the full panel printed on the label. No proprietary blends and no hidden underdoses, so you can see exactly what is in every scoop.',
+    q: 'Is TENET fully dosed?',
+    a: 'Yes. Every ingredient in TENET is fully disclosed at an effective dose, with the full panel printed on the label. No proprietary blends and no hidden underdoses, so you can see exactly what is in every scoop.',
   },
   {
     q: 'Is TENET high stim or low stim?',
