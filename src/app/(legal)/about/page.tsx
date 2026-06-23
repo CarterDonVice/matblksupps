@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 const principles = [
   {
     icon: FlaskConical,
-    title: 'Clinically Dosed',
-    body: 'Every active ingredient in TENET is dosed at the level used in published research. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine anhydrous.',
+    title: 'Fully Dosed',
+    body: 'Every ingredient in TENET is fully disclosed and dosed effectively. 6g L-citrulline, 3.2g beta-alanine, 600mg Alpha-GPC, 100mg caffeine anhydrous.',
   },
   {
     icon: FileSearch,
@@ -41,7 +41,7 @@ export default function AboutPage() {
           <span className="text-bone">Daily Driver</span>
         </h1>
         <p className="text-bone-600 text-lg leading-relaxed max-w-prose">
-          MAT BLK Supplements builds clinically dosed, transparent label
+          MAT BLK Supplements builds fully dosed, transparent label
           pre workout for the lifters who read the supplement panel before
           they buy.
         </p>
@@ -63,7 +63,7 @@ export default function AboutPage() {
             </p>
             <p>
               We wanted the opposite. A daily driver. The pre you reach for
-              five days a week without thinking about it. Clinical doses on
+              five days a week without thinking about it. Effective doses on
               the things that move the needle. Pump, focus, energy,
               absorption. Smooth stim profile. Flavor that tastes like a drink,
               not a chemistry set.

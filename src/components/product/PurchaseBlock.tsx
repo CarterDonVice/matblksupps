@@ -34,29 +34,35 @@ export function PurchaseBlock() {
   }, [addItem, openCart, flavorId, purchaseType, quantity, unitPrice]);
 
   return (
-    <div className="space-y-6 lg:space-y-4">
+    <div className="space-y-4 lg:space-y-4">
+      {/* 1 — Flavor first */}
       <FlavorSelector />
-      <PurchaseTypeSelector />
-      <QuantitySelector />
 
-      <div className="space-y-3 pt-1 lg:pt-0">
-        <button
-          type="button"
-          onClick={onAdd}
-          className="group relative w-full h-14 sm:h-15 rounded-xl bg-white text-ink overflow-hidden flex items-center justify-between px-5 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.99] hover:bg-bone focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
-        >
-          <span className="flex items-center gap-3">
-            <ShoppingBag className="h-5 w-5" strokeWidth={2.25} />
-            <span className="font-condensed text-base font-extrabold tracking-[0.16em] uppercase">
-              Add to Cart
-            </span>
+      {/* 2 — Add to Cart as the dominant element, price riding on it */}
+      <button
+        type="button"
+        onClick={onAdd}
+        className="group relative w-full h-16 rounded-xl bg-white text-ink overflow-hidden flex items-center justify-between px-5 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.99] hover:bg-bone focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:ring-bone shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
+      >
+        <span className="flex items-center gap-3">
+          <ShoppingBag className="h-5 w-5" strokeWidth={2.25} />
+          <span className="font-condensed text-lg font-extrabold tracking-[0.16em] uppercase">
+            Add to Cart
           </span>
-          <span className="font-display text-2xl leading-none tabular-nums">
-            ${unitPrice.toFixed(2)}
-          </span>
-        </button>
+        </span>
+        <span className="font-display text-2xl leading-none tabular-nums">
+          ${unitPrice.toFixed(2)}
+        </span>
+      </button>
 
-        {/* Band 2 — quiet reassurance under the cart button */}
+      {/* 3 — Purchase type toggle directly beneath, quantity rides with it */}
+      <div className="space-y-3">
+        <PurchaseTypeSelector />
+        <QuantitySelector />
+      </div>
+
+      <div className="space-y-3">
+        {/* Band 2 — quiet reassurance under the buy controls */}
         <FillerBand
           variant="inline-soft"
           text="Fast onset, extended curve, smooth finish."
@@ -68,8 +74,10 @@ export function PurchaseBlock() {
             strokeWidth={1.75}
           />
           <span>
-            <span className="text-bone font-medium">100% Satisfaction Guarantee</span>{' '}
-            — Love it or we make it right.
+            <span className="text-bone font-medium">
+              100% Satisfaction Guarantee.
+            </span>{' '}
+            We stand behind every tub of TENET.
           </span>
         </p>
 

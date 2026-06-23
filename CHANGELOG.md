@@ -17,6 +17,23 @@ revisited. `main` is always the production source of truth.
 
 ---
 
+## v10.2 — 2026-06-12 · `claude/reviews-claims-pass`
+Three-part content, claims, and layout pass.
+- Reviews/claims. Reviews and ratings labeled as sample content sitewide, all
+  AggregateRating/Review structured data removed, ratings unified at 4.7 / 7,
+  certification language removed from the tested-athlete FAQ, guarantee softened
+  to quiet reassurance, footer trimmed
+- Claims voice. Removed "no crash" and "clinically dosed" from visible copy
+  (reframed to fully disclosed, effective doses); meta titles keep the keyword
+  for SEO only; dropped the seven-dose enumerated claim; FAQPage schema follows
+- Layout. Buy box reordered (flavor, Add to Cart, then toggle and quantity);
+  branded hero panel on mobile and desktop as a drop-in for a future product
+  photo; mobile formula and comparison condensed with expands; two review
+  sections merged into one; FAQ desktop two-column with a contact panel;
+  closing brand band before the newsletter; section rhythm and dead space
+  tightened; desktop body copy left-aligned; mobile promo banner now opens the
+  20% popup and the floating pill is desktop-only
+
 ## v10.1 — 2026-06-11 · `master-pass`
 Master implementation pass merging the fixes from both site audits.
 - Claims compliance. Scrubbed "no crash" phrasing, removed fabricated Verified

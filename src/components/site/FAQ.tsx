@@ -1,7 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { Plus } from 'lucide-react';
+import Link from 'next/link';
+import { Plus, ArrowRight, Mail } from 'lucide-react';
 import { faqItems } from '@/lib/faq';
 
 export function FAQ() {
@@ -10,10 +11,10 @@ export function FAQ() {
   return (
     <section
       aria-labelledby="faq"
-      className="bg-ink py-16 sm:py-24 border-t border-ink-600"
+      className="bg-ink py-10 sm:py-12 border-t border-ink-600"
     >
-      <div className="container max-w-3xl">
-        <header className="text-center mb-10 sm:mb-12">
+      <div className="container max-w-3xl lg:max-w-5xl">
+        <header className="text-center mb-6 sm:mb-8">
           <p className="label-eyebrow mb-3">Answers</p>
           <h2
             id="faq"
@@ -26,6 +27,7 @@ export function FAQ() {
           </p>
         </header>
 
+        <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-10 lg:items-start">
         <ul className="border-t border-ink-600">
           {faqItems.map((item, i) => {
             const isOpen = openIndex === i;
@@ -60,7 +62,7 @@ export function FAQ() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="text-bone-600 text-[14px] sm:text-[15px] leading-relaxed pb-5 sm:pb-6 max-w-prose">
+                    <p className="text-left text-bone-600 text-[14px] sm:text-[15px] leading-relaxed pb-5 sm:pb-6 max-w-prose">
                       {item.a}
                     </p>
                   </div>
@@ -69,6 +71,27 @@ export function FAQ() {
             );
           })}
         </ul>
+
+        {/* Desktop side panel — fills the empty right margin */}
+        <aside className="hidden lg:block sticky top-24 rounded-2xl border border-ink-600 bg-ink-800 p-7 space-y-4">
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-ink-600 bg-ink text-bone">
+            <Mail className="h-5 w-5" strokeWidth={1.75} />
+          </span>
+          <p className="font-display text-3xl text-white tracking-[0.01em] leading-[0.95]">
+            Still Have Questions?
+          </p>
+          <p className="text-bone-600 text-sm leading-relaxed">
+            Reach out and we will get back to you within 24 business hours.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
+          >
+            Contact Us
+            <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
+          </Link>
+        </aside>
+        </div>
       </div>
     </section>
   );

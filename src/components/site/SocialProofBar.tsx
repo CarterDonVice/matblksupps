@@ -1,6 +1,8 @@
+import { Star } from 'lucide-react';
+
 const stats = [
-  { value: '100%', label: 'Transparent Label' },
-  { value: '7', label: 'Clinical Doses' },
+  { value: '4.7', label: 'From 7 Reviews', isStar: true },
+  { value: '10', label: 'Active Ingredients' },
   { value: '0', label: 'Fillers' },
   { value: '0', label: 'Proprietary Blends' },
 ];
@@ -23,6 +25,12 @@ export function SocialProofBar() {
               ].join(' ')}
             >
               <div className="font-display text-5xl sm:text-6xl text-white tracking-[0.01em] leading-none flex items-center gap-2 tabular-nums">
+                {s.isStar && (
+                  <Star
+                    className="h-7 w-7 sm:h-8 sm:w-8 text-bone fill-bone"
+                    strokeWidth={1.5}
+                  />
+                )}
                 {s.value}
               </div>
               <p className="mt-2 label-eyebrow text-[10px] sm:text-[11px] tracking-[0.18em]">
@@ -31,6 +39,9 @@ export function SocialProofBar() {
             </li>
           ))}
         </ul>
+        <p className="mt-5 text-center text-bone-500 text-[11px] tracking-[0.12em] uppercase">
+          Star rating and review count are sample content for layout
+        </p>
       </div>
     </section>
   );

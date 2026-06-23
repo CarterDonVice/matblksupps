@@ -38,10 +38,10 @@ export function WhatYoullFeel() {
   return (
     <section
       aria-labelledby="what-youll-feel"
-      className="relative bg-ink pt-16 sm:pt-24 pb-6 sm:pb-8 border-t border-ink-600"
+      className="relative bg-ink pt-12 sm:pt-16 pb-6 sm:pb-8 border-t border-ink-600"
     >
       <div className="container">
-        <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+        <header className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
           <p className="label-eyebrow mb-3">The Experience</p>
           <h2
             id="what-youll-feel"
@@ -98,7 +98,7 @@ function Stage({ stage, index }: { stage: Stage; index: number }) {
       <p className="mt-1 label-eyebrow">
         Stage {index + 1} · {stage.name}
       </p>
-      <p className="mt-3 text-bone-600 text-sm leading-relaxed max-w-[200px]">
+      <p className="mt-3 text-bone-600 text-sm leading-relaxed max-w-[200px] md:text-left">
         {stage.body}
       </p>
     </li>

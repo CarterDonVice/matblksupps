@@ -1,13 +1,25 @@
+'use client';
+
+import * as React from 'react';
+
 interface Row {
   label: string;
   tenet: string;
   typical: string;
 }
 
+/** Rows shown by default on mobile; the rest sit behind the expand. */
+const MOBILE_DEFAULT_LABELS = [
+  'Doses',
+  'Pump system',
+  'Caffeine system',
+  'Proprietary Blends / Fillers',
+];
+
 const rows: Row[] = [
   {
-    label: 'Clinically Dosed',
-    tenet: 'Absolutely',
+    label: 'Doses',
+    tenet: 'Fully disclosed, effective doses',
     typical: 'Underdosed to cut costs',
   },
   {
@@ -18,7 +30,7 @@ const rows: Row[] = [
   {
     label: 'Caffeine system',
     tenet: 'DUAL CAFFEINE SYSTEM (sustained)',
-    typical: 'Single source (crash risk)',
+    typical: 'Single source, spikes and fades',
   },
   {
     label: 'Absorption enhancer',
@@ -53,6 +65,11 @@ const rows: Row[] = [
 ];
 
 export function Comparison() {
+  const [expanded, setExpanded] = React.useState(false);
+  const mobileRows = expanded
+    ? rows
+    : rows.filter((r) => MOBILE_DEFAULT_LABELS.includes(r.label));
+  const hiddenCount = rows.length - mobileRows.length;
   return (
     <section
       aria-labelledby="whats-different"
@@ -129,9 +146,9 @@ export function Comparison() {
           </table>
         </div>
 
-        {/* Mobile stacked cards */}
+        {/* Mobile stacked cards — condensed by default */}
         <ul className="md:hidden space-y-3">
-          {rows.map((r, i) => (
+          {mobileRows.map((r, i) => (
             <li
               key={i}
               className="rounded-xl border border-ink-600 bg-ink-800/60 p-4"
@@ -158,6 +175,17 @@ export function Comparison() {
             </li>
           ))}
         </ul>
+        {!expanded && (
+          <div className="md:hidden mt-4 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setExpanded(true)}
+              className="h-11 px-6 rounded-xl bg-white text-ink font-condensed text-xs font-extrabold tracking-[0.16em] uppercase transition-all duration-200 hover:scale-[1.02] hover:bg-bone active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 focus-visible:ring-bone"
+            >
+              See full comparison ({hiddenCount} more)
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -22,7 +22,7 @@ const ingredients: IngredientCardData[] = [
       <>
         The pump ingredient. L Citrulline converts to L Arginine in your kidneys
         and supports nitric oxide production and healthy blood flow* for
-        sustained pumps. 6,000mg is the clinically validated dose. Most pre workouts use
+        sustained pumps. 6,000mg is the full effective dose. Most pre workouts use
         3,000mg or less. Half the dose, half the result. Part of TENET's{' '}
         <span className="text-white font-medium">DUAL PUMP PATHWAYS</span>.
       </>
@@ -62,7 +62,7 @@ const ingredients: IngredientCardData[] = [
       <>
         The focus ingredient. Alpha GPC supports acetylcholine production* for
         sharper mind muscle connection and cognitive performance during
-        training. 600mg at 50% potency is the clinical dose.
+        training. 600mg at 50% potency is the full effective dose.
       </>
     ),
   },

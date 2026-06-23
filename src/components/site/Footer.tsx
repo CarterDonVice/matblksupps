@@ -28,7 +28,6 @@ const supportLinks: FooterLink[] = [
 const aboutLinks: FooterLink[] = [
   { label: 'Our Story', href: '/about' },
   { label: 'The Science', href: '/science' },
-  { label: 'Manufacturing', href: '/about' },
 ];
 
 const legalLinks: FooterLink[] = [
@@ -40,14 +39,14 @@ const legalLinks: FooterLink[] = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-ink border-t border-ink-600 pt-14 pb-10 overflow-hidden">
+    <footer className="relative bg-ink border-t border-ink-600 pt-10 pb-8 overflow-hidden">
       <div
         aria-hidden
         className="absolute inset-0 texture-wordmark opacity-40 pointer-events-none"
       />
       <div className="container relative">
         {/* Desktop 4-col grid / mobile accordion */}
-        <div className="grid lg:grid-cols-4 gap-10 lg:gap-8 mb-12">
+        <div className="grid lg:grid-cols-4 gap-8 lg:gap-8 mb-8">
           {/* Brand column — always visible */}
           <div className="text-center lg:text-left space-y-4">
             <Image
@@ -132,7 +131,7 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="lg:hidden w-full flex items-center justify-between py-4 text-left"
+        className="lg:hidden w-full flex items-center justify-between py-3 text-left"
       >
         <span className="label-eyebrow">{title}</span>
         <ChevronDown

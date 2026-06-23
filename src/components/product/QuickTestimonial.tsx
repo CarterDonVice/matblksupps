@@ -24,6 +24,9 @@ export function QuickTestimonial() {
         <span className="font-condensed font-extrabold tracking-[0.16em] uppercase text-white">
           — Marcus T.
         </span>
+        <span className="text-bone-500 text-[10px] tracking-[0.14em] uppercase font-semibold">
+          Sample content
+        </span>
       </figcaption>
     </figure>
   );

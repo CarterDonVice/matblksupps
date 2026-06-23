@@ -32,7 +32,7 @@ export const tenet: Product = {
   shortDescription:
     'Carb infused, clinically dosed, and moderate stim daily driver to deliver full spectrum performance for every workout.',
   longDescription:
-    "Enhance your training with TENET. This formula is built on science, with seven of our active ingredients at clinically dosed levels across pump, focus, endurance, and absorption pathways. The supporting cast (caffeine anhydrous, di caffeine malate, and Huperzine A) is included at clinically referenced doses and fully disclosed on the panel. With a smooth, moderate stim profile, TENET is the pre workout you'll rely on day in and day out.",
+    "Enhance your training with TENET. Every ingredient is fully disclosed and dosed effectively across pump, focus, endurance, and absorption pathways, with the full panel printed on the label. No proprietary blends and no hidden underdoses. With a smooth, moderate stim profile, TENET is the pre workout you'll rely on day in and day out.",
   ingredients: [
     { name: 'L-Citrulline', dose: '6,000 mg', hero: true },
     { name: 'Glycerol (HydroPrime®)', dose: '3,000 mg', hero: true },
@@ -65,9 +65,9 @@ export const reviews: Review[] = [
   {
     id: '2',
     stars: 5,
-    title: 'Finally clinically dosed',
+    title: 'Finally fully dosed',
     body:
-      'Tired of prop blends. 6g cit and full Alpha-GPC dose at this price is a steal. Focus is dialed.',
+      'Tired of prop blends. 6g cit and a real Alpha-GPC dose at this price is a steal. Focus is dialed.',
     author: 'Jordan K.',
     date: '2026-04-18',
     verified: false,

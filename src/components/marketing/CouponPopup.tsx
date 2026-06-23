@@ -389,7 +389,7 @@ export function StickyDiscountButton() {
   return (
     <div
       aria-hidden={!show}
-      className={`fixed bottom-6 right-6 z-40 transition-all duration-500 ease-out ${
+      className={`hidden sm:block fixed bottom-6 right-6 z-40 transition-all duration-500 ease-out ${
         show
           ? 'opacity-100 translate-y-0 pointer-events-auto'
           : 'opacity-0 translate-y-3 pointer-events-none'

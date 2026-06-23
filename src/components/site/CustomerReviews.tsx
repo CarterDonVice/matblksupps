@@ -114,15 +114,15 @@ export function CustomerReviews() {
   return (
     <section
       aria-labelledby="reviews"
-      className="relative bg-ink-800 py-16 sm:py-24 border-y border-ink-600 overflow-hidden"
+      className="relative bg-ink-800 pt-10 pb-10 sm:pt-12 sm:pb-12 border-y border-ink-600 overflow-hidden"
     >
       <div
         aria-hidden
         className="absolute inset-0 texture-wordmark opacity-25 pointer-events-none"
       />
       <div className="container relative max-w-5xl">
-        {/* Master header */}
-        <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        {/* Single unified header */}
+        <header className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
           <p className="label-eyebrow mb-3">Reviews</p>
           <h2
             id="reviews"
@@ -141,8 +141,19 @@ export function CustomerReviews() {
           </div>
         </header>
 
+        {/* Single placeholder disclosure — prominent, not fine print */}
+        <div className="mb-10 sm:mb-12 max-w-3xl mx-auto rounded-xl border-2 border-bone-500/50 bg-ink px-5 py-4 sm:px-6 sm:py-5 text-center">
+          <p className="font-condensed text-sm sm:text-base font-extrabold tracking-[0.18em] uppercase text-white">
+            Sample Content
+          </p>
+          <p className="mt-2 text-bone text-[13px] sm:text-sm leading-relaxed">
+            These reviews and ratings are placeholders for layout and are not
+            from real customers.
+          </p>
+        </div>
+
         {/* Featured highlights */}
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-8 sm:mb-10">
           <p className="label-eyebrow text-center mb-5">Featured</p>
           <ul className="grid md:grid-cols-3 gap-4 sm:gap-5">
             {featuredTestimonials.map((t, i) => (
@@ -175,10 +186,9 @@ export function CustomerReviews() {
           </ul>
         </div>
 
-        {/* All Reviews */}
-        <div className="max-w-3xl mx-auto">
-          <div className="flex items-baseline justify-between flex-wrap gap-3 mb-5">
-            <p className="label-eyebrow">All Reviews</p>
+        {/* All Reviews — full content width, merged into the same section */}
+        <div>
+          <div className="flex items-baseline justify-end flex-wrap gap-3 mb-5">
             <p className="text-bone-500 text-[12px]">
               Showing{' '}
               <span className="text-bone font-medium">{filtered.length}</span>{' '}
@@ -442,11 +452,6 @@ function ReviewRow({ review }: { review: Review }) {
             year: 'numeric',
           })}
         </time>
-        {review.verified && (
-          <span className="text-success text-[10px] tracking-[0.18em] uppercase font-semibold">
-            ✓ Verified
-          </span>
-        )}
       </div>
     </article>
   );

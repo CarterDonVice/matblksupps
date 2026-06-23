@@ -19,7 +19,7 @@ export function ProductSEOContent() {
             TENET Daily Driver Pre Workout
           </h2>
           <p className="mt-3 font-condensed text-sm sm:text-base font-bold tracking-[0.14em] uppercase text-bone-600">
-            Clinically Dosed, Transparent Label, Moderate Stim
+            Fully Dosed, Transparent Label, Moderate Stim
           </p>
         </header>
 
@@ -35,8 +35,8 @@ export function ProductSEOContent() {
 
         <Detail title="What's in TENET">
           <p>
-            Four of TENET's seven clinical doses anchor the formula at the
-            levels used in published research.
+            Every ingredient in TENET is fully disclosed and dosed effectively,
+            with the headline ingredients anchoring the formula.
           </p>
           <ul className="list-disc pl-5 space-y-1 mt-2 text-bone-600">
             <li>6g L-citrulline</li>
@@ -75,9 +75,8 @@ export function ProductSEOContent() {
           <p>
             Alpha-GPC supports focus during training, supports mental clarity,
             and supports mind muscle connection.* The studies on Alpha-GPC for
-            cognitive performance and power output use 600mg. Many pre workouts
-            include Alpha-GPC at 150 to 300mg, which is under the dose where
-            the research effects appear. TENET runs the full 600mg.
+            cognitive performance and power output use 600mg. TENET runs the
+            full 600mg.
           </p>
         </Detail>
 
@@ -90,7 +89,7 @@ export function ProductSEOContent() {
             TENET's DUAL CAFFEINE SYSTEM. This is a deliberate choice.
             High stim formulas at 300 to 400mg of caffeine work for some
             lifters and not for others. TENET is built for the lifter who
-            wants clinically dosed performance ingredients without the
+            wants fully dosed performance ingredients without the
             high stim load.
           </p>
         </Detail>
@@ -105,9 +104,9 @@ export function ProductSEOContent() {
           </p>
         </Detail>
 
-        <Detail title="How TENET compares to other clinically dosed pre workouts">
+        <Detail title="How TENET compares to other fully dosed pre workouts">
           <p>
-            TENET hits the clinically researched doses across the four
+            TENET runs full, effective doses across the four
             headline ingredients. That puts it in line with the transparent
             label pre workouts that don't underdose. Many pre workouts list
             ingredients but cut L-citrulline to 3 to 4g or hide totals behind
